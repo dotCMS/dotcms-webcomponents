@@ -11,6 +11,7 @@ import {
   DotBinaryFileEvent,
   DotFieldStatusEvent,
   DotFieldValueEvent,
+  DotInputCalendarStatusEvent,
 } from './models';
 
 export namespace Components {
@@ -146,6 +147,44 @@ export namespace Components {
     */
     'required': boolean;
   }
+  interface DotInputCalendar {
+    /**
+    * (optional) Disables field's interaction
+    */
+    'disabled': boolean;
+    /**
+    * (optional) Max, maximum value that the field will allow to set, expect a Date Format
+    */
+    'max': string;
+    /**
+    * (optional) Min, minimum value that the field will allow to set, expect a Date Format.
+    */
+    'min': string;
+    /**
+    * Name that will be used as ID
+    */
+    'name': string;
+    /**
+    * (optional) Determine if it is mandatory
+    */
+    'required': boolean;
+    /**
+    * Reset properties of the field, clear value and emit events.
+    */
+    'reset': () => Promise<any>;
+    /**
+    * (optional) Step specifies the legal number intervals for the input field
+    */
+    'step': string;
+    /**
+    * type specifies the type of <input> element to display
+    */
+    'type': string;
+    /**
+    * Value specifies the value of the <input> element
+    */
+    'value': string;
+  }
   interface DotLabel {
     /**
     * (optional) Text to be rendered
@@ -239,6 +278,12 @@ declare global {
     new (): HTMLDotBinaryUploadButtonElement;
   };
 
+  interface HTMLDotInputCalendarElement extends Components.DotInputCalendar, HTMLStencilElement {}
+  var HTMLDotInputCalendarElement: {
+    prototype: HTMLDotInputCalendarElement;
+    new (): HTMLDotInputCalendarElement;
+  };
+
   interface HTMLDotLabelElement extends Components.DotLabel, HTMLStencilElement {}
   var HTMLDotLabelElement: {
     prototype: HTMLDotLabelElement;
@@ -255,6 +300,7 @@ declare global {
     'dot-binary-file-preview': HTMLDotBinaryFilePreviewElement;
     'dot-binary-text-field': HTMLDotBinaryTextFieldElement;
     'dot-binary-upload-button': HTMLDotBinaryUploadButtonElement;
+    'dot-input-calendar': HTMLDotInputCalendarElement;
     'dot-label': HTMLDotLabelElement;
     'dot-textfield': HTMLDotTextfieldElement;
   }
@@ -394,6 +440,42 @@ declare namespace LocalJSX {
     */
     'required'?: boolean;
   }
+  interface DotInputCalendar {
+    /**
+    * (optional) Disables field's interaction
+    */
+    'disabled'?: boolean;
+    /**
+    * (optional) Max, maximum value that the field will allow to set, expect a Date Format
+    */
+    'max'?: string;
+    /**
+    * (optional) Min, minimum value that the field will allow to set, expect a Date Format.
+    */
+    'min'?: string;
+    /**
+    * Name that will be used as ID
+    */
+    'name'?: string;
+    'on_dotStatusChange'?: (event: CustomEvent<DotInputCalendarStatusEvent>) => void;
+    'on_dotValueChange'?: (event: CustomEvent<DotFieldValueEvent>) => void;
+    /**
+    * (optional) Determine if it is mandatory
+    */
+    'required'?: boolean;
+    /**
+    * (optional) Step specifies the legal number intervals for the input field
+    */
+    'step'?: string;
+    /**
+    * type specifies the type of <input> element to display
+    */
+    'type'?: string;
+    /**
+    * Value specifies the value of the <input> element
+    */
+    'value'?: string;
+  }
   interface DotLabel {
     /**
     * (optional) Text to be rendered
@@ -462,6 +544,7 @@ declare namespace LocalJSX {
     'dot-binary-file-preview': DotBinaryFilePreview;
     'dot-binary-text-field': DotBinaryTextField;
     'dot-binary-upload-button': DotBinaryUploadButton;
+    'dot-input-calendar': DotInputCalendar;
     'dot-label': DotLabel;
     'dot-textfield': DotTextfield;
   }
@@ -477,6 +560,7 @@ declare module "@stencil/core" {
       'dot-binary-file-preview': LocalJSX.DotBinaryFilePreview & JSXBase.HTMLAttributes<HTMLDotBinaryFilePreviewElement>;
       'dot-binary-text-field': LocalJSX.DotBinaryTextField & JSXBase.HTMLAttributes<HTMLDotBinaryTextFieldElement>;
       'dot-binary-upload-button': LocalJSX.DotBinaryUploadButton & JSXBase.HTMLAttributes<HTMLDotBinaryUploadButtonElement>;
+      'dot-input-calendar': LocalJSX.DotInputCalendar & JSXBase.HTMLAttributes<HTMLDotInputCalendarElement>;
       'dot-label': LocalJSX.DotLabel & JSXBase.HTMLAttributes<HTMLDotLabelElement>;
       'dot-textfield': LocalJSX.DotTextfield & JSXBase.HTMLAttributes<HTMLDotTextfieldElement>;
     }
