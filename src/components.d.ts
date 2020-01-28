@@ -301,6 +301,44 @@ export namespace Components {
     */
     'value': string;
   }
+  interface DotRadio {
+    /**
+    * (optional) Disables field's interaction
+    */
+    'disabled': boolean;
+    /**
+    * (optional) Hint text that suggest a clue of the field
+    */
+    'hint': string;
+    /**
+    * (optional) Text to be rendered next to input field
+    */
+    'label': string;
+    /**
+    * Name that will be used as ID
+    */
+    'name': string;
+    /**
+    * Value/Label ratio options separated by comma, to be formatted as: Value|Label
+    */
+    'options': string;
+    /**
+    * (optional) Determine if it is mandatory
+    */
+    'required': boolean;
+    /**
+    * (optional) Text that will be shown when required is set and condition is not met
+    */
+    'requiredMessage': string;
+    /**
+    * Reset properties of the field, clear value and emit events.
+    */
+    'reset': () => Promise<void>;
+    /**
+    * Value set from the ratio option
+    */
+    'value': string;
+  }
   interface DotTextfield {
     /**
     * (optional) Disables field's interaction
@@ -448,6 +486,12 @@ declare global {
     new (): HTMLDotMultiSelectElement;
   };
 
+  interface HTMLDotRadioElement extends Components.DotRadio, HTMLStencilElement {}
+  var HTMLDotRadioElement: {
+    prototype: HTMLDotRadioElement;
+    new (): HTMLDotRadioElement;
+  };
+
   interface HTMLDotTextfieldElement extends Components.DotTextfield, HTMLStencilElement {}
   var HTMLDotTextfieldElement: {
     prototype: HTMLDotTextfieldElement;
@@ -474,6 +518,7 @@ declare global {
     'dot-key-value': HTMLDotKeyValueElement;
     'dot-label': HTMLDotLabelElement;
     'dot-multi-select': HTMLDotMultiSelectElement;
+    'dot-radio': HTMLDotRadioElement;
     'dot-textfield': HTMLDotTextfieldElement;
     'key-value-form': HTMLKeyValueFormElement;
     'key-value-table': HTMLKeyValueTableElement;
@@ -760,6 +805,42 @@ declare namespace LocalJSX {
     */
     'value'?: string;
   }
+  interface DotRadio {
+    /**
+    * (optional) Disables field's interaction
+    */
+    'disabled'?: boolean;
+    /**
+    * (optional) Hint text that suggest a clue of the field
+    */
+    'hint'?: string;
+    /**
+    * (optional) Text to be rendered next to input field
+    */
+    'label'?: string;
+    /**
+    * Name that will be used as ID
+    */
+    'name'?: string;
+    'onDotStatusChange'?: (event: CustomEvent<DotFieldStatusEvent>) => void;
+    'onDotValueChange'?: (event: CustomEvent<DotFieldValueEvent>) => void;
+    /**
+    * Value/Label ratio options separated by comma, to be formatted as: Value|Label
+    */
+    'options'?: string;
+    /**
+    * (optional) Determine if it is mandatory
+    */
+    'required'?: boolean;
+    /**
+    * (optional) Text that will be shown when required is set and condition is not met
+    */
+    'requiredMessage'?: string;
+    /**
+    * Value set from the ratio option
+    */
+    'value'?: string;
+  }
   interface DotTextfield {
     /**
     * (optional) Disables field's interaction
@@ -874,6 +955,7 @@ declare namespace LocalJSX {
     'dot-key-value': DotKeyValue;
     'dot-label': DotLabel;
     'dot-multi-select': DotMultiSelect;
+    'dot-radio': DotRadio;
     'dot-textfield': DotTextfield;
     'key-value-form': KeyValueForm;
     'key-value-table': KeyValueTable;
@@ -894,6 +976,7 @@ declare module "@stencil/core" {
       'dot-key-value': LocalJSX.DotKeyValue & JSXBase.HTMLAttributes<HTMLDotKeyValueElement>;
       'dot-label': LocalJSX.DotLabel & JSXBase.HTMLAttributes<HTMLDotLabelElement>;
       'dot-multi-select': LocalJSX.DotMultiSelect & JSXBase.HTMLAttributes<HTMLDotMultiSelectElement>;
+      'dot-radio': LocalJSX.DotRadio & JSXBase.HTMLAttributes<HTMLDotRadioElement>;
       'dot-textfield': LocalJSX.DotTextfield & JSXBase.HTMLAttributes<HTMLDotTextfieldElement>;
       'key-value-form': LocalJSX.KeyValueForm & JSXBase.HTMLAttributes<HTMLKeyValueFormElement>;
       'key-value-table': LocalJSX.KeyValueTable & JSXBase.HTMLAttributes<HTMLKeyValueTableElement>;
