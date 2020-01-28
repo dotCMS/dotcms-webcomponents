@@ -428,6 +428,56 @@ export namespace Components {
     */
     'value': string;
   }
+  interface DotTime {
+    /**
+    * (optional) Disables field's interaction
+    */
+    'disabled': boolean;
+    /**
+    * (optional) Hint text that suggest a clue of the field
+    */
+    'hint': string;
+    /**
+    * (optional) Text to be rendered next to input field
+    */
+    'label': string;
+    /**
+    * (optional) Max, maximum value that the field will allow to set. Format should be  hh:mm:ss
+    */
+    'max': string;
+    /**
+    * (optional) Min, minimum value that the field will allow to set. Format should be hh:mm:ss
+    */
+    'min': string;
+    /**
+    * Name that will be used as ID
+    */
+    'name': string;
+    /**
+    * (optional) Determine if it is mandatory
+    */
+    'required': boolean;
+    /**
+    * (optional) Text that be shown when required is set and condition not met
+    */
+    'requiredMessage': string;
+    /**
+    * Reset properties of the field, clear value and emit events.
+    */
+    'reset': () => Promise<void>;
+    /**
+    * (optional) Step specifies the legal number intervals for the input field
+    */
+    'step': string;
+    /**
+    * (optional) Text that be shown when min or max are set and condition not met
+    */
+    'validationMessage': string;
+    /**
+    * Value format hh:mm:ss e.g., 15:22:00
+    */
+    'value': string;
+  }
   interface KeyValueForm {
     /**
     * (optional) Label for the add item button
@@ -543,6 +593,12 @@ declare global {
     new (): HTMLDotTextfieldElement;
   };
 
+  interface HTMLDotTimeElement extends Components.DotTime, HTMLStencilElement {}
+  var HTMLDotTimeElement: {
+    prototype: HTMLDotTimeElement;
+    new (): HTMLDotTimeElement;
+  };
+
   interface HTMLKeyValueFormElement extends Components.KeyValueForm, HTMLStencilElement {}
   var HTMLKeyValueFormElement: {
     prototype: HTMLKeyValueFormElement;
@@ -566,6 +622,7 @@ declare global {
     'dot-radio': HTMLDotRadioElement;
     'dot-select': HTMLDotSelectElement;
     'dot-textfield': HTMLDotTextfieldElement;
+    'dot-time': HTMLDotTimeElement;
     'key-value-form': HTMLKeyValueFormElement;
     'key-value-table': HTMLKeyValueTableElement;
   }
@@ -971,6 +1028,54 @@ declare namespace LocalJSX {
     */
     'value'?: string;
   }
+  interface DotTime {
+    /**
+    * (optional) Disables field's interaction
+    */
+    'disabled'?: boolean;
+    /**
+    * (optional) Hint text that suggest a clue of the field
+    */
+    'hint'?: string;
+    /**
+    * (optional) Text to be rendered next to input field
+    */
+    'label'?: string;
+    /**
+    * (optional) Max, maximum value that the field will allow to set. Format should be  hh:mm:ss
+    */
+    'max'?: string;
+    /**
+    * (optional) Min, minimum value that the field will allow to set. Format should be hh:mm:ss
+    */
+    'min'?: string;
+    /**
+    * Name that will be used as ID
+    */
+    'name'?: string;
+    'onDotStatusChange'?: (event: CustomEvent<DotFieldStatusEvent>) => void;
+    'onDotValueChange'?: (event: CustomEvent<DotFieldValueEvent>) => void;
+    /**
+    * (optional) Determine if it is mandatory
+    */
+    'required'?: boolean;
+    /**
+    * (optional) Text that be shown when required is set and condition not met
+    */
+    'requiredMessage'?: string;
+    /**
+    * (optional) Step specifies the legal number intervals for the input field
+    */
+    'step'?: string;
+    /**
+    * (optional) Text that be shown when min or max are set and condition not met
+    */
+    'validationMessage'?: string;
+    /**
+    * Value format hh:mm:ss e.g., 15:22:00
+    */
+    'value'?: string;
+  }
   interface KeyValueForm {
     /**
     * (optional) Label for the add item button
@@ -1040,6 +1145,7 @@ declare namespace LocalJSX {
     'dot-radio': DotRadio;
     'dot-select': DotSelect;
     'dot-textfield': DotTextfield;
+    'dot-time': DotTime;
     'key-value-form': KeyValueForm;
     'key-value-table': KeyValueTable;
   }
@@ -1062,6 +1168,7 @@ declare module "@stencil/core" {
       'dot-radio': LocalJSX.DotRadio & JSXBase.HTMLAttributes<HTMLDotRadioElement>;
       'dot-select': LocalJSX.DotSelect & JSXBase.HTMLAttributes<HTMLDotSelectElement>;
       'dot-textfield': LocalJSX.DotTextfield & JSXBase.HTMLAttributes<HTMLDotTextfieldElement>;
+      'dot-time': LocalJSX.DotTime & JSXBase.HTMLAttributes<HTMLDotTimeElement>;
       'key-value-form': LocalJSX.KeyValueForm & JSXBase.HTMLAttributes<HTMLKeyValueFormElement>;
       'key-value-table': LocalJSX.KeyValueTable & JSXBase.HTMLAttributes<HTMLKeyValueTableElement>;
     }
