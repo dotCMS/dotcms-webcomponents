@@ -7,56 +7,165 @@
 
 
 import { HTMLStencilElement, JSXBase } from '@stencil/core/internal';
-
+import {
+  DotFieldStatusEvent,
+  DotFieldValueEvent,
+} from './models';
 
 export namespace Components {
-  interface MyComponent {
+  interface DotLabel {
     /**
-    * The first name
+    * (optional) Text to be rendered
     */
-    'first': string;
+    'label': string;
     /**
-    * The last name
+    * (optional) Field name
     */
-    'last': string;
+    'name': string;
     /**
-    * The middle name
+    * (optional) Determine if it is mandatory
     */
-    'middle': string;
+    'required': boolean;
+  }
+  interface DotTextfield {
+    /**
+    * (optional) Disables field's interaction
+    */
+    'disabled': boolean;
+    /**
+    * (optional) Hint text that suggest a clue of the field
+    */
+    'hint': string;
+    /**
+    * (optional) Text to be rendered next to input field
+    */
+    'label': string;
+    /**
+    * Name that will be used as ID
+    */
+    'name': string;
+    /**
+    * (optional) Placeholder specifies a short hint that describes the expected value of the input field
+    */
+    'placeholder': string;
+    /**
+    * (optional) Regular expresion that is checked against the value to determine if is valid
+    */
+    'regexCheck': string;
+    /**
+    * (optional) Determine if it is mandatory
+    */
+    'required': boolean;
+    /**
+    * (optional) Text that be shown when required is set and condition not met
+    */
+    'requiredMessage': string;
+    /**
+    * Reset properties of the field, clear value and emit events.
+    */
+    'reset': () => Promise<void>;
+    /**
+    * type specifies the type of <input> element to display
+    */
+    'type': string;
+    /**
+    * (optional) Text that be shown when the Regular Expression condition not met
+    */
+    'validationMessage': string;
+    /**
+    * Value specifies the value of the <input> element
+    */
+    'value': string;
   }
 }
 
 declare global {
 
 
-  interface HTMLMyComponentElement extends Components.MyComponent, HTMLStencilElement {}
-  var HTMLMyComponentElement: {
-    prototype: HTMLMyComponentElement;
-    new (): HTMLMyComponentElement;
+  interface HTMLDotLabelElement extends Components.DotLabel, HTMLStencilElement {}
+  var HTMLDotLabelElement: {
+    prototype: HTMLDotLabelElement;
+    new (): HTMLDotLabelElement;
+  };
+
+  interface HTMLDotTextfieldElement extends Components.DotTextfield, HTMLStencilElement {}
+  var HTMLDotTextfieldElement: {
+    prototype: HTMLDotTextfieldElement;
+    new (): HTMLDotTextfieldElement;
   };
   interface HTMLElementTagNameMap {
-    'my-component': HTMLMyComponentElement;
+    'dot-label': HTMLDotLabelElement;
+    'dot-textfield': HTMLDotTextfieldElement;
   }
 }
 
 declare namespace LocalJSX {
-  interface MyComponent {
+  interface DotLabel {
     /**
-    * The first name
+    * (optional) Text to be rendered
     */
-    'first'?: string;
+    'label'?: string;
     /**
-    * The last name
+    * (optional) Field name
     */
-    'last'?: string;
+    'name'?: string;
     /**
-    * The middle name
+    * (optional) Determine if it is mandatory
     */
-    'middle'?: string;
+    'required'?: boolean;
+  }
+  interface DotTextfield {
+    /**
+    * (optional) Disables field's interaction
+    */
+    'disabled'?: boolean;
+    /**
+    * (optional) Hint text that suggest a clue of the field
+    */
+    'hint'?: string;
+    /**
+    * (optional) Text to be rendered next to input field
+    */
+    'label'?: string;
+    /**
+    * Name that will be used as ID
+    */
+    'name'?: string;
+    'onDotStatusChange'?: (event: CustomEvent<DotFieldStatusEvent>) => void;
+    'onDotValueChange'?: (event: CustomEvent<DotFieldValueEvent>) => void;
+    /**
+    * (optional) Placeholder specifies a short hint that describes the expected value of the input field
+    */
+    'placeholder'?: string;
+    /**
+    * (optional) Regular expresion that is checked against the value to determine if is valid
+    */
+    'regexCheck'?: string;
+    /**
+    * (optional) Determine if it is mandatory
+    */
+    'required'?: boolean;
+    /**
+    * (optional) Text that be shown when required is set and condition not met
+    */
+    'requiredMessage'?: string;
+    /**
+    * type specifies the type of <input> element to display
+    */
+    'type'?: string;
+    /**
+    * (optional) Text that be shown when the Regular Expression condition not met
+    */
+    'validationMessage'?: string;
+    /**
+    * Value specifies the value of the <input> element
+    */
+    'value'?: string;
   }
 
   interface IntrinsicElements {
-    'my-component': MyComponent;
+    'dot-label': DotLabel;
+    'dot-textfield': DotTextfield;
   }
 }
 
@@ -66,7 +175,8 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
   export namespace JSX {
     interface IntrinsicElements {
-      'my-component': LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
+      'dot-label': LocalJSX.DotLabel & JSXBase.HTMLAttributes<HTMLDotLabelElement>;
+      'dot-textfield': LocalJSX.DotTextfield & JSXBase.HTMLAttributes<HTMLDotTextfieldElement>;
     }
   }
 }
