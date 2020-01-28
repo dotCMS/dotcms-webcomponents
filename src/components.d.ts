@@ -11,6 +11,7 @@ import {
   DotBinaryFileEvent,
   DotFieldStatusEvent,
   DotFieldValueEvent,
+  DotKeyValueField,
 } from './models';
 
 export namespace Components {
@@ -185,6 +186,64 @@ export namespace Components {
     */
     'value': string;
   }
+  interface DotKeyValue {
+    /**
+    * (optional) Disables field's interaction
+    */
+    'disabled': boolean;
+    /**
+    * (optional) Label for the add button in the <key-value-form>
+    */
+    'formAddButtonLabel': string;
+    /**
+    * (optional) The string to use in the key label in the <key-value-form>
+    */
+    'formKeyLabel': string;
+    /**
+    * (optional) Placeholder for the key input text in the <key-value-form>
+    */
+    'formKeyPlaceholder': string;
+    /**
+    * (optional) The string to use in the value label in the <key-value-form>
+    */
+    'formValueLabel': string;
+    /**
+    * (optional) Placeholder for the value input text in the <key-value-form>
+    */
+    'formValuePlaceholder': string;
+    /**
+    * (optional) Hint text that suggest a clue of the field
+    */
+    'hint': string;
+    /**
+    * (optional) Text to be rendered next to input field
+    */
+    'label': string;
+    /**
+    * (optional) The string to use in the delete button of a key/value item
+    */
+    'listDeleteLabel': string;
+    /**
+    * Name that will be used as ID
+    */
+    'name': string;
+    /**
+    * (optional) Determine if it is mandatory
+    */
+    'required': boolean;
+    /**
+    * (optional) Text that will be shown when required is set and condition is not met
+    */
+    'requiredMessage': string;
+    /**
+    * Reset properties of the field, clear value and emit events.
+    */
+    'reset': () => Promise<void>;
+    /**
+    * Value of the field
+    */
+    'value': string;
+  }
   interface DotLabel {
     /**
     * (optional) Text to be rendered
@@ -249,6 +308,50 @@ export namespace Components {
     */
     'value': string;
   }
+  interface KeyValueForm {
+    /**
+    * (optional) Label for the add item button
+    */
+    'addButtonLabel': string;
+    /**
+    * (optional) Disables all form interaction
+    */
+    'disabled': boolean;
+    /**
+    * (optional) The string to use in the key input label
+    */
+    'keyLabel': string;
+    /**
+    * (optional) Placeholder for the key input text
+    */
+    'keyPlaceholder': string;
+    /**
+    * (optional) The string to use in the value input label
+    */
+    'valueLabel': string;
+    /**
+    * (optional) Placeholder for the value input text
+    */
+    'valuePlaceholder': string;
+  }
+  interface KeyValueTable {
+    /**
+    * (optional) Label for the delete button in each item list
+    */
+    'buttonLabel': string;
+    /**
+    * (optional) Disables all form interaction
+    */
+    'disabled': boolean;
+    /**
+    * (optional) Message to show when the list of items is empty
+    */
+    'emptyMessage': string;
+    /**
+    * (optional) Items to render in the list of key value
+    */
+    'items': DotKeyValueField[];
+  }
 }
 
 declare global {
@@ -284,6 +387,12 @@ declare global {
     new (): HTMLDotCheckboxElement;
   };
 
+  interface HTMLDotKeyValueElement extends Components.DotKeyValue, HTMLStencilElement {}
+  var HTMLDotKeyValueElement: {
+    prototype: HTMLDotKeyValueElement;
+    new (): HTMLDotKeyValueElement;
+  };
+
   interface HTMLDotLabelElement extends Components.DotLabel, HTMLStencilElement {}
   var HTMLDotLabelElement: {
     prototype: HTMLDotLabelElement;
@@ -295,14 +404,29 @@ declare global {
     prototype: HTMLDotTextfieldElement;
     new (): HTMLDotTextfieldElement;
   };
+
+  interface HTMLKeyValueFormElement extends Components.KeyValueForm, HTMLStencilElement {}
+  var HTMLKeyValueFormElement: {
+    prototype: HTMLKeyValueFormElement;
+    new (): HTMLKeyValueFormElement;
+  };
+
+  interface HTMLKeyValueTableElement extends Components.KeyValueTable, HTMLStencilElement {}
+  var HTMLKeyValueTableElement: {
+    prototype: HTMLKeyValueTableElement;
+    new (): HTMLKeyValueTableElement;
+  };
   interface HTMLElementTagNameMap {
     'dot-binary-file': HTMLDotBinaryFileElement;
     'dot-binary-file-preview': HTMLDotBinaryFilePreviewElement;
     'dot-binary-text-field': HTMLDotBinaryTextFieldElement;
     'dot-binary-upload-button': HTMLDotBinaryUploadButtonElement;
     'dot-checkbox': HTMLDotCheckboxElement;
+    'dot-key-value': HTMLDotKeyValueElement;
     'dot-label': HTMLDotLabelElement;
     'dot-textfield': HTMLDotTextfieldElement;
+    'key-value-form': HTMLKeyValueFormElement;
+    'key-value-table': HTMLKeyValueTableElement;
   }
 }
 
@@ -476,6 +600,62 @@ declare namespace LocalJSX {
     */
     'value'?: string;
   }
+  interface DotKeyValue {
+    /**
+    * (optional) Disables field's interaction
+    */
+    'disabled'?: boolean;
+    /**
+    * (optional) Label for the add button in the <key-value-form>
+    */
+    'formAddButtonLabel'?: string;
+    /**
+    * (optional) The string to use in the key label in the <key-value-form>
+    */
+    'formKeyLabel'?: string;
+    /**
+    * (optional) Placeholder for the key input text in the <key-value-form>
+    */
+    'formKeyPlaceholder'?: string;
+    /**
+    * (optional) The string to use in the value label in the <key-value-form>
+    */
+    'formValueLabel'?: string;
+    /**
+    * (optional) Placeholder for the value input text in the <key-value-form>
+    */
+    'formValuePlaceholder'?: string;
+    /**
+    * (optional) Hint text that suggest a clue of the field
+    */
+    'hint'?: string;
+    /**
+    * (optional) Text to be rendered next to input field
+    */
+    'label'?: string;
+    /**
+    * (optional) The string to use in the delete button of a key/value item
+    */
+    'listDeleteLabel'?: string;
+    /**
+    * Name that will be used as ID
+    */
+    'name'?: string;
+    'onDotStatusChange'?: (event: CustomEvent<DotFieldStatusEvent>) => void;
+    'onDotValueChange'?: (event: CustomEvent<DotFieldValueEvent>) => void;
+    /**
+    * (optional) Determine if it is mandatory
+    */
+    'required'?: boolean;
+    /**
+    * (optional) Text that will be shown when required is set and condition is not met
+    */
+    'requiredMessage'?: string;
+    /**
+    * Value of the field
+    */
+    'value'?: string;
+  }
   interface DotLabel {
     /**
     * (optional) Text to be rendered
@@ -538,6 +718,62 @@ declare namespace LocalJSX {
     */
     'value'?: string;
   }
+  interface KeyValueForm {
+    /**
+    * (optional) Label for the add item button
+    */
+    'addButtonLabel'?: string;
+    /**
+    * (optional) Disables all form interaction
+    */
+    'disabled'?: boolean;
+    /**
+    * (optional) The string to use in the key input label
+    */
+    'keyLabel'?: string;
+    /**
+    * (optional) Placeholder for the key input text
+    */
+    'keyPlaceholder'?: string;
+    /**
+    * Emit the added value, key/value pair
+    */
+    'onAdd'?: (event: CustomEvent<DotKeyValueField>) => void;
+    /**
+    * Emit when any of the input is blur
+    */
+    'onLostFocus'?: (event: CustomEvent<FocusEvent>) => void;
+    /**
+    * (optional) The string to use in the value input label
+    */
+    'valueLabel'?: string;
+    /**
+    * (optional) Placeholder for the value input text
+    */
+    'valuePlaceholder'?: string;
+  }
+  interface KeyValueTable {
+    /**
+    * (optional) Label for the delete button in each item list
+    */
+    'buttonLabel'?: string;
+    /**
+    * (optional) Disables all form interaction
+    */
+    'disabled'?: boolean;
+    /**
+    * (optional) Message to show when the list of items is empty
+    */
+    'emptyMessage'?: string;
+    /**
+    * (optional) Items to render in the list of key value
+    */
+    'items'?: DotKeyValueField[];
+    /**
+    * Emit the index of the item deleted from the list
+    */
+    'onDelete'?: (event: CustomEvent<number>) => void;
+  }
 
   interface IntrinsicElements {
     'dot-binary-file': DotBinaryFile;
@@ -545,8 +781,11 @@ declare namespace LocalJSX {
     'dot-binary-text-field': DotBinaryTextField;
     'dot-binary-upload-button': DotBinaryUploadButton;
     'dot-checkbox': DotCheckbox;
+    'dot-key-value': DotKeyValue;
     'dot-label': DotLabel;
     'dot-textfield': DotTextfield;
+    'key-value-form': KeyValueForm;
+    'key-value-table': KeyValueTable;
   }
 }
 
@@ -561,8 +800,11 @@ declare module "@stencil/core" {
       'dot-binary-text-field': LocalJSX.DotBinaryTextField & JSXBase.HTMLAttributes<HTMLDotBinaryTextFieldElement>;
       'dot-binary-upload-button': LocalJSX.DotBinaryUploadButton & JSXBase.HTMLAttributes<HTMLDotBinaryUploadButtonElement>;
       'dot-checkbox': LocalJSX.DotCheckbox & JSXBase.HTMLAttributes<HTMLDotCheckboxElement>;
+      'dot-key-value': LocalJSX.DotKeyValue & JSXBase.HTMLAttributes<HTMLDotKeyValueElement>;
       'dot-label': LocalJSX.DotLabel & JSXBase.HTMLAttributes<HTMLDotLabelElement>;
       'dot-textfield': LocalJSX.DotTextfield & JSXBase.HTMLAttributes<HTMLDotTextfieldElement>;
+      'key-value-form': LocalJSX.KeyValueForm & JSXBase.HTMLAttributes<HTMLKeyValueFormElement>;
+      'key-value-table': LocalJSX.KeyValueTable & JSXBase.HTMLAttributes<HTMLKeyValueTableElement>;
     }
   }
 }
