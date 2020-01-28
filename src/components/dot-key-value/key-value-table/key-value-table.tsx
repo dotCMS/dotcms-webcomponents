@@ -58,8 +58,8 @@ export class KeyValueTableComponent {
         );
     }
 
-    private renderRows(items: DotKeyValueField[]): JSX.Element {
-        return this.isValidItems(items) ? items.map(this.getRow.bind(this)) : this.getEmptyRow();
+    private renderRows(items: DotKeyValueField[]): JSX.Element | JSX.Element[] {
+        return this.isValidItems(items) ? items.map((item, index) => this.getRow(item, index)) : this.getEmptyRow();
     }
 
     private getEmptyRow(): JSX.Element {
