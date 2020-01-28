@@ -258,6 +258,49 @@ export namespace Components {
     */
     'required': boolean;
   }
+  interface DotMultiSelect {
+    /**
+    * (optional) Disables field's interaction
+    */
+    'disabled': boolean;
+    /**
+    * (optional) Hint text that suggest a clue of the field
+    */
+    'hint': string;
+    /**
+    * (optional) Text to be rendered next to input field
+    */
+    'label': string;
+    /**
+    * Name that will be used as ID
+    */
+    'name': string;
+    /**
+    * Value/Label dropdown options separated by comma, to be formatted as: Value|Label
+    */
+    'options': string;
+    /**
+    * (optional) Determine if it is mandatory
+    */
+    'required': boolean;
+    /**
+    * (optional) Text that will be shown when required is set and condition is not met
+    */
+    'requiredMessage': string;
+    /**
+    * Reset properties of the field, clear value and emit events.
+    * @memberof DotSelectComponent
+    */
+    'reset': () => Promise<void>;
+    /**
+    * (optional) Size number of the multi-select dropdown (default=3)
+    */
+    'size': string;
+    /**
+    * Value set from the dropdown option
+    */
+    'value': string;
+  }
   interface DotTextfield {
     /**
     * (optional) Disables field's interaction
@@ -399,6 +442,12 @@ declare global {
     new (): HTMLDotLabelElement;
   };
 
+  interface HTMLDotMultiSelectElement extends Components.DotMultiSelect, HTMLStencilElement {}
+  var HTMLDotMultiSelectElement: {
+    prototype: HTMLDotMultiSelectElement;
+    new (): HTMLDotMultiSelectElement;
+  };
+
   interface HTMLDotTextfieldElement extends Components.DotTextfield, HTMLStencilElement {}
   var HTMLDotTextfieldElement: {
     prototype: HTMLDotTextfieldElement;
@@ -424,6 +473,7 @@ declare global {
     'dot-checkbox': HTMLDotCheckboxElement;
     'dot-key-value': HTMLDotKeyValueElement;
     'dot-label': HTMLDotLabelElement;
+    'dot-multi-select': HTMLDotMultiSelectElement;
     'dot-textfield': HTMLDotTextfieldElement;
     'key-value-form': HTMLKeyValueFormElement;
     'key-value-table': HTMLKeyValueTableElement;
@@ -670,6 +720,46 @@ declare namespace LocalJSX {
     */
     'required'?: boolean;
   }
+  interface DotMultiSelect {
+    /**
+    * (optional) Disables field's interaction
+    */
+    'disabled'?: boolean;
+    /**
+    * (optional) Hint text that suggest a clue of the field
+    */
+    'hint'?: string;
+    /**
+    * (optional) Text to be rendered next to input field
+    */
+    'label'?: string;
+    /**
+    * Name that will be used as ID
+    */
+    'name'?: string;
+    'onDotStatusChange'?: (event: CustomEvent<DotFieldStatusEvent>) => void;
+    'onDotValueChange'?: (event: CustomEvent<DotFieldValueEvent>) => void;
+    /**
+    * Value/Label dropdown options separated by comma, to be formatted as: Value|Label
+    */
+    'options'?: string;
+    /**
+    * (optional) Determine if it is mandatory
+    */
+    'required'?: boolean;
+    /**
+    * (optional) Text that will be shown when required is set and condition is not met
+    */
+    'requiredMessage'?: string;
+    /**
+    * (optional) Size number of the multi-select dropdown (default=3)
+    */
+    'size'?: string;
+    /**
+    * Value set from the dropdown option
+    */
+    'value'?: string;
+  }
   interface DotTextfield {
     /**
     * (optional) Disables field's interaction
@@ -783,6 +873,7 @@ declare namespace LocalJSX {
     'dot-checkbox': DotCheckbox;
     'dot-key-value': DotKeyValue;
     'dot-label': DotLabel;
+    'dot-multi-select': DotMultiSelect;
     'dot-textfield': DotTextfield;
     'key-value-form': KeyValueForm;
     'key-value-table': KeyValueTable;
@@ -802,6 +893,7 @@ declare module "@stencil/core" {
       'dot-checkbox': LocalJSX.DotCheckbox & JSXBase.HTMLAttributes<HTMLDotCheckboxElement>;
       'dot-key-value': LocalJSX.DotKeyValue & JSXBase.HTMLAttributes<HTMLDotKeyValueElement>;
       'dot-label': LocalJSX.DotLabel & JSXBase.HTMLAttributes<HTMLDotLabelElement>;
+      'dot-multi-select': LocalJSX.DotMultiSelect & JSXBase.HTMLAttributes<HTMLDotMultiSelectElement>;
       'dot-textfield': LocalJSX.DotTextfield & JSXBase.HTMLAttributes<HTMLDotTextfieldElement>;
       'key-value-form': LocalJSX.KeyValueForm & JSXBase.HTMLAttributes<HTMLKeyValueFormElement>;
       'key-value-table': LocalJSX.KeyValueTable & JSXBase.HTMLAttributes<HTMLKeyValueTableElement>;
