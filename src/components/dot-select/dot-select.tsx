@@ -54,8 +54,8 @@ export class DotSelectComponent {
     @State() _options: DotOption[];
     @State() status: DotFieldStatus;
 
-    @Event() valueChange: EventEmitter<DotFieldValueEvent>;
-    @Event() statusChange: EventEmitter<DotFieldStatusEvent>;
+    @Event() dotValueChange: EventEmitter<DotFieldValueEvent>;
+    @Event() dotStatusChange: EventEmitter<DotFieldStatusEvent>;
 
     _dotTouched = false;
     _dotPristine = true;
@@ -158,7 +158,7 @@ export class DotSelectComponent {
     }
 
     private emitStatusChange(): void {
-        this.statusChange.emit({
+        this.dotStatusChange.emit({
             name: this.name,
             status: this.status
         });
@@ -169,7 +169,7 @@ export class DotSelectComponent {
     }
 
     private emitValueChange(): void {
-        this.valueChange.emit({
+        this.dotValueChange.emit({
             name: this.name,
             value: this.value
         });
