@@ -11,7 +11,7 @@ import {
   DotBinaryFileEvent,
   DotFieldStatusEvent,
   DotFieldValueEvent,
-  DotInputCalendarStatusEvent,
+  DotKeyValueField,
 } from './models';
 
 export namespace Components {
@@ -147,19 +147,82 @@ export namespace Components {
     */
     'required': boolean;
   }
-  interface DotInputCalendar {
+  interface DotCheckbox {
     /**
     * (optional) Disables field's interaction
     */
     'disabled': boolean;
     /**
-    * (optional) Max, maximum value that the field will allow to set, expect a Date Format
+    * (optional) Hint text that suggest a clue of the field
     */
-    'max': string;
+    'hint': string;
     /**
-    * (optional) Min, minimum value that the field will allow to set, expect a Date Format.
+    * (optional) Text to be rendered next to input field
     */
-    'min': string;
+    'label': string;
+    /**
+    * Name that will be used as ID
+    */
+    'name': string;
+    /**
+    * Value/Label checkbox options separated by comma, to be formatted as: Value|Label
+    */
+    'options': string;
+    /**
+    * (optional) Determine if it is mandatory
+    */
+    'required': boolean;
+    /**
+    * (optional) Text that will be shown when required is set and condition is not met
+    */
+    'requiredMessage': string;
+    /**
+    * Reset properties of the field, clear value and emit events.
+    * @memberof DotSelectComponent
+    */
+    'reset': () => Promise<void>;
+    /**
+    * Value set from the checkbox option
+    */
+    'value': string;
+  }
+  interface DotKeyValue {
+    /**
+    * (optional) Disables field's interaction
+    */
+    'disabled': boolean;
+    /**
+    * (optional) Label for the add button in the <key-value-form>
+    */
+    'formAddButtonLabel': string;
+    /**
+    * (optional) The string to use in the key label in the <key-value-form>
+    */
+    'formKeyLabel': string;
+    /**
+    * (optional) Placeholder for the key input text in the <key-value-form>
+    */
+    'formKeyPlaceholder': string;
+    /**
+    * (optional) The string to use in the value label in the <key-value-form>
+    */
+    'formValueLabel': string;
+    /**
+    * (optional) Placeholder for the value input text in the <key-value-form>
+    */
+    'formValuePlaceholder': string;
+    /**
+    * (optional) Hint text that suggest a clue of the field
+    */
+    'hint': string;
+    /**
+    * (optional) Text to be rendered next to input field
+    */
+    'label': string;
+    /**
+    * (optional) The string to use in the delete button of a key/value item
+    */
+    'listDeleteLabel': string;
     /**
     * Name that will be used as ID
     */
@@ -169,19 +232,15 @@ export namespace Components {
     */
     'required': boolean;
     /**
+    * (optional) Text that will be shown when required is set and condition is not met
+    */
+    'requiredMessage': string;
+    /**
     * Reset properties of the field, clear value and emit events.
     */
-    'reset': () => Promise<any>;
+    'reset': () => Promise<void>;
     /**
-    * (optional) Step specifies the legal number intervals for the input field
-    */
-    'step': string;
-    /**
-    * type specifies the type of <input> element to display
-    */
-    'type': string;
-    /**
-    * Value specifies the value of the <input> element
+    * Value of the field
     */
     'value': string;
   }
@@ -198,6 +257,126 @@ export namespace Components {
     * (optional) Determine if it is mandatory
     */
     'required': boolean;
+  }
+  interface DotMultiSelect {
+    /**
+    * (optional) Disables field's interaction
+    */
+    'disabled': boolean;
+    /**
+    * (optional) Hint text that suggest a clue of the field
+    */
+    'hint': string;
+    /**
+    * (optional) Text to be rendered next to input field
+    */
+    'label': string;
+    /**
+    * Name that will be used as ID
+    */
+    'name': string;
+    /**
+    * Value/Label dropdown options separated by comma, to be formatted as: Value|Label
+    */
+    'options': string;
+    /**
+    * (optional) Determine if it is mandatory
+    */
+    'required': boolean;
+    /**
+    * (optional) Text that will be shown when required is set and condition is not met
+    */
+    'requiredMessage': string;
+    /**
+    * Reset properties of the field, clear value and emit events.
+    * @memberof DotSelectComponent
+    */
+    'reset': () => Promise<void>;
+    /**
+    * (optional) Size number of the multi-select dropdown (default=3)
+    */
+    'size': string;
+    /**
+    * Value set from the dropdown option
+    */
+    'value': string;
+  }
+  interface DotRadio {
+    /**
+    * (optional) Disables field's interaction
+    */
+    'disabled': boolean;
+    /**
+    * (optional) Hint text that suggest a clue of the field
+    */
+    'hint': string;
+    /**
+    * (optional) Text to be rendered next to input field
+    */
+    'label': string;
+    /**
+    * Name that will be used as ID
+    */
+    'name': string;
+    /**
+    * Value/Label ratio options separated by comma, to be formatted as: Value|Label
+    */
+    'options': string;
+    /**
+    * (optional) Determine if it is mandatory
+    */
+    'required': boolean;
+    /**
+    * (optional) Text that will be shown when required is set and condition is not met
+    */
+    'requiredMessage': string;
+    /**
+    * Reset properties of the field, clear value and emit events.
+    */
+    'reset': () => Promise<void>;
+    /**
+    * Value set from the ratio option
+    */
+    'value': string;
+  }
+  interface DotSelect {
+    /**
+    * (optional) Disables field's interaction
+    */
+    'disabled': boolean;
+    /**
+    * (optional) Hint text that suggest a clue of the field
+    */
+    'hint': string;
+    /**
+    * (optional) Text to be rendered next to input field
+    */
+    'label': string;
+    /**
+    * Name that will be used as ID
+    */
+    'name': string;
+    /**
+    * Value/Label dropdown options separated by comma, to be formatted as: Value|Label
+    */
+    'options': string;
+    /**
+    * (optional) Determine if it is mandatory
+    */
+    'required': boolean;
+    /**
+    * (optional) Text that will be shown when required is set and condition is not met
+    */
+    'requiredMessage': string;
+    /**
+    * Reset properties of the field, clear value and emit events.
+    * @memberof DotSelectComponent
+    */
+    'reset': () => Promise<void>;
+    /**
+    * Value set from the dropdown option
+    */
+    'value': string;
   }
   interface DotTextfield {
     /**
@@ -249,6 +428,50 @@ export namespace Components {
     */
     'value': string;
   }
+  interface KeyValueForm {
+    /**
+    * (optional) Label for the add item button
+    */
+    'addButtonLabel': string;
+    /**
+    * (optional) Disables all form interaction
+    */
+    'disabled': boolean;
+    /**
+    * (optional) The string to use in the key input label
+    */
+    'keyLabel': string;
+    /**
+    * (optional) Placeholder for the key input text
+    */
+    'keyPlaceholder': string;
+    /**
+    * (optional) The string to use in the value input label
+    */
+    'valueLabel': string;
+    /**
+    * (optional) Placeholder for the value input text
+    */
+    'valuePlaceholder': string;
+  }
+  interface KeyValueTable {
+    /**
+    * (optional) Label for the delete button in each item list
+    */
+    'buttonLabel': string;
+    /**
+    * (optional) Disables all form interaction
+    */
+    'disabled': boolean;
+    /**
+    * (optional) Message to show when the list of items is empty
+    */
+    'emptyMessage': string;
+    /**
+    * (optional) Items to render in the list of key value
+    */
+    'items': DotKeyValueField[];
+  }
 }
 
 declare global {
@@ -278,10 +501,16 @@ declare global {
     new (): HTMLDotBinaryUploadButtonElement;
   };
 
-  interface HTMLDotInputCalendarElement extends Components.DotInputCalendar, HTMLStencilElement {}
-  var HTMLDotInputCalendarElement: {
-    prototype: HTMLDotInputCalendarElement;
-    new (): HTMLDotInputCalendarElement;
+  interface HTMLDotCheckboxElement extends Components.DotCheckbox, HTMLStencilElement {}
+  var HTMLDotCheckboxElement: {
+    prototype: HTMLDotCheckboxElement;
+    new (): HTMLDotCheckboxElement;
+  };
+
+  interface HTMLDotKeyValueElement extends Components.DotKeyValue, HTMLStencilElement {}
+  var HTMLDotKeyValueElement: {
+    prototype: HTMLDotKeyValueElement;
+    new (): HTMLDotKeyValueElement;
   };
 
   interface HTMLDotLabelElement extends Components.DotLabel, HTMLStencilElement {}
@@ -290,19 +519,55 @@ declare global {
     new (): HTMLDotLabelElement;
   };
 
+  interface HTMLDotMultiSelectElement extends Components.DotMultiSelect, HTMLStencilElement {}
+  var HTMLDotMultiSelectElement: {
+    prototype: HTMLDotMultiSelectElement;
+    new (): HTMLDotMultiSelectElement;
+  };
+
+  interface HTMLDotRadioElement extends Components.DotRadio, HTMLStencilElement {}
+  var HTMLDotRadioElement: {
+    prototype: HTMLDotRadioElement;
+    new (): HTMLDotRadioElement;
+  };
+
+  interface HTMLDotSelectElement extends Components.DotSelect, HTMLStencilElement {}
+  var HTMLDotSelectElement: {
+    prototype: HTMLDotSelectElement;
+    new (): HTMLDotSelectElement;
+  };
+
   interface HTMLDotTextfieldElement extends Components.DotTextfield, HTMLStencilElement {}
   var HTMLDotTextfieldElement: {
     prototype: HTMLDotTextfieldElement;
     new (): HTMLDotTextfieldElement;
+  };
+
+  interface HTMLKeyValueFormElement extends Components.KeyValueForm, HTMLStencilElement {}
+  var HTMLKeyValueFormElement: {
+    prototype: HTMLKeyValueFormElement;
+    new (): HTMLKeyValueFormElement;
+  };
+
+  interface HTMLKeyValueTableElement extends Components.KeyValueTable, HTMLStencilElement {}
+  var HTMLKeyValueTableElement: {
+    prototype: HTMLKeyValueTableElement;
+    new (): HTMLKeyValueTableElement;
   };
   interface HTMLElementTagNameMap {
     'dot-binary-file': HTMLDotBinaryFileElement;
     'dot-binary-file-preview': HTMLDotBinaryFilePreviewElement;
     'dot-binary-text-field': HTMLDotBinaryTextFieldElement;
     'dot-binary-upload-button': HTMLDotBinaryUploadButtonElement;
-    'dot-input-calendar': HTMLDotInputCalendarElement;
+    'dot-checkbox': HTMLDotCheckboxElement;
+    'dot-key-value': HTMLDotKeyValueElement;
     'dot-label': HTMLDotLabelElement;
+    'dot-multi-select': HTMLDotMultiSelectElement;
+    'dot-radio': HTMLDotRadioElement;
+    'dot-select': HTMLDotSelectElement;
     'dot-textfield': HTMLDotTextfieldElement;
+    'key-value-form': HTMLKeyValueFormElement;
+    'key-value-table': HTMLKeyValueTableElement;
   }
 }
 
@@ -440,39 +705,95 @@ declare namespace LocalJSX {
     */
     'required'?: boolean;
   }
-  interface DotInputCalendar {
+  interface DotCheckbox {
     /**
     * (optional) Disables field's interaction
     */
     'disabled'?: boolean;
     /**
-    * (optional) Max, maximum value that the field will allow to set, expect a Date Format
+    * (optional) Hint text that suggest a clue of the field
     */
-    'max'?: string;
+    'hint'?: string;
     /**
-    * (optional) Min, minimum value that the field will allow to set, expect a Date Format.
+    * (optional) Text to be rendered next to input field
     */
-    'min'?: string;
+    'label'?: string;
     /**
     * Name that will be used as ID
     */
     'name'?: string;
-    'on_dotStatusChange'?: (event: CustomEvent<DotInputCalendarStatusEvent>) => void;
-    'on_dotValueChange'?: (event: CustomEvent<DotFieldValueEvent>) => void;
+    'onDotStatusChange'?: (event: CustomEvent<DotFieldStatusEvent>) => void;
+    'onDotValueChange'?: (event: CustomEvent<DotFieldValueEvent>) => void;
+    /**
+    * Value/Label checkbox options separated by comma, to be formatted as: Value|Label
+    */
+    'options'?: string;
     /**
     * (optional) Determine if it is mandatory
     */
     'required'?: boolean;
     /**
-    * (optional) Step specifies the legal number intervals for the input field
+    * (optional) Text that will be shown when required is set and condition is not met
     */
-    'step'?: string;
+    'requiredMessage'?: string;
     /**
-    * type specifies the type of <input> element to display
+    * Value set from the checkbox option
     */
-    'type'?: string;
+    'value'?: string;
+  }
+  interface DotKeyValue {
     /**
-    * Value specifies the value of the <input> element
+    * (optional) Disables field's interaction
+    */
+    'disabled'?: boolean;
+    /**
+    * (optional) Label for the add button in the <key-value-form>
+    */
+    'formAddButtonLabel'?: string;
+    /**
+    * (optional) The string to use in the key label in the <key-value-form>
+    */
+    'formKeyLabel'?: string;
+    /**
+    * (optional) Placeholder for the key input text in the <key-value-form>
+    */
+    'formKeyPlaceholder'?: string;
+    /**
+    * (optional) The string to use in the value label in the <key-value-form>
+    */
+    'formValueLabel'?: string;
+    /**
+    * (optional) Placeholder for the value input text in the <key-value-form>
+    */
+    'formValuePlaceholder'?: string;
+    /**
+    * (optional) Hint text that suggest a clue of the field
+    */
+    'hint'?: string;
+    /**
+    * (optional) Text to be rendered next to input field
+    */
+    'label'?: string;
+    /**
+    * (optional) The string to use in the delete button of a key/value item
+    */
+    'listDeleteLabel'?: string;
+    /**
+    * Name that will be used as ID
+    */
+    'name'?: string;
+    'onDotStatusChange'?: (event: CustomEvent<DotFieldStatusEvent>) => void;
+    'onDotValueChange'?: (event: CustomEvent<DotFieldValueEvent>) => void;
+    /**
+    * (optional) Determine if it is mandatory
+    */
+    'required'?: boolean;
+    /**
+    * (optional) Text that will be shown when required is set and condition is not met
+    */
+    'requiredMessage'?: string;
+    /**
+    * Value of the field
     */
     'value'?: string;
   }
@@ -489,6 +810,118 @@ declare namespace LocalJSX {
     * (optional) Determine if it is mandatory
     */
     'required'?: boolean;
+  }
+  interface DotMultiSelect {
+    /**
+    * (optional) Disables field's interaction
+    */
+    'disabled'?: boolean;
+    /**
+    * (optional) Hint text that suggest a clue of the field
+    */
+    'hint'?: string;
+    /**
+    * (optional) Text to be rendered next to input field
+    */
+    'label'?: string;
+    /**
+    * Name that will be used as ID
+    */
+    'name'?: string;
+    'onDotStatusChange'?: (event: CustomEvent<DotFieldStatusEvent>) => void;
+    'onDotValueChange'?: (event: CustomEvent<DotFieldValueEvent>) => void;
+    /**
+    * Value/Label dropdown options separated by comma, to be formatted as: Value|Label
+    */
+    'options'?: string;
+    /**
+    * (optional) Determine if it is mandatory
+    */
+    'required'?: boolean;
+    /**
+    * (optional) Text that will be shown when required is set and condition is not met
+    */
+    'requiredMessage'?: string;
+    /**
+    * (optional) Size number of the multi-select dropdown (default=3)
+    */
+    'size'?: string;
+    /**
+    * Value set from the dropdown option
+    */
+    'value'?: string;
+  }
+  interface DotRadio {
+    /**
+    * (optional) Disables field's interaction
+    */
+    'disabled'?: boolean;
+    /**
+    * (optional) Hint text that suggest a clue of the field
+    */
+    'hint'?: string;
+    /**
+    * (optional) Text to be rendered next to input field
+    */
+    'label'?: string;
+    /**
+    * Name that will be used as ID
+    */
+    'name'?: string;
+    'onDotStatusChange'?: (event: CustomEvent<DotFieldStatusEvent>) => void;
+    'onDotValueChange'?: (event: CustomEvent<DotFieldValueEvent>) => void;
+    /**
+    * Value/Label ratio options separated by comma, to be formatted as: Value|Label
+    */
+    'options'?: string;
+    /**
+    * (optional) Determine if it is mandatory
+    */
+    'required'?: boolean;
+    /**
+    * (optional) Text that will be shown when required is set and condition is not met
+    */
+    'requiredMessage'?: string;
+    /**
+    * Value set from the ratio option
+    */
+    'value'?: string;
+  }
+  interface DotSelect {
+    /**
+    * (optional) Disables field's interaction
+    */
+    'disabled'?: boolean;
+    /**
+    * (optional) Hint text that suggest a clue of the field
+    */
+    'hint'?: string;
+    /**
+    * (optional) Text to be rendered next to input field
+    */
+    'label'?: string;
+    /**
+    * Name that will be used as ID
+    */
+    'name'?: string;
+    'onStatusChange'?: (event: CustomEvent<DotFieldStatusEvent>) => void;
+    'onValueChange'?: (event: CustomEvent<DotFieldValueEvent>) => void;
+    /**
+    * Value/Label dropdown options separated by comma, to be formatted as: Value|Label
+    */
+    'options'?: string;
+    /**
+    * (optional) Determine if it is mandatory
+    */
+    'required'?: boolean;
+    /**
+    * (optional) Text that will be shown when required is set and condition is not met
+    */
+    'requiredMessage'?: string;
+    /**
+    * Value set from the dropdown option
+    */
+    'value'?: string;
   }
   interface DotTextfield {
     /**
@@ -538,15 +971,77 @@ declare namespace LocalJSX {
     */
     'value'?: string;
   }
+  interface KeyValueForm {
+    /**
+    * (optional) Label for the add item button
+    */
+    'addButtonLabel'?: string;
+    /**
+    * (optional) Disables all form interaction
+    */
+    'disabled'?: boolean;
+    /**
+    * (optional) The string to use in the key input label
+    */
+    'keyLabel'?: string;
+    /**
+    * (optional) Placeholder for the key input text
+    */
+    'keyPlaceholder'?: string;
+    /**
+    * Emit the added value, key/value pair
+    */
+    'onAdd'?: (event: CustomEvent<DotKeyValueField>) => void;
+    /**
+    * Emit when any of the input is blur
+    */
+    'onLostFocus'?: (event: CustomEvent<FocusEvent>) => void;
+    /**
+    * (optional) The string to use in the value input label
+    */
+    'valueLabel'?: string;
+    /**
+    * (optional) Placeholder for the value input text
+    */
+    'valuePlaceholder'?: string;
+  }
+  interface KeyValueTable {
+    /**
+    * (optional) Label for the delete button in each item list
+    */
+    'buttonLabel'?: string;
+    /**
+    * (optional) Disables all form interaction
+    */
+    'disabled'?: boolean;
+    /**
+    * (optional) Message to show when the list of items is empty
+    */
+    'emptyMessage'?: string;
+    /**
+    * (optional) Items to render in the list of key value
+    */
+    'items'?: DotKeyValueField[];
+    /**
+    * Emit the index of the item deleted from the list
+    */
+    'onDelete'?: (event: CustomEvent<number>) => void;
+  }
 
   interface IntrinsicElements {
     'dot-binary-file': DotBinaryFile;
     'dot-binary-file-preview': DotBinaryFilePreview;
     'dot-binary-text-field': DotBinaryTextField;
     'dot-binary-upload-button': DotBinaryUploadButton;
-    'dot-input-calendar': DotInputCalendar;
+    'dot-checkbox': DotCheckbox;
+    'dot-key-value': DotKeyValue;
     'dot-label': DotLabel;
+    'dot-multi-select': DotMultiSelect;
+    'dot-radio': DotRadio;
+    'dot-select': DotSelect;
     'dot-textfield': DotTextfield;
+    'key-value-form': KeyValueForm;
+    'key-value-table': KeyValueTable;
   }
 }
 
@@ -560,9 +1055,15 @@ declare module "@stencil/core" {
       'dot-binary-file-preview': LocalJSX.DotBinaryFilePreview & JSXBase.HTMLAttributes<HTMLDotBinaryFilePreviewElement>;
       'dot-binary-text-field': LocalJSX.DotBinaryTextField & JSXBase.HTMLAttributes<HTMLDotBinaryTextFieldElement>;
       'dot-binary-upload-button': LocalJSX.DotBinaryUploadButton & JSXBase.HTMLAttributes<HTMLDotBinaryUploadButtonElement>;
-      'dot-input-calendar': LocalJSX.DotInputCalendar & JSXBase.HTMLAttributes<HTMLDotInputCalendarElement>;
+      'dot-checkbox': LocalJSX.DotCheckbox & JSXBase.HTMLAttributes<HTMLDotCheckboxElement>;
+      'dot-key-value': LocalJSX.DotKeyValue & JSXBase.HTMLAttributes<HTMLDotKeyValueElement>;
       'dot-label': LocalJSX.DotLabel & JSXBase.HTMLAttributes<HTMLDotLabelElement>;
+      'dot-multi-select': LocalJSX.DotMultiSelect & JSXBase.HTMLAttributes<HTMLDotMultiSelectElement>;
+      'dot-radio': LocalJSX.DotRadio & JSXBase.HTMLAttributes<HTMLDotRadioElement>;
+      'dot-select': LocalJSX.DotSelect & JSXBase.HTMLAttributes<HTMLDotSelectElement>;
       'dot-textfield': LocalJSX.DotTextfield & JSXBase.HTMLAttributes<HTMLDotTextfieldElement>;
+      'key-value-form': LocalJSX.KeyValueForm & JSXBase.HTMLAttributes<HTMLKeyValueFormElement>;
+      'key-value-table': LocalJSX.KeyValueTable & JSXBase.HTMLAttributes<HTMLKeyValueTableElement>;
     }
   }
 }
