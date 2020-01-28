@@ -468,6 +468,49 @@ export namespace Components {
     */
     'value': string;
   }
+  interface DotTextarea {
+    /**
+    * (optional) Disables field's interaction
+    */
+    'disabled': boolean;
+    /**
+    * (optional) Hint text that suggest a clue of the field
+    */
+    'hint': string;
+    /**
+    * (optional) Text to be rendered next to <textarea> element
+    */
+    'label': string;
+    /**
+    * Name that will be used as ID
+    */
+    'name': string;
+    /**
+    * (optional) Regular expresion that is checked against the value to determine if is valid
+    */
+    'regexCheck': string;
+    /**
+    * (optional) Determine if it is mandatory
+    */
+    'required': boolean;
+    /**
+    * (optional) Text that be shown when required is set and condition not met
+    */
+    'requiredMessage': string;
+    /**
+    * Reset properties of the field, clear value and emit events.
+    * @memberof DotTextareaComponent
+    */
+    'reset': () => Promise<void>;
+    /**
+    * (optional) Text that be shown when the Regular Expression condition not met
+    */
+    'validationMessage': string;
+    /**
+    * Value specifies the value of the <textarea> element
+    */
+    'value': string;
+  }
   interface DotTextfield {
     /**
     * (optional) Disables field's interaction
@@ -645,6 +688,12 @@ declare global {
     new (): HTMLDotTagsElement;
   };
 
+  interface HTMLDotTextareaElement extends Components.DotTextarea, HTMLStencilElement {}
+  var HTMLDotTextareaElement: {
+    prototype: HTMLDotTextareaElement;
+    new (): HTMLDotTextareaElement;
+  };
+
   interface HTMLDotTextfieldElement extends Components.DotTextfield, HTMLStencilElement {}
   var HTMLDotTextfieldElement: {
     prototype: HTMLDotTextfieldElement;
@@ -676,6 +725,7 @@ declare global {
     'dot-radio': HTMLDotRadioElement;
     'dot-select': HTMLDotSelectElement;
     'dot-tags': HTMLDotTagsElement;
+    'dot-textarea': HTMLDotTextareaElement;
     'dot-textfield': HTMLDotTextfieldElement;
     'key-value-form': HTMLKeyValueFormElement;
     'key-value-table': HTMLKeyValueTableElement;
@@ -1126,6 +1176,46 @@ declare namespace LocalJSX {
     */
     'value'?: string;
   }
+  interface DotTextarea {
+    /**
+    * (optional) Disables field's interaction
+    */
+    'disabled'?: boolean;
+    /**
+    * (optional) Hint text that suggest a clue of the field
+    */
+    'hint'?: string;
+    /**
+    * (optional) Text to be rendered next to <textarea> element
+    */
+    'label'?: string;
+    /**
+    * Name that will be used as ID
+    */
+    'name'?: string;
+    'onDotStatusChange'?: (event: CustomEvent<DotFieldStatusEvent>) => void;
+    'onDotValueChange'?: (event: CustomEvent<DotFieldValueEvent>) => void;
+    /**
+    * (optional) Regular expresion that is checked against the value to determine if is valid
+    */
+    'regexCheck'?: string;
+    /**
+    * (optional) Determine if it is mandatory
+    */
+    'required'?: boolean;
+    /**
+    * (optional) Text that be shown when required is set and condition not met
+    */
+    'requiredMessage'?: string;
+    /**
+    * (optional) Text that be shown when the Regular Expression condition not met
+    */
+    'validationMessage'?: string;
+    /**
+    * Value specifies the value of the <textarea> element
+    */
+    'value'?: string;
+  }
   interface DotTextfield {
     /**
     * (optional) Disables field's interaction
@@ -1245,6 +1335,7 @@ declare namespace LocalJSX {
     'dot-radio': DotRadio;
     'dot-select': DotSelect;
     'dot-tags': DotTags;
+    'dot-textarea': DotTextarea;
     'dot-textfield': DotTextfield;
     'key-value-form': KeyValueForm;
     'key-value-table': KeyValueTable;
@@ -1270,6 +1361,7 @@ declare module "@stencil/core" {
       'dot-radio': LocalJSX.DotRadio & JSXBase.HTMLAttributes<HTMLDotRadioElement>;
       'dot-select': LocalJSX.DotSelect & JSXBase.HTMLAttributes<HTMLDotSelectElement>;
       'dot-tags': LocalJSX.DotTags & JSXBase.HTMLAttributes<HTMLDotTagsElement>;
+      'dot-textarea': LocalJSX.DotTextarea & JSXBase.HTMLAttributes<HTMLDotTextareaElement>;
       'dot-textfield': LocalJSX.DotTextfield & JSXBase.HTMLAttributes<HTMLDotTextfieldElement>;
       'key-value-form': LocalJSX.KeyValueForm & JSXBase.HTMLAttributes<HTMLKeyValueFormElement>;
       'key-value-table': LocalJSX.KeyValueTable & JSXBase.HTMLAttributes<HTMLKeyValueTableElement>;
