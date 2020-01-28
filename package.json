@@ -36,6 +36,7 @@
   },
   "license": "MIT",
   "dependencies": {
+    "@tarekraafat/autocomplete.js": "^7.2.0",
     "dotcms-models": "0.0.8"
   }
 }
