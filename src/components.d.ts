@@ -11,6 +11,7 @@ import {
   DotBinaryFileEvent,
   DotFieldStatusEvent,
   DotFieldValueEvent,
+  DotInputCalendarStatusEvent,
   DotKeyValueField,
 } from './models';
 
@@ -183,6 +184,44 @@ export namespace Components {
     'reset': () => Promise<void>;
     /**
     * Value set from the checkbox option
+    */
+    'value': string;
+  }
+  interface DotInputCalendar {
+    /**
+    * (optional) Disables field's interaction
+    */
+    'disabled': boolean;
+    /**
+    * (optional) Max, maximum value that the field will allow to set, expect a Date Format
+    */
+    'max': string;
+    /**
+    * (optional) Min, minimum value that the field will allow to set, expect a Date Format.
+    */
+    'min': string;
+    /**
+    * Name that will be used as ID
+    */
+    'name': string;
+    /**
+    * (optional) Determine if it is mandatory
+    */
+    'required': boolean;
+    /**
+    * Reset properties of the field, clear value and emit events.
+    */
+    'reset': () => Promise<void>;
+    /**
+    * (optional) Step specifies the legal number intervals for the input field
+    */
+    'step': string;
+    /**
+    * type specifies the type of <input> element to display
+    */
+    'type': string;
+    /**
+    * Value specifies the value of the <input> element
     */
     'value': string;
   }
@@ -507,6 +546,12 @@ declare global {
     new (): HTMLDotCheckboxElement;
   };
 
+  interface HTMLDotInputCalendarElement extends Components.DotInputCalendar, HTMLStencilElement {}
+  var HTMLDotInputCalendarElement: {
+    prototype: HTMLDotInputCalendarElement;
+    new (): HTMLDotInputCalendarElement;
+  };
+
   interface HTMLDotKeyValueElement extends Components.DotKeyValue, HTMLStencilElement {}
   var HTMLDotKeyValueElement: {
     prototype: HTMLDotKeyValueElement;
@@ -560,6 +605,7 @@ declare global {
     'dot-binary-text-field': HTMLDotBinaryTextFieldElement;
     'dot-binary-upload-button': HTMLDotBinaryUploadButtonElement;
     'dot-checkbox': HTMLDotCheckboxElement;
+    'dot-input-calendar': HTMLDotInputCalendarElement;
     'dot-key-value': HTMLDotKeyValueElement;
     'dot-label': HTMLDotLabelElement;
     'dot-multi-select': HTMLDotMultiSelectElement;
@@ -738,6 +784,42 @@ declare namespace LocalJSX {
     'requiredMessage'?: string;
     /**
     * Value set from the checkbox option
+    */
+    'value'?: string;
+  }
+  interface DotInputCalendar {
+    /**
+    * (optional) Disables field's interaction
+    */
+    'disabled'?: boolean;
+    /**
+    * (optional) Max, maximum value that the field will allow to set, expect a Date Format
+    */
+    'max'?: string;
+    /**
+    * (optional) Min, minimum value that the field will allow to set, expect a Date Format.
+    */
+    'min'?: string;
+    /**
+    * Name that will be used as ID
+    */
+    'name'?: string;
+    'on_dotStatusChange'?: (event: CustomEvent<DotInputCalendarStatusEvent>) => void;
+    'on_dotValueChange'?: (event: CustomEvent<DotFieldValueEvent>) => void;
+    /**
+    * (optional) Determine if it is mandatory
+    */
+    'required'?: boolean;
+    /**
+    * (optional) Step specifies the legal number intervals for the input field
+    */
+    'step'?: string;
+    /**
+    * type specifies the type of <input> element to display
+    */
+    'type'?: string;
+    /**
+    * Value specifies the value of the <input> element
     */
     'value'?: string;
   }
@@ -1034,6 +1116,7 @@ declare namespace LocalJSX {
     'dot-binary-text-field': DotBinaryTextField;
     'dot-binary-upload-button': DotBinaryUploadButton;
     'dot-checkbox': DotCheckbox;
+    'dot-input-calendar': DotInputCalendar;
     'dot-key-value': DotKeyValue;
     'dot-label': DotLabel;
     'dot-multi-select': DotMultiSelect;
@@ -1056,6 +1139,7 @@ declare module "@stencil/core" {
       'dot-binary-text-field': LocalJSX.DotBinaryTextField & JSXBase.HTMLAttributes<HTMLDotBinaryTextFieldElement>;
       'dot-binary-upload-button': LocalJSX.DotBinaryUploadButton & JSXBase.HTMLAttributes<HTMLDotBinaryUploadButtonElement>;
       'dot-checkbox': LocalJSX.DotCheckbox & JSXBase.HTMLAttributes<HTMLDotCheckboxElement>;
+      'dot-input-calendar': LocalJSX.DotInputCalendar & JSXBase.HTMLAttributes<HTMLDotInputCalendarElement>;
       'dot-key-value': LocalJSX.DotKeyValue & JSXBase.HTMLAttributes<HTMLDotKeyValueElement>;
       'dot-label': LocalJSX.DotLabel & JSXBase.HTMLAttributes<HTMLDotLabelElement>;
       'dot-multi-select': LocalJSX.DotMultiSelect & JSXBase.HTMLAttributes<HTMLDotMultiSelectElement>;
