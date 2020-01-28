@@ -146,6 +146,45 @@ export namespace Components {
     */
     'required': boolean;
   }
+  interface DotCheckbox {
+    /**
+    * (optional) Disables field's interaction
+    */
+    'disabled': boolean;
+    /**
+    * (optional) Hint text that suggest a clue of the field
+    */
+    'hint': string;
+    /**
+    * (optional) Text to be rendered next to input field
+    */
+    'label': string;
+    /**
+    * Name that will be used as ID
+    */
+    'name': string;
+    /**
+    * Value/Label checkbox options separated by comma, to be formatted as: Value|Label
+    */
+    'options': string;
+    /**
+    * (optional) Determine if it is mandatory
+    */
+    'required': boolean;
+    /**
+    * (optional) Text that will be shown when required is set and condition is not met
+    */
+    'requiredMessage': string;
+    /**
+    * Reset properties of the field, clear value and emit events.
+    * @memberof DotSelectComponent
+    */
+    'reset': () => Promise<void>;
+    /**
+    * Value set from the checkbox option
+    */
+    'value': string;
+  }
   interface DotLabel {
     /**
     * (optional) Text to be rendered
@@ -239,6 +278,12 @@ declare global {
     new (): HTMLDotBinaryUploadButtonElement;
   };
 
+  interface HTMLDotCheckboxElement extends Components.DotCheckbox, HTMLStencilElement {}
+  var HTMLDotCheckboxElement: {
+    prototype: HTMLDotCheckboxElement;
+    new (): HTMLDotCheckboxElement;
+  };
+
   interface HTMLDotLabelElement extends Components.DotLabel, HTMLStencilElement {}
   var HTMLDotLabelElement: {
     prototype: HTMLDotLabelElement;
@@ -255,6 +300,7 @@ declare global {
     'dot-binary-file-preview': HTMLDotBinaryFilePreviewElement;
     'dot-binary-text-field': HTMLDotBinaryTextFieldElement;
     'dot-binary-upload-button': HTMLDotBinaryUploadButtonElement;
+    'dot-checkbox': HTMLDotCheckboxElement;
     'dot-label': HTMLDotLabelElement;
     'dot-textfield': HTMLDotTextfieldElement;
   }
@@ -394,6 +440,42 @@ declare namespace LocalJSX {
     */
     'required'?: boolean;
   }
+  interface DotCheckbox {
+    /**
+    * (optional) Disables field's interaction
+    */
+    'disabled'?: boolean;
+    /**
+    * (optional) Hint text that suggest a clue of the field
+    */
+    'hint'?: string;
+    /**
+    * (optional) Text to be rendered next to input field
+    */
+    'label'?: string;
+    /**
+    * Name that will be used as ID
+    */
+    'name'?: string;
+    'onDotStatusChange'?: (event: CustomEvent<DotFieldStatusEvent>) => void;
+    'onDotValueChange'?: (event: CustomEvent<DotFieldValueEvent>) => void;
+    /**
+    * Value/Label checkbox options separated by comma, to be formatted as: Value|Label
+    */
+    'options'?: string;
+    /**
+    * (optional) Determine if it is mandatory
+    */
+    'required'?: boolean;
+    /**
+    * (optional) Text that will be shown when required is set and condition is not met
+    */
+    'requiredMessage'?: string;
+    /**
+    * Value set from the checkbox option
+    */
+    'value'?: string;
+  }
   interface DotLabel {
     /**
     * (optional) Text to be rendered
@@ -462,6 +544,7 @@ declare namespace LocalJSX {
     'dot-binary-file-preview': DotBinaryFilePreview;
     'dot-binary-text-field': DotBinaryTextField;
     'dot-binary-upload-button': DotBinaryUploadButton;
+    'dot-checkbox': DotCheckbox;
     'dot-label': DotLabel;
     'dot-textfield': DotTextfield;
   }
@@ -477,6 +560,7 @@ declare module "@stencil/core" {
       'dot-binary-file-preview': LocalJSX.DotBinaryFilePreview & JSXBase.HTMLAttributes<HTMLDotBinaryFilePreviewElement>;
       'dot-binary-text-field': LocalJSX.DotBinaryTextField & JSXBase.HTMLAttributes<HTMLDotBinaryTextFieldElement>;
       'dot-binary-upload-button': LocalJSX.DotBinaryUploadButton & JSXBase.HTMLAttributes<HTMLDotBinaryUploadButtonElement>;
+      'dot-checkbox': LocalJSX.DotCheckbox & JSXBase.HTMLAttributes<HTMLDotCheckboxElement>;
       'dot-label': LocalJSX.DotLabel & JSXBase.HTMLAttributes<HTMLDotLabelElement>;
       'dot-textfield': LocalJSX.DotTextfield & JSXBase.HTMLAttributes<HTMLDotTextfieldElement>;
     }
