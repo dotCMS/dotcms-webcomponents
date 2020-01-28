@@ -1,5 +1,4 @@
-import { Component, Prop, State, Element, Method, Event, EventEmitter, Watch } from '@stencil/core';
-import Fragment from 'stencil-fragment';
+import { Component, Prop, State, Element, Method, Event, EventEmitter, Watch, h, Host } from '@stencil/core';
 import { DotOption, DotFieldStatus, DotFieldValueEvent, DotFieldStatusEvent } from '../../models';
 import {
     getClassNames,
@@ -58,8 +57,8 @@ export class DotMultiSelectComponent {
     @State() _options: DotOption[];
     @State() status: DotFieldStatus;
 
-    @Event() valueChange: EventEmitter<DotFieldValueEvent>;
-    @Event() statusChange: EventEmitter<DotFieldStatusEvent>;
+    @Event() dotValueChange: EventEmitter<DotFieldValueEvent>;
+    @Event() dotStatusChange: EventEmitter<DotFieldStatusEvent>;
 
     _dotTouched = false;
     _dotPristine = true;
@@ -85,12 +84,6 @@ export class DotMultiSelectComponent {
         this._options = getDotOptionsFromFieldValue(validOptions);
     }
 
-    hostData() {
-        return {
-            class: getClassNames(this.status, this.isValid(), this.required)
-        };
-    }
-
     /**
      * Reset properties of the field, clear value and emit events.
      *
@@ -98,7 +91,7 @@ export class DotMultiSelectComponent {
      *
      */
     @Method()
-    reset(): void {
+    async reset(): Promise<void> {
         this.value = '';
         this.status = getOriginalStatus(this.isValid());
         this.emitInitialValue();
@@ -106,8 +99,14 @@ export class DotMultiSelectComponent {
     }
 
     render() {
+        const classes = getClassNames(
+            this.status,
+            this.isValid(),
+            this.required
+        );
+
         return (
-            <Fragment>
+            <Host class={{ ...classes }}>
                 <dot-label label={this.label} required={this.required} name={this.name}>
                     <select
                         multiple
@@ -132,7 +131,7 @@ export class DotMultiSelectComponent {
                 </dot-label>
                 {getTagHint(this.hint)}
                 {getTagError(!this.isValid(), this.requiredMessage)}
-            </Fragment>
+            </Host>
         );
     }
 
@@ -170,7 +169,7 @@ export class DotMultiSelectComponent {
     }
 
     private emitStatusChange(): void {
-        this.statusChange.emit({
+        this.dotStatusChange.emit({
             name: this.name,
             status: this.status
         });
@@ -181,7 +180,7 @@ export class DotMultiSelectComponent {
     }
 
     private emitValueChange(): void {
-        this.valueChange.emit({
+        this.dotValueChange.emit({
             name: this.name,
             value: this.value
         });
