@@ -8,11 +8,144 @@
 
 import { HTMLStencilElement, JSXBase } from '@stencil/core/internal';
 import {
+  DotBinaryFileEvent,
   DotFieldStatusEvent,
   DotFieldValueEvent,
 } from './models';
 
 export namespace Components {
+  interface DotBinaryFile {
+    /**
+    * (optional) Text that be shown when the URL is not valid
+    */
+    'URLValidationMessage': string;
+    /**
+    * (optional) Describes a type of file that may be selected by the user, separated by comma  eg: .pdf,.jpg
+    */
+    'accept': string;
+    /**
+    * (optional) Text that be shown in the browse file button
+    */
+    'buttonLabel': string;
+    /**
+    * Clear value of selected file, when the endpoint fails.
+    */
+    'clearValue': () => Promise<void>;
+    /**
+    * (optional) Disables field's interaction
+    */
+    'disabled': boolean;
+    /**
+    * (optional) Text that be shown in the browse file button
+    */
+    'errorMessage': string;
+    /**
+    * (optional) Hint text that suggest a clue of the field
+    */
+    'hint': string;
+    /**
+    * (optional) Text to be rendered next to input field
+    */
+    'label': string;
+    /**
+    * (optional) Set the max file size limit
+    */
+    'maxFileLength': string;
+    /**
+    * Name that will be used as ID
+    */
+    'name': string;
+    /**
+    * (optional) Placeholder specifies a short hint that describes the expected value of the input field
+    */
+    'placeholder': string;
+    /**
+    * (optional) Name of the file uploaded
+    */
+    'previewImageName': string;
+    /**
+    * (optional) URL of the file uploaded
+    */
+    'previewImageUrl': string;
+    /**
+    * (optional) Determine if it is mandatory
+    */
+    'required': boolean;
+    /**
+    * (optional) Text that be shown when required is set and condition not met
+    */
+    'requiredMessage': string;
+    /**
+    * Reset properties of the field, clear value and emit events.
+    */
+    'reset': () => Promise<void>;
+    /**
+    * (optional) Text that be shown when the Regular Expression condition not met
+    */
+    'validationMessage': string;
+  }
+  interface DotBinaryFilePreview {
+    /**
+    * (optional) Delete button's label
+    */
+    'deleteLabel': string;
+    /**
+    * file name to be displayed
+    */
+    'fileName': string;
+    /**
+    * (optional) file URL to be displayed
+    */
+    'previewUrl': string;
+  }
+  interface DotBinaryTextField {
+    /**
+    * (optional) Describes a type of file that may be selected by the user, separated by comma  eg: .pdf,.jpg
+    */
+    'accept': string;
+    /**
+    * (optional) Disables field's interaction
+    */
+    'disabled': boolean;
+    /**
+    * (optional) Hint text that suggest a clue of the field
+    */
+    'hint': string;
+    /**
+    * (optional) Placeholder specifies a short hint that describes the expected value of the input field
+    */
+    'placeholder': string;
+    /**
+    * (optional) Determine if it is mandatory
+    */
+    'required': boolean;
+    /**
+    * Value specifies the value of the <input> element
+    */
+    'value': any;
+  }
+  interface DotBinaryUploadButton {
+    /**
+    * (optional) Describes a type of file that may be selected by the user, separated by comma  eg: .pdf,.jpg
+    */
+    'accept': string;
+    /**
+    * (optional) Text that be shown in the browse file button
+    */
+    'buttonLabel': string;
+    /**
+    * (optional) Disables field's interaction
+    */
+    'disabled': boolean;
+    /**
+    * Name that will be used as ID
+    */
+    'name': string;
+    /**
+    * (optional) Determine if it is mandatory
+    */
+    'required': boolean;
+  }
   interface DotLabel {
     /**
     * (optional) Text to be rendered
@@ -82,6 +215,30 @@ export namespace Components {
 declare global {
 
 
+  interface HTMLDotBinaryFileElement extends Components.DotBinaryFile, HTMLStencilElement {}
+  var HTMLDotBinaryFileElement: {
+    prototype: HTMLDotBinaryFileElement;
+    new (): HTMLDotBinaryFileElement;
+  };
+
+  interface HTMLDotBinaryFilePreviewElement extends Components.DotBinaryFilePreview, HTMLStencilElement {}
+  var HTMLDotBinaryFilePreviewElement: {
+    prototype: HTMLDotBinaryFilePreviewElement;
+    new (): HTMLDotBinaryFilePreviewElement;
+  };
+
+  interface HTMLDotBinaryTextFieldElement extends Components.DotBinaryTextField, HTMLStencilElement {}
+  var HTMLDotBinaryTextFieldElement: {
+    prototype: HTMLDotBinaryTextFieldElement;
+    new (): HTMLDotBinaryTextFieldElement;
+  };
+
+  interface HTMLDotBinaryUploadButtonElement extends Components.DotBinaryUploadButton, HTMLStencilElement {}
+  var HTMLDotBinaryUploadButtonElement: {
+    prototype: HTMLDotBinaryUploadButtonElement;
+    new (): HTMLDotBinaryUploadButtonElement;
+  };
+
   interface HTMLDotLabelElement extends Components.DotLabel, HTMLStencilElement {}
   var HTMLDotLabelElement: {
     prototype: HTMLDotLabelElement;
@@ -94,12 +251,149 @@ declare global {
     new (): HTMLDotTextfieldElement;
   };
   interface HTMLElementTagNameMap {
+    'dot-binary-file': HTMLDotBinaryFileElement;
+    'dot-binary-file-preview': HTMLDotBinaryFilePreviewElement;
+    'dot-binary-text-field': HTMLDotBinaryTextFieldElement;
+    'dot-binary-upload-button': HTMLDotBinaryUploadButtonElement;
     'dot-label': HTMLDotLabelElement;
     'dot-textfield': HTMLDotTextfieldElement;
   }
 }
 
 declare namespace LocalJSX {
+  interface DotBinaryFile {
+    /**
+    * (optional) Text that be shown when the URL is not valid
+    */
+    'URLValidationMessage'?: string;
+    /**
+    * (optional) Describes a type of file that may be selected by the user, separated by comma  eg: .pdf,.jpg
+    */
+    'accept'?: string;
+    /**
+    * (optional) Text that be shown in the browse file button
+    */
+    'buttonLabel'?: string;
+    /**
+    * (optional) Disables field's interaction
+    */
+    'disabled'?: boolean;
+    /**
+    * (optional) Text that be shown in the browse file button
+    */
+    'errorMessage'?: string;
+    /**
+    * (optional) Hint text that suggest a clue of the field
+    */
+    'hint'?: string;
+    /**
+    * (optional) Text to be rendered next to input field
+    */
+    'label'?: string;
+    /**
+    * (optional) Set the max file size limit
+    */
+    'maxFileLength'?: string;
+    /**
+    * Name that will be used as ID
+    */
+    'name'?: string;
+    'onDotStatusChange'?: (event: CustomEvent<DotFieldStatusEvent>) => void;
+    'onDotValueChange'?: (event: CustomEvent<DotFieldValueEvent>) => void;
+    /**
+    * (optional) Placeholder specifies a short hint that describes the expected value of the input field
+    */
+    'placeholder'?: string;
+    /**
+    * (optional) Name of the file uploaded
+    */
+    'previewImageName'?: string;
+    /**
+    * (optional) URL of the file uploaded
+    */
+    'previewImageUrl'?: string;
+    /**
+    * (optional) Determine if it is mandatory
+    */
+    'required'?: boolean;
+    /**
+    * (optional) Text that be shown when required is set and condition not met
+    */
+    'requiredMessage'?: string;
+    /**
+    * (optional) Text that be shown when the Regular Expression condition not met
+    */
+    'validationMessage'?: string;
+  }
+  interface DotBinaryFilePreview {
+    /**
+    * (optional) Delete button's label
+    */
+    'deleteLabel'?: string;
+    /**
+    * file name to be displayed
+    */
+    'fileName'?: string;
+    /**
+    * Emit when the file is deleted
+    */
+    'onDelete'?: (event: CustomEvent<any>) => void;
+    /**
+    * (optional) file URL to be displayed
+    */
+    'previewUrl'?: string;
+  }
+  interface DotBinaryTextField {
+    /**
+    * (optional) Describes a type of file that may be selected by the user, separated by comma  eg: .pdf,.jpg
+    */
+    'accept'?: string;
+    /**
+    * (optional) Disables field's interaction
+    */
+    'disabled'?: boolean;
+    /**
+    * (optional) Hint text that suggest a clue of the field
+    */
+    'hint'?: string;
+    'onFileChange'?: (event: CustomEvent<DotBinaryFileEvent>) => void;
+    'onLostFocus'?: (event: CustomEvent<any>) => void;
+    /**
+    * (optional) Placeholder specifies a short hint that describes the expected value of the input field
+    */
+    'placeholder'?: string;
+    /**
+    * (optional) Determine if it is mandatory
+    */
+    'required'?: boolean;
+    /**
+    * Value specifies the value of the <input> element
+    */
+    'value'?: any;
+  }
+  interface DotBinaryUploadButton {
+    /**
+    * (optional) Describes a type of file that may be selected by the user, separated by comma  eg: .pdf,.jpg
+    */
+    'accept'?: string;
+    /**
+    * (optional) Text that be shown in the browse file button
+    */
+    'buttonLabel'?: string;
+    /**
+    * (optional) Disables field's interaction
+    */
+    'disabled'?: boolean;
+    /**
+    * Name that will be used as ID
+    */
+    'name'?: string;
+    'onFileChange'?: (event: CustomEvent<DotBinaryFileEvent>) => void;
+    /**
+    * (optional) Determine if it is mandatory
+    */
+    'required'?: boolean;
+  }
   interface DotLabel {
     /**
     * (optional) Text to be rendered
@@ -164,6 +458,10 @@ declare namespace LocalJSX {
   }
 
   interface IntrinsicElements {
+    'dot-binary-file': DotBinaryFile;
+    'dot-binary-file-preview': DotBinaryFilePreview;
+    'dot-binary-text-field': DotBinaryTextField;
+    'dot-binary-upload-button': DotBinaryUploadButton;
     'dot-label': DotLabel;
     'dot-textfield': DotTextfield;
   }
@@ -175,6 +473,10 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
   export namespace JSX {
     interface IntrinsicElements {
+      'dot-binary-file': LocalJSX.DotBinaryFile & JSXBase.HTMLAttributes<HTMLDotBinaryFileElement>;
+      'dot-binary-file-preview': LocalJSX.DotBinaryFilePreview & JSXBase.HTMLAttributes<HTMLDotBinaryFilePreviewElement>;
+      'dot-binary-text-field': LocalJSX.DotBinaryTextField & JSXBase.HTMLAttributes<HTMLDotBinaryTextFieldElement>;
+      'dot-binary-upload-button': LocalJSX.DotBinaryUploadButton & JSXBase.HTMLAttributes<HTMLDotBinaryUploadButtonElement>;
       'dot-label': LocalJSX.DotLabel & JSXBase.HTMLAttributes<HTMLDotLabelElement>;
       'dot-textfield': LocalJSX.DotTextfield & JSXBase.HTMLAttributes<HTMLDotTextfieldElement>;
     }
