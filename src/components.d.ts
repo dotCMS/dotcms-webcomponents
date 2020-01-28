@@ -11,11 +11,36 @@ import {
   DotBinaryFileEvent,
   DotFieldStatusEvent,
   DotFieldValueEvent,
-  DotInputCalendarStatusEvent,
   DotKeyValueField,
 } from './models';
 
 export namespace Components {
+  interface DotAutocomplete {
+    /**
+    * Function or array of string to get the data to use for the autocomplete search
+    */
+    'data': () => Promise<string[]> | string[];
+    /**
+    * (optional) Duraction in ms to start search into the autocomplete
+    */
+    'debounce': number;
+    /**
+    * (optional) Disables field's interaction
+    */
+    'disabled': boolean;
+    /**
+    * (optional)  Max results to show after a autocomplete search
+    */
+    'maxResults': number;
+    /**
+    * (optional) text to show when no value is set
+    */
+    'placeholder': string;
+    /**
+    * (optional)  Min characters to start search in the autocomplete input
+    */
+    'threshold': number;
+  }
   interface DotBinaryFile {
     /**
     * (optional) Text that be shown when the URL is not valid
@@ -187,43 +212,19 @@ export namespace Components {
     */
     'value': string;
   }
-  interface DotInputCalendar {
+  interface DotChip {
     /**
-    * (optional) Disables field's interaction
+    * (optional) Delete button's label
+    */
+    'deleteLabel': string;
+    /**
+    * (optional) If is true disabled the delete button
     */
     'disabled': boolean;
     /**
-    * (optional) Max, maximum value that the field will allow to set, expect a Date Format
+    * Chip's label
     */
-    'max': string;
-    /**
-    * (optional) Min, minimum value that the field will allow to set, expect a Date Format.
-    */
-    'min': string;
-    /**
-    * Name that will be used as ID
-    */
-    'name': string;
-    /**
-    * (optional) Determine if it is mandatory
-    */
-    'required': boolean;
-    /**
-    * Reset properties of the field, clear value and emit events.
-    */
-    'reset': () => Promise<void>;
-    /**
-    * (optional) Step specifies the legal number intervals for the input field
-    */
-    'step': string;
-    /**
-    * type specifies the type of <input> element to display
-    */
-    'type': string;
-    /**
-    * Value specifies the value of the <input> element
-    */
-    'value': string;
+    'label': string;
   }
   interface DotKeyValue {
     /**
@@ -417,6 +418,56 @@ export namespace Components {
     */
     'value': string;
   }
+  interface DotTags {
+    /**
+    * Function or array of string to get the data to use for the autocomplete search
+    */
+    'data': () => Promise<string[]> | string[];
+    /**
+    * Duraction in ms to start search into the autocomplete
+    */
+    'debounce': number;
+    /**
+    * (optional) Disables field's interaction
+    */
+    'disabled': boolean;
+    /**
+    * (optional) Hint text that suggest a clue of the field
+    */
+    'hint': string;
+    /**
+    * (optional) Text to be rendered next to input field
+    */
+    'label': string;
+    /**
+    * Name that will be used as ID
+    */
+    'name': string;
+    /**
+    * (optional) text to show when no value is set
+    */
+    'placeholder': string;
+    /**
+    * (optional) Determine if it is mandatory
+    */
+    'required': boolean;
+    /**
+    * (optional) Text that be shown when required is set and value is not set
+    */
+    'requiredMessage': string;
+    /**
+    * Reset properties of the filed, clear value and emit events.
+    */
+    'reset': () => Promise<void>;
+    /**
+    * Min characters to start search in the autocomplete input
+    */
+    'threshold': number;
+    /**
+    * Value formatted splitted with a comma, for example: tag-1,tag-2
+    */
+    'value': string;
+  }
   interface DotTextfield {
     /**
     * (optional) Disables field's interaction
@@ -516,6 +567,12 @@ export namespace Components {
 declare global {
 
 
+  interface HTMLDotAutocompleteElement extends Components.DotAutocomplete, HTMLStencilElement {}
+  var HTMLDotAutocompleteElement: {
+    prototype: HTMLDotAutocompleteElement;
+    new (): HTMLDotAutocompleteElement;
+  };
+
   interface HTMLDotBinaryFileElement extends Components.DotBinaryFile, HTMLStencilElement {}
   var HTMLDotBinaryFileElement: {
     prototype: HTMLDotBinaryFileElement;
@@ -546,10 +603,10 @@ declare global {
     new (): HTMLDotCheckboxElement;
   };
 
-  interface HTMLDotInputCalendarElement extends Components.DotInputCalendar, HTMLStencilElement {}
-  var HTMLDotInputCalendarElement: {
-    prototype: HTMLDotInputCalendarElement;
-    new (): HTMLDotInputCalendarElement;
+  interface HTMLDotChipElement extends Components.DotChip, HTMLStencilElement {}
+  var HTMLDotChipElement: {
+    prototype: HTMLDotChipElement;
+    new (): HTMLDotChipElement;
   };
 
   interface HTMLDotKeyValueElement extends Components.DotKeyValue, HTMLStencilElement {}
@@ -582,6 +639,12 @@ declare global {
     new (): HTMLDotSelectElement;
   };
 
+  interface HTMLDotTagsElement extends Components.DotTags, HTMLStencilElement {}
+  var HTMLDotTagsElement: {
+    prototype: HTMLDotTagsElement;
+    new (): HTMLDotTagsElement;
+  };
+
   interface HTMLDotTextfieldElement extends Components.DotTextfield, HTMLStencilElement {}
   var HTMLDotTextfieldElement: {
     prototype: HTMLDotTextfieldElement;
@@ -600,17 +663,19 @@ declare global {
     new (): HTMLKeyValueTableElement;
   };
   interface HTMLElementTagNameMap {
+    'dot-autocomplete': HTMLDotAutocompleteElement;
     'dot-binary-file': HTMLDotBinaryFileElement;
     'dot-binary-file-preview': HTMLDotBinaryFilePreviewElement;
     'dot-binary-text-field': HTMLDotBinaryTextFieldElement;
     'dot-binary-upload-button': HTMLDotBinaryUploadButtonElement;
     'dot-checkbox': HTMLDotCheckboxElement;
-    'dot-input-calendar': HTMLDotInputCalendarElement;
+    'dot-chip': HTMLDotChipElement;
     'dot-key-value': HTMLDotKeyValueElement;
     'dot-label': HTMLDotLabelElement;
     'dot-multi-select': HTMLDotMultiSelectElement;
     'dot-radio': HTMLDotRadioElement;
     'dot-select': HTMLDotSelectElement;
+    'dot-tags': HTMLDotTagsElement;
     'dot-textfield': HTMLDotTextfieldElement;
     'key-value-form': HTMLKeyValueFormElement;
     'key-value-table': HTMLKeyValueTableElement;
@@ -618,6 +683,35 @@ declare global {
 }
 
 declare namespace LocalJSX {
+  interface DotAutocomplete {
+    /**
+    * Function or array of string to get the data to use for the autocomplete search
+    */
+    'data'?: () => Promise<string[]> | string[];
+    /**
+    * (optional) Duraction in ms to start search into the autocomplete
+    */
+    'debounce'?: number;
+    /**
+    * (optional) Disables field's interaction
+    */
+    'disabled'?: boolean;
+    /**
+    * (optional)  Max results to show after a autocomplete search
+    */
+    'maxResults'?: number;
+    'onEnter'?: (event: CustomEvent<string>) => void;
+    'onLostFocus'?: (event: CustomEvent<FocusEvent>) => void;
+    'onSelection'?: (event: CustomEvent<string>) => void;
+    /**
+    * (optional) text to show when no value is set
+    */
+    'placeholder'?: string;
+    /**
+    * (optional)  Min characters to start search in the autocomplete input
+    */
+    'threshold'?: number;
+  }
   interface DotBinaryFile {
     /**
     * (optional) Text that be shown when the URL is not valid
@@ -787,41 +881,20 @@ declare namespace LocalJSX {
     */
     'value'?: string;
   }
-  interface DotInputCalendar {
+  interface DotChip {
     /**
-    * (optional) Disables field's interaction
+    * (optional) Delete button's label
+    */
+    'deleteLabel'?: string;
+    /**
+    * (optional) If is true disabled the delete button
     */
     'disabled'?: boolean;
     /**
-    * (optional) Max, maximum value that the field will allow to set, expect a Date Format
+    * Chip's label
     */
-    'max'?: string;
-    /**
-    * (optional) Min, minimum value that the field will allow to set, expect a Date Format.
-    */
-    'min'?: string;
-    /**
-    * Name that will be used as ID
-    */
-    'name'?: string;
-    'on_dotStatusChange'?: (event: CustomEvent<DotInputCalendarStatusEvent>) => void;
-    'on_dotValueChange'?: (event: CustomEvent<DotFieldValueEvent>) => void;
-    /**
-    * (optional) Determine if it is mandatory
-    */
-    'required'?: boolean;
-    /**
-    * (optional) Step specifies the legal number intervals for the input field
-    */
-    'step'?: string;
-    /**
-    * type specifies the type of <input> element to display
-    */
-    'type'?: string;
-    /**
-    * Value specifies the value of the <input> element
-    */
-    'value'?: string;
+    'label'?: string;
+    'onRemove'?: (event: CustomEvent<String>) => void;
   }
   interface DotKeyValue {
     /**
@@ -986,8 +1059,8 @@ declare namespace LocalJSX {
     * Name that will be used as ID
     */
     'name'?: string;
-    'onStatusChange'?: (event: CustomEvent<DotFieldStatusEvent>) => void;
-    'onValueChange'?: (event: CustomEvent<DotFieldValueEvent>) => void;
+    'onDotStatusChange'?: (event: CustomEvent<DotFieldStatusEvent>) => void;
+    'onDotValueChange'?: (event: CustomEvent<DotFieldValueEvent>) => void;
     /**
     * Value/Label dropdown options separated by comma, to be formatted as: Value|Label
     */
@@ -1002,6 +1075,54 @@ declare namespace LocalJSX {
     'requiredMessage'?: string;
     /**
     * Value set from the dropdown option
+    */
+    'value'?: string;
+  }
+  interface DotTags {
+    /**
+    * Function or array of string to get the data to use for the autocomplete search
+    */
+    'data'?: () => Promise<string[]> | string[];
+    /**
+    * Duraction in ms to start search into the autocomplete
+    */
+    'debounce'?: number;
+    /**
+    * (optional) Disables field's interaction
+    */
+    'disabled'?: boolean;
+    /**
+    * (optional) Hint text that suggest a clue of the field
+    */
+    'hint'?: string;
+    /**
+    * (optional) Text to be rendered next to input field
+    */
+    'label'?: string;
+    /**
+    * Name that will be used as ID
+    */
+    'name'?: string;
+    'onDotStatusChange'?: (event: CustomEvent<DotFieldStatusEvent>) => void;
+    'onDotValueChange'?: (event: CustomEvent<DotFieldValueEvent>) => void;
+    /**
+    * (optional) text to show when no value is set
+    */
+    'placeholder'?: string;
+    /**
+    * (optional) Determine if it is mandatory
+    */
+    'required'?: boolean;
+    /**
+    * (optional) Text that be shown when required is set and value is not set
+    */
+    'requiredMessage'?: string;
+    /**
+    * Min characters to start search in the autocomplete input
+    */
+    'threshold'?: number;
+    /**
+    * Value formatted splitted with a comma, for example: tag-1,tag-2
     */
     'value'?: string;
   }
@@ -1111,17 +1232,19 @@ declare namespace LocalJSX {
   }
 
   interface IntrinsicElements {
+    'dot-autocomplete': DotAutocomplete;
     'dot-binary-file': DotBinaryFile;
     'dot-binary-file-preview': DotBinaryFilePreview;
     'dot-binary-text-field': DotBinaryTextField;
     'dot-binary-upload-button': DotBinaryUploadButton;
     'dot-checkbox': DotCheckbox;
-    'dot-input-calendar': DotInputCalendar;
+    'dot-chip': DotChip;
     'dot-key-value': DotKeyValue;
     'dot-label': DotLabel;
     'dot-multi-select': DotMultiSelect;
     'dot-radio': DotRadio;
     'dot-select': DotSelect;
+    'dot-tags': DotTags;
     'dot-textfield': DotTextfield;
     'key-value-form': KeyValueForm;
     'key-value-table': KeyValueTable;
@@ -1134,17 +1257,19 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
   export namespace JSX {
     interface IntrinsicElements {
+      'dot-autocomplete': LocalJSX.DotAutocomplete & JSXBase.HTMLAttributes<HTMLDotAutocompleteElement>;
       'dot-binary-file': LocalJSX.DotBinaryFile & JSXBase.HTMLAttributes<HTMLDotBinaryFileElement>;
       'dot-binary-file-preview': LocalJSX.DotBinaryFilePreview & JSXBase.HTMLAttributes<HTMLDotBinaryFilePreviewElement>;
       'dot-binary-text-field': LocalJSX.DotBinaryTextField & JSXBase.HTMLAttributes<HTMLDotBinaryTextFieldElement>;
       'dot-binary-upload-button': LocalJSX.DotBinaryUploadButton & JSXBase.HTMLAttributes<HTMLDotBinaryUploadButtonElement>;
       'dot-checkbox': LocalJSX.DotCheckbox & JSXBase.HTMLAttributes<HTMLDotCheckboxElement>;
-      'dot-input-calendar': LocalJSX.DotInputCalendar & JSXBase.HTMLAttributes<HTMLDotInputCalendarElement>;
+      'dot-chip': LocalJSX.DotChip & JSXBase.HTMLAttributes<HTMLDotChipElement>;
       'dot-key-value': LocalJSX.DotKeyValue & JSXBase.HTMLAttributes<HTMLDotKeyValueElement>;
       'dot-label': LocalJSX.DotLabel & JSXBase.HTMLAttributes<HTMLDotLabelElement>;
       'dot-multi-select': LocalJSX.DotMultiSelect & JSXBase.HTMLAttributes<HTMLDotMultiSelectElement>;
       'dot-radio': LocalJSX.DotRadio & JSXBase.HTMLAttributes<HTMLDotRadioElement>;
       'dot-select': LocalJSX.DotSelect & JSXBase.HTMLAttributes<HTMLDotSelectElement>;
+      'dot-tags': LocalJSX.DotTags & JSXBase.HTMLAttributes<HTMLDotTagsElement>;
       'dot-textfield': LocalJSX.DotTextfield & JSXBase.HTMLAttributes<HTMLDotTextfieldElement>;
       'key-value-form': LocalJSX.KeyValueForm & JSXBase.HTMLAttributes<HTMLKeyValueFormElement>;
       'key-value-table': LocalJSX.KeyValueTable & JSXBase.HTMLAttributes<HTMLKeyValueTableElement>;
