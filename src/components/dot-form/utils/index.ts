@@ -1,6 +1,5 @@
-// import { DotFormFields } from "./fields";
-// import { getStringFromDotKeyArray, isStringType } from "../../../utils";
-import { isStringType } from "../../../utils";
+import { DotFormFields } from "./fields";
+import { getStringFromDotKeyArray, isStringType } from "../../../utils";
 import {
     DotCMSContentTypeField,
     DotCMSContentTypeLayoutRow,
@@ -102,11 +101,14 @@ export const getFieldVariableValue = (
     fieldVariables: DotCMSContentTypeFieldVariable[],
     key: string
 ): string => {
-    const variable = fieldVariables.filter(
-        (item: DotCMSContentTypeFieldVariable) =>
-            item.key.toUpperCase() === key.toUpperCase()
-    )[0];
-    return variable && variable.value;
+    if (fieldVariables && fieldVariables.length) {
+        const [variable] = fieldVariables.filter(
+            (item: DotCMSContentTypeFieldVariable) =>
+                item.key.toUpperCase() === key.toUpperCase()
+        );
+        return variable && variable.value;
+    }
+    return null;
 };
 
 /**
@@ -143,34 +145,36 @@ export const getFieldsFromLayout = (
     );
 };
 
-// const fieldParamsConversionFromBE = {
-//   "Key-Value": (field: DotCMSContentTypeField) => {
-//     if (field.defaultValue && typeof field.defaultValue !== "string") {
-//       const valuesArray = Object.keys(field.defaultValue).map((key: string) => {
-//         return { key: key, value: field.defaultValue[key] };
-//       });
-//       field.defaultValue = getStringFromDotKeyArray(valuesArray);
-//     }
-//     return DotFormFields["Key-Value"](field);
-//   }
-// };
+const fieldParamsConversionFromBE = {
+    "Key-Value": (field: DotCMSContentTypeField) => {
+        if (field.defaultValue && typeof field.defaultValue !== "string") {
+            const valuesArray = Object.keys(field.defaultValue).map(
+                (key: string) => {
+                    return { key: key, value: field.defaultValue[key] };
+                }
+            );
+            field.defaultValue = getStringFromDotKeyArray(valuesArray);
+        }
+        return DotFormFields["Key-Value"](field);
+    }
+};
 
 export const fieldCustomProcess = {
     "DOT-KEY-VALUE": pipedValuesToObject
 };
 
-// export const fieldMap = {
-//   Time: DotFormFields.Time,
-//   Textarea: DotFormFields.Textarea,
-//   Text: DotFormFields.Text,
-//   Tag: DotFormFields.Tag,
-//   Select: DotFormFields.Select,
-//   Radio: DotFormFields.Radio,
-//   'Multi-Select': DotFormFields['Multi-Select'],
-//   'Key-Value': fieldParamsConversionFromBE['Key-Value'],
-//   'Date-and-Time': DotFormFields['Date-and-Time'],
-//   'Date-Range': DotFormFields['Date-Range'],
-//   Date: DotFormFields.Date,
-//   Checkbox: DotFormFields.Checkbox,
-//   Binary: DotFormFields.Binary
-// };
+export const fieldMap = {
+    Time: DotFormFields.Time,
+    Textarea: DotFormFields.Textarea,
+    Text: DotFormFields.Text,
+    Tag: DotFormFields.Tag,
+    Select: DotFormFields.Select,
+    Radio: DotFormFields.Radio,
+    "Multi-Select": DotFormFields["Multi-Select"],
+    "Key-Value": fieldParamsConversionFromBE["Key-Value"],
+    "Date-and-Time": DotFormFields["Date-and-Time"],
+    "Date-Range": DotFormFields["Date-Range"],
+    Date: DotFormFields.Date,
+    Checkbox: DotFormFields.Checkbox,
+    Binary: DotFormFields.Binary
+};
