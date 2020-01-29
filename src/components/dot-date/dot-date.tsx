@@ -74,14 +74,14 @@ export class DotDateComponent {
     @State() classNames: DotFieldStatusClasses;
     @State() errorMessageElement: JSX.Element;
 
-    @Event() valueChange: EventEmitter<DotFieldValueEvent>;
-    @Event() statusChange: EventEmitter<DotFieldStatusEvent>;
+    @Event() dotValueChange: EventEmitter<DotFieldValueEvent>;
+    @Event() dotStatusChange: EventEmitter<DotFieldStatusEvent>;
 
     /**
      * Reset properties of the field, clear value and emit events.
      */
     @Method()
-    reset(): void {
+    async reset(): Promise<void> {
         const input = this.el.querySelector('dot-input-calendar');
         input.reset();
     }
@@ -117,7 +117,7 @@ export class DotDateComponent {
         event.stopImmediatePropagation();
         const valueEvent: DotFieldValueEvent = event.detail;
         this.value = valueEvent.value as string;
-        this.valueChange.emit(valueEvent);
+        this.dotValueChange.emit(valueEvent);
     }
 
     @Listen('_dotStatusChange')
@@ -130,7 +130,7 @@ export class DotDateComponent {
             this.required
         );
         this.setErrorMessageElement(inputCalendarStatus);
-        this.statusChange.emit({
+        this.dotStatusChange.emit({
             name: inputCalendarStatus.name,
             status: inputCalendarStatus.status
         });
