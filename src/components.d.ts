@@ -394,43 +394,6 @@ export namespace Components {
     'value': string;
   }
   interface DotErrorMessage {}
-  interface DotInputCalendar {
-    /**
-    * (optional) Disables field's interaction
-    */
-    'disabled': boolean;
-    /**
-    * (optional) Max, maximum value that the field will allow to set, expect a Date Format
-    */
-    'max': string;
-    /**
-    * (optional) Min, minimum value that the field will allow to set, expect a Date Format.
-    */
-    'min': string;
-    /**
-    * Name that will be used as ID
-    */
-    'name': string;
-    /**
-    * (optional) Determine if it is mandatory
-    */
-    'required': boolean;
-    /**
-    * Reset properties of the field, clear value and emit events.
-    */
-    'reset': () => Promise<void>;
-    /**
-    * (optional) Step specifies the legal number intervals for the input field
-    */
-    'step': string;
-    /**
-    * type specifies the type of <input> element to display
-    */
-    'type': string;
-    /**
-    * Value specifies the value of the <input> element
-    */
-    'value': string;
   interface DotForm {
     /**
     * (optional) List of fields (variableName) separated by comma, to be shown
@@ -472,6 +435,44 @@ export namespace Components {
     * Fields metada to be rendered
     */
     'row': DotCMSContentTypeLayoutRow;
+  }
+  interface DotInputCalendar {
+    /**
+    * (optional) Disables field's interaction
+    */
+    'disabled': boolean;
+    /**
+    * (optional) Max, maximum value that the field will allow to set, expect a Date Format
+    */
+    'max': string;
+    /**
+    * (optional) Min, minimum value that the field will allow to set, expect a Date Format.
+    */
+    'min': string;
+    /**
+    * Name that will be used as ID
+    */
+    'name': string;
+    /**
+    * (optional) Determine if it is mandatory
+    */
+    'required': boolean;
+    /**
+    * Reset properties of the field, clear value and emit events.
+    */
+    'reset': () => Promise<void>;
+    /**
+    * (optional) Step specifies the legal number intervals for the input field
+    */
+    'step': string;
+    /**
+    * type specifies the type of <input> element to display
+    */
+    'type': string;
+    /**
+    * Value specifies the value of the <input> element
+    */
+    'value': string;
   }
   interface DotKeyValue {
     /**
@@ -949,7 +950,6 @@ declare global {
     new (): HTMLDotChipElement;
   };
 
-<<<<<<< HEAD
   interface HTMLDotDateElement extends Components.DotDate, HTMLStencilElement {}
   var HTMLDotDateElement: {
     prototype: HTMLDotDateElement;
@@ -974,11 +974,6 @@ declare global {
     new (): HTMLDotErrorMessageElement;
   };
 
-  interface HTMLDotInputCalendarElement extends Components.DotInputCalendar, HTMLStencilElement {}
-  var HTMLDotInputCalendarElement: {
-    prototype: HTMLDotInputCalendarElement;
-    new (): HTMLDotInputCalendarElement;
-=======
   interface HTMLDotFormElement extends Components.DotForm, HTMLStencilElement {}
   var HTMLDotFormElement: {
     prototype: HTMLDotFormElement;
@@ -995,7 +990,12 @@ declare global {
   var HTMLDotFormRowElement: {
     prototype: HTMLDotFormRowElement;
     new (): HTMLDotFormRowElement;
->>>>>>> a13d3fb... Add dot-form
+  };
+
+  interface HTMLDotInputCalendarElement extends Components.DotInputCalendar, HTMLStencilElement {}
+  var HTMLDotInputCalendarElement: {
+    prototype: HTMLDotInputCalendarElement;
+    new (): HTMLDotInputCalendarElement;
   };
 
   interface HTMLDotKeyValueElement extends Components.DotKeyValue, HTMLStencilElement {}
@@ -1071,17 +1071,14 @@ declare global {
     'dot-binary-upload-button': HTMLDotBinaryUploadButtonElement;
     'dot-checkbox': HTMLDotCheckboxElement;
     'dot-chip': HTMLDotChipElement;
-<<<<<<< HEAD
     'dot-date': HTMLDotDateElement;
     'dot-date-range': HTMLDotDateRangeElement;
     'dot-date-time': HTMLDotDateTimeElement;
     'dot-error-message': HTMLDotErrorMessageElement;
-    'dot-input-calendar': HTMLDotInputCalendarElement;
-=======
     'dot-form': HTMLDotFormElement;
     'dot-form-column': HTMLDotFormColumnElement;
     'dot-form-row': HTMLDotFormRowElement;
->>>>>>> a13d3fb... Add dot-form
+    'dot-input-calendar': HTMLDotInputCalendarElement;
     'dot-key-value': HTMLDotKeyValueElement;
     'dot-label': HTMLDotLabelElement;
     'dot-multi-select': HTMLDotMultiSelectElement;
@@ -1310,7 +1307,6 @@ declare namespace LocalJSX {
     'label'?: string;
     'onRemove'?: (event: CustomEvent<String>) => void;
   }
-<<<<<<< HEAD
   interface DotDate {
     /**
     * (optional) Disables field's interaction
@@ -1468,42 +1464,6 @@ declare namespace LocalJSX {
     'value'?: string;
   }
   interface DotErrorMessage {}
-  interface DotInputCalendar {
-    /**
-    * (optional) Disables field's interaction
-    */
-    'disabled'?: boolean;
-    /**
-    * (optional) Max, maximum value that the field will allow to set, expect a Date Format
-    */
-    'max'?: string;
-    /**
-    * (optional) Min, minimum value that the field will allow to set, expect a Date Format.
-    */
-    'min'?: string;
-    /**
-    * Name that will be used as ID
-    */
-    'name'?: string;
-    'on_dotStatusChange'?: (event: CustomEvent<DotInputCalendarStatusEvent>) => void;
-    'on_dotValueChange'?: (event: CustomEvent<DotFieldValueEvent>) => void;
-    /**
-    * (optional) Determine if it is mandatory
-    */
-    'required'?: boolean;
-    /**
-    * (optional) Step specifies the legal number intervals for the input field
-    */
-    'step'?: string;
-    /**
-    * type specifies the type of <input> element to display
-    */
-    'type'?: string;
-    /**
-    * Value specifies the value of the <input> element
-    */
-    'value'?: string;
-=======
   interface DotForm {
     /**
     * (optional) List of fields (variableName) separated by comma, to be shown
@@ -1545,7 +1505,42 @@ declare namespace LocalJSX {
     * Fields metada to be rendered
     */
     'row'?: DotCMSContentTypeLayoutRow;
->>>>>>> a13d3fb... Add dot-form
+  }
+  interface DotInputCalendar {
+    /**
+    * (optional) Disables field's interaction
+    */
+    'disabled'?: boolean;
+    /**
+    * (optional) Max, maximum value that the field will allow to set, expect a Date Format
+    */
+    'max'?: string;
+    /**
+    * (optional) Min, minimum value that the field will allow to set, expect a Date Format.
+    */
+    'min'?: string;
+    /**
+    * Name that will be used as ID
+    */
+    'name'?: string;
+    'on_dotStatusChange'?: (event: CustomEvent<DotInputCalendarStatusEvent>) => void;
+    'on_dotValueChange'?: (event: CustomEvent<DotFieldValueEvent>) => void;
+    /**
+    * (optional) Determine if it is mandatory
+    */
+    'required'?: boolean;
+    /**
+    * (optional) Step specifies the legal number intervals for the input field
+    */
+    'step'?: string;
+    /**
+    * type specifies the type of <input> element to display
+    */
+    'type'?: string;
+    /**
+    * Value specifies the value of the <input> element
+    */
+    'value'?: string;
   }
   interface DotKeyValue {
     /**
@@ -1978,17 +1973,14 @@ declare namespace LocalJSX {
     'dot-binary-upload-button': DotBinaryUploadButton;
     'dot-checkbox': DotCheckbox;
     'dot-chip': DotChip;
-<<<<<<< HEAD
     'dot-date': DotDate;
     'dot-date-range': DotDateRange;
     'dot-date-time': DotDateTime;
     'dot-error-message': DotErrorMessage;
-    'dot-input-calendar': DotInputCalendar;
-=======
     'dot-form': DotForm;
     'dot-form-column': DotFormColumn;
     'dot-form-row': DotFormRow;
->>>>>>> a13d3fb... Add dot-form
+    'dot-input-calendar': DotInputCalendar;
     'dot-key-value': DotKeyValue;
     'dot-label': DotLabel;
     'dot-multi-select': DotMultiSelect;
@@ -2016,17 +2008,14 @@ declare module "@stencil/core" {
       'dot-binary-upload-button': LocalJSX.DotBinaryUploadButton & JSXBase.HTMLAttributes<HTMLDotBinaryUploadButtonElement>;
       'dot-checkbox': LocalJSX.DotCheckbox & JSXBase.HTMLAttributes<HTMLDotCheckboxElement>;
       'dot-chip': LocalJSX.DotChip & JSXBase.HTMLAttributes<HTMLDotChipElement>;
-<<<<<<< HEAD
       'dot-date': LocalJSX.DotDate & JSXBase.HTMLAttributes<HTMLDotDateElement>;
       'dot-date-range': LocalJSX.DotDateRange & JSXBase.HTMLAttributes<HTMLDotDateRangeElement>;
       'dot-date-time': LocalJSX.DotDateTime & JSXBase.HTMLAttributes<HTMLDotDateTimeElement>;
       'dot-error-message': LocalJSX.DotErrorMessage & JSXBase.HTMLAttributes<HTMLDotErrorMessageElement>;
-      'dot-input-calendar': LocalJSX.DotInputCalendar & JSXBase.HTMLAttributes<HTMLDotInputCalendarElement>;
-=======
       'dot-form': LocalJSX.DotForm & JSXBase.HTMLAttributes<HTMLDotFormElement>;
       'dot-form-column': LocalJSX.DotFormColumn & JSXBase.HTMLAttributes<HTMLDotFormColumnElement>;
       'dot-form-row': LocalJSX.DotFormRow & JSXBase.HTMLAttributes<HTMLDotFormRowElement>;
->>>>>>> a13d3fb... Add dot-form
+      'dot-input-calendar': LocalJSX.DotInputCalendar & JSXBase.HTMLAttributes<HTMLDotInputCalendarElement>;
       'dot-key-value': LocalJSX.DotKeyValue & JSXBase.HTMLAttributes<HTMLDotKeyValueElement>;
       'dot-label': LocalJSX.DotLabel & JSXBase.HTMLAttributes<HTMLDotLabelElement>;
       'dot-multi-select': LocalJSX.DotMultiSelect & JSXBase.HTMLAttributes<HTMLDotMultiSelectElement>;
