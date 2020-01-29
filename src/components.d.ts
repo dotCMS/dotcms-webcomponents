@@ -14,6 +14,10 @@ import {
   DotInputCalendarStatusEvent,
   DotKeyValueField,
 } from './models';
+import {
+  DotCMSContentTypeLayoutColumn,
+  DotCMSContentTypeLayoutRow,
+} from 'dotcms-models';
 
 export namespace Components {
   interface DotAutocomplete {
@@ -390,6 +394,48 @@ export namespace Components {
     'value': string;
   }
   interface DotErrorMessage {}
+  interface DotForm {
+    /**
+    * (optional) List of fields (variableName) separated by comma, to be shown
+    */
+    'fieldsToShow': string;
+    /**
+    * Layout metada to be rendered
+    */
+    'layout': DotCMSContentTypeLayoutRow[];
+    /**
+    * (optional) Text to be rendered on Reset button
+    */
+    'resetLabel': string;
+    /**
+    * (optional) Text to be rendered on Submit button
+    */
+    'submitLabel': string;
+    /**
+    * Content type variable name
+    */
+    'variable': string;
+  }
+  interface DotFormColumn {
+    /**
+    * Fields metada to be rendered
+    */
+    'column': DotCMSContentTypeLayoutColumn;
+    /**
+    * (optional) List of fields (variableName) separated by comma, to be shown
+    */
+    'fieldsToShow': string;
+  }
+  interface DotFormRow {
+    /**
+    * (optional) List of fields (variableName) separated by comma, to be shown
+    */
+    'fieldsToShow': string;
+    /**
+    * Fields metada to be rendered
+    */
+    'row': DotCMSContentTypeLayoutRow;
+  }
   interface DotInputCalendar {
     /**
     * (optional) Disables field's interaction
@@ -928,6 +974,24 @@ declare global {
     new (): HTMLDotErrorMessageElement;
   };
 
+  interface HTMLDotFormElement extends Components.DotForm, HTMLStencilElement {}
+  var HTMLDotFormElement: {
+    prototype: HTMLDotFormElement;
+    new (): HTMLDotFormElement;
+  };
+
+  interface HTMLDotFormColumnElement extends Components.DotFormColumn, HTMLStencilElement {}
+  var HTMLDotFormColumnElement: {
+    prototype: HTMLDotFormColumnElement;
+    new (): HTMLDotFormColumnElement;
+  };
+
+  interface HTMLDotFormRowElement extends Components.DotFormRow, HTMLStencilElement {}
+  var HTMLDotFormRowElement: {
+    prototype: HTMLDotFormRowElement;
+    new (): HTMLDotFormRowElement;
+  };
+
   interface HTMLDotInputCalendarElement extends Components.DotInputCalendar, HTMLStencilElement {}
   var HTMLDotInputCalendarElement: {
     prototype: HTMLDotInputCalendarElement;
@@ -1011,6 +1075,9 @@ declare global {
     'dot-date-range': HTMLDotDateRangeElement;
     'dot-date-time': HTMLDotDateTimeElement;
     'dot-error-message': HTMLDotErrorMessageElement;
+    'dot-form': HTMLDotFormElement;
+    'dot-form-column': HTMLDotFormColumnElement;
+    'dot-form-row': HTMLDotFormRowElement;
     'dot-input-calendar': HTMLDotInputCalendarElement;
     'dot-key-value': HTMLDotKeyValueElement;
     'dot-label': HTMLDotLabelElement;
@@ -1397,6 +1464,48 @@ declare namespace LocalJSX {
     'value'?: string;
   }
   interface DotErrorMessage {}
+  interface DotForm {
+    /**
+    * (optional) List of fields (variableName) separated by comma, to be shown
+    */
+    'fieldsToShow'?: string;
+    /**
+    * Layout metada to be rendered
+    */
+    'layout'?: DotCMSContentTypeLayoutRow[];
+    /**
+    * (optional) Text to be rendered on Reset button
+    */
+    'resetLabel'?: string;
+    /**
+    * (optional) Text to be rendered on Submit button
+    */
+    'submitLabel'?: string;
+    /**
+    * Content type variable name
+    */
+    'variable'?: string;
+  }
+  interface DotFormColumn {
+    /**
+    * Fields metada to be rendered
+    */
+    'column'?: DotCMSContentTypeLayoutColumn;
+    /**
+    * (optional) List of fields (variableName) separated by comma, to be shown
+    */
+    'fieldsToShow'?: string;
+  }
+  interface DotFormRow {
+    /**
+    * (optional) List of fields (variableName) separated by comma, to be shown
+    */
+    'fieldsToShow'?: string;
+    /**
+    * Fields metada to be rendered
+    */
+    'row'?: DotCMSContentTypeLayoutRow;
+  }
   interface DotInputCalendar {
     /**
     * (optional) Disables field's interaction
@@ -1868,6 +1977,9 @@ declare namespace LocalJSX {
     'dot-date-range': DotDateRange;
     'dot-date-time': DotDateTime;
     'dot-error-message': DotErrorMessage;
+    'dot-form': DotForm;
+    'dot-form-column': DotFormColumn;
+    'dot-form-row': DotFormRow;
     'dot-input-calendar': DotInputCalendar;
     'dot-key-value': DotKeyValue;
     'dot-label': DotLabel;
@@ -1900,6 +2012,9 @@ declare module "@stencil/core" {
       'dot-date-range': LocalJSX.DotDateRange & JSXBase.HTMLAttributes<HTMLDotDateRangeElement>;
       'dot-date-time': LocalJSX.DotDateTime & JSXBase.HTMLAttributes<HTMLDotDateTimeElement>;
       'dot-error-message': LocalJSX.DotErrorMessage & JSXBase.HTMLAttributes<HTMLDotErrorMessageElement>;
+      'dot-form': LocalJSX.DotForm & JSXBase.HTMLAttributes<HTMLDotFormElement>;
+      'dot-form-column': LocalJSX.DotFormColumn & JSXBase.HTMLAttributes<HTMLDotFormColumnElement>;
+      'dot-form-row': LocalJSX.DotFormRow & JSXBase.HTMLAttributes<HTMLDotFormRowElement>;
       'dot-input-calendar': LocalJSX.DotInputCalendar & JSXBase.HTMLAttributes<HTMLDotInputCalendarElement>;
       'dot-key-value': LocalJSX.DotKeyValue & JSXBase.HTMLAttributes<HTMLDotKeyValueElement>;
       'dot-label': LocalJSX.DotLabel & JSXBase.HTMLAttributes<HTMLDotLabelElement>;
