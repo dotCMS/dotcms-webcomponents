@@ -277,6 +277,60 @@ export namespace Components {
     */
     'value': string;
   }
+  interface DotDateRange {
+    /**
+    * (optional) Disables field's interaction
+    */
+    'disabled': boolean;
+    /**
+    * (optional) Date format used by the field when displayed
+    */
+    'displayFormat': string;
+    /**
+    * (optional) Hint text that suggest a clue of the field
+    */
+    'hint': string;
+    /**
+    * (optional) Text to be rendered next to input field
+    */
+    'label': string;
+    /**
+    * (optional) Max value that the field will allow to set
+    */
+    'max': string;
+    /**
+    * (optional) Min value that the field will allow to set
+    */
+    'min': string;
+    /**
+    * Name that will be used as ID
+    */
+    'name': string;
+    /**
+    * (optional) Text to be rendered next to presets field
+    */
+    'presetLabel': string;
+    /**
+    * (optional) Array of date presets formatted as [{ label: 'PRESET_LABEL', days: NUMBER }]
+    */
+    'presets': { label: string; days: number; }[];
+    /**
+    * (optional) Determine if it is needed
+    */
+    'required': boolean;
+    /**
+    * (optional) Text that be shown when required is set and condition not met
+    */
+    'requiredMessage': string;
+    /**
+    * Reset properties of the field, clear value and emit events.
+    */
+    'reset': () => Promise<void>;
+    /**
+    * (optional) Value formatted with start and end date splitted with a comma
+    */
+    'value': string;
+  }
   interface DotInputCalendar {
     /**
     * (optional) Disables field's interaction
@@ -650,6 +704,56 @@ export namespace Components {
     */
     'value': string;
   }
+  interface DotTime {
+    /**
+    * (optional) Disables field's interaction
+    */
+    'disabled': boolean;
+    /**
+    * (optional) Hint text that suggest a clue of the field
+    */
+    'hint': string;
+    /**
+    * (optional) Text to be rendered next to input field
+    */
+    'label': string;
+    /**
+    * (optional) Max, maximum value that the field will allow to set. Format should be  hh:mm:ss
+    */
+    'max': string;
+    /**
+    * (optional) Min, minimum value that the field will allow to set. Format should be hh:mm:ss
+    */
+    'min': string;
+    /**
+    * Name that will be used as ID
+    */
+    'name': string;
+    /**
+    * (optional) Determine if it is mandatory
+    */
+    'required': boolean;
+    /**
+    * (optional) Text that be shown when required is set and condition not met
+    */
+    'requiredMessage': string;
+    /**
+    * Reset properties of the field, clear value and emit events.
+    */
+    'reset': () => Promise<void>;
+    /**
+    * (optional) Step specifies the legal number intervals for the input field
+    */
+    'step': string;
+    /**
+    * (optional) Text that be shown when min or max are set and condition not met
+    */
+    'validationMessage': string;
+    /**
+    * Value format hh:mm:ss e.g., 15:22:00
+    */
+    'value': string;
+  }
   interface KeyValueForm {
     /**
     * (optional) Label for the add item button
@@ -747,6 +851,12 @@ declare global {
     new (): HTMLDotDateElement;
   };
 
+  interface HTMLDotDateRangeElement extends Components.DotDateRange, HTMLStencilElement {}
+  var HTMLDotDateRangeElement: {
+    prototype: HTMLDotDateRangeElement;
+    new (): HTMLDotDateRangeElement;
+  };
+
   interface HTMLDotInputCalendarElement extends Components.DotInputCalendar, HTMLStencilElement {}
   var HTMLDotInputCalendarElement: {
     prototype: HTMLDotInputCalendarElement;
@@ -801,6 +911,12 @@ declare global {
     new (): HTMLDotTextfieldElement;
   };
 
+  interface HTMLDotTimeElement extends Components.DotTime, HTMLStencilElement {}
+  var HTMLDotTimeElement: {
+    prototype: HTMLDotTimeElement;
+    new (): HTMLDotTimeElement;
+  };
+
   interface HTMLKeyValueFormElement extends Components.KeyValueForm, HTMLStencilElement {}
   var HTMLKeyValueFormElement: {
     prototype: HTMLKeyValueFormElement;
@@ -821,6 +937,7 @@ declare global {
     'dot-checkbox': HTMLDotCheckboxElement;
     'dot-chip': HTMLDotChipElement;
     'dot-date': HTMLDotDateElement;
+    'dot-date-range': HTMLDotDateRangeElement;
     'dot-input-calendar': HTMLDotInputCalendarElement;
     'dot-key-value': HTMLDotKeyValueElement;
     'dot-label': HTMLDotLabelElement;
@@ -830,6 +947,7 @@ declare global {
     'dot-tags': HTMLDotTagsElement;
     'dot-textarea': HTMLDotTextareaElement;
     'dot-textfield': HTMLDotTextfieldElement;
+    'dot-time': HTMLDotTimeElement;
     'key-value-form': HTMLKeyValueFormElement;
     'key-value-table': HTMLKeyValueTableElement;
   }
@@ -1074,8 +1192,8 @@ declare namespace LocalJSX {
     * Name that will be used as ID
     */
     'name'?: string;
-    'onStatusChange'?: (event: CustomEvent<DotFieldStatusEvent>) => void;
-    'onValueChange'?: (event: CustomEvent<DotFieldValueEvent>) => void;
+    'onDotStatusChange'?: (event: CustomEvent<DotFieldStatusEvent>) => void;
+    'onDotValueChange'?: (event: CustomEvent<DotFieldValueEvent>) => void;
     /**
     * (optional) Determine if it is mandatory
     */
@@ -1094,6 +1212,58 @@ declare namespace LocalJSX {
     'validationMessage'?: string;
     /**
     * Value format yyyy-mm-dd  e.g., 2005-12-01
+    */
+    'value'?: string;
+  }
+  interface DotDateRange {
+    /**
+    * (optional) Disables field's interaction
+    */
+    'disabled'?: boolean;
+    /**
+    * (optional) Date format used by the field when displayed
+    */
+    'displayFormat'?: string;
+    /**
+    * (optional) Hint text that suggest a clue of the field
+    */
+    'hint'?: string;
+    /**
+    * (optional) Text to be rendered next to input field
+    */
+    'label'?: string;
+    /**
+    * (optional) Max value that the field will allow to set
+    */
+    'max'?: string;
+    /**
+    * (optional) Min value that the field will allow to set
+    */
+    'min'?: string;
+    /**
+    * Name that will be used as ID
+    */
+    'name'?: string;
+    'onDotStatusChange'?: (event: CustomEvent<DotFieldStatusEvent>) => void;
+    'onDotValueChange'?: (event: CustomEvent<DotFieldValueEvent>) => void;
+    /**
+    * (optional) Text to be rendered next to presets field
+    */
+    'presetLabel'?: string;
+    /**
+    * (optional) Array of date presets formatted as [{ label: 'PRESET_LABEL', days: NUMBER }]
+    */
+    'presets'?: { label: string; days: number; }[];
+    /**
+    * (optional) Determine if it is needed
+    */
+    'required'?: boolean;
+    /**
+    * (optional) Text that be shown when required is set and condition not met
+    */
+    'requiredMessage'?: string;
+    /**
+    * (optional) Value formatted with start and end date splitted with a comma
     */
     'value'?: string;
   }
@@ -1451,6 +1621,54 @@ declare namespace LocalJSX {
     */
     'value'?: string;
   }
+  interface DotTime {
+    /**
+    * (optional) Disables field's interaction
+    */
+    'disabled'?: boolean;
+    /**
+    * (optional) Hint text that suggest a clue of the field
+    */
+    'hint'?: string;
+    /**
+    * (optional) Text to be rendered next to input field
+    */
+    'label'?: string;
+    /**
+    * (optional) Max, maximum value that the field will allow to set. Format should be  hh:mm:ss
+    */
+    'max'?: string;
+    /**
+    * (optional) Min, minimum value that the field will allow to set. Format should be hh:mm:ss
+    */
+    'min'?: string;
+    /**
+    * Name that will be used as ID
+    */
+    'name'?: string;
+    'onDotStatusChange'?: (event: CustomEvent<DotFieldStatusEvent>) => void;
+    'onDotValueChange'?: (event: CustomEvent<DotFieldValueEvent>) => void;
+    /**
+    * (optional) Determine if it is mandatory
+    */
+    'required'?: boolean;
+    /**
+    * (optional) Text that be shown when required is set and condition not met
+    */
+    'requiredMessage'?: string;
+    /**
+    * (optional) Step specifies the legal number intervals for the input field
+    */
+    'step'?: string;
+    /**
+    * (optional) Text that be shown when min or max are set and condition not met
+    */
+    'validationMessage'?: string;
+    /**
+    * Value format hh:mm:ss e.g., 15:22:00
+    */
+    'value'?: string;
+  }
   interface KeyValueForm {
     /**
     * (optional) Label for the add item button
@@ -1517,6 +1735,7 @@ declare namespace LocalJSX {
     'dot-checkbox': DotCheckbox;
     'dot-chip': DotChip;
     'dot-date': DotDate;
+    'dot-date-range': DotDateRange;
     'dot-input-calendar': DotInputCalendar;
     'dot-key-value': DotKeyValue;
     'dot-label': DotLabel;
@@ -1526,6 +1745,7 @@ declare namespace LocalJSX {
     'dot-tags': DotTags;
     'dot-textarea': DotTextarea;
     'dot-textfield': DotTextfield;
+    'dot-time': DotTime;
     'key-value-form': KeyValueForm;
     'key-value-table': KeyValueTable;
   }
@@ -1545,6 +1765,7 @@ declare module "@stencil/core" {
       'dot-checkbox': LocalJSX.DotCheckbox & JSXBase.HTMLAttributes<HTMLDotCheckboxElement>;
       'dot-chip': LocalJSX.DotChip & JSXBase.HTMLAttributes<HTMLDotChipElement>;
       'dot-date': LocalJSX.DotDate & JSXBase.HTMLAttributes<HTMLDotDateElement>;
+      'dot-date-range': LocalJSX.DotDateRange & JSXBase.HTMLAttributes<HTMLDotDateRangeElement>;
       'dot-input-calendar': LocalJSX.DotInputCalendar & JSXBase.HTMLAttributes<HTMLDotInputCalendarElement>;
       'dot-key-value': LocalJSX.DotKeyValue & JSXBase.HTMLAttributes<HTMLDotKeyValueElement>;
       'dot-label': LocalJSX.DotLabel & JSXBase.HTMLAttributes<HTMLDotLabelElement>;
@@ -1554,6 +1775,7 @@ declare module "@stencil/core" {
       'dot-tags': LocalJSX.DotTags & JSXBase.HTMLAttributes<HTMLDotTagsElement>;
       'dot-textarea': LocalJSX.DotTextarea & JSXBase.HTMLAttributes<HTMLDotTextareaElement>;
       'dot-textfield': LocalJSX.DotTextfield & JSXBase.HTMLAttributes<HTMLDotTextfieldElement>;
+      'dot-time': LocalJSX.DotTime & JSXBase.HTMLAttributes<HTMLDotTimeElement>;
       'key-value-form': LocalJSX.KeyValueForm & JSXBase.HTMLAttributes<HTMLKeyValueFormElement>;
       'key-value-table': LocalJSX.KeyValueTable & JSXBase.HTMLAttributes<HTMLKeyValueTableElement>;
     }
