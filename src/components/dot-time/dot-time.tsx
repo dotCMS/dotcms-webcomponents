@@ -113,7 +113,7 @@ export class DotTimeComponent {
         this.max = checkProp<DotTimeComponent, string>(this, 'max', 'time');
     }
 
-    @Listen('_valueChange')
+    @Listen('_dotValueChange')
     emitValueChange(event: CustomEvent) {
         event.stopImmediatePropagation();
         const valueEvent: DotFieldValueEvent = event.detail;
@@ -121,7 +121,7 @@ export class DotTimeComponent {
         this.dotValueChange.emit(valueEvent);
     }
 
-    @Listen('_statusChange')
+    @Listen('_dotStatusChange')
     emitStatusChange(event: CustomEvent) {
         event.stopImmediatePropagation();
         const inputCalendarStatus: DotInputCalendarStatusEvent = event.detail;
@@ -137,15 +137,9 @@ export class DotTimeComponent {
         });
     }
 
-    hostData() {
-        return {
-            class: this.classNames
-        };
-    }
-
     render() {
         return (
-            <Host>
+            <Host class={{ ...this.classNames }}>
                 <dot-label label={this.label} required={this.required} name={this.name}>
                     <dot-input-calendar
                         aria-describedby={getHintId(this.hint)}
