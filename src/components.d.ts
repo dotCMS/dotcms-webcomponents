@@ -389,6 +389,7 @@ export namespace Components {
     */
     'value': string;
   }
+  interface DotErrorMessage {}
   interface DotInputCalendar {
     /**
     * (optional) Disables field's interaction
@@ -921,6 +922,12 @@ declare global {
     new (): HTMLDotDateTimeElement;
   };
 
+  interface HTMLDotErrorMessageElement extends Components.DotErrorMessage, HTMLStencilElement {}
+  var HTMLDotErrorMessageElement: {
+    prototype: HTMLDotErrorMessageElement;
+    new (): HTMLDotErrorMessageElement;
+  };
+
   interface HTMLDotInputCalendarElement extends Components.DotInputCalendar, HTMLStencilElement {}
   var HTMLDotInputCalendarElement: {
     prototype: HTMLDotInputCalendarElement;
@@ -1003,6 +1010,7 @@ declare global {
     'dot-date': HTMLDotDateElement;
     'dot-date-range': HTMLDotDateRangeElement;
     'dot-date-time': HTMLDotDateTimeElement;
+    'dot-error-message': HTMLDotErrorMessageElement;
     'dot-input-calendar': HTMLDotInputCalendarElement;
     'dot-key-value': HTMLDotKeyValueElement;
     'dot-label': HTMLDotLabelElement;
@@ -1388,6 +1396,7 @@ declare namespace LocalJSX {
     */
     'value'?: string;
   }
+  interface DotErrorMessage {}
   interface DotInputCalendar {
     /**
     * (optional) Disables field's interaction
@@ -1858,6 +1867,7 @@ declare namespace LocalJSX {
     'dot-date': DotDate;
     'dot-date-range': DotDateRange;
     'dot-date-time': DotDateTime;
+    'dot-error-message': DotErrorMessage;
     'dot-input-calendar': DotInputCalendar;
     'dot-key-value': DotKeyValue;
     'dot-label': DotLabel;
@@ -1889,6 +1899,7 @@ declare module "@stencil/core" {
       'dot-date': LocalJSX.DotDate & JSXBase.HTMLAttributes<HTMLDotDateElement>;
       'dot-date-range': LocalJSX.DotDateRange & JSXBase.HTMLAttributes<HTMLDotDateRangeElement>;
       'dot-date-time': LocalJSX.DotDateTime & JSXBase.HTMLAttributes<HTMLDotDateTimeElement>;
+      'dot-error-message': LocalJSX.DotErrorMessage & JSXBase.HTMLAttributes<HTMLDotErrorMessageElement>;
       'dot-input-calendar': LocalJSX.DotInputCalendar & JSXBase.HTMLAttributes<HTMLDotInputCalendarElement>;
       'dot-key-value': LocalJSX.DotKeyValue & JSXBase.HTMLAttributes<HTMLDotKeyValueElement>;
       'dot-label': LocalJSX.DotLabel & JSXBase.HTMLAttributes<HTMLDotLabelElement>;
