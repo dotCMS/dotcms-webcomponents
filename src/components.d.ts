@@ -14,6 +14,10 @@ import {
   DotInputCalendarStatusEvent,
   DotKeyValueField,
 } from './models';
+import {
+  DotCMSContentTypeLayoutColumn,
+  DotCMSContentTypeLayoutRow,
+} from 'dotcms-models';
 
 export namespace Components {
   interface DotAutocomplete {
@@ -427,6 +431,47 @@ export namespace Components {
     * Value specifies the value of the <input> element
     */
     'value': string;
+  interface DotForm {
+    /**
+    * (optional) List of fields (variableName) separated by comma, to be shown
+    */
+    'fieldsToShow': string;
+    /**
+    * Layout metada to be rendered
+    */
+    'layout': DotCMSContentTypeLayoutRow[];
+    /**
+    * (optional) Text to be rendered on Reset button
+    */
+    'resetLabel': string;
+    /**
+    * (optional) Text to be rendered on Submit button
+    */
+    'submitLabel': string;
+    /**
+    * Content type variable name
+    */
+    'variable': string;
+  }
+  interface DotFormColumn {
+    /**
+    * Fields metada to be rendered
+    */
+    'column': DotCMSContentTypeLayoutColumn;
+    /**
+    * (optional) List of fields (variableName) separated by comma, to be shown
+    */
+    'fieldsToShow': string;
+  }
+  interface DotFormRow {
+    /**
+    * (optional) List of fields (variableName) separated by comma, to be shown
+    */
+    'fieldsToShow': string;
+    /**
+    * Fields metada to be rendered
+    */
+    'row': DotCMSContentTypeLayoutRow;
   }
   interface DotKeyValue {
     /**
@@ -904,6 +949,7 @@ declare global {
     new (): HTMLDotChipElement;
   };
 
+<<<<<<< HEAD
   interface HTMLDotDateElement extends Components.DotDate, HTMLStencilElement {}
   var HTMLDotDateElement: {
     prototype: HTMLDotDateElement;
@@ -932,6 +978,24 @@ declare global {
   var HTMLDotInputCalendarElement: {
     prototype: HTMLDotInputCalendarElement;
     new (): HTMLDotInputCalendarElement;
+=======
+  interface HTMLDotFormElement extends Components.DotForm, HTMLStencilElement {}
+  var HTMLDotFormElement: {
+    prototype: HTMLDotFormElement;
+    new (): HTMLDotFormElement;
+  };
+
+  interface HTMLDotFormColumnElement extends Components.DotFormColumn, HTMLStencilElement {}
+  var HTMLDotFormColumnElement: {
+    prototype: HTMLDotFormColumnElement;
+    new (): HTMLDotFormColumnElement;
+  };
+
+  interface HTMLDotFormRowElement extends Components.DotFormRow, HTMLStencilElement {}
+  var HTMLDotFormRowElement: {
+    prototype: HTMLDotFormRowElement;
+    new (): HTMLDotFormRowElement;
+>>>>>>> a13d3fb... Add dot-form
   };
 
   interface HTMLDotKeyValueElement extends Components.DotKeyValue, HTMLStencilElement {}
@@ -1007,11 +1071,17 @@ declare global {
     'dot-binary-upload-button': HTMLDotBinaryUploadButtonElement;
     'dot-checkbox': HTMLDotCheckboxElement;
     'dot-chip': HTMLDotChipElement;
+<<<<<<< HEAD
     'dot-date': HTMLDotDateElement;
     'dot-date-range': HTMLDotDateRangeElement;
     'dot-date-time': HTMLDotDateTimeElement;
     'dot-error-message': HTMLDotErrorMessageElement;
     'dot-input-calendar': HTMLDotInputCalendarElement;
+=======
+    'dot-form': HTMLDotFormElement;
+    'dot-form-column': HTMLDotFormColumnElement;
+    'dot-form-row': HTMLDotFormRowElement;
+>>>>>>> a13d3fb... Add dot-form
     'dot-key-value': HTMLDotKeyValueElement;
     'dot-label': HTMLDotLabelElement;
     'dot-multi-select': HTMLDotMultiSelectElement;
@@ -1240,6 +1310,7 @@ declare namespace LocalJSX {
     'label'?: string;
     'onRemove'?: (event: CustomEvent<String>) => void;
   }
+<<<<<<< HEAD
   interface DotDate {
     /**
     * (optional) Disables field's interaction
@@ -1432,6 +1503,49 @@ declare namespace LocalJSX {
     * Value specifies the value of the <input> element
     */
     'value'?: string;
+=======
+  interface DotForm {
+    /**
+    * (optional) List of fields (variableName) separated by comma, to be shown
+    */
+    'fieldsToShow'?: string;
+    /**
+    * Layout metada to be rendered
+    */
+    'layout'?: DotCMSContentTypeLayoutRow[];
+    /**
+    * (optional) Text to be rendered on Reset button
+    */
+    'resetLabel'?: string;
+    /**
+    * (optional) Text to be rendered on Submit button
+    */
+    'submitLabel'?: string;
+    /**
+    * Content type variable name
+    */
+    'variable'?: string;
+  }
+  interface DotFormColumn {
+    /**
+    * Fields metada to be rendered
+    */
+    'column'?: DotCMSContentTypeLayoutColumn;
+    /**
+    * (optional) List of fields (variableName) separated by comma, to be shown
+    */
+    'fieldsToShow'?: string;
+  }
+  interface DotFormRow {
+    /**
+    * (optional) List of fields (variableName) separated by comma, to be shown
+    */
+    'fieldsToShow'?: string;
+    /**
+    * Fields metada to be rendered
+    */
+    'row'?: DotCMSContentTypeLayoutRow;
+>>>>>>> a13d3fb... Add dot-form
   }
   interface DotKeyValue {
     /**
@@ -1864,11 +1978,17 @@ declare namespace LocalJSX {
     'dot-binary-upload-button': DotBinaryUploadButton;
     'dot-checkbox': DotCheckbox;
     'dot-chip': DotChip;
+<<<<<<< HEAD
     'dot-date': DotDate;
     'dot-date-range': DotDateRange;
     'dot-date-time': DotDateTime;
     'dot-error-message': DotErrorMessage;
     'dot-input-calendar': DotInputCalendar;
+=======
+    'dot-form': DotForm;
+    'dot-form-column': DotFormColumn;
+    'dot-form-row': DotFormRow;
+>>>>>>> a13d3fb... Add dot-form
     'dot-key-value': DotKeyValue;
     'dot-label': DotLabel;
     'dot-multi-select': DotMultiSelect;
@@ -1896,11 +2016,17 @@ declare module "@stencil/core" {
       'dot-binary-upload-button': LocalJSX.DotBinaryUploadButton & JSXBase.HTMLAttributes<HTMLDotBinaryUploadButtonElement>;
       'dot-checkbox': LocalJSX.DotCheckbox & JSXBase.HTMLAttributes<HTMLDotCheckboxElement>;
       'dot-chip': LocalJSX.DotChip & JSXBase.HTMLAttributes<HTMLDotChipElement>;
+<<<<<<< HEAD
       'dot-date': LocalJSX.DotDate & JSXBase.HTMLAttributes<HTMLDotDateElement>;
       'dot-date-range': LocalJSX.DotDateRange & JSXBase.HTMLAttributes<HTMLDotDateRangeElement>;
       'dot-date-time': LocalJSX.DotDateTime & JSXBase.HTMLAttributes<HTMLDotDateTimeElement>;
       'dot-error-message': LocalJSX.DotErrorMessage & JSXBase.HTMLAttributes<HTMLDotErrorMessageElement>;
       'dot-input-calendar': LocalJSX.DotInputCalendar & JSXBase.HTMLAttributes<HTMLDotInputCalendarElement>;
+=======
+      'dot-form': LocalJSX.DotForm & JSXBase.HTMLAttributes<HTMLDotFormElement>;
+      'dot-form-column': LocalJSX.DotFormColumn & JSXBase.HTMLAttributes<HTMLDotFormColumnElement>;
+      'dot-form-row': LocalJSX.DotFormRow & JSXBase.HTMLAttributes<HTMLDotFormRowElement>;
+>>>>>>> a13d3fb... Add dot-form
       'dot-key-value': LocalJSX.DotKeyValue & JSXBase.HTMLAttributes<HTMLDotKeyValueElement>;
       'dot-label': LocalJSX.DotLabel & JSXBase.HTMLAttributes<HTMLDotLabelElement>;
       'dot-multi-select': LocalJSX.DotMultiSelect & JSXBase.HTMLAttributes<HTMLDotMultiSelectElement>;
