@@ -145,6 +145,7 @@ describe('getTagError', () => {
     it('should return error tag', () => {
         const message = 'Error Msg';
         const jsxTag: any = getTagError(true, message);
+        console.log('--------jsxTag--------', jsxTag);
         expect(jsxTag.vattrs).toEqual({ class: 'dot-field__error-message' });
         expect(jsxTag.vchildren).toEqual([{ vtext: message }]);
     });
@@ -175,7 +176,7 @@ describe('updateStatus', () => {
     });
 });
 
-xdescribe('isValidURL', () => {
+describe('isValidURL', () => {
     // new URL is not available in headless browser.
 });
 

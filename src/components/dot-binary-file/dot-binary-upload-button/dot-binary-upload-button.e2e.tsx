@@ -98,7 +98,7 @@ describe('dot-binary-upload-button', () => {
     });
 
     // TODO: Find a a way to Mock a input.files attribute.
-    xdescribe('@Events', () => {
+    describe('@Events', () => {
         let spyFileChangeEvent: EventSpy;
 
         beforeEach(async () => {

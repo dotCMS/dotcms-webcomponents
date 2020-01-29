@@ -1,6 +1,6 @@
 import { newE2EPage, E2EElement, E2EPage } from '@stencil/core/testing';
 import { EventSpy } from '@stencil/core/dist/declarations';
-import { dotTestUtil } from '../../utils';
+import { dotTestUtil } from '../../test';
 
 const getDays = (page: E2EPage) => page.findAll('.flatpickr-day');
 const getInput = (page: E2EPage) => page.find('input.flatpickr-input.form-control');
@@ -345,8 +345,8 @@ describe('dot-date-range', () => {
                     value="2019-11-25,2019-11-27">
                 </dot-date-range>`
             });
-            spyStatusChangeEvent = await page.spyOnEvent('statusChange');
-            spyValueChangeEvent = await page.spyOnEvent('valueChange');
+            spyStatusChangeEvent = await page.spyOnEvent('dotStatusChange');
+            spyValueChangeEvent = await page.spyOnEvent('dotValueChange');
 
             element = await page.find('dot-date-range');
         });
@@ -402,8 +402,8 @@ describe('dot-date-range', () => {
             page = await newE2EPage({
                 html: `<dot-date-range name="testName"></dot-date-range>`
             });
-            spyStatusChangeEvent = await page.spyOnEvent('statusChange');
-            spyValueChangeEvent = await page.spyOnEvent('valueChange');
+            spyStatusChangeEvent = await page.spyOnEvent('dotStatusChange');
+            spyValueChangeEvent = await page.spyOnEvent('dotValueChange');
 
             element = await page.find('dot-date-range');
         });

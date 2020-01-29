@@ -1,6 +1,6 @@
 import { E2EElement, E2EPage, newE2EPage } from '@stencil/core/testing';
 import { EventSpy } from '@stencil/core/dist/declarations';
-import { dotTestUtil } from '../../utils';
+import { dotTestUtil } from '../../test';
 
 describe('dot-tags', () => {
     let page: E2EPage;
@@ -120,7 +120,7 @@ describe('dot-tags', () => {
 
         describe('data', () => {
             it('should pass data down', async () => {
-                spyValueChangeEvent = await page.spyOnEvent('valueChange');
+                spyValueChangeEvent = await page.spyOnEvent('dotValueChange');
                 const mock = async () => ['hello', 'world'];
                 element.setProperty('data', mock);
                 await page.waitForChanges();
@@ -336,15 +336,15 @@ describe('dot-tags', () => {
     });
 
     describe('@Events', () => {
-        describe('valueChange and statusChange', () => {
+        describe('dotValueChange and dotStatusChange', () => {
             beforeEach(async () => {
                 await createEmptyDotTags();
             });
 
             beforeEach(async () => {
                 element.setAttribute('name', 'fieldName');
-                spyValueChangeEvent = await page.spyOnEvent('valueChange');
-                spyStatusChangeEvent = await page.spyOnEvent('statusChange');
+                spyValueChangeEvent = await page.spyOnEvent('dotValueChange');
+                spyStatusChangeEvent = await page.spyOnEvent('dotStatusChange');
             });
 
             it('should emit on add', async () => {
@@ -381,7 +381,7 @@ describe('dot-tags', () => {
             });
         });
 
-        describe('statusChange', () => {
+        describe('dotStatusChange', () => {
             it('should emit on lost focus in autocomplete', async () => {
                 await createEmptyDotTags();
                 const autocomplete = await getAutoComplete();
@@ -417,8 +417,8 @@ describe('dot-tags', () => {
         beforeEach(async () => {
             element.setAttribute('name', 'fieldName');
             element.setAttribute('value', 'some,tag');
-            spyValueChangeEvent = await page.spyOnEvent('valueChange');
-            spyStatusChangeEvent = await page.spyOnEvent('statusChange');
+            spyValueChangeEvent = await page.spyOnEvent('dotValueChange');
+            spyStatusChangeEvent = await page.spyOnEvent('dotStatusChange');
 
             await page.waitForChanges();
         });

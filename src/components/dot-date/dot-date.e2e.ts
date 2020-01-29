@@ -1,6 +1,6 @@
 import { E2EElement, E2EPage, newE2EPage } from '@stencil/core/testing';
 import { EventSpy } from '@stencil/core/dist/declarations';
-import { dotTestUtil } from '../../utils';
+import { dotTestUtil } from '../../test';
 
 describe('dot-date', () => {
     let page: E2EPage;
@@ -257,8 +257,8 @@ describe('dot-date', () => {
         let spyValueChangeEvent: EventSpy;
 
         beforeEach(async () => {
-            spyStatusChangeEvent = await page.spyOnEvent('statusChange');
-            spyValueChangeEvent = await page.spyOnEvent('valueChange');
+            spyStatusChangeEvent = await page.spyOnEvent('dotStatusChange');
+            spyValueChangeEvent = await page.spyOnEvent('dotValueChange');
         });
 
         describe('value and status changes', () => {
@@ -274,7 +274,7 @@ describe('dot-date', () => {
             });
 
             it('should send value when dot-input-calendar send it', async () => {
-                inputCalendar.triggerEvent('_valueChange', {
+                inputCalendar.triggerEvent('_dotValueChange', {
                     detail: {
                         name: '',
                         value: '2019-01-01'
@@ -304,10 +304,10 @@ describe('dot-date', () => {
             });
 
             it('should send status and value change and stop dot-input-calendar events', async () => {
-                const evt_statusChange = await page.spyOnEvent('_statusChange');
-                const evt_valueChange = await page.spyOnEvent('_valueChange');
+                const evt_dotStatusChange = await page.spyOnEvent('_dotStatusChange');
+                const evt_dotValueChange = await page.spyOnEvent('_dotValueChange');
 
-                inputCalendar.triggerEvent('_valueChange', {
+                inputCalendar.triggerEvent('_dotValueChange', {
                     detail: {
                         name: '',
                         value: '2019-01-01'
@@ -327,8 +327,8 @@ describe('dot-date', () => {
                     name: '',
                     value: '2019-01-01'
                 });
-                expect(evt_statusChange.events.length).toEqual(0);
-                expect(evt_valueChange.events.length).toEqual(0);
+                expect(evt_dotStatusChange.events.length).toEqual(0);
+                expect(evt_dotValueChange.events.length).toEqual(0);
             });
         });
 

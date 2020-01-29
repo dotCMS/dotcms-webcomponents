@@ -120,8 +120,8 @@ describe('dot-input-calendar', () => {
         let spyValueChange: EventSpy;
 
         beforeEach(async () => {
-            spyValueChange = await page.spyOnEvent('_valueChange');
-            spyStatusChangeEvent = await page.spyOnEvent('_statusChange');
+            spyValueChange = await page.spyOnEvent('_dotValueChange');
+            spyStatusChangeEvent = await page.spyOnEvent('_dotStatusChange');
         });
 
         describe('status and value change', () => {

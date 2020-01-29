@@ -1,6 +1,6 @@
 import { E2EElement, E2EPage, newE2EPage } from '@stencil/core/testing';
 import { EventSpy } from '@stencil/core/dist/declarations';
-import { dotTestUtil } from '../../utils';
+import { dotTestUtil } from '../../test';
 
 describe('dot-date-time', () => {
     let page: E2EPage;
@@ -367,8 +367,8 @@ describe('dot-date-time', () => {
         let spyValueChangeEvent: EventSpy;
 
         beforeEach(async () => {
-            spyStatusChangeEvent = await page.spyOnEvent('statusChange');
-            spyValueChangeEvent = await page.spyOnEvent('valueChange');
+            spyStatusChangeEvent = await page.spyOnEvent('dotStatusChange');
+            spyValueChangeEvent = await page.spyOnEvent('dotValueChange');
         });
 
         describe('value and status changes', () => {
@@ -384,13 +384,13 @@ describe('dot-date-time', () => {
             });
 
             it('should send value when both date and time are set', async () => {
-                dateInput.triggerEvent('_valueChange', {
+                dateInput.triggerEvent('_dotValueChange', {
                     detail: {
                         name: '-date',
                         value: '2019-01-01'
                     }
                 });
-                timeInput.triggerEvent('_valueChange', {
+                timeInput.triggerEvent('_dotValueChange', {
                     detail: {
                         name: '-time',
                         value: '10:10:10'
@@ -422,16 +422,16 @@ describe('dot-date-time', () => {
             });
 
             it('should send status and value change and stop dot-input-calendar events', async () => {
-                const evt_statusChange = await page.spyOnEvent('_statusChange');
-                const evt_valueChange = await page.spyOnEvent('_valueChange');
+                const evt_dotStatusChange = await page.spyOnEvent('_dotStatusChange');
+                const evt_dotValueChange = await page.spyOnEvent('_dotValueChange');
 
-                dateInput.triggerEvent('_valueChange', {
+                dateInput.triggerEvent('_dotValueChange', {
                     detail: {
                         name: '-date',
                         value: '2019-01-01'
                     }
                 });
-                timeInput.triggerEvent('_valueChange', {
+                timeInput.triggerEvent('_dotValueChange', {
                     detail: {
                         name: '-time',
                         value: '10:10:10'
@@ -453,8 +453,8 @@ describe('dot-date-time', () => {
                     value: '2019-01-01 10:10:10'
                 });
 
-                expect(evt_statusChange.events.length).toEqual(0);
-                expect(evt_valueChange.events.length).toEqual(0);
+                expect(evt_dotStatusChange.events.length).toEqual(0);
+                expect(evt_dotValueChange.events.length).toEqual(0);
             });
         });
 

@@ -1,6 +1,6 @@
 import { E2EElement, E2EPage, newE2EPage } from '@stencil/core/testing';
 import { EventSpy } from '@stencil/core/dist/declarations';
-import { dotTestUtil } from '../../utils';
+import { dotTestUtil } from '../../test';
 
 describe('dot-textarea', () => {
     let page: E2EPage;
@@ -268,8 +268,8 @@ describe('dot-textarea', () => {
             element = await page.find('dot-textarea');
             textarea = await page.find('textarea');
 
-            spyStatusChangeEvent = await page.spyOnEvent('statusChange');
-            spyValueChangeEvent = await page.spyOnEvent('valueChange');
+            spyStatusChangeEvent = await page.spyOnEvent('dotStatusChange');
+            spyValueChangeEvent = await page.spyOnEvent('dotValueChange');
         });
 
         describe('status and value change', () => {

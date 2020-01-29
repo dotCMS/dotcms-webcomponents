@@ -1,6 +1,6 @@
 import { newE2EPage, E2EElement, E2EPage } from '@stencil/core/testing';
 import { EventSpy } from '@stencil/core/dist/declarations';
-import { dotTestUtil } from '../../utils';
+import { dotTestUtil } from '../../test';
 
 const getSelect = (page: E2EPage) => page.find('select');
 const getOptions = (page: E2EPage) => page.findAll('option');
@@ -352,8 +352,8 @@ describe('dot-multi-select', () => {
                     </dot-multi-select>
                 </dot-form>`
             });
-            spyStatusChangeEvent = await page.spyOnEvent('statusChange');
-            spyValueChangeEvent = await page.spyOnEvent('valueChange');
+            spyStatusChangeEvent = await page.spyOnEvent('dotStatusChange');
+            spyValueChangeEvent = await page.spyOnEvent('dotValueChange');
 
             element = await page.find('dot-multi-select');
         });
@@ -408,8 +408,8 @@ describe('dot-multi-select', () => {
                     value="2">
                 </dot-multi-select>`
             });
-            spyStatusChangeEvent = await page.spyOnEvent('statusChange');
-            spyValueChangeEvent = await page.spyOnEvent('valueChange');
+            spyStatusChangeEvent = await page.spyOnEvent('dotStatusChange');
+            spyValueChangeEvent = await page.spyOnEvent('dotValueChange');
 
             element = await page.find('dot-multi-select');
         });

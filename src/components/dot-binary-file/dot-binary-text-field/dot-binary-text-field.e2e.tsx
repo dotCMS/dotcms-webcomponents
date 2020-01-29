@@ -143,7 +143,7 @@ describe('dot-binary-text-field', () => {
         });
 
         //TODO: can't mock a ClipboardEvent.
-        xdescribe('paste', () => {
+        describe('paste', () => {
             beforeEach(async () => {
                 // input.triggerEvent('paste', {  detail: { test: 'TEST' } });
             });

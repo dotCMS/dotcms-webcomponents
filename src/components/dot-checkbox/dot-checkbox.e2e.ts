@@ -1,6 +1,6 @@
 import { newE2EPage, E2EElement, E2EPage } from '@stencil/core/testing';
 import { EventSpy } from '@stencil/core/dist/declarations';
-import { dotTestUtil } from '../../utils';
+import { dotTestUtil } from '../../test';
 
 const getOptions = (page: E2EPage) => page.findAll('input');
 
@@ -346,14 +346,14 @@ describe('dot-checkbox', () => {
                     </dot-checkbox>
                 </dot-form>`
             });
-            spyStatusChangeEvent = await page.spyOnEvent('statusChange');
-            spyValueChangeEvent = await page.spyOnEvent('valueChange');
+            spyStatusChangeEvent = await page.spyOnEvent('dotStatusChange');
+            spyValueChangeEvent = await page.spyOnEvent('dotValueChange');
 
             element = await page.find('dot-checkbox');
         });
 
         describe('status and value change', () => {
-            it('should emit default valueChange', async () => {
+            it('should emit default dotValueChange', async () => {
                 const form = await page.find('dot-form');
                 expect(form).toHaveClasses(dotTestUtil.class.emptyPristineInvalid);
             });
@@ -386,8 +386,8 @@ describe('dot-checkbox', () => {
                     options="value|0,valueA|1,valueB|2">
                 </dot-checkbox>`
             });
-            spyStatusChangeEvent = await page.spyOnEvent('statusChange');
-            spyValueChangeEvent = await page.spyOnEvent('valueChange');
+            spyStatusChangeEvent = await page.spyOnEvent('dotStatusChange');
+            spyValueChangeEvent = await page.spyOnEvent('dotValueChange');
 
             element = await page.find('dot-checkbox');
         });
