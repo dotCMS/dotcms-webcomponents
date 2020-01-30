@@ -57,12 +57,12 @@ export const Time = () => {
         }
     ];
 
-    const date = document.createElement('dot-time');
+    const time = document.createElement('dot-time');
 
     props.forEach(({ name, content }) => {
-        date[name] = content;
+        time[name] = content;
     });
 
-    return date;
+    return time;
 };
 
