@@ -1,6 +1,6 @@
 import { Component, Element, Event, EventEmitter, Prop, State, Host, h } from '@stencil/core';
-import { DotBinaryFileEvent, DotBinaryMessageError, DotFieldStatus } from '../../../models';
-import { getErrorClass, getHintId, isFileAllowed, isValidURL } from '../../../utils';
+import { DotBinaryFileEvent, DotBinaryMessageError, DotFieldStatus } from '../../../../models';
+import { getErrorClass, getHintId, isFileAllowed, isValidURL } from '../../../../utils';
 
 /**
  * Represent a dotcms text field for the binary file element.

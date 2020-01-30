@@ -1,6 +1,5 @@
 export default {
-    title: "Custom Fields/TextField"
+    title: 'Custom Fields'
 };
 
-export const Normal = () => `<dot-textfield label="Label" />`;
-export const Required = () => `<dot-textfield label="Label" required="true" />`;
+export const TextField = () => `<dot-textfield label="Label" />`;
