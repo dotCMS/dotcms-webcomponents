@@ -9,7 +9,7 @@ export default {
     }
 };
 
-export const DateTime = () => {
+export const MultiSelect = () => {
     const props = [
         {
             name: 'value',
