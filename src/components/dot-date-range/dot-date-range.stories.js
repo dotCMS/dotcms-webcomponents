@@ -1,5 +1,5 @@
 import readme from './readme.md';
-import { withKnobs, text, boolean, object } from '@storybook/addon-knobs';
+import { withKnobs, text, boolean } from '@storybook/addon-knobs';
 
 export default {
     title: 'Custom Fields',
