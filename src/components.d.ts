@@ -8,12 +8,14 @@
 
 import { HTMLStencilElement, JSXBase } from '@stencil/core/internal';
 import {
-  DotBinaryFileEvent,
   DotFieldStatusEvent,
   DotFieldValueEvent,
   DotInputCalendarStatusEvent,
-  DotKeyValueField,
 } from './models';
+import {
+  DotBinaryFileEvent,
+  DotKeyValueField,
+} from './components/models';
 import {
   DotCMSContentTypeLayoutColumn,
   DotCMSContentTypeLayoutRow,
