@@ -1,7 +1,7 @@
 import { newE2EPage, E2EPage, E2EElement } from '@stencil/core/testing';
 import { dotFormLayoutMock } from '../../../test';
 
-xdescribe('dot-form-row', () => {
+describe('dot-form-row', () => {
     let page: E2EPage;
     let element: E2EElement;
 
@@ -12,7 +12,7 @@ xdescribe('dot-form-row', () => {
         element = await page.find('dot-form');
     });
 
-    xdescribe('columns', () => {
+    describe('columns', () => {
         beforeEach(async () => {
             element.setProperty('layout', dotFormLayoutMock);
             element.setProperty('fieldsToShow', 'test');

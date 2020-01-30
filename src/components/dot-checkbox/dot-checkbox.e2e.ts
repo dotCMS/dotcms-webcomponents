@@ -290,7 +290,6 @@ describe('dot-checkbox', () => {
                 element.setProperty('required', wrongValue);
                 element.setProperty('requiredMessage', wrongValue);
                 await page.waitForChanges();
-                console.log()
                 const errorElement = await dotTestUtil.getErrorMessage(page);
                 expect(errorElement).toBeNull();
             });

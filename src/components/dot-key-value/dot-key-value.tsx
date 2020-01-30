@@ -155,7 +155,6 @@ export class DotKeyValueComponent {
 
     @Listen('add')
     addItemHandler({ detail }: CustomEvent<DotKeyValueField>): void {
-        console.log(detail)
         this.items = [...this.items, detail];
         this.refreshStatus();
         this.emitChanges();

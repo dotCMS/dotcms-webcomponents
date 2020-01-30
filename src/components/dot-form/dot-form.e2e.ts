@@ -1,9 +1,9 @@
 import { newE2EPage, E2EPage, E2EElement } from '@stencil/core/testing';
 import { EventSpy } from '@stencil/core/dist/declarations';
-import { dotTestUtil } from '../../utils';
+import { dotTestUtil } from '../../test';
 import { fieldMockNotRequired, dotFormLayoutMock } from '../../test';
 
-xdescribe('dot-form', () => {
+describe('dot-form', () => {
     let page: E2EPage;
     let element: E2EElement;
     let submitSpy: EventSpy;
@@ -35,7 +35,7 @@ xdescribe('dot-form', () => {
         submitSpy = await element.spyOnEvent('onSubmit');
     });
 
-    xdescribe('css class', () => {
+    describe('css class', () => {
         beforeEach(async () => {
             element.setProperty('layout', fieldMockNotRequired);
             await page.waitForChanges();
@@ -87,7 +87,7 @@ xdescribe('dot-form', () => {
         });
     });
 
-    xdescribe('rows', () => {
+    describe('rows', () => {
         beforeEach(async () => {
             element.setProperty('layout', dotFormLayoutMock);
             element.setProperty('fieldsToShow', 'test');
@@ -106,8 +106,8 @@ xdescribe('dot-form', () => {
         });
     });
 
-    xdescribe('@Props', () => {
-        xdescribe('fieldsToShow', () => {
+    describe('@Props', () => {
+        describe('fieldsToShow', () => {
             beforeEach(() => {
                 element.setProperty('layout', dotFormLayoutMock);
             });
@@ -132,7 +132,7 @@ xdescribe('dot-form', () => {
             });
         });
 
-        xdescribe('resetLabel', () => {
+        describe('resetLabel', () => {
             it('should set default label', async () => {
                 const button = await getResetButton();
                 expect(button.innerText).toBe('Reset');
@@ -147,7 +147,7 @@ xdescribe('dot-form', () => {
             });
         });
 
-        xdescribe('submitLabel', () => {
+        describe('submitLabel', () => {
             it('should set default label', async () => {
                 const button = await getSubmitButton();
                 expect(button.innerText).toBe('Submit');
@@ -162,7 +162,7 @@ xdescribe('dot-form', () => {
             });
         });
 
-        xdescribe('fields', () => {
+        describe('fields', () => {
             beforeEach(() => {
                 element.setProperty('layout', dotFormLayoutMock);
             });
@@ -180,13 +180,13 @@ xdescribe('dot-form', () => {
         });
     });
 
-    xdescribe('@Events', () => {
+    describe('@Events', () => {
         beforeEach(async () => {
             element.setProperty('layout', dotFormLayoutMock);
             await page.waitForChanges();
         });
 
-        xdescribe('onSubmit', () => {
+        describe('onSubmit', () => {
             // TODO: these tests do not validate correctly the submit
             xit('should emit when form is valid', async () => {
                 await fillTextfield('hello world');
@@ -211,15 +211,15 @@ xdescribe('dot-form', () => {
         });
     });
 
-    xdescribe('buttons', () => {
-        xdescribe('submit', () => {
+    describe('buttons', () => {
+        describe('submit', () => {
             it('should have type submit', async () => {
                 const button = await getSubmitButton();
                 expect(button.getAttribute('type')).toBe('submit');
             });
         });
 
-        xdescribe('reset', () => {
+        describe('reset', () => {
             it('should have type reset', async () => {
                 const button = await getResetButton();
                 expect(button.getAttribute('type')).toBe('reset');
@@ -227,13 +227,13 @@ xdescribe('dot-form', () => {
         });
     });
 
-    xdescribe('actions', () => {
+    describe('actions', () => {
         beforeEach(async () => {
             element.setProperty('layout', dotFormLayoutMock);
             await page.waitForChanges();
         });
 
-        xdescribe('click reset button', () => {
+        describe('click reset button', () => {
             it('should empty values', async () => {
                 await fillTextfield('hello world');
                 await page.waitForChanges();
