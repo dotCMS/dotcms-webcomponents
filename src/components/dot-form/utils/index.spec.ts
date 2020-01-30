@@ -7,7 +7,7 @@ import {
 } from '.';
 import { basicField, dotFormLayoutMock } from '../../../test/mocks';
 
-describe('getFieldVariableValue', () => {
+xdescribe('getFieldVariableValue', () => {
     const variables = [
         {
             clazz: 'a',
@@ -34,7 +34,7 @@ describe('getFieldVariableValue', () => {
     });
 });
 
-describe('getErrorMessage', () => {
+xdescribe('getErrorMessage', () => {
     it('should return error message', () => {
         const errorString = '{"errors":[{"message":"error test"}]}';
         expect(getErrorMessage(errorString)).toEqual('error test');
@@ -46,13 +46,13 @@ describe('getErrorMessage', () => {
     });
 });
 
-describe('fieldCustomProcess', () => {
+xdescribe('fieldCustomProcess', () => {
     it('should return object', () => {
         expect(fieldCustomProcess['DOT-KEY-VALUE']('a|b')).toEqual({ a: 'b' });
     });
 });
 
-describe('shouldShowField', () => {
+xdescribe('shouldShowField', () => {
     it('should return true', () => {
         const field = basicField;
         basicField.variable = 'A';
@@ -66,7 +66,7 @@ describe('shouldShowField', () => {
     });
 });
 
-describe('getFieldsFromLayout', () => {
+xdescribe('getFieldsFromLayout', () => {
     it('should fields array', () => {
         expect(getFieldsFromLayout(dotFormLayoutMock)).toEqual([
             {

@@ -139,7 +139,7 @@ describe('dot-binary-file', () => {
             it('should not break hint with invalid value', async () => {
                 element.setProperty('hint', { test: 'hint' });
                 await page.waitForChanges();
-                expect((await dotTestUtil.getHint(page)).innerText).toBe('[object Object]');
+                expect((await dotTestUtil.getHint(page))).toBeNull();
             });
         });
 
@@ -147,7 +147,7 @@ describe('dot-binary-file', () => {
             it('should display Error message', async () => {
                 element.setProperty('errorMessage', 'Error');
                 await page.waitForChanges();
-                expect((await page.find('.dot-binary__error-message')).innerText).toBe('Error');
+                expect((await page.find('dot-error-message')).innerText).toBe('Error');
             });
 
             it('should not display Error message', async () => {
@@ -358,8 +358,8 @@ describe('dot-binary-file', () => {
 
     describe('@Events', () => {
         beforeEach(async () => {
-            spyStatusChangeEvent = await page.spyOnEvent('statusChange');
-            spyValueChangeEvent = await page.spyOnEvent('valueChange');
+            spyStatusChangeEvent = await page.spyOnEvent('dotStatusChange');
+            spyValueChangeEvent = await page.spyOnEvent('dotValueChange');
         });
         describe('drag & drop', () => {
             it('should set dot-dragover adn remove dot-dropped class on dragover', async () => {

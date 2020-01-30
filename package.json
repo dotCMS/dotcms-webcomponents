@@ -26,7 +26,7 @@
     },
     "devDependencies": {
         "@babel/core": "^7.8.0",
-        "@stencil/core": "^1.8.4",
+        "@stencil/core": "^1.8.6",
         "@stencil/sass": "^1.1.1",
         "@storybook/html": "^5.3.2",
         "@types/jest": "24.0.25",

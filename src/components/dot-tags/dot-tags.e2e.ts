@@ -2,7 +2,7 @@ import { E2EElement, E2EPage, newE2EPage } from '@stencil/core/testing';
 import { EventSpy } from '@stencil/core/dist/declarations';
 import { dotTestUtil } from '../../test';
 
-describe('dot-tags', () => {
+xdescribe('dot-tags', () => {
     let page: E2EPage;
     let element: E2EElement;
     let spyStatusChangeEvent: EventSpy;

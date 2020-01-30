@@ -69,7 +69,7 @@ describe('dot-date-time', () => {
         describe('dot-attr', () => {
             it('should set value correctly', async () => {
                 page = await newE2EPage({
-                    html: `<dot-date-time dotstep="3,6"></dot-date-time>`
+                    html: `<dot-date-time step="3,6"></dot-date-time>`
                 });
                 await page.waitForChanges();
                 dateInput = await page.find('input[type=date]');

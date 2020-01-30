@@ -180,7 +180,7 @@ describe('dot-select', () => {
                 element.setProperty('label', wrongValue);
                 await page.waitForChanges();
                 const labelElement = await dotTestUtil.getDotLabel(page);
-                expect(labelElement.getAttribute('label')).toEqual('1,2,3');
+                expect(labelElement.getAttribute('label')).toEqual('');
             });
         });
 
@@ -207,7 +207,7 @@ describe('dot-select', () => {
                 element.setProperty('hint', wrongValue);
                 await page.waitForChanges();
                 const hintElement = await dotTestUtil.getHint(page);
-                expect(hintElement.innerText).toBe('1,2,3');
+                expect(hintElement).toBeNull();
             });
         });
 
@@ -282,7 +282,7 @@ describe('dot-select', () => {
                 element.setProperty('requiredMessage', wrongValue);
                 await page.waitForChanges();
                 const errorElement = await dotTestUtil.getErrorMessage(page);
-                expect(errorElement.innerText).toBe('1,2,3');
+                expect(errorElement).toBeNull();
             });
         });
 
@@ -401,6 +401,7 @@ describe('dot-select', () => {
 
             it('should set first select value', async () => {
                 await element.callMethod('reset');
+                await page.waitForChanges();
                 const optionElements = await getOptions(page);
                 expect(await optionElements[0].getProperty('selected')).toBe(true);
                 expect(await optionElements[1].getProperty('selected')).toBe(false);

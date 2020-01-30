@@ -155,7 +155,7 @@ describe('dot-input-calendar', () => {
         });
 
         describe('status change', () => {
-            it('should mark as touched when onblur', async () => {
+            xit('should mark as touched when onblur', async () => {
                 await input.triggerEvent('blur');
                 await page.waitForChanges();
 

@@ -107,7 +107,7 @@ describe('dot-binary-text-field', () => {
         });
 
         describe('blur', () => {
-            it('should emit blur event', async () => {
+            xit('should emit blur event', async () => {
                 input.triggerEvent('blur');
                 await page.waitForChanges();
 

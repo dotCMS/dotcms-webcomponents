@@ -173,7 +173,7 @@ describe('dot-radio', () => {
                 element.setProperty('label', wrongValue);
                 await page.waitForChanges();
                 const labelElement = await dotTestUtil.getDotLabel(page);
-                expect(labelElement.getAttribute('label')).toEqual('1,2,3');
+                expect(labelElement.getAttribute('label')).toEqual('');
             });
         });
 

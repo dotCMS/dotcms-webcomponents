@@ -21,7 +21,7 @@ export const dotTestUtil = {
         element: E2EElement,
         isValidRange?: boolean
     ) => {
-        element.triggerEvent('_statusChange', {
+        element.triggerEvent('_dotStatusChange', {
             detail: {
                 name: '',
                 status: {

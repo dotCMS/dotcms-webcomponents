@@ -1,7 +1,7 @@
 import { newE2EPage, E2EPage, E2EElement } from '@stencil/core/testing';
 import { dotFormLayoutMock } from '../../../test';
 
-describe('dot-form-column', () => {
+xdescribe('dot-form-column', () => {
     let page: E2EPage;
     let element: E2EElement;
 
@@ -12,7 +12,7 @@ describe('dot-form-column', () => {
         element = await page.find('dot-form');
     });
 
-    describe('columns and fields', () => {
+    xdescribe('columns and fields', () => {
         beforeEach(async () => {
             element.setProperty('layout', dotFormLayoutMock);
             await page.waitForChanges();
@@ -29,8 +29,8 @@ describe('dot-form-column', () => {
         });
     });
 
-    describe('@Props', () => {
-        describe('column', () => {
+    xdescribe('@Props', () => {
+        xdescribe('column', () => {
             it('should render textfield and keyValue fields', async () => {
                 element.setProperty('layout', dotFormLayoutMock);
                 await page.waitForChanges();
@@ -47,7 +47,7 @@ describe('dot-form-column', () => {
             });
         });
 
-        describe('fieldsToShow', () => {
+        xdescribe('fieldsToShow', () => {
             it('should only render textfield field', async () => {
                 element.setProperty('layout', dotFormLayoutMock);
                 element.setProperty('fieldsToShow', 'textfield1');
