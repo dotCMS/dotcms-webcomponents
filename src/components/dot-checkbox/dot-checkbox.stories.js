@@ -1,6 +1,11 @@
+import readme from './readme.md';
+
 export default {
-    title: "Custom Fields/Checkbox"
+    title: "Custom Fields",
+    parameters: {
+        notes: readme
+    }
 };
 
-export const Normal = () =>
+export const Checkbox = () =>
     `<dot-checkbox label="Label" options="Pizza|pizza,Burguer|burguer,Sushi|sushi" />`;

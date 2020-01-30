@@ -1,6 +1,10 @@
+import readme from './readme.md';
+
 export default {
-    title: 'Custom Fields/InputCalendar'
+    title: 'Custom Fields',
+    parameters: {
+        notes: readme
+    }
 };
 
-export const Time = () => `<dot-input-calendar type="time" />`;
-export const Date = () => `<dot-input-calendar  type="date" />`;
+export const InputCalendar = () => `<dot-input-calendar type="time" />`;

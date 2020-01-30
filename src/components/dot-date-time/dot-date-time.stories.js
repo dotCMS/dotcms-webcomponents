@@ -1,7 +1,11 @@
+import readme from './readme.md';
+
 export default {
-    title: 'Custom Fields/Date Time'
+    title: 'Custom Fields',
+    parameters: {
+        notes: readme
+    }
 };
 
-export const Normal = () => `<dot-date-time label="Date Time"  />`;
-export const Required = () => `<dot-date-time label="Date Time"  required="true" />`;
+export const DateTime = () => `<dot-date-time label="Date Time"  />`;
 

@@ -1,5 +1,10 @@
+import readme from './readme.md';
+
 export default {
-    title: 'Custom Fields/Error Message'
+    title: 'Custom Fields',
+    parameters: {
+        notes: readme
+    }
 };
 
-export const Normal = () => `<dot-error-message>Error</dot-error-message>`;
+export const ErrorMessage = () => `<dot-error-message>Error</dot-error-message>`;

@@ -1,8 +1,13 @@
+import readme from './readme.md';
+
 export default {
-    title: "Custom Fields/Tags"
+    title: "Custom Fields",
+    parameters: {
+        notes: readme
+    }
 };
 
-export const Normal = () => {
+export const Tags = () => {
     const tags = document.createElement('dot-tags');
     tags.data = async () => {
         return fetch('https://tarekraafat.github.io/autoComplete.js/demo/db/generic.json')

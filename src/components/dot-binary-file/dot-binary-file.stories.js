@@ -1,5 +1,10 @@
+import readme from './readme.md';
+
 export default {
-    title: "Custom Fields/BinaryFile"
+    title: "Custom Fields",
+    parameters: {
+        notes: readme
+    }
 };
 
-export const Normal = () => `<dot-binary-file label="Label" />`;
+export const BinaryFile = () => `<dot-binary-file label="Label" />`;

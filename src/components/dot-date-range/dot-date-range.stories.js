@@ -1,7 +1,10 @@
+import readme from './readme.md';
+
 export default {
-    title: 'Custom Fields/Date Range'
+    title: 'Custom Fields',
+    parameters: {
+        notes: readme
+    }
 };
 
-export const Normal = () => `<dot-date-range label="Date Range"  />`;
-export const Required = () => `<dot-date-range label="Data Range"  required="true" />`;
-
+export const DateRange = () => `<dot-date-range label="Date Range" />`;
