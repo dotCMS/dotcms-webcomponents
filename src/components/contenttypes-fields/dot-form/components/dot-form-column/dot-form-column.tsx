@@ -8,10 +8,12 @@ import { DotCMSContentTypeLayoutColumn, DotCMSContentTypeField } from 'dotcms-mo
 })
 export class DotFormColumnComponent {
     /** Fields metada to be rendered */
-    @Prop() column: DotCMSContentTypeLayoutColumn;
+    @Prop()
+    column: DotCMSContentTypeLayoutColumn;
 
     /** (optional) List of fields (variableName) separated by comma, to be shown */
-    @Prop({ reflectToAttr: true }) fieldsToShow: string;
+    @Prop({ reflectToAttr: true })
+    fieldsToShow: string;
 
     render() {
         return this.column.fields.map((field: DotCMSContentTypeField) => this.getField(field));

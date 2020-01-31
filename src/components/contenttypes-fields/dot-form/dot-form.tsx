@@ -25,10 +25,12 @@ const fallbackErrorMessages = {
     styleUrl: 'dot-form.scss'
 })
 export class DotFormComponent {
-    @Element() el: HTMLElement;
+    @Element()
+    el: HTMLElement;
 
     /** (optional) List of fields (variableName) separated by comma, to be shown */
-    @Prop() fieldsToShow: string;
+    @Prop()
+    fieldsToShow: string;
 
     /** (optional) Text to be rendered on Reset button */
     @Prop({ reflectToAttr: true })
@@ -46,9 +48,12 @@ export class DotFormComponent {
     @Prop({ reflectToAttr: true })
     variable = '';
 
-    @State() status: DotFieldStatus = getOriginalStatus();
-    @State() errorMessage = '';
-    @State() uploadFileInProgress = false;
+    @State()
+    status: DotFieldStatus = getOriginalStatus();
+    @State()
+    errorMessage = '';
+    @State()
+    uploadFileInProgress = false;
 
     private fieldsStatus: { [key: string]: { [key: string]: boolean } } = {};
     private value = {};

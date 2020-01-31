@@ -1,4 +1,15 @@
-import { Component, Prop, State, Element, Event, EventEmitter, Method, Watch, h, Host } from '@stencil/core';
+import {
+    Component,
+    Prop,
+    State,
+    Element,
+    Event,
+    EventEmitter,
+    Method,
+    Watch,
+    h,
+    Host
+} from '@stencil/core';
 import { DotFieldStatus, DotFieldValueEvent, DotFieldStatusEvent } from '../../../models';
 import {
     checkProp,
@@ -17,45 +28,60 @@ import {
     styleUrl: 'dot-tags.scss'
 })
 export class DotTagsComponent {
-    @Element() el: HTMLElement;
+    @Element()
+    el: HTMLElement;
 
     /** Value formatted splitted with a comma, for example: tag-1,tag-2 */
-    @Prop({ mutable: true, reflectToAttr: true }) value = '';
+    @Prop({ mutable: true, reflectToAttr: true })
+    value = '';
 
     /** Name that will be used as ID */
-    @Prop({ reflectToAttr: true }) name = '';
+    @Prop({ reflectToAttr: true })
+    name = '';
 
     /** (optional) Text to be rendered next to input field */
-    @Prop({ reflectToAttr: true }) label = '';
+    @Prop({ reflectToAttr: true })
+    label = '';
 
     /** (optional) Hint text that suggest a clue of the field */
-    @Prop({ reflectToAttr: true }) hint = '';
+    @Prop({ reflectToAttr: true })
+    hint = '';
 
     /** (optional) text to show when no value is set */
-    @Prop({ reflectToAttr: true }) placeholder = '';
+    @Prop({ reflectToAttr: true })
+    placeholder = '';
 
     /** (optional) Determine if it is mandatory */
-    @Prop({ reflectToAttr: true }) required = false;
+    @Prop({ reflectToAttr: true })
+    required = false;
 
     /** (optional) Text that be shown when required is set and value is not set */
-    @Prop({ reflectToAttr: true }) requiredMessage = 'This field is required';
+    @Prop({ reflectToAttr: true })
+    requiredMessage = 'This field is required';
 
     /** (optional) Disables field's interaction */
-    @Prop({ reflectToAttr: true }) disabled = false;
+    @Prop({ reflectToAttr: true })
+    disabled = false;
 
     /** Min characters to start search in the autocomplete input */
-    @Prop({ reflectToAttr: true }) threshold = 0;
+    @Prop({ reflectToAttr: true })
+    threshold = 0;
 
     /** Duraction in ms to start search into the autocomplete */
-    @Prop({ reflectToAttr: true }) debounce = 300;
+    @Prop({ reflectToAttr: true })
+    debounce = 300;
 
     /** Function or array of string to get the data to use for the autocomplete search */
-    @Prop() data: () => Promise<string[]> | string[] = null;
+    @Prop()
+    data: () => Promise<string[]> | string[] = null;
 
-    @State() status: DotFieldStatus;
+    @State()
+    status: DotFieldStatus;
 
-    @Event() dotValueChange: EventEmitter<DotFieldValueEvent>;
-    @Event() dotStatusChange: EventEmitter<DotFieldStatusEvent>;
+    @Event()
+    dotValueChange: EventEmitter<DotFieldValueEvent>;
+    @Event()
+    dotStatusChange: EventEmitter<DotFieldStatusEvent>;
 
     /**
      * Reset properties of the filed, clear value and emit events.
@@ -79,11 +105,7 @@ export class DotTagsComponent {
     }
 
     render() {
-        const classes = getClassNames(
-            this.status,
-            this.isValid(),
-            this.required
-        );
+        const classes = getClassNames(this.status, this.isValid(), this.required);
 
         return (
             <Host class={{ ...classes }}>

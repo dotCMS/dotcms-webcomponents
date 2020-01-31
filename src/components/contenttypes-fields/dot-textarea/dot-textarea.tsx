@@ -1,4 +1,15 @@
-import { Component, Prop, State, Method, Element, Event, EventEmitter, Watch, h, Host } from '@stencil/core';
+import {
+    Component,
+    Prop,
+    State,
+    Method,
+    Element,
+    Event,
+    EventEmitter,
+    Watch,
+    h,
+    Host
+} from '@stencil/core';
 import { DotFieldStatus, DotFieldValueEvent, DotFieldStatusEvent } from '../../../models';
 import {
     getClassNames,
@@ -24,7 +35,8 @@ import { setDotAttributesToElement, getDotAttributesFromElement } from '../dot-f
     styleUrl: 'dot-textarea.scss'
 })
 export class DotTextareaComponent {
-    @Element() el: HTMLElement;
+    @Element()
+    el: HTMLElement;
 
     /** Value specifies the value of the <textarea> element */
     @Prop({ mutable: true, reflectToAttr: true })
@@ -62,10 +74,13 @@ export class DotTextareaComponent {
     @Prop({ mutable: true, reflectToAttr: true })
     regexCheck = '';
 
-    @State() status: DotFieldStatus;
+    @State()
+    status: DotFieldStatus;
 
-    @Event() dotValueChange: EventEmitter<DotFieldValueEvent>;
-    @Event() dotStatusChange: EventEmitter<DotFieldStatusEvent>;
+    @Event()
+    dotValueChange: EventEmitter<DotFieldValueEvent>;
+    @Event()
+    dotStatusChange: EventEmitter<DotFieldStatusEvent>;
 
     /**
      * Reset properties of the field, clear value and emit events.
@@ -106,11 +121,7 @@ export class DotTextareaComponent {
     }
 
     render() {
-        const classes = getClassNames(
-            this.status,
-            this.isValid(),
-            this.required
-        );
+        const classes = getClassNames(this.status, this.isValid(), this.required);
 
         return (
             <Host class={{ ...classes }}>

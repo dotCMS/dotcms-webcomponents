@@ -42,10 +42,12 @@ const mapToKeyValue = ({ label, value }: DotOption) => {
     styleUrl: 'dot-key-value.scss'
 })
 export class DotKeyValueComponent {
-    @Element() el: HTMLElement;
+    @Element()
+    el: HTMLElement;
 
     /** Value of the field */
-    @Prop({ reflectToAttr: true, mutable: true }) value = '';
+    @Prop({ reflectToAttr: true, mutable: true })
+    value = '';
 
     /** Name that will be used as ID */
     @Prop({
@@ -119,11 +121,15 @@ export class DotKeyValueComponent {
     })
     listDeleteLabel: string;
 
-    @State() status: DotFieldStatus;
-    @State() items: DotKeyValueField[] = [];
+    @State()
+    status: DotFieldStatus;
+    @State()
+    items: DotKeyValueField[] = [];
 
-    @Event() dotValueChange: EventEmitter<DotFieldValueEvent>;
-    @Event() dotStatusChange: EventEmitter<DotFieldStatusEvent>;
+    @Event()
+    dotValueChange: EventEmitter<DotFieldValueEvent>;
+    @Event()
+    dotStatusChange: EventEmitter<DotFieldStatusEvent>;
 
     @Watch('value')
     valueWatch(): void {
@@ -167,11 +173,7 @@ export class DotKeyValueComponent {
     }
 
     render() {
-        const classes = getClassNames(
-            this.status,
-            this.isValid(),
-            this.required
-        );
+        const classes = getClassNames(this.status, this.isValid(), this.required);
 
         return (
             <Host class={{ ...classes }}>
@@ -180,7 +182,8 @@ export class DotKeyValueComponent {
                     tabIndex={this.hint ? 0 : null}
                     label={this.label}
                     required={this.required}
-                    name={this.name}>
+                    name={this.name}
+                >
                     <key-value-form
                         onLostFocus={this.blurHandler.bind(this)}
                         add-button-label={this.formAddButtonLabel}

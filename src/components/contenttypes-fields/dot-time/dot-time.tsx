@@ -26,7 +26,8 @@ import { setDotAttributesToElement, getDotAttributesFromElement } from '../dot-f
     styleUrl: 'dot-time.scss'
 })
 export class DotTimeComponent {
-    @Element() el: HTMLElement;
+    @Element()
+    el: HTMLElement;
 
     /** Value format hh:mm:ss e.g., 15:22:00 */
     @Prop({ mutable: true, reflectToAttr: true })
@@ -72,11 +73,15 @@ export class DotTimeComponent {
     @Prop({ reflectToAttr: true })
     step = '1';
 
-    @State() classNames: DotFieldStatusClasses;
-    @State() errorMessageElement: JSX.Element;
+    @State()
+    classNames: DotFieldStatusClasses;
+    @State()
+    errorMessageElement: JSX.Element;
 
-    @Event() dotValueChange: EventEmitter<DotFieldValueEvent>;
-    @Event() dotStatusChange: EventEmitter<DotFieldStatusEvent>;
+    @Event()
+    dotValueChange: EventEmitter<DotFieldValueEvent>;
+    @Event()
+    dotStatusChange: EventEmitter<DotFieldStatusEvent>;
 
     /**
      * Reset properties of the field, clear value and emit events.
@@ -174,7 +179,9 @@ export class DotTimeComponent {
 
     private getErrorMessage(statusEvent: DotInputCalendarStatusEvent): string {
         return !!this.value
-            ? statusEvent.isValidRange ? '' : this.validationMessage
+            ? statusEvent.isValidRange
+                ? ''
+                : this.validationMessage
             : this.requiredMessage;
     }
 }

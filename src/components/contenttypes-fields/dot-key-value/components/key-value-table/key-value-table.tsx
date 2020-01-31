@@ -6,10 +6,12 @@ import { DotKeyValueField } from '../../../../../models';
 })
 export class KeyValueTableComponent {
     /** (optional) Items to render in the list of key value */
-    @Prop() items: DotKeyValueField[] = [];
+    @Prop()
+    items: DotKeyValueField[] = [];
 
     /** (optional) Disables all form interaction */
-    @Prop({ reflectToAttr: true }) disabled = false;
+    @Prop({ reflectToAttr: true })
+    disabled = false;
 
     /** (optional) Label for the delete button in each item list */
     @Prop({
@@ -24,7 +26,8 @@ export class KeyValueTableComponent {
     emptyMessage = 'No values';
 
     /** Emit the index of the item deleted from the list */
-    @Event() delete: EventEmitter<number>;
+    @Event()
+    delete: EventEmitter<number>;
 
     render() {
         return (
@@ -59,7 +62,9 @@ export class KeyValueTableComponent {
     }
 
     private renderRows(items: DotKeyValueField[]): JSX.Element | JSX.Element[] {
-        return this.isValidItems(items) ? items.map((item, index) => this.getRow(item, index)) : this.getEmptyRow();
+        return this.isValidItems(items)
+            ? items.map((item, index) => this.getRow(item, index))
+            : this.getEmptyRow();
     }
 
     private getEmptyRow(): JSX.Element {

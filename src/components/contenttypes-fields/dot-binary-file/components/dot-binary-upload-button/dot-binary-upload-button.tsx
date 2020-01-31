@@ -13,7 +13,8 @@ import { getId, isFileAllowed } from '../../../../../utils';
     styleUrl: 'dot-binary-upload-button.scss'
 })
 export class DotBinaryUploadButtonComponent {
-    @Element() el: HTMLElement;
+    @Element()
+    el: HTMLElement;
 
     /** Name that will be used as ID */
     @Prop({ reflectToAttr: true })
@@ -35,7 +36,8 @@ export class DotBinaryUploadButtonComponent {
     @Prop({ reflectToAttr: true })
     buttonLabel = '';
 
-    @Event() fileChange: EventEmitter<DotBinaryFileEvent>;
+    @Event()
+    fileChange: EventEmitter<DotBinaryFileEvent>;
 
     private fileInput: HTMLInputElement;
 
@@ -54,7 +56,13 @@ export class DotBinaryUploadButtonComponent {
                     required={this.required || null}
                     type="file"
                 />
-                <button type="button" disabled={this.disabled} onClick={() => { this.fileInput.click(); }}>
+                <button
+                    type="button"
+                    disabled={this.disabled}
+                    onClick={() => {
+                        this.fileInput.click();
+                    }}
+                >
                     {this.buttonLabel}
                 </button>
             </Host>

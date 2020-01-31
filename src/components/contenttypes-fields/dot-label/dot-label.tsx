@@ -1,5 +1,5 @@
-import { Component, Prop, h } from "@stencil/core";
-import { getLabelId } from "../../../utils";
+import { Component, Prop, h } from '@stencil/core';
+import { getLabelId } from '../../../utils';
 
 /**
  * Represent a dotcms label control.
@@ -8,21 +8,21 @@ import { getLabelId } from "../../../utils";
  * @class DotLabelComponent
  */
 @Component({
-    tag: "dot-label",
-    styleUrl: "dot-label.scss"
+    tag: 'dot-label',
+    styleUrl: 'dot-label.scss'
 })
 export class DotLabelComponent {
     /** (optional) Field name */
     @Prop({
         reflectToAttr: true
     })
-    name = "";
+    name = '';
 
     /** (optional) Text to be rendered */
     @Prop({
         reflectToAttr: true
     })
-    label = "";
+    label = '';
 
     /** (optional) Determine if it is mandatory */
     @Prop({
@@ -35,9 +35,7 @@ export class DotLabelComponent {
             <label class="dot-label" id={getLabelId(this.name)}>
                 <span class="dot-label__text">
                     {this.label}
-                    {this.required ? (
-                        <span class="dot-label__required-mark">*</span>
-                    ) : null}
+                    {this.required ? <span class="dot-label__required-mark">*</span> : null}
                 </span>
                 <slot />
             </label>

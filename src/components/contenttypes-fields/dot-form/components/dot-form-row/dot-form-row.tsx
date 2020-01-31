@@ -7,10 +7,12 @@ import { DotCMSContentTypeLayoutColumn, DotCMSContentTypeLayoutRow } from 'dotcm
 })
 export class DotFormRowComponent {
     /** Fields metada to be rendered */
-    @Prop() row: DotCMSContentTypeLayoutRow;
+    @Prop()
+    row: DotCMSContentTypeLayoutRow;
 
     /** (optional) List of fields (variableName) separated by comma, to be shown */
-    @Prop({ reflectToAttr: true }) fieldsToShow: string;
+    @Prop({ reflectToAttr: true })
+    fieldsToShow: string;
 
     render() {
         return this.row.columns.map((fieldColumn: DotCMSContentTypeLayoutColumn) => {

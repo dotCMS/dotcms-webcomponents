@@ -139,7 +139,7 @@ describe('dot-binary-file', () => {
             it('should not break hint with invalid value', async () => {
                 element.setProperty('hint', { test: 'hint' });
                 await page.waitForChanges();
-                expect((await dotTestUtil.getHint(page))).toBeNull();
+                expect(await dotTestUtil.getHint(page)).toBeNull();
             });
         });
 

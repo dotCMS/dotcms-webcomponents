@@ -1,5 +1,21 @@
-import { Component, Element, Event, EventEmitter, Method, Prop, State, Watch, h, Host } from '@stencil/core';
-import { DotFieldStatus, DotFieldStatusEvent, DotFieldValueEvent, DotOption } from '../../../models';
+import {
+    Component,
+    Element,
+    Event,
+    EventEmitter,
+    Method,
+    Prop,
+    State,
+    Watch,
+    h,
+    Host
+} from '@stencil/core';
+import {
+    DotFieldStatus,
+    DotFieldStatusEvent,
+    DotFieldValueEvent,
+    DotOption
+} from '../../../models';
 import {
     getClassNames,
     getDotOptionsFromFieldValue,
@@ -25,37 +41,50 @@ import { getDotAttributesFromElement, setDotAttributesToElement } from '../dot-f
     styleUrl: 'dot-radio.scss'
 })
 export class DotRadioComponent {
-    @Element() el: HTMLElement;
+    @Element()
+    el: HTMLElement;
 
     /** Value set from the ratio option */
-    @Prop({ mutable: true, reflectToAttr: true }) value = '';
+    @Prop({ mutable: true, reflectToAttr: true })
+    value = '';
 
     /** Name that will be used as ID */
-    @Prop({ reflectToAttr: true }) name = '';
+    @Prop({ reflectToAttr: true })
+    name = '';
 
     /** (optional) Text to be rendered next to input field */
-    @Prop({ reflectToAttr: true }) label = '';
+    @Prop({ reflectToAttr: true })
+    label = '';
 
     /** (optional) Hint text that suggest a clue of the field */
-    @Prop({ reflectToAttr: true }) hint = '';
+    @Prop({ reflectToAttr: true })
+    hint = '';
 
     /** (optional) Determine if it is mandatory */
-    @Prop({ reflectToAttr: true }) required = false;
+    @Prop({ reflectToAttr: true })
+    required = false;
 
     /** (optional) Disables field's interaction */
-    @Prop({ reflectToAttr: true, mutable: true }) disabled = false;
+    @Prop({ reflectToAttr: true, mutable: true })
+    disabled = false;
 
     /** (optional) Text that will be shown when required is set and condition is not met */
-    @Prop({ reflectToAttr: true }) requiredMessage = '';
+    @Prop({ reflectToAttr: true })
+    requiredMessage = '';
 
     /** Value/Label ratio options separated by comma, to be formatted as: Value|Label */
-    @Prop({ reflectToAttr: true }) options = '';
+    @Prop({ reflectToAttr: true })
+    options = '';
 
-    @State() _options: DotOption[];
-    @State() status: DotFieldStatus;
+    @State()
+    _options: DotOption[];
+    @State()
+    status: DotFieldStatus;
 
-    @Event() dotValueChange: EventEmitter<DotFieldValueEvent>;
-    @Event() dotStatusChange: EventEmitter<DotFieldStatusEvent>;
+    @Event()
+    dotValueChange: EventEmitter<DotFieldValueEvent>;
+    @Event()
+    dotStatusChange: EventEmitter<DotFieldStatusEvent>;
 
     /**
      * Reset properties of the field, clear value and emit events.
@@ -101,11 +130,7 @@ export class DotRadioComponent {
     }
 
     render() {
-        const classes = getClassNames(
-            this.status,
-            this.isValid(),
-            this.required
-        );
+        const classes = getClassNames(this.status, this.isValid(), this.required);
 
         return (
             <Host class={{ ...classes }}>

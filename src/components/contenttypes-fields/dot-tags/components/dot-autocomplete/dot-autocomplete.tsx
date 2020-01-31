@@ -20,29 +20,39 @@ interface SelectionFeedback {
     styleUrl: 'dot-autocomplete.scss'
 })
 export class DotAutocompleteComponent {
-    @Element() el: HTMLElement;
+    @Element()
+    el: HTMLElement;
 
     /** (optional) Disables field's interaction */
-    @Prop({ reflectToAttr: true }) disabled = false;
+    @Prop({ reflectToAttr: true })
+    disabled = false;
 
     /** (optional) text to show when no value is set */
-    @Prop({ reflectToAttr: true }) placeholder = '';
+    @Prop({ reflectToAttr: true })
+    placeholder = '';
 
     /** (optional)  Min characters to start search in the autocomplete input */
-    @Prop({ reflectToAttr: true }) threshold = 0;
+    @Prop({ reflectToAttr: true })
+    threshold = 0;
 
     /** (optional)  Max results to show after a autocomplete search */
-    @Prop({ reflectToAttr: true }) maxResults = 0;
+    @Prop({ reflectToAttr: true })
+    maxResults = 0;
 
     /** (optional) Duraction in ms to start search into the autocomplete */
-    @Prop({ reflectToAttr: true }) debounce = 300;
+    @Prop({ reflectToAttr: true })
+    debounce = 300;
 
     /** Function or array of string to get the data to use for the autocomplete search */
-    @Prop() data: () => Promise<string[]> | string[] = null;
+    @Prop()
+    data: () => Promise<string[]> | string[] = null;
 
-    @Event() selection: EventEmitter<string>;
-    @Event() enter: EventEmitter<string>;
-    @Event() lostFocus: EventEmitter<FocusEvent>;
+    @Event()
+    selection: EventEmitter<string>;
+    @Event()
+    enter: EventEmitter<string>;
+    @Event()
+    lostFocus: EventEmitter<FocusEvent>;
 
     private readonly id = `autoComplete${new Date().getTime()}`;
 

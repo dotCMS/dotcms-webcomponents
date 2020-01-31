@@ -53,4 +53,3 @@ export const InputCalendar = () => {
 
     return inputcalendar;
 };
-

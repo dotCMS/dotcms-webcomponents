@@ -1,5 +1,21 @@
-import { Component, Prop, State, Element, Method, Event, EventEmitter, Watch, Host, h } from '@stencil/core';
-import { DotOption, DotFieldStatus, DotFieldValueEvent, DotFieldStatusEvent } from '../../../models';
+import {
+    Component,
+    Prop,
+    State,
+    Element,
+    Method,
+    Event,
+    EventEmitter,
+    Watch,
+    Host,
+    h
+} from '@stencil/core';
+import {
+    DotOption,
+    DotFieldStatus,
+    DotFieldValueEvent,
+    DotFieldStatusEvent
+} from '../../../models';
 import {
     getClassNames,
     getOriginalStatus,
@@ -19,37 +35,50 @@ import { getDotAttributesFromElement, setDotAttributesToElement } from '../dot-f
     styleUrl: 'dot-checkbox.scss'
 })
 export class DotCheckboxComponent {
-    @Element() el: HTMLElement;
+    @Element()
+    el: HTMLElement;
 
     /** Name that will be used as ID */
-    @Prop({ reflectToAttr: true }) name = '';
+    @Prop({ reflectToAttr: true })
+    name = '';
 
     /** (optional) Text to be rendered next to input field */
-    @Prop({ reflectToAttr: true }) label = '';
+    @Prop({ reflectToAttr: true })
+    label = '';
 
     /** (optional) Hint text that suggest a clue of the field */
-    @Prop({ reflectToAttr: true }) hint = '';
+    @Prop({ reflectToAttr: true })
+    hint = '';
 
     /** Value/Label checkbox options separated by comma, to be formatted as: Value|Label */
-    @Prop({ reflectToAttr: true }) options = '';
+    @Prop({ reflectToAttr: true })
+    options = '';
 
     /** (optional) Determine if it is mandatory */
-    @Prop({ reflectToAttr: true }) required = false;
+    @Prop({ reflectToAttr: true })
+    required = false;
 
     /** (optional) Disables field's interaction */
-    @Prop({ reflectToAttr: true, mutable: true }) disabled = false;
+    @Prop({ reflectToAttr: true, mutable: true })
+    disabled = false;
 
     /** (optional) Text that will be shown when required is set and condition is not met */
-    @Prop({ reflectToAttr: true }) requiredMessage = `This field is required`;
+    @Prop({ reflectToAttr: true })
+    requiredMessage = `This field is required`;
 
     /** Value set from the checkbox option */
-    @Prop({ mutable: true, reflectToAttr: true }) value = '';
+    @Prop({ mutable: true, reflectToAttr: true })
+    value = '';
 
-    @State() _options: DotOption[];
-    @State() status: DotFieldStatus;
+    @State()
+    _options: DotOption[];
+    @State()
+    status: DotFieldStatus;
 
-    @Event() dotValueChange: EventEmitter<DotFieldValueEvent>;
-    @Event() dotStatusChange: EventEmitter<DotFieldStatusEvent>;
+    @Event()
+    dotValueChange: EventEmitter<DotFieldValueEvent>;
+    @Event()
+    dotStatusChange: EventEmitter<DotFieldStatusEvent>;
 
     componentWillLoad() {
         this.value = this.value || '';
@@ -98,11 +127,7 @@ export class DotCheckboxComponent {
     }
 
     render() {
-        const classes = getClassNames(
-            this.status,
-            this.isValid(),
-            this.required
-        );
+        const classes = getClassNames(this.status, this.isValid(), this.required);
 
         return (
             <Host class={{ ...classes }}>
@@ -110,7 +135,8 @@ export class DotCheckboxComponent {
                     <div
                         aria-describedby={getHintId(this.hint)}
                         tabIndex={this.hint ? 0 : null}
-                        class="dot-checkbox__items">
+                        class="dot-checkbox__items"
+                    >
                         {this._options.map((item: DotOption) => {
                             const trimmedValue = item.value.trim();
                             return (

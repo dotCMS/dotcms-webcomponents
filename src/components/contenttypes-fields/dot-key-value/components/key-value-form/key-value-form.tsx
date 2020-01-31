@@ -8,10 +8,12 @@ const DEFAULT_VALUE = { key: '', value: '' };
     styleUrl: 'key-value-form.scss'
 })
 export class DotKeyValueComponent {
-    @Element() el: HTMLElement;
+    @Element()
+    el: HTMLElement;
 
     /** (optional) Disables all form interaction */
-    @Prop({ reflectToAttr: true }) disabled = false;
+    @Prop({ reflectToAttr: true })
+    disabled = false;
 
     /** (optional) Label for the add item button */
     @Prop({
@@ -44,12 +46,15 @@ export class DotKeyValueComponent {
     valueLabel = 'Value';
 
     /** Emit the added value, key/value pair */
-    @Event() add: EventEmitter<DotKeyValueField>;
+    @Event()
+    add: EventEmitter<DotKeyValueField>;
 
     /** Emit when any of the input is blur */
-    @Event() lostFocus: EventEmitter<FocusEvent>;
+    @Event()
+    lostFocus: EventEmitter<FocusEvent>;
 
-    @State() inputs: DotKeyValueField = { ...DEFAULT_VALUE };
+    @State()
+    inputs: DotKeyValueField = { ...DEFAULT_VALUE };
 
     render() {
         const buttonDisabled = this.isButtonDisabled();

@@ -9,12 +9,8 @@ import {
     Method,
     Watch,
     h
-} from "@stencil/core";
-import {
-    DotFieldStatus,
-    DotFieldValueEvent,
-    DotFieldStatusEvent
-} from "../../../models";
+} from '@stencil/core';
+import { DotFieldStatus, DotFieldValueEvent, DotFieldStatusEvent } from '../../../models';
 import {
     checkProp,
     getClassNames,
@@ -25,11 +21,8 @@ import {
     getTagHint,
     updateStatus,
     getHintId
-} from "../../../utils";
-import {
-    setDotAttributesToElement,
-    getDotAttributesFromElement
-} from "../dot-form/utils";
+} from '../../../utils';
+import { setDotAttributesToElement, getDotAttributesFromElement } from '../dot-form/utils';
 
 /**
  * Represent a dotcms input control.
@@ -38,41 +31,44 @@ import {
  * @class DotTextfieldComponent
  */
 @Component({
-    tag: "dot-textfield",
-    styleUrl: "dot-textfield.scss"
+    tag: 'dot-textfield',
+    styleUrl: 'dot-textfield.scss'
 })
 export class DotTextfieldComponent {
-    @Element() el: HTMLElement;
+    @Element()
+    el: HTMLElement;
 
     /** Value specifies the value of the <input> element */
     @Prop({ mutable: true })
-    value = "";
+    value = '';
 
     /** Name that will be used as ID */
-    @Prop() name = "";
+    @Prop()
+    name = '';
 
     /** (optional) Text to be rendered next to input field */
     @Prop({ reflectToAttr: true })
-    label = "";
+    label = '';
 
     /** (optional) Placeholder specifies a short hint that describes the expected value of the input field */
     @Prop({ reflectToAttr: true, mutable: true })
-    placeholder = "";
+    placeholder = '';
 
     /** (optional) Hint text that suggest a clue of the field */
     @Prop({ reflectToAttr: true })
-    hint = "";
+    hint = '';
 
     /** (optional) Determine if it is mandatory */
     @Prop({ mutable: true, reflectToAttr: true })
     required = false;
 
     /** (optional) Text that be shown when required is set and condition not met */
-    @Prop() requiredMessage = "This field is required";
+    @Prop()
+    requiredMessage = 'This field is required';
 
     /** (optional) Text that be shown when the Regular Expression condition not met */
-    @Prop() validationMessage =
-        "The field doesn't comply with the specified format";
+    @Prop()
+    validationMessage = "The field doesn't comply with the specified format";
 
     /** (optional) Disables field's interaction */
     @Prop({ mutable: true, reflectToAttr: true })
@@ -80,23 +76,26 @@ export class DotTextfieldComponent {
 
     /** (optional) Regular expresion that is checked against the value to determine if is valid  */
     @Prop({ mutable: true, reflectToAttr: true })
-    regexCheck = "";
+    regexCheck = '';
 
     /** type specifies the type of <input> element to display */
     @Prop({ mutable: true, reflectToAttr: true })
-    type = "text";
+    type = 'text';
 
-    @State() status: DotFieldStatus;
+    @State()
+    status: DotFieldStatus;
 
-    @Event() dotValueChange: EventEmitter<DotFieldValueEvent>;
-    @Event() dotStatusChange: EventEmitter<DotFieldStatusEvent>;
+    @Event()
+    dotValueChange: EventEmitter<DotFieldValueEvent>;
+    @Event()
+    dotStatusChange: EventEmitter<DotFieldStatusEvent>;
 
     /**
      * Reset properties of the field, clear value and emit events.
      */
     @Method()
     async reset(): Promise<void> {
-        this.value = "";
+        this.value = '';
         this.status = getOriginalStatus(this.isValid());
         this.emitStatusChange();
         this.emitValueChange();
@@ -109,43 +108,29 @@ export class DotTextfieldComponent {
     }
 
     componentDidLoad(): void {
-        const htmlElement = this.el.querySelector("input");
+        const htmlElement = this.el.querySelector('input');
         setTimeout(() => {
-            const attrs = getDotAttributesFromElement(
-                Array.from(this.el.attributes),
-                []
-            );
+            const attrs = getDotAttributesFromElement(Array.from(this.el.attributes), []);
             setDotAttributesToElement(htmlElement, attrs);
         }, 0);
     }
 
-    @Watch("regexCheck")
+    @Watch('regexCheck')
     regexCheckWatch(): void {
-        this.regexCheck = checkProp<DotTextfieldComponent, string>(
-            this,
-            "regexCheck"
-        );
+        this.regexCheck = checkProp<DotTextfieldComponent, string>(this, 'regexCheck');
     }
 
-    @Watch("type")
+    @Watch('type')
     typeWatch(): void {
-        this.type = checkProp<DotTextfieldComponent, string>(this, "type");
+        this.type = checkProp<DotTextfieldComponent, string>(this, 'type');
     }
 
     render() {
-        const classes = getClassNames(
-            this.status,
-            this.isValid(),
-            this.required
-        );
+        const classes = getClassNames(this.status, this.isValid(), this.required);
 
         return (
             <Host class={{ ...classes }}>
-                <dot-label
-                    label={this.label}
-                    required={this.required}
-                    name={this.name}
-                >
+                <dot-label label={this.label} required={this.required} name={this.name}>
                     <input
                         aria-describedby={getHintId(this.hint)}
                         class={getErrorClass(this.status.dotValid)}
@@ -160,10 +145,7 @@ export class DotTextfieldComponent {
                     />
                 </dot-label>
                 {getTagHint(this.hint)}
-                {getTagError(
-                    this.shouldShowErrorMessage(),
-                    this.getErrorMessage()
-                )}
+                {getTagError(this.shouldShowErrorMessage(), this.getErrorMessage())}
             </Host>
         );
     }
@@ -196,7 +178,7 @@ export class DotTextfieldComponent {
     private getErrorMessage(): string {
         return this.isRegexValid()
             ? this.isValid()
-                ? ""
+                ? ''
                 : this.requiredMessage
             : this.validationMessage;
     }

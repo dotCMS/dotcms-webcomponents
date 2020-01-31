@@ -13,7 +13,8 @@ import { getErrorClass, getHintId, isFileAllowed, isValidURL } from '../../../..
     styleUrl: 'dot-binary-text-field.scss'
 })
 export class DotBinaryTextFieldComponent {
-    @Element() el: HTMLElement;
+    @Element()
+    el: HTMLElement;
 
     /** Value specifies the value of the <input> element */
     @Prop({ mutable: true, reflectToAttr: true })
@@ -39,10 +40,13 @@ export class DotBinaryTextFieldComponent {
     @Prop({ reflectToAttr: true })
     disabled = false;
 
-    @State() status: DotFieldStatus;
+    @State()
+    status: DotFieldStatus;
 
-    @Event() fileChange: EventEmitter<DotBinaryFileEvent>;
-    @Event() lostFocus: EventEmitter;
+    @Event()
+    fileChange: EventEmitter<DotBinaryFileEvent>;
+    @Event()
+    lostFocus: EventEmitter;
 
     render() {
         return (

@@ -43,7 +43,8 @@ import { getDotAttributesFromElement, setDotAttributesToElement } from '../dot-f
     styleUrl: 'dot-binary-file.scss'
 })
 export class DotBinaryFileComponent {
-    @Element() el: HTMLElement;
+    @Element()
+    el: HTMLElement;
 
     /** Name that will be used as ID */
     @Prop({ reflectToAttr: true })
@@ -66,13 +67,16 @@ export class DotBinaryFileComponent {
     required = false;
 
     /** (optional) Text that be shown when required is set and condition not met */
-    @Prop() requiredMessage = 'This field is required';
+    @Prop()
+    requiredMessage = 'This field is required';
 
     /** (optional) Text that be shown when the Regular Expression condition not met */
-    @Prop() validationMessage = "The field doesn't comply with the specified format";
+    @Prop()
+    validationMessage = "The field doesn't comply with the specified format";
 
     /** (optional) Text that be shown when the URL is not valid */
-    @Prop() URLValidationMessage = 'The specified URL is not valid';
+    @Prop()
+    URLValidationMessage = 'The specified URL is not valid';
 
     /** (optional) Disables field's interaction */
     @Prop({ reflectToAttr: true })
@@ -102,10 +106,13 @@ export class DotBinaryFileComponent {
     @Prop({ reflectToAttr: true, mutable: true })
     previewImageUrl = '';
 
-    @State() status: DotFieldStatus;
+    @State()
+    status: DotFieldStatus;
 
-    @Event() dotValueChange: EventEmitter<DotFieldValueEvent>;
-    @Event() dotStatusChange: EventEmitter<DotFieldStatusEvent>;
+    @Event()
+    dotValueChange: EventEmitter<DotFieldValueEvent>;
+    @Event()
+    dotStatusChange: EventEmitter<DotFieldStatusEvent>;
 
     private file: string | File = null;
     private allowedFileTypes = [];
@@ -227,11 +234,7 @@ export class DotBinaryFileComponent {
     }
 
     render() {
-        const classes = getClassNames(
-            this.status,
-            this.isValid(),
-            this.required
-        );
+        const classes = getClassNames(this.status, this.isValid(), this.required);
 
         return (
             <Host class={{ ...classes }}>

@@ -68,8 +68,7 @@ const dataFields = [
             {
                 fields: [
                     {
-                        clazz:
-                            'com.dotcms.contenttype.model.field.ImmutableTextAreaField',
+                        clazz: 'com.dotcms.contenttype.model.field.ImmutableTextAreaField',
                         fieldType: 'Checkbox',
                         dataType: 'LONG_TEXT',
                         searchable: false,
@@ -99,8 +98,7 @@ const dataFields = [
             {
                 fields: [
                     {
-                        clazz:
-                            'com.dotcms.contenttype.model.field.ImmutableTextAreaField',
+                        clazz: 'com.dotcms.contenttype.model.field.ImmutableTextAreaField',
                         fieldType: 'Multi-Select',
                         dataType: 'LONG_TEXT',
                         searchable: false,
@@ -168,8 +166,7 @@ const dataFields = [
             {
                 fields: [
                     {
-                        clazz:
-                            'com.dotcms.contenttype.model.field.ImmutableSelectField',
+                        clazz: 'com.dotcms.contenttype.model.field.ImmutableSelectField',
                         fieldType: 'Select',
                         dataType: 'TEXT',
                         searchable: false,
@@ -426,9 +423,8 @@ const dataFields = [
     }
 ];
 
-
 export default {
-    title: "Custom Fields"
+    title: 'Custom Fields'
 };
 
 export const Form = () => {
@@ -442,4 +438,3 @@ Form.story = {
         notes: 'Web Component to handle Form Content Types from DotCMS'
     }
 };
-

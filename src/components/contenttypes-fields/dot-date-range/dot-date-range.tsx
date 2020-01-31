@@ -30,7 +30,8 @@ import flatpickr from 'flatpickr';
     styleUrl: 'dot-date-range.scss'
 })
 export class DotDateRangeComponent {
-    @Element() el: HTMLElement;
+    @Element()
+    el: HTMLElement;
 
     /** (optional) Value formatted with start and end date splitted with a comma */
     @Prop({ mutable: true, reflectToAttr: true })
@@ -101,10 +102,13 @@ export class DotDateRangeComponent {
     @Prop({ reflectToAttr: true })
     presetLabel = 'Presets';
 
-    @State() status: DotFieldStatus;
+    @State()
+    status: DotFieldStatus;
 
-    @Event() dotValueChange: EventEmitter<DotFieldValueEvent>;
-    @Event() dotStatusChange: EventEmitter<DotFieldStatusEvent>;
+    @Event()
+    dotValueChange: EventEmitter<DotFieldValueEvent>;
+    @Event()
+    dotStatusChange: EventEmitter<DotFieldStatusEvent>;
 
     private flatpickr: any;
     private defaultPresets = [
@@ -196,7 +200,7 @@ export class DotDateRangeComponent {
                                 disabled={this.isDisabled()}
                                 onChange={this.setPreset.bind(this)}
                             >
-                                {this.presets.map(item => {
+                                {this.presets.map((item) => {
                                     return <option value={item.days}>{item.label}</option>;
                                 })}
                             </select>
@@ -249,9 +253,9 @@ export class DotDateRangeComponent {
 
     private setValue(selectedDates: Date[], _dateStr: string, _instance): void {
         this.value = this.isDateRangeValid(selectedDates)
-            ? `${selectedDates[0]
-                  .toISOString()
-                  .split('T')[0]},${selectedDates[1].toISOString().split('T')[0]}`
+            ? `${selectedDates[0].toISOString().split('T')[0]},${
+                  selectedDates[1].toISOString().split('T')[0]
+              }`
             : '';
         this.status = updateStatus(this.status, {
             dotTouched: true,

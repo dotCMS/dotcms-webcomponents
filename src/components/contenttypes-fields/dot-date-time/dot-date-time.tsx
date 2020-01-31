@@ -38,7 +38,8 @@ const TIME_SUFFIX = '-time';
     styleUrl: 'dot-date-time.scss'
 })
 export class DotDateTimeComponent {
-    @Element() el: HTMLElement;
+    @Element()
+    el: HTMLElement;
 
     /** Value format yyyy-mm-dd hh:mm:ss e.g., 2005-12-01 15:22:00 */
     @Prop({ mutable: true, reflectToAttr: true })
@@ -92,11 +93,15 @@ export class DotDateTimeComponent {
     @Prop({ reflectToAttr: true })
     timeLabel = 'Time';
 
-    @State() classNames: DotFieldStatusClasses;
-    @State() errorMessageElement: JSX.Element;
+    @State()
+    classNames: DotFieldStatusClasses;
+    @State()
+    errorMessageElement: JSX.Element;
 
-    @Event() dotValueChange: EventEmitter<DotFieldValueEvent>;
-    @Event() dotStatusChange: EventEmitter<DotFieldStatusEvent>;
+    @Event()
+    dotValueChange: EventEmitter<DotFieldValueEvent>;
+    @Event()
+    dotStatusChange: EventEmitter<DotFieldStatusEvent>;
 
     private _minDateTime: DotDateSlot;
     private _maxDateTime: DotDateSlot;
@@ -314,7 +319,9 @@ export class DotDateTimeComponent {
 
     private getErrorMessage(): string {
         return !!this.getValue()
-            ? this.isValid() ? '' : this.validationMessage
+            ? this.isValid()
+                ? ''
+                : this.validationMessage
             : this.requiredMessage;
     }
 }
