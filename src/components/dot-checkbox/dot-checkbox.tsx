@@ -21,9 +21,6 @@ import { getDotAttributesFromElement, setDotAttributesToElement } from '../dot-f
 export class DotCheckboxComponent {
     @Element() el: HTMLElement;
 
-    /** (optional) Disables field's interaction */
-    @Prop({ reflectToAttr: true, mutable: true }) disabled = false;
-
     /** Name that will be used as ID */
     @Prop({ reflectToAttr: true }) name = '';
 
@@ -38,6 +35,9 @@ export class DotCheckboxComponent {
 
     /** (optional) Determine if it is mandatory */
     @Prop({ reflectToAttr: true }) required = false;
+
+    /** (optional) Disables field's interaction */
+    @Prop({ reflectToAttr: true, mutable: true }) disabled = false;
 
     /** (optional) Text that will be shown when required is set and condition is not met */
     @Prop({ reflectToAttr: true }) requiredMessage = `This field is required`;

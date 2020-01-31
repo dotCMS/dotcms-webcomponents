@@ -44,6 +44,45 @@ const mapToKeyValue = ({ label, value }: DotOption) => {
 export class DotKeyValueComponent {
     @Element() el: HTMLElement;
 
+    /** Value of the field */
+    @Prop({ reflectToAttr: true, mutable: true }) value = '';
+
+    /** Name that will be used as ID */
+    @Prop({
+        reflectToAttr: true
+    })
+    name = '';
+
+    /** (optional) Text to be rendered next to input field */
+    @Prop({
+        reflectToAttr: true
+    })
+    label = '';
+
+    /** (optional) Hint text that suggest a clue of the field */
+    @Prop({
+        reflectToAttr: true
+    })
+    hint = '';
+
+    /** (optional) Determine if it is mandatory */
+    @Prop({
+        reflectToAttr: true
+    })
+    required = false;
+
+    /** (optional) Text that will be shown when required is set and condition is not met */
+    @Prop({
+        reflectToAttr: true
+    })
+    requiredMessage = 'This field is required';
+
+    /** (optional) Disables field's interaction */
+    @Prop({
+        reflectToAttr: true
+    })
+    disabled = false;
+
     /** (optional) Placeholder for the key input text in the <key-value-form> */
     @Prop({
         reflectToAttr: true
@@ -79,45 +118,6 @@ export class DotKeyValueComponent {
         reflectToAttr: true
     })
     listDeleteLabel: string;
-
-    /** (optional) Disables field's interaction */
-    @Prop({
-        reflectToAttr: true
-    })
-    disabled = false;
-
-    /** (optional) Hint text that suggest a clue of the field */
-    @Prop({
-        reflectToAttr: true
-    })
-    hint = '';
-
-    /** (optional) Text to be rendered next to input field */
-    @Prop({
-        reflectToAttr: true
-    })
-    label = '';
-
-    /** Name that will be used as ID */
-    @Prop({
-        reflectToAttr: true
-    })
-    name = '';
-
-    /** (optional) Determine if it is mandatory */
-    @Prop({
-        reflectToAttr: true
-    })
-    required = false;
-
-    /** (optional) Text that will be shown when required is set and condition is not met */
-    @Prop({
-        reflectToAttr: true
-    })
-    requiredMessage = 'This field is required';
-
-    /** Value of the field */
-    @Prop({ reflectToAttr: true, mutable: true }) value = '';
 
     @State() status: DotFieldStatus;
     @State() items: DotKeyValueField[] = [];

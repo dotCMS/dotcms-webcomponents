@@ -27,8 +27,8 @@ import { getDotAttributesFromElement, setDotAttributesToElement } from '../dot-f
 export class DotSelectComponent {
     @Element() el: HTMLElement;
 
-    /** (optional) Disables field's interaction */
-    @Prop({ reflectToAttr: true }) disabled = false;
+    /** Value set from the dropdown option */
+    @Prop({ mutable: true, reflectToAttr: true }) value = '';
 
     /** Name that will be used as ID */
     @Prop({ reflectToAttr: true }) name = '';
@@ -48,8 +48,8 @@ export class DotSelectComponent {
     /** (optional) Text that will be shown when required is set and condition is not met */
     @Prop({ reflectToAttr: true }) requiredMessage = `This field is required`;
 
-    /** Value set from the dropdown option */
-    @Prop({ mutable: true, reflectToAttr: true }) value = '';
+    /** (optional) Disables field's interaction */
+    @Prop({ reflectToAttr: true }) disabled = false;
 
     @State() _options: DotOption[];
     @State() status: DotFieldStatus;
