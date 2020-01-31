@@ -231,6 +231,7 @@ export namespace Components {
     */
     'label': string;
   }
+  interface DotContentletThumbnail {}
   interface DotDate {
     /**
     * (optional) Disables field's interaction
@@ -950,6 +951,12 @@ declare global {
     new (): HTMLDotChipElement;
   };
 
+  interface HTMLDotContentletThumbnailElement extends Components.DotContentletThumbnail, HTMLStencilElement {}
+  var HTMLDotContentletThumbnailElement: {
+    prototype: HTMLDotContentletThumbnailElement;
+    new (): HTMLDotContentletThumbnailElement;
+  };
+
   interface HTMLDotDateElement extends Components.DotDate, HTMLStencilElement {}
   var HTMLDotDateElement: {
     prototype: HTMLDotDateElement;
@@ -1071,6 +1078,7 @@ declare global {
     'dot-binary-upload-button': HTMLDotBinaryUploadButtonElement;
     'dot-checkbox': HTMLDotCheckboxElement;
     'dot-chip': HTMLDotChipElement;
+    'dot-contentlet-thumbnail': HTMLDotContentletThumbnailElement;
     'dot-date': HTMLDotDateElement;
     'dot-date-range': HTMLDotDateRangeElement;
     'dot-date-time': HTMLDotDateTimeElement;
@@ -1307,6 +1315,7 @@ declare namespace LocalJSX {
     'label'?: string;
     'onRemove'?: (event: CustomEvent<String>) => void;
   }
+  interface DotContentletThumbnail {}
   interface DotDate {
     /**
     * (optional) Disables field's interaction
@@ -1973,6 +1982,7 @@ declare namespace LocalJSX {
     'dot-binary-upload-button': DotBinaryUploadButton;
     'dot-checkbox': DotCheckbox;
     'dot-chip': DotChip;
+    'dot-contentlet-thumbnail': DotContentletThumbnail;
     'dot-date': DotDate;
     'dot-date-range': DotDateRange;
     'dot-date-time': DotDateTime;
@@ -2008,6 +2018,7 @@ declare module "@stencil/core" {
       'dot-binary-upload-button': LocalJSX.DotBinaryUploadButton & JSXBase.HTMLAttributes<HTMLDotBinaryUploadButtonElement>;
       'dot-checkbox': LocalJSX.DotCheckbox & JSXBase.HTMLAttributes<HTMLDotCheckboxElement>;
       'dot-chip': LocalJSX.DotChip & JSXBase.HTMLAttributes<HTMLDotChipElement>;
+      'dot-contentlet-thumbnail': LocalJSX.DotContentletThumbnail & JSXBase.HTMLAttributes<HTMLDotContentletThumbnailElement>;
       'dot-date': LocalJSX.DotDate & JSXBase.HTMLAttributes<HTMLDotDateElement>;
       'dot-date-range': LocalJSX.DotDateRange & JSXBase.HTMLAttributes<HTMLDotDateRangeElement>;
       'dot-date-time': LocalJSX.DotDateTime & JSXBase.HTMLAttributes<HTMLDotDateTimeElement>;
