@@ -49,11 +49,11 @@ export const MultiSelect = () => {
         }
     ];
 
-    const datetime = document.createElement('dot-multi-select');
+    const multiselect = document.createElement('dot-multi-select');
 
     props.forEach(({ name, content }) => {
-        datetime[name] = content;
+        multiselect[name] = content;
     });
 
-    return datetime;
+    return multiselect;
 };

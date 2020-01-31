@@ -45,11 +45,11 @@ export const Select = () => {
         }
     ];
 
-    const datetime = document.createElement('dot-select');
+    const select = document.createElement('dot-select');
 
     props.forEach(({ name, content }) => {
-        datetime[name] = content;
+        select[name] = content;
     });
 
-    return datetime;
+    return select;
 };

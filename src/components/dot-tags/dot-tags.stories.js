@@ -53,11 +53,11 @@ export const Tags = () => {
         }
     ];
 
-    const datetime = document.createElement('dot-tags');
+    const tags = document.createElement('dot-tags');
 
     props.forEach(({ name, content }) => {
-        datetime[name] = content;
+        tags[name] = content;
     });
 
-    return datetime;
+    return tags;
 };
