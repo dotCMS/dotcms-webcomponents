@@ -1,5 +1,5 @@
 import { Component, Prop } from '@stencil/core';
-import { fieldMap, shouldShowField } from '../utils';
+import { fieldMap, shouldShowField } from '../../utils';
 import { DotCMSContentTypeLayoutColumn, DotCMSContentTypeField } from 'dotcms-models';
 
 @Component({

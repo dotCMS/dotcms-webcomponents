@@ -22,9 +22,6 @@ export class DotTagsComponent {
     /** Value formatted splitted with a comma, for example: tag-1,tag-2 */
     @Prop({ mutable: true, reflectToAttr: true }) value = '';
 
-    /** Function or array of string to get the data to use for the autocomplete search */
-    @Prop() data: () => Promise<string[]> | string[] = null;
-
     /** Name that will be used as ID */
     @Prop({ reflectToAttr: true }) name = '';
 
@@ -51,6 +48,9 @@ export class DotTagsComponent {
 
     /** Duraction in ms to start search into the autocomplete */
     @Prop({ reflectToAttr: true }) debounce = 300;
+
+    /** Function or array of string to get the data to use for the autocomplete search */
+    @Prop() data: () => Promise<string[]> | string[] = null;
 
     @State() status: DotFieldStatus;
 

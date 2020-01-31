@@ -428,11 +428,18 @@ const dataFields = [
 
 
 export default {
-    title: "Custom Fields/Form"
+    title: "Custom Fields"
 };
 
-export const Normal = () => {
+export const Form = () => {
     const form = document.createElement('dot-form');
     form.layout = dataFields;
     return form;
 };
+
+Form.story = {
+    parameters: {
+        notes: 'Web Component to handle Form Content Types from DotCMS'
+    }
+};
+

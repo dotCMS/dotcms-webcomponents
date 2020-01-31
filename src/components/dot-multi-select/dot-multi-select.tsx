@@ -27,8 +27,8 @@ import { getDotAttributesFromElement, setDotAttributesToElement } from '../dot-f
 export class DotMultiSelectComponent {
     @Element() el: HTMLElement;
 
-    /** (optional) Disables field's interaction */
-    @Prop({ reflectToAttr: true }) disabled = false;
+    /** Value set from the dropdown option */
+    @Prop({ mutable: true, reflectToAttr: true }) value = '';
 
     /** Name that will be used as ID */
     @Prop({ reflectToAttr: true }) name = '';
@@ -48,11 +48,11 @@ export class DotMultiSelectComponent {
     /** (optional) Text that will be shown when required is set and condition is not met */
     @Prop({ reflectToAttr: true }) requiredMessage = `This field is required`;
 
+    /** (optional) Disables field's interaction */
+    @Prop({ reflectToAttr: true }) disabled = false;
+
     /** (optional) Size number of the multi-select dropdown (default=3) */
     @Prop({ reflectToAttr: true }) size = '3';
-
-    /** Value set from the dropdown option */
-    @Prop({ mutable: true, reflectToAttr: true }) value = '';
 
     @State() _options: DotOption[];
     @State() status: DotFieldStatus;
