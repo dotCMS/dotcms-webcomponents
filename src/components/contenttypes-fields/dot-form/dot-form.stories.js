@@ -424,7 +424,7 @@ const dataFields = [
 ];
 
 export default {
-    title: 'Custom Fields'
+    title: 'Content Types Fields'
 };
 
 export const Form = () => {
