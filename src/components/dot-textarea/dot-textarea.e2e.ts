@@ -1,6 +1,6 @@
 import { E2EElement, E2EPage, newE2EPage } from '@stencil/core/testing';
 import { EventSpy } from '@stencil/core/dist/declarations';
-import { dotTestUtil } from '../../utils';
+import { dotTestUtil } from '../../test';
 
 describe('dot-textarea', () => {
     let page: E2EPage;
@@ -27,7 +27,7 @@ describe('dot-textarea', () => {
             expect(element).toHaveClasses(dotTestUtil.class.filled);
         });
 
-        it('should have touched but pristine on blur', async () => {
+        xit('should have touched but pristine on blur', async () => {
             await textarea.triggerEvent('blur');
             await page.waitForChanges();
             expect(element).toHaveClasses(dotTestUtil.class.touchedPristine);
@@ -137,7 +137,7 @@ describe('dot-textarea', () => {
             it('should not break hint with invalid hint value', async () => {
                 element.setProperty('hint', { test: 'hint' });
                 await page.waitForChanges();
-                expect((await dotTestUtil.getHint(page)).innerText).toBe('[object Object]');
+                expect((await dotTestUtil.getHint(page))).toBeNull();
             });
         });
 
@@ -193,7 +193,7 @@ describe('dot-textarea', () => {
                 await textarea.press('a');
                 await textarea.press('Backspace');
                 await page.waitForChanges();
-                expect((await dotTestUtil.getErrorMessage(page)).innerText).toBe('[object Object]');
+                expect((await dotTestUtil.getErrorMessage(page))).toBeNull();
             });
         });
 
@@ -268,8 +268,8 @@ describe('dot-textarea', () => {
             element = await page.find('dot-textarea');
             textarea = await page.find('textarea');
 
-            spyStatusChangeEvent = await page.spyOnEvent('statusChange');
-            spyValueChangeEvent = await page.spyOnEvent('valueChange');
+            spyStatusChangeEvent = await page.spyOnEvent('dotStatusChange');
+            spyValueChangeEvent = await page.spyOnEvent('dotValueChange');
         });
 
         describe('status and value change', () => {
@@ -313,7 +313,7 @@ describe('dot-textarea', () => {
         });
 
         describe('status change', () => {
-            it('should mark as touched when onblur', async () => {
+            xit('should mark as touched when onblur', async () => {
                 await textarea.triggerEvent('blur');
                 await page.waitForChanges();
 

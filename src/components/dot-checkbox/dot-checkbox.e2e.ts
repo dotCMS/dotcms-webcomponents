@@ -1,6 +1,6 @@
 import { newE2EPage, E2EElement, E2EPage } from '@stencil/core/testing';
 import { EventSpy } from '@stencil/core/dist/declarations';
-import { dotTestUtil } from '../../utils';
+import { dotTestUtil } from '../../test';
 
 const getOptions = (page: E2EPage) => page.findAll('input');
 
@@ -187,7 +187,7 @@ describe('dot-checkbox', () => {
                 element.setProperty('label', wrongValue);
                 await page.waitForChanges();
                 const labelElement = await dotTestUtil.getDotLabel(page);
-                expect(labelElement.getAttribute('label')).toEqual('1,2,3');
+                expect(labelElement.getAttribute('label')).toEqual('');
             });
         });
 
@@ -216,7 +216,7 @@ describe('dot-checkbox', () => {
                 element.setProperty('hint', wrongValue);
                 await page.waitForChanges();
                 const hintElement = await dotTestUtil.getHint(page);
-                expect(hintElement.innerText).toBe('1,2,3');
+                expect(hintElement).toBeNull();
             });
         });
 
@@ -291,7 +291,7 @@ describe('dot-checkbox', () => {
                 element.setProperty('requiredMessage', wrongValue);
                 await page.waitForChanges();
                 const errorElement = await dotTestUtil.getErrorMessage(page);
-                expect(errorElement.innerText).toBe('1,2,3');
+                expect(errorElement).toBeNull();
             });
         });
 
@@ -346,14 +346,14 @@ describe('dot-checkbox', () => {
                     </dot-checkbox>
                 </dot-form>`
             });
-            spyStatusChangeEvent = await page.spyOnEvent('statusChange');
-            spyValueChangeEvent = await page.spyOnEvent('valueChange');
+            spyStatusChangeEvent = await page.spyOnEvent('dotStatusChange');
+            spyValueChangeEvent = await page.spyOnEvent('dotValueChange');
 
             element = await page.find('dot-checkbox');
         });
 
         describe('status and value change', () => {
-            it('should emit default valueChange', async () => {
+            it('should emit default dotValueChange', async () => {
                 const form = await page.find('dot-form');
                 expect(form).toHaveClasses(dotTestUtil.class.emptyPristineInvalid);
             });
@@ -386,8 +386,8 @@ describe('dot-checkbox', () => {
                     options="value|0,valueA|1,valueB|2">
                 </dot-checkbox>`
             });
-            spyStatusChangeEvent = await page.spyOnEvent('statusChange');
-            spyValueChangeEvent = await page.spyOnEvent('valueChange');
+            spyStatusChangeEvent = await page.spyOnEvent('dotStatusChange');
+            spyValueChangeEvent = await page.spyOnEvent('dotValueChange');
 
             element = await page.find('dot-checkbox');
         });

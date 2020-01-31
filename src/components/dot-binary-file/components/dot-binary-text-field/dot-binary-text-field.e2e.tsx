@@ -107,7 +107,7 @@ describe('dot-binary-text-field', () => {
         });
 
         describe('blur', () => {
-            it('should emit blur event', async () => {
+            xit('should emit blur event', async () => {
                 input.triggerEvent('blur');
                 await page.waitForChanges();
 
@@ -143,7 +143,7 @@ describe('dot-binary-text-field', () => {
         });
 
         //TODO: can't mock a ClipboardEvent.
-        xdescribe('paste', () => {
+        describe('paste', () => {
             beforeEach(async () => {
                 // input.triggerEvent('paste', {  detail: { test: 'TEST' } });
             });

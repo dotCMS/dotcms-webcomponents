@@ -1,6 +1,6 @@
 import { newE2EPage, E2EPage, E2EElement } from '@stencil/core/testing';
 import { EventSpy } from '@stencil/core/dist/declarations';
-import { dotTestUtil } from '../../utils';
+import { dotTestUtil } from '../../test';
 import { fieldMockNotRequired, dotFormLayoutMock } from '../../test';
 
 describe('dot-form', () => {
@@ -47,7 +47,7 @@ describe('dot-form', () => {
 
         it('should have filled', async () => {
             const keyValue = await element.find('dot-key-value');
-            keyValue.triggerEvent('statusChange', {
+            keyValue.triggerEvent('dotStatusChange', {
                 detail: {
                     name: 'keyvalue2',
                     status: {
@@ -57,7 +57,7 @@ describe('dot-form', () => {
                     }
                 }
             });
-            keyValue.triggerEvent('valueChange', {
+            keyValue.triggerEvent('dotValueChange', {
                 detail: {
                     name: 'keyvalue2',
                     value: 'key|value,llave|valor'
@@ -71,7 +71,7 @@ describe('dot-form', () => {
         it('should have touched pristine', async () => {
             await page.waitForChanges();
             const keyValue = await element.find('dot-key-value');
-            keyValue.triggerEvent('statusChange', {
+            keyValue.triggerEvent('dotStatusChange', {
                 detail: {
                     name: 'keyvalue2',
                     status: {

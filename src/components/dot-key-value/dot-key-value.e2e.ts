@@ -1,6 +1,6 @@
 import { EventSpy } from '@stencil/core/dist/declarations';
 import { E2EPage, E2EElement, newE2EPage } from '@stencil/core/testing';
-import { dotTestUtil } from '../../utils';
+import { dotTestUtil } from '../../test';
 
 describe('dot-key-value', () => {
     let page: E2EPage;
@@ -203,7 +203,7 @@ describe('dot-key-value', () => {
                 await page.waitForChanges();
 
                 const hint = await dotTestUtil.getHint(page);
-                expect(hint.innerText).toBe('[object Object]');
+                expect(hint).toBeNull();
             });
         });
 
@@ -226,7 +226,7 @@ describe('dot-key-value', () => {
                 await page.waitForChanges();
 
                 const dotLabel = await dotTestUtil.getDotLabel(page);
-                expect(dotLabel.getAttribute('label')).toBe('some,array');
+                expect(dotLabel.getAttribute('label')).toBe('');
             });
         });
 
@@ -355,11 +355,11 @@ describe('dot-key-value', () => {
     describe('@Events', () => {
         beforeEach(async () => {
             element.setAttribute('name', 'fieldName');
-            spyValueChangeEvent = await page.spyOnEvent('valueChange');
-            spyStatusChangeEvent = await page.spyOnEvent('statusChange');
+            spyValueChangeEvent = await page.spyOnEvent('dotValueChange');
+            spyStatusChangeEvent = await page.spyOnEvent('dotStatusChange');
         });
 
-        describe('valueChange and statusChange', () => {
+        describe('dotValueChange and dotStatusChange', () => {
             it('shoult emit on add', async () => {
                 const form = await getForm();
                 form.triggerEvent('add', {
@@ -398,8 +398,8 @@ describe('dot-key-value', () => {
             });
         });
 
-        describe('statusChange', () => {
-            it('should emit default valueChange', async () => {
+        describe('dotStatusChange', () => {
+            it('should emit default dotValueChange', async () => {
                 page = await newE2EPage({
                     html: `
                         <dot-form>
@@ -431,8 +431,8 @@ describe('dot-key-value', () => {
             element.setAttribute('name', 'fieldName');
             element.setAttribute('value', 'first key|first value,second key|second value');
 
-            spyValueChangeEvent = await page.spyOnEvent('valueChange');
-            spyStatusChangeEvent = await page.spyOnEvent('statusChange');
+            spyValueChangeEvent = await page.spyOnEvent('dotValueChange');
+            spyStatusChangeEvent = await page.spyOnEvent('dotStatusChange');
         });
 
         describe('reset', () => {

@@ -145,8 +145,8 @@ describe('getTagError', () => {
     it('should return error tag', () => {
         const message = 'Error Msg';
         const jsxTag: any = getTagError(true, message);
-        expect(jsxTag.vattrs).toEqual({ class: 'dot-field__error-message' });
-        expect(jsxTag.vchildren).toEqual([{ vtext: message }]);
+        expect(jsxTag.$attrs$).toEqual({ class: 'dot-field__error-message' });
+        expect(jsxTag.$children$[0].$text$).toEqual(message);
     });
     it('should not return Error tag', () => {
         expect(getTagError(false, 'Error Msg')).toEqual(null);
@@ -156,8 +156,8 @@ describe('getTagError', () => {
 describe('getTagHint', () => {
     it('should return Hint tag', () => {
         const jsxTag: any = getTagHint('this is a hint');
-        expect(jsxTag.vattrs).toEqual({ class: 'dot-field__hint', id: 'hint-this-is-a-hint' });
-        expect(jsxTag.vchildren).toEqual([{ vtext: 'this is a hint' }]);
+        expect(jsxTag.$attrs$).toEqual({ class: 'dot-field__hint', id: 'hint-this-is-a-hint' });
+        expect(jsxTag.$children$[0].$text$).toEqual('this is a hint');
     });
     it('should not return Hint tag', () => {
         expect(getTagHint('')).toBeNull();
@@ -175,7 +175,7 @@ describe('updateStatus', () => {
     });
 });
 
-xdescribe('isValidURL', () => {
+describe('isValidURL', () => {
     // new URL is not available in headless browser.
 });
 

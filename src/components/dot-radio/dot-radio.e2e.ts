@@ -1,6 +1,6 @@
 import { newE2EPage, E2EElement, E2EPage } from '@stencil/core/testing';
 import { EventSpy } from '@stencil/core/dist/declarations';
-import { dotTestUtil } from '../../utils';
+import { dotTestUtil } from '../../test';
 
 const getOptions = (page: E2EPage) => page.findAll('input');
 
@@ -173,7 +173,7 @@ describe('dot-radio', () => {
                 element.setProperty('label', wrongValue);
                 await page.waitForChanges();
                 const labelElement = await dotTestUtil.getDotLabel(page);
-                expect(labelElement.getAttribute('label')).toEqual('1,2,3');
+                expect(labelElement.getAttribute('label')).toEqual('');
             });
         });
 
@@ -327,8 +327,8 @@ describe('dot-radio', () => {
                     </dot-radio>
                 </dot-form>`
             });
-            spyStatusChangeEvent = await page.spyOnEvent('statusChange');
-            spyValueChangeEvent = await page.spyOnEvent('valueChange');
+            spyStatusChangeEvent = await page.spyOnEvent('dotStatusChange');
+            spyValueChangeEvent = await page.spyOnEvent('dotValueChange');
 
             element = await page.find('dot-radio');
         });
@@ -367,8 +367,8 @@ describe('dot-radio', () => {
                     options="value|0,valueA|1,valueB|2">
                 </dot-radio>`
             });
-            spyStatusChangeEvent = await page.spyOnEvent('statusChange');
-            spyValueChangeEvent = await page.spyOnEvent('valueChange');
+            spyStatusChangeEvent = await page.spyOnEvent('dotStatusChange');
+            spyValueChangeEvent = await page.spyOnEvent('dotValueChange');
 
             element = await page.find('dot-radio');
         });

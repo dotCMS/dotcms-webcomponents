@@ -1,6 +1,6 @@
 import { newE2EPage, E2EElement, E2EPage } from '@stencil/core/testing';
 import { EventSpy } from '@stencil/core/dist/declarations';
-import { dotTestUtil } from '../../utils';
+import { dotTestUtil } from '../../test';
 
 const getSelect = (page: E2EPage) => page.find('select');
 const getOptions = (page: E2EPage) => page.findAll('option');
@@ -196,7 +196,7 @@ describe('dot-multi-select', () => {
                 element.setProperty('label', wrongValue);
                 await page.waitForChanges();
                 const labelElement = await dotTestUtil.getDotLabel(page);
-                expect(labelElement.getAttribute('label')).toEqual('1,2,3');
+                expect(labelElement.getAttribute('label')).toEqual('');
             });
         });
 
@@ -223,7 +223,7 @@ describe('dot-multi-select', () => {
                 element.setProperty('hint', wrongValue);
                 await page.waitForChanges();
                 const hintElement = await dotTestUtil.getHint(page);
-                expect(hintElement.innerText).toBe('1,2,3');
+                expect(hintElement).toBeNull();
             });
         });
 
@@ -298,7 +298,7 @@ describe('dot-multi-select', () => {
                 element.setProperty('requiredMessage', wrongValue);
                 await page.waitForChanges();
                 const errorElement = await dotTestUtil.getErrorMessage(page);
-                expect(errorElement.innerText).toBe('1,2,3');
+                expect(errorElement).toBeNull();
             });
         });
 
@@ -352,8 +352,8 @@ describe('dot-multi-select', () => {
                     </dot-multi-select>
                 </dot-form>`
             });
-            spyStatusChangeEvent = await page.spyOnEvent('statusChange');
-            spyValueChangeEvent = await page.spyOnEvent('valueChange');
+            spyStatusChangeEvent = await page.spyOnEvent('dotStatusChange');
+            spyValueChangeEvent = await page.spyOnEvent('dotValueChange');
 
             element = await page.find('dot-multi-select');
         });
@@ -408,8 +408,8 @@ describe('dot-multi-select', () => {
                     value="2">
                 </dot-multi-select>`
             });
-            spyStatusChangeEvent = await page.spyOnEvent('statusChange');
-            spyValueChangeEvent = await page.spyOnEvent('valueChange');
+            spyStatusChangeEvent = await page.spyOnEvent('dotStatusChange');
+            spyValueChangeEvent = await page.spyOnEvent('dotValueChange');
 
             element = await page.find('dot-multi-select');
         });

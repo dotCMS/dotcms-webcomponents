@@ -1,5 +1,4 @@
 import { E2EElement, E2EPage, newE2EPage } from '@stencil/core/testing';
-import { EventSpy } from '@stencil/core/dist/declarations';
 
 describe('dot-binary-upload-button', () => {
     let page: E2EPage;
@@ -92,17 +91,17 @@ describe('dot-binary-upload-button', () => {
             it('should render when is a unexpected value', async () => {
                 element.setProperty('buttonLabel', { input: 'test' });
                 await page.waitForChanges();
-                expect(button.innerText).toBe('[object Object]');
+                expect(button.innerText).toBe('undefined');
             });
         });
     });
 
     // TODO: Find a a way to Mock a input.files attribute.
-    xdescribe('@Events', () => {
-        let spyFileChangeEvent: EventSpy;
+    describe('@Events', () => {
+        // let spyFileChangeEvent: EventSpy;
 
         beforeEach(async () => {
-            spyFileChangeEvent = await page.spyOnEvent('fileChange');
+            // pyFileChangeEvent = await page.spyOnEvent('fileChange');
         });
 
         it('should emit the selected file', async () => {});
