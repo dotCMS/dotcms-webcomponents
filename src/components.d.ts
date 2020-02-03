@@ -178,6 +178,7 @@ export namespace Components {
     */
     'required': boolean;
   }
+  interface DotCard {}
   interface DotCheckbox {
     /**
     * (optional) Disables field's interaction
@@ -939,6 +940,12 @@ declare global {
     new (): HTMLDotBinaryUploadButtonElement;
   };
 
+  interface HTMLDotCardElement extends Components.DotCard, HTMLStencilElement {}
+  var HTMLDotCardElement: {
+    prototype: HTMLDotCardElement;
+    new (): HTMLDotCardElement;
+  };
+
   interface HTMLDotCheckboxElement extends Components.DotCheckbox, HTMLStencilElement {}
   var HTMLDotCheckboxElement: {
     prototype: HTMLDotCheckboxElement;
@@ -1076,6 +1083,7 @@ declare global {
     'dot-binary-file-preview': HTMLDotBinaryFilePreviewElement;
     'dot-binary-text-field': HTMLDotBinaryTextFieldElement;
     'dot-binary-upload-button': HTMLDotBinaryUploadButtonElement;
+    'dot-card': HTMLDotCardElement;
     'dot-checkbox': HTMLDotCheckboxElement;
     'dot-chip': HTMLDotChipElement;
     'dot-contentlet-thumbnail': HTMLDotContentletThumbnailElement;
@@ -1264,6 +1272,7 @@ declare namespace LocalJSX {
     */
     'required'?: boolean;
   }
+  interface DotCard {}
   interface DotCheckbox {
     /**
     * (optional) Disables field's interaction
@@ -1980,6 +1989,7 @@ declare namespace LocalJSX {
     'dot-binary-file-preview': DotBinaryFilePreview;
     'dot-binary-text-field': DotBinaryTextField;
     'dot-binary-upload-button': DotBinaryUploadButton;
+    'dot-card': DotCard;
     'dot-checkbox': DotCheckbox;
     'dot-chip': DotChip;
     'dot-contentlet-thumbnail': DotContentletThumbnail;
@@ -2016,6 +2026,7 @@ declare module "@stencil/core" {
       'dot-binary-file-preview': LocalJSX.DotBinaryFilePreview & JSXBase.HTMLAttributes<HTMLDotBinaryFilePreviewElement>;
       'dot-binary-text-field': LocalJSX.DotBinaryTextField & JSXBase.HTMLAttributes<HTMLDotBinaryTextFieldElement>;
       'dot-binary-upload-button': LocalJSX.DotBinaryUploadButton & JSXBase.HTMLAttributes<HTMLDotBinaryUploadButtonElement>;
+      'dot-card': LocalJSX.DotCard & JSXBase.HTMLAttributes<HTMLDotCardElement>;
       'dot-checkbox': LocalJSX.DotCheckbox & JSXBase.HTMLAttributes<HTMLDotCheckboxElement>;
       'dot-chip': LocalJSX.DotChip & JSXBase.HTMLAttributes<HTMLDotChipElement>;
       'dot-contentlet-thumbnail': LocalJSX.DotContentletThumbnail & JSXBase.HTMLAttributes<HTMLDotContentletThumbnailElement>;

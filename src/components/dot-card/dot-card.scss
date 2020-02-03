@@ -1,0 +1,11 @@
+:host {
+    display: block;
+    background-color: var(--color-white);
+    box-shadow: var(--md-shadow-1);
+    color: red;
+    padding: var(--basic-padding);
+}
+
+p {
+    color: var(--color-main);
+}
