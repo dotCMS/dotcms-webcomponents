@@ -6,6 +6,6 @@ import { Component, h } from '@stencil/core';
 })
 export class DotContentletThumbnail {
     render() {
-        return <h1>Hello</h1>;
+        return <h1>Hello word</h1>;
     }
 }
