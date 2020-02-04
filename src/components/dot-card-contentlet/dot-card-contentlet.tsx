@@ -1,6 +1,5 @@
-import { Component, h, Element } from '@stencil/core';
+import { Component, h, Element, Prop, Event, EventEmitter } from '@stencil/core';
 import '@material/mwc-checkbox';
-import { Checkbox } from '@material/mwc-checkbox';
 import '@material/mwc-formfield';
 
 @Component({
@@ -10,30 +9,58 @@ import '@material/mwc-formfield';
 })
 export class DotCardContentlet {
     @Element() el: HTMLElement;
-    private checkbox: Checkbox;
+
+    @Prop() contentlet;
+
+    @Event() selected: EventEmitter;
+
+    private checkbox: HTMLInputElement;
 
     componentDidLoad() {
-        this.checkbox = this.el.shadowRoot.querySelector('mwc-checkbox');
+        this.checkbox = this.el.shadowRoot
+            .querySelector('mwc-checkbox')
+            .shadowRoot.querySelector('input');
     }
 
     render() {
+        const title = this.contentlet?.title;
         return (
-            <dot-card>
+            <dot-card
+                onClick={() => {
+                    this.handleClick();
+                }}
+            >
+                <section>
+                    <img src="https://picsum.photos/600/400" alt={title} />
+                </section>
                 <header>
                     <mwc-checkbox
-                        onChange={(e) => {
-                            console.log(e);
+                        value="true"
+                        onClick={(e) => {
+                            e.stopPropagation();
+                        }}
+                        onChange={() => {
+                            if (this.checkbox.checked) {
+                                this.selected.emit(this.contentlet);
+                            } else {
+                                this.selected.emit(null);
+                            }
                         }}
                     ></mwc-checkbox>
                     <label
-                        onClick={() => {
-                            this.checkbox.click();
+                        onClick={(e) => {
+                            e.stopPropagation();
+                            this.handleClick();
                         }}
                     >
-                        Hola Mundo
+                        {title}
                     </label>
                 </header>
             </dot-card>
         );
+    }
+
+    private handleClick() {
+        this.checkbox.click();
     }
 }

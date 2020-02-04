@@ -179,7 +179,9 @@ export namespace Components {
     'required': boolean;
   }
   interface DotCard {}
-  interface DotCardContentlet {}
+  interface DotCardContentlet {
+    'contentlet': any;
+  }
   interface DotCheckbox {
     /**
     * (optional) Disables field's interaction
@@ -1281,7 +1283,10 @@ declare namespace LocalJSX {
     'required'?: boolean;
   }
   interface DotCard {}
-  interface DotCardContentlet {}
+  interface DotCardContentlet {
+    'contentlet'?: any;
+    'onSelected'?: (event: CustomEvent<any>) => void;
+  }
   interface DotCheckbox {
     /**
     * (optional) Disables field's interaction

@@ -28,6 +28,7 @@
         "@babel/core": "^7.8.0",
         "@stencil/core": "^1.8.4",
         "@stencil/sass": "^1.1.1",
+        "@storybook/addon-actions": "^5.3.11",
         "@storybook/addon-knobs": "^5.3.10",
         "@storybook/addon-notes": "^5.3.10",
         "@storybook/html": "^5.3.10",
