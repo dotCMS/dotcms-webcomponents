@@ -1,18 +1,5 @@
 @import "variables";
-@import "@material/checkbox/mdc-checkbox";
 
-header {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-}
-
-h4 {
-    margin: 0;
-    font-weight: normal;
-}
-
-
-dot-card-contentlet {
-    /* Component styles go here */
+:host {
+    @include mwc-dotcms-theme;
 }

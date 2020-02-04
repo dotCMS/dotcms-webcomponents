@@ -20,7 +20,7 @@
         "test": "stencil test --spec --e2e",
         "test.watch": "stencil test --spec --e2e --watchAll",
         "generate": "stencil generate",
-        "storybook": "start-storybook -p 6006",
+        "storybook": "start-storybook -s dist -p 6006",
         "build-storybook": "build-storybook",
         "dev": "npm-run-all --parallel start storybook"
     },
@@ -28,9 +28,9 @@
         "@babel/core": "^7.8.0",
         "@stencil/core": "^1.8.4",
         "@stencil/sass": "^1.1.1",
-        "@storybook/addon-knobs": "^5.3.9",
-        "@storybook/addon-notes": "^5.3.9",
-        "@storybook/html": "^5.3.9",
+        "@storybook/addon-knobs": "^5.3.10",
+        "@storybook/addon-notes": "^5.3.10",
+        "@storybook/html": "^5.3.10",
         "@types/jest": "24.0.25",
         "@types/puppeteer": "1.20.3",
         "babel-loader": "^8.0.6",
@@ -43,13 +43,12 @@
     },
     "license": "MIT",
     "dependencies": {
-        "@material/animation": "^4.0.0",
-        "@material/checkbox": "^4.0.0",
-        "@material/density": "^4.0.0",
-        "@material/feature-targeting": "^4.0.0",
-        "@material/ripple": "^4.0.0",
+        "@material/mwc-checkbox": "^0.13.0",
+        "@material/mwc-formfield": "^0.13.0",
         "@tarekraafat/autocomplete.js": "^7.2.0",
         "dotcms-models": "0.0.8",
-        "flatpickr": "^4.5.7"
+        "flatpickr": "^4.5.7",
+        "install": "^0.13.0",
+        "npm": "^6.13.7"
     }
 }
