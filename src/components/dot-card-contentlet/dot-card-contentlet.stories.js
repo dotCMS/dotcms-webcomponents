@@ -1,9 +1,9 @@
 import readme from './readme.md';
    export default {
-       title: 'Components',
+       title: 'Components/Card',
        parameters: {
            notes: readme
        }
    };
-export const Card = () =>
-`<dot-card />`;
+export const Contentlet = () =>
+`<dot-card-contentlet />`;
