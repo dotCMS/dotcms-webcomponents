@@ -236,6 +236,9 @@ export namespace Components {
     'label': string;
   }
   interface DotContentletThumbnail {}
+  interface DotContextMenu {
+    'options': DotContextMenuOption[];
+  }
   interface DotDate {
     /**
     * (optional) Disables field's interaction
@@ -973,6 +976,12 @@ declare global {
     new (): HTMLDotContentletThumbnailElement;
   };
 
+  interface HTMLDotContextMenuElement extends Components.DotContextMenu, HTMLStencilElement {}
+  var HTMLDotContextMenuElement: {
+    prototype: HTMLDotContextMenuElement;
+    new (): HTMLDotContextMenuElement;
+  };
+
   interface HTMLDotDateElement extends Components.DotDate, HTMLStencilElement {}
   var HTMLDotDateElement: {
     prototype: HTMLDotDateElement;
@@ -1097,6 +1106,7 @@ declare global {
     'dot-checkbox': HTMLDotCheckboxElement;
     'dot-chip': HTMLDotChipElement;
     'dot-contentlet-thumbnail': HTMLDotContentletThumbnailElement;
+    'dot-context-menu': HTMLDotContextMenuElement;
     'dot-date': HTMLDotDateElement;
     'dot-date-range': HTMLDotDateRangeElement;
     'dot-date-time': HTMLDotDateTimeElement;
@@ -1339,6 +1349,9 @@ declare namespace LocalJSX {
     'onRemove'?: (event: CustomEvent<String>) => void;
   }
   interface DotContentletThumbnail {}
+  interface DotContextMenu {
+    'options'?: DotContextMenuOption[];
+  }
   interface DotDate {
     /**
     * (optional) Disables field's interaction
@@ -2008,6 +2021,7 @@ declare namespace LocalJSX {
     'dot-checkbox': DotCheckbox;
     'dot-chip': DotChip;
     'dot-contentlet-thumbnail': DotContentletThumbnail;
+    'dot-context-menu': DotContextMenu;
     'dot-date': DotDate;
     'dot-date-range': DotDateRange;
     'dot-date-time': DotDateTime;
@@ -2046,6 +2060,7 @@ declare module "@stencil/core" {
       'dot-checkbox': LocalJSX.DotCheckbox & JSXBase.HTMLAttributes<HTMLDotCheckboxElement>;
       'dot-chip': LocalJSX.DotChip & JSXBase.HTMLAttributes<HTMLDotChipElement>;
       'dot-contentlet-thumbnail': LocalJSX.DotContentletThumbnail & JSXBase.HTMLAttributes<HTMLDotContentletThumbnailElement>;
+      'dot-context-menu': LocalJSX.DotContextMenu & JSXBase.HTMLAttributes<HTMLDotContextMenuElement>;
       'dot-date': LocalJSX.DotDate & JSXBase.HTMLAttributes<HTMLDotDateElement>;
       'dot-date-range': LocalJSX.DotDateRange & JSXBase.HTMLAttributes<HTMLDotDateRangeElement>;
       'dot-date-time': LocalJSX.DotDateTime & JSXBase.HTMLAttributes<HTMLDotDateTimeElement>;

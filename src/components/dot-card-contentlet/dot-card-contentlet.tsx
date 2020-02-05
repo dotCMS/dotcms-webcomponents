@@ -15,6 +15,20 @@ export class DotCardContentlet {
     @Event() selected: EventEmitter;
 
     private checkbox: HTMLInputElement;
+    private options = [
+        {
+            label: 'Publish',
+            action: (e) => {
+                console.log(e);
+            }
+        },
+        {
+            label: 'Archived',
+            action: (e) => {
+                console.log(e);
+            }
+        }
+    ];
 
     componentDidLoad() {
         this.checkbox = this.el.shadowRoot
@@ -30,8 +44,9 @@ export class DotCardContentlet {
                     this.handleClick();
                 }}
             >
+                <dot-context-menu options={this.options} />
                 <section>
-                    <img src="https://picsum.photos/600/400" alt={title} />
+                    <img src="https://placeimg.com/640/480/any" alt={title} />
                 </section>
                 <header>
                     <mwc-checkbox

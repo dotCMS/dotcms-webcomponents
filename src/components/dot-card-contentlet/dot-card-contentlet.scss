@@ -2,14 +2,22 @@
 
 :host {
     @include mwc-dotcms-theme;
+    --mdc-ripple-fg-scale: #ffffff;
 }
 
 dot-card {
+    position: relative;
     transition: box-shadow var(--basic-speed) ease;
 
     &:hover {
         box-shadow: var(--md-shadow-2);
     }
+}
+
+dot-context-menu {
+    position: absolute;
+    right: var(--basic-padding);
+    top: var(--basic-padding);
 }
 
 header {
