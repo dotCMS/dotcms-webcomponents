@@ -15,9 +15,6 @@ import {
   DotKeyValueField,
 } from './models';
 import {
-  DotContentlet,
-} from './models/dot-Contentlet';
-import {
   DotCMSContentTypeLayoutColumn,
   DotCMSContentTypeLayoutRow,
 } from 'dotcms-models';
@@ -182,7 +179,9 @@ export namespace Components {
     'required': boolean;
   }
   interface DotCard {}
-  interface DotCardContentlet {}
+  interface DotCardContentlet {
+    'contentlet': any;
+  }
   interface DotCheckbox {
     /**
     * (optional) Disables field's interaction
@@ -236,11 +235,9 @@ export namespace Components {
     */
     'label': string;
   }
-  interface DotContentletThumbnail {
-    'alt': string;
-    'contentlet': DotContentlet;
-    'height': string;
-    'width': string;
+  interface DotContentletThumbnail {}
+  interface DotContextMenu {
+    'options': DotContextMenuOption[];
   }
   interface DotDate {
     /**
@@ -405,9 +402,6 @@ export namespace Components {
     'value': string;
   }
   interface DotErrorMessage {}
-  interface DotFileIcon {
-    'icon': string;
-  }
   interface DotForm {
     /**
     * (optional) List of fields (variableName) separated by comma, to be shown
@@ -982,6 +976,12 @@ declare global {
     new (): HTMLDotContentletThumbnailElement;
   };
 
+  interface HTMLDotContextMenuElement extends Components.DotContextMenu, HTMLStencilElement {}
+  var HTMLDotContextMenuElement: {
+    prototype: HTMLDotContextMenuElement;
+    new (): HTMLDotContextMenuElement;
+  };
+
   interface HTMLDotDateElement extends Components.DotDate, HTMLStencilElement {}
   var HTMLDotDateElement: {
     prototype: HTMLDotDateElement;
@@ -1004,12 +1004,6 @@ declare global {
   var HTMLDotErrorMessageElement: {
     prototype: HTMLDotErrorMessageElement;
     new (): HTMLDotErrorMessageElement;
-  };
-
-  interface HTMLDotFileIconElement extends Components.DotFileIcon, HTMLStencilElement {}
-  var HTMLDotFileIconElement: {
-    prototype: HTMLDotFileIconElement;
-    new (): HTMLDotFileIconElement;
   };
 
   interface HTMLDotFormElement extends Components.DotForm, HTMLStencilElement {}
@@ -1112,11 +1106,11 @@ declare global {
     'dot-checkbox': HTMLDotCheckboxElement;
     'dot-chip': HTMLDotChipElement;
     'dot-contentlet-thumbnail': HTMLDotContentletThumbnailElement;
+    'dot-context-menu': HTMLDotContextMenuElement;
     'dot-date': HTMLDotDateElement;
     'dot-date-range': HTMLDotDateRangeElement;
     'dot-date-time': HTMLDotDateTimeElement;
     'dot-error-message': HTMLDotErrorMessageElement;
-    'dot-file-icon': HTMLDotFileIconElement;
     'dot-form': HTMLDotFormElement;
     'dot-form-column': HTMLDotFormColumnElement;
     'dot-form-row': HTMLDotFormRowElement;
@@ -1299,7 +1293,10 @@ declare namespace LocalJSX {
     'required'?: boolean;
   }
   interface DotCard {}
-  interface DotCardContentlet {}
+  interface DotCardContentlet {
+    'contentlet'?: any;
+    'onSelected'?: (event: CustomEvent<any>) => void;
+  }
   interface DotCheckbox {
     /**
     * (optional) Disables field's interaction
@@ -1351,11 +1348,9 @@ declare namespace LocalJSX {
     'label'?: string;
     'onRemove'?: (event: CustomEvent<String>) => void;
   }
-  interface DotContentletThumbnail {
-    'alt'?: string;
-    'contentlet'?: DotContentlet;
-    'height'?: string;
-    'width'?: string;
+  interface DotContentletThumbnail {}
+  interface DotContextMenu {
+    'options'?: DotContextMenuOption[];
   }
   interface DotDate {
     /**
@@ -1514,9 +1509,6 @@ declare namespace LocalJSX {
     'value'?: string;
   }
   interface DotErrorMessage {}
-  interface DotFileIcon {
-    'icon'?: string;
-  }
   interface DotForm {
     /**
     * (optional) List of fields (variableName) separated by comma, to be shown
@@ -2029,11 +2021,11 @@ declare namespace LocalJSX {
     'dot-checkbox': DotCheckbox;
     'dot-chip': DotChip;
     'dot-contentlet-thumbnail': DotContentletThumbnail;
+    'dot-context-menu': DotContextMenu;
     'dot-date': DotDate;
     'dot-date-range': DotDateRange;
     'dot-date-time': DotDateTime;
     'dot-error-message': DotErrorMessage;
-    'dot-file-icon': DotFileIcon;
     'dot-form': DotForm;
     'dot-form-column': DotFormColumn;
     'dot-form-row': DotFormRow;
@@ -2068,11 +2060,11 @@ declare module "@stencil/core" {
       'dot-checkbox': LocalJSX.DotCheckbox & JSXBase.HTMLAttributes<HTMLDotCheckboxElement>;
       'dot-chip': LocalJSX.DotChip & JSXBase.HTMLAttributes<HTMLDotChipElement>;
       'dot-contentlet-thumbnail': LocalJSX.DotContentletThumbnail & JSXBase.HTMLAttributes<HTMLDotContentletThumbnailElement>;
+      'dot-context-menu': LocalJSX.DotContextMenu & JSXBase.HTMLAttributes<HTMLDotContextMenuElement>;
       'dot-date': LocalJSX.DotDate & JSXBase.HTMLAttributes<HTMLDotDateElement>;
       'dot-date-range': LocalJSX.DotDateRange & JSXBase.HTMLAttributes<HTMLDotDateRangeElement>;
       'dot-date-time': LocalJSX.DotDateTime & JSXBase.HTMLAttributes<HTMLDotDateTimeElement>;
       'dot-error-message': LocalJSX.DotErrorMessage & JSXBase.HTMLAttributes<HTMLDotErrorMessageElement>;
-      'dot-file-icon': LocalJSX.DotFileIcon & JSXBase.HTMLAttributes<HTMLDotFileIconElement>;
       'dot-form': LocalJSX.DotForm & JSXBase.HTMLAttributes<HTMLDotFormElement>;
       'dot-form-column': LocalJSX.DotFormColumn & JSXBase.HTMLAttributes<HTMLDotFormColumnElement>;
       'dot-form-row': LocalJSX.DotFormRow & JSXBase.HTMLAttributes<HTMLDotFormRowElement>;

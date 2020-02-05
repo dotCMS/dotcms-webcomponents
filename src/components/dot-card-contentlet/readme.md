@@ -5,6 +5,20 @@
 <!-- Auto Generated Below -->
 
 
+## Properties
+
+| Property     | Attribute    | Description | Type  | Default     |
+| ------------ | ------------ | ----------- | ----- | ----------- |
+| `contentlet` | `contentlet` |             | `any` | `undefined` |
+
+
+## Events
+
+| Event      | Description | Type               |
+| ---------- | ----------- | ------------------ |
+| `selected` |             | `CustomEvent<any>` |
+
+
 ## Dependencies
 
 ### Depends on

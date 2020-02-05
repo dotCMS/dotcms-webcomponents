@@ -1,0 +1,23 @@
+@import "variables";
+
+:host {
+    @include mwc-dotcms-theme;
+    --mdc-icon-size: 24px;
+    display: inline-block;
+    position: relative;
+}
+
+button {
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+    border: 0;
+    cursor: pointer;
+    height: 32px;
+    padding: 0;
+    transition: background-color, var(--basic-speed) ease;
+    width: 32px;
+
+    &:hover {
+        background-color: rgba(255, 255, 255, 0.6);
+    }
+}

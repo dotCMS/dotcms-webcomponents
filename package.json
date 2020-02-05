@@ -28,6 +28,7 @@
         "@babel/core": "^7.8.0",
         "@stencil/core": "^1.8.4",
         "@stencil/sass": "^1.1.1",
+        "@storybook/addon-actions": "^5.3.11",
         "@storybook/addon-knobs": "^5.3.10",
         "@storybook/addon-notes": "^5.3.10",
         "@storybook/html": "^5.3.10",
@@ -45,6 +46,8 @@
     "dependencies": {
         "@material/mwc-checkbox": "^0.13.0",
         "@material/mwc-formfield": "^0.13.0",
+        "@material/mwc-icon": "^0.13.0",
+        "@material/mwc-menu": "^0.13.0",
         "@tarekraafat/autocomplete.js": "^7.2.0",
         "dotcms-models": "0.0.8",
         "flatpickr": "^4.5.7",
