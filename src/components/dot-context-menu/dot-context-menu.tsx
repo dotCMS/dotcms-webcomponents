@@ -18,7 +18,7 @@ export interface MenuAction {
 export class DotContextMenu {
     @Element() el: HTMLElement;
 
-    @Prop() options: DotContextMenuOption<MenuAction>[];
+    @Prop() options: DotContextMenuOption<MenuAction>[] = [];
 
     menu: Menu;
     button: HTMLElement;
