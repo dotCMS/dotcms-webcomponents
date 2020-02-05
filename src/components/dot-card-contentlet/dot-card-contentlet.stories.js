@@ -3,13 +3,13 @@ import { withActions } from '@storybook/addon-actions';
 
 import readme from './readme.md';
 export default {
-    title: 'Components/Card',
+    title: 'Components',
     decorators: [withKnobs, withActions('selected')],
     parameters: {
         notes: readme
     }
 };
-export const Contentlet = () => {
+export const ContentletCard = () => {
     const props = [
         {
             name: 'item',

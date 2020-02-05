@@ -40,7 +40,6 @@ export class DotCardContentlet {
                 </section>
                 <header>
                     <mwc-checkbox
-                        value="true"
                         onClick={(e) => {
                             e.stopPropagation();
                         }}

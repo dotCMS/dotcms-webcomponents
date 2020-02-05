@@ -3,7 +3,7 @@ import { withKnobs, text, boolean } from '@storybook/addon-knobs';
 import readme from './readme.md';
 
 export default {
-    title: 'Content Types Fields',
+    title: 'Components/Content Types Fields',
     decorators: [withKnobs],
     parameters: {
         notes: readme
