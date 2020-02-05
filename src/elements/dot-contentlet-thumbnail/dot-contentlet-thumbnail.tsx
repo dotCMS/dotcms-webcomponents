@@ -15,6 +15,9 @@ export class DotContentletThumbnail {
     @Prop({ reflect: true })
     alt = '';
 
+    @Prop({ reflect: true })
+    iconSize = '';
+
     @Prop() contentlet: DotContentlet;
 
     render() {
@@ -27,7 +30,7 @@ export class DotContentletThumbnail {
                         style={{ width: this.width, height: this.height }}
                     />
                 ) : (
-                    <dot-file-icon icon={this.contentlet.__icon__} />
+                    <dot-file-icon icon={this.contentlet.__icon__} size={this.iconSize} />
                 )}
             </Host>
         );

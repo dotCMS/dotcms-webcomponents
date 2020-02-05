@@ -1,4 +1,4 @@
-import { withKnobs, text, boolean } from '@storybook/addon-knobs';
+import { withKnobs, text } from '@storybook/addon-knobs';
 import readme from './readme.md';
 
 export default {
@@ -9,19 +9,24 @@ export default {
     }
 };
 
-export const dotFileIcon = () => {
+export const ContentletIcon = () => {
     const props = [
         {
             name: 'icon',
             content: text('Icon', '')
         },
+
+        {
+            name: 'size',
+            content: text('Size', '')
+        }
     ];
 
-    const fileIcon = document.createElement('dot-file-icon');
+    const contentletIcon = document.createElement('dot-contentlet-icon');
 
     props.forEach(({ name, content }) => {
-        fileIcon[name] = content;
+        contentletIcon[name] = content;
     });
 
-    return fileIcon;
+    return contentletIcon;
 };

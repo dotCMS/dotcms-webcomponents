@@ -15,6 +15,9 @@ import {
   DotKeyValueField,
 } from './models';
 import {
+  DotContentlet,
+} from './models/dot-Contentlet';
+import {
   DotCMSContentTypeLayoutColumn,
   DotCMSContentTypeLayoutRow,
 } from 'dotcms-models';
@@ -235,7 +238,17 @@ export namespace Components {
     */
     'label': string;
   }
-  interface DotContentletThumbnail {}
+  interface DotContentletIcon {
+    'icon': string;
+    'size': string;
+  }
+  interface DotContentletThumbnail {
+    'alt': string;
+    'contentlet': DotContentlet;
+    'height': string;
+    'iconSize': string;
+    'width': string;
+  }
   interface DotContextMenu {
     'options': DotContextMenuOption[];
   }
@@ -970,6 +983,12 @@ declare global {
     new (): HTMLDotChipElement;
   };
 
+  interface HTMLDotContentletIconElement extends Components.DotContentletIcon, HTMLStencilElement {}
+  var HTMLDotContentletIconElement: {
+    prototype: HTMLDotContentletIconElement;
+    new (): HTMLDotContentletIconElement;
+  };
+
   interface HTMLDotContentletThumbnailElement extends Components.DotContentletThumbnail, HTMLStencilElement {}
   var HTMLDotContentletThumbnailElement: {
     prototype: HTMLDotContentletThumbnailElement;
@@ -1105,6 +1124,7 @@ declare global {
     'dot-card-contentlet': HTMLDotCardContentletElement;
     'dot-checkbox': HTMLDotCheckboxElement;
     'dot-chip': HTMLDotChipElement;
+    'dot-contentlet-icon': HTMLDotContentletIconElement;
     'dot-contentlet-thumbnail': HTMLDotContentletThumbnailElement;
     'dot-context-menu': HTMLDotContextMenuElement;
     'dot-date': HTMLDotDateElement;
@@ -1348,7 +1368,17 @@ declare namespace LocalJSX {
     'label'?: string;
     'onRemove'?: (event: CustomEvent<String>) => void;
   }
-  interface DotContentletThumbnail {}
+  interface DotContentletIcon {
+    'icon'?: string;
+    'size'?: string;
+  }
+  interface DotContentletThumbnail {
+    'alt'?: string;
+    'contentlet'?: DotContentlet;
+    'height'?: string;
+    'iconSize'?: string;
+    'width'?: string;
+  }
   interface DotContextMenu {
     'options'?: DotContextMenuOption[];
   }
@@ -2020,6 +2050,7 @@ declare namespace LocalJSX {
     'dot-card-contentlet': DotCardContentlet;
     'dot-checkbox': DotCheckbox;
     'dot-chip': DotChip;
+    'dot-contentlet-icon': DotContentletIcon;
     'dot-contentlet-thumbnail': DotContentletThumbnail;
     'dot-context-menu': DotContextMenu;
     'dot-date': DotDate;
@@ -2059,6 +2090,7 @@ declare module "@stencil/core" {
       'dot-card-contentlet': LocalJSX.DotCardContentlet & JSXBase.HTMLAttributes<HTMLDotCardContentletElement>;
       'dot-checkbox': LocalJSX.DotCheckbox & JSXBase.HTMLAttributes<HTMLDotCheckboxElement>;
       'dot-chip': LocalJSX.DotChip & JSXBase.HTMLAttributes<HTMLDotChipElement>;
+      'dot-contentlet-icon': LocalJSX.DotContentletIcon & JSXBase.HTMLAttributes<HTMLDotContentletIconElement>;
       'dot-contentlet-thumbnail': LocalJSX.DotContentletThumbnail & JSXBase.HTMLAttributes<HTMLDotContentletThumbnailElement>;
       'dot-context-menu': LocalJSX.DotContextMenu & JSXBase.HTMLAttributes<HTMLDotContextMenuElement>;
       'dot-date': LocalJSX.DotDate & JSXBase.HTMLAttributes<HTMLDotDateElement>;
