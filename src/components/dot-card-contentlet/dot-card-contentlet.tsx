@@ -32,7 +32,7 @@ export class DotCardContentlet {
                     this.handleClick();
                 }}
             >
-                {this.item.actions?.length ? (
+                {this.item?.actions?.length ? (
                     <dot-context-menu options={this.item.actions} />
                 ) : null}
                 <section>
@@ -50,7 +50,7 @@ export class DotCardContentlet {
                         }}
                         onChange={() => {
                             if (this.checkbox.checked) {
-                                this.selected.emit(this.item);
+                                this.selected.emit(this.item.data);
                             } else {
                                 this.selected.emit(null);
                             }
