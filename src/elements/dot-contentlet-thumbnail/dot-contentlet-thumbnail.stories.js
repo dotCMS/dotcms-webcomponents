@@ -43,11 +43,6 @@ export const contentlet = {
 export const contentletThumbnail = () => {
     const props = [
         {
-            name: 'contentlet',
-            content: text('Contentlet', contentlet)
-        },
-
-        {
             name: 'height',
             content: text('Height', '200px')
         },
@@ -68,6 +63,8 @@ export const contentletThumbnail = () => {
     ];
 
     const fileIcon = document.createElement('dot-contentlet-thumbnail');
+
+    fileIcon.contentlet = contentlet;
 
     props.forEach(({ name, content }) => {
         fileIcon[name] = content;
