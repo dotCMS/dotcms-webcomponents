@@ -30,7 +30,11 @@ export class DotContentletThumbnail {
                         style={{ width: this.width, height: this.height }}
                     />
                 ) : (
-                    <dot-contentlet-icon icon={this.contentlet.__icon__} size={this.iconSize} />
+                    <dot-contentlet-icon
+                        icon={this.contentlet.__icon__}
+                        size={this.iconSize}
+                        style={{ width: this.width, height: this.height }}
+                    />
                 )}
             </Host>
         );

@@ -58,7 +58,7 @@ export const contentletThumbnail = () => {
 
         {
             name: 'iconSize',
-            content: text('Icon Size', '200px')
+            content: text('Icon Size', '100px')
         }
     ];
 
