@@ -1,7 +1,7 @@
 import { Component, h, Element, Prop, Event, EventEmitter } from '@stencil/core';
 import '@material/mwc-checkbox';
 import '@material/mwc-formfield';
-import { DotContentletItem } from '../../models/dot-contentlet-item';
+import { DotContentletItem } from '../../models/dot-contentlet-item.modell';
 
 @Component({
     tag: 'dot-card-contentlet',
@@ -63,14 +63,7 @@ export class DotCardContentlet {
                             }
                         }}
                     ></mwc-checkbox>
-                    <label
-                        onClick={(e) => {
-                            e.stopPropagation();
-                            this.handleClick();
-                        }}
-                    >
-                        {title}
-                    </label>
+                    <label>{title}</label>
                 </header>
             </dot-card>
         );

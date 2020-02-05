@@ -1,5 +1,5 @@
 import { Component, h, Host, Prop } from '@stencil/core';
-import { DotContentletItem } from '../../models/dot-contentlet-item';
+import { DotContentletItem } from '../../models/dot-contentlet-item.modell';
 
 @Component({
     tag: 'dot-card-view',
