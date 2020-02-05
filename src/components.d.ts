@@ -15,6 +15,9 @@ import {
   DotKeyValueField,
 } from './models';
 import {
+  DotContentlet,
+} from './models/dot-Contentlet';
+import {
   DotCMSContentTypeLayoutColumn,
   DotCMSContentTypeLayoutRow,
 } from 'dotcms-models';
@@ -233,7 +236,12 @@ export namespace Components {
     */
     'label': string;
   }
-  interface DotContentletThumbnail {}
+  interface DotContentletThumbnail {
+    'alt': string;
+    'contentlet': DotContentlet;
+    'height': string;
+    'width': string;
+  }
   interface DotDate {
     /**
     * (optional) Disables field's interaction
@@ -397,6 +405,9 @@ export namespace Components {
     'value': string;
   }
   interface DotErrorMessage {}
+  interface DotFileIcon {
+    'icon': string;
+  }
   interface DotForm {
     /**
     * (optional) List of fields (variableName) separated by comma, to be shown
@@ -995,6 +1006,12 @@ declare global {
     new (): HTMLDotErrorMessageElement;
   };
 
+  interface HTMLDotFileIconElement extends Components.DotFileIcon, HTMLStencilElement {}
+  var HTMLDotFileIconElement: {
+    prototype: HTMLDotFileIconElement;
+    new (): HTMLDotFileIconElement;
+  };
+
   interface HTMLDotFormElement extends Components.DotForm, HTMLStencilElement {}
   var HTMLDotFormElement: {
     prototype: HTMLDotFormElement;
@@ -1099,6 +1116,7 @@ declare global {
     'dot-date-range': HTMLDotDateRangeElement;
     'dot-date-time': HTMLDotDateTimeElement;
     'dot-error-message': HTMLDotErrorMessageElement;
+    'dot-file-icon': HTMLDotFileIconElement;
     'dot-form': HTMLDotFormElement;
     'dot-form-column': HTMLDotFormColumnElement;
     'dot-form-row': HTMLDotFormRowElement;
@@ -1333,7 +1351,12 @@ declare namespace LocalJSX {
     'label'?: string;
     'onRemove'?: (event: CustomEvent<String>) => void;
   }
-  interface DotContentletThumbnail {}
+  interface DotContentletThumbnail {
+    'alt'?: string;
+    'contentlet'?: DotContentlet;
+    'height'?: string;
+    'width'?: string;
+  }
   interface DotDate {
     /**
     * (optional) Disables field's interaction
@@ -1491,6 +1514,9 @@ declare namespace LocalJSX {
     'value'?: string;
   }
   interface DotErrorMessage {}
+  interface DotFileIcon {
+    'icon'?: string;
+  }
   interface DotForm {
     /**
     * (optional) List of fields (variableName) separated by comma, to be shown
@@ -2007,6 +2033,7 @@ declare namespace LocalJSX {
     'dot-date-range': DotDateRange;
     'dot-date-time': DotDateTime;
     'dot-error-message': DotErrorMessage;
+    'dot-file-icon': DotFileIcon;
     'dot-form': DotForm;
     'dot-form-column': DotFormColumn;
     'dot-form-row': DotFormRow;
@@ -2045,6 +2072,7 @@ declare module "@stencil/core" {
       'dot-date-range': LocalJSX.DotDateRange & JSXBase.HTMLAttributes<HTMLDotDateRangeElement>;
       'dot-date-time': LocalJSX.DotDateTime & JSXBase.HTMLAttributes<HTMLDotDateTimeElement>;
       'dot-error-message': LocalJSX.DotErrorMessage & JSXBase.HTMLAttributes<HTMLDotErrorMessageElement>;
+      'dot-file-icon': LocalJSX.DotFileIcon & JSXBase.HTMLAttributes<HTMLDotFileIconElement>;
       'dot-form': LocalJSX.DotForm & JSXBase.HTMLAttributes<HTMLDotFormElement>;
       'dot-form-column': LocalJSX.DotFormColumn & JSXBase.HTMLAttributes<HTMLDotFormColumnElement>;
       'dot-form-row': LocalJSX.DotFormRow & JSXBase.HTMLAttributes<HTMLDotFormRowElement>;

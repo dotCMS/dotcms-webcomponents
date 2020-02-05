@@ -13,6 +13,24 @@
 | `row`          | --               | Fields metada to be rendered                                             | `DotCMSContentTypeLayoutRow` | `undefined` |
 
 
+## Dependencies
+
+### Used by
+
+ - [dot-form](../..)
+
+### Depends on
+
+- [dot-form-column](../dot-form-column)
+
+### Graph
+```mermaid
+graph TD;
+  dot-form-row --> dot-form-column
+  dot-form --> dot-form-row
+  style dot-form-row fill:#f9f,stroke:#333,stroke-width:4px
+```
+
 ----------------------------------------------
 
 *Built with [StencilJS](https://stenciljs.com/)*

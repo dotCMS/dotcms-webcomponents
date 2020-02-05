@@ -24,24 +24,41 @@
 
 ## Events
 
-| Event          | Description | Type                               |
-| -------------- | ----------- | ---------------------------------- |
-| `statusChange` |             | `CustomEvent<DotFieldStatusEvent>` |
-| `valueChange`  |             | `CustomEvent<DotFieldValueEvent>`  |
+| Event             | Description | Type                               |
+| ----------------- | ----------- | ---------------------------------- |
+| `dotStatusChange` |             | `CustomEvent<DotFieldStatusEvent>` |
+| `dotValueChange`  |             | `CustomEvent<DotFieldValueEvent>`  |
 
 
 ## Methods
 
-### `reset() => void`
+### `reset() => Promise<void>`
 
 Reset properties of the filed, clear value and emit events.
 
 #### Returns
 
-Type: `void`
+Type: `Promise<void>`
 
 
 
+
+## Dependencies
+
+### Depends on
+
+- [dot-label](../dot-label)
+- [dot-autocomplete](components/dot-autocomplete)
+- [dot-chip](components/dot-chip)
+
+### Graph
+```mermaid
+graph TD;
+  dot-tags --> dot-label
+  dot-tags --> dot-autocomplete
+  dot-tags --> dot-chip
+  style dot-tags fill:#f9f,stroke:#333,stroke-width:4px
+```
 
 ----------------------------------------------
 

@@ -1,11 +1,41 @@
-import { Component, h } from '@stencil/core';
+import { Component, h, Host, Prop } from '@stencil/core';
+import { DotContentlet } from '../../models/dot-Contentlet';
 
 @Component({
     tag: 'dot-contentlet-thumbnail',
     styleUrl: 'dot-contentlet-thumbnail.scss'
 })
 export class DotContentletThumbnail {
+    @Prop({ reflect: true })
+    height = '';
+
+    @Prop({ reflect: true })
+    width = '';
+
+    @Prop({ reflect: true })
+    alt = '';
+
+    @Prop() contentlet: DotContentlet;
+
     render() {
-        return <h1>Hello word</h1>;
+        return (
+            <Host>
+                {this.contentlet.hasTitleImage === 'true' ? (
+                    <img
+                        src={this.getImageURL()}
+                        alt={this.alt}
+                        style={{ width: this.width, height: this.height }}
+                    />
+                ) : (
+                    <dot-file-icon icon={this.contentlet.__icon__} />
+                )}
+            </Host>
+        );
+    }
+
+    private getImageURL(): string {
+        return (
+            '/dA/' + this.contentlet.inode + '/titleImage/' + this.width + 'w/' + this.height + 'h'
+        );
     }
 }
