@@ -9,42 +9,49 @@ export const CardView = () => {
     const cardView = document.createElement('dot-card-view');
     cardView.items = [
         {
-            title: 'Hola Mundo'
+            data: {
+                title: 'Hola Mundo'
+            },
+            actions: [
+                {
+                    label: 'Action 1',
+                    action: (e) => {
+                        console.log(e);
+                    }
+                },
+                {
+                    label: 'Action 2',
+                    action: (e) => {
+                        console.log(e);
+                    }
+                }
+            ]
         },
         {
-            title: 'Hello World'
+            data: {
+                title: 'Hello World'
+            }
         },
         {
-            title: 'File name'
-        },
-        {
-            title: 'Hola Mundo'
-        },
-        {
-            title: 'Hello World'
-        },
-        {
-            title: 'File name'
-        },
-        {
-            title: 'Hola Mundo'
-        },
-        {
-            title: 'Hello World'
-        },
-        {
-            title: 'File name'
-        },
-        {
-            title: 'Hola Mundo'
-        },
-        {
-            title: 'Hello World'
-        },
-        {
-            title: 'File name'
+            data: {
+                title: 'File name'
+            },
+            actions: [
+                {
+                    label: 'Action 1',
+                    action: (e) => {
+                        console.log(e);
+                    }
+                },
+                {
+                    label: 'Action 2',
+                    action: (e) => {
+                        console.log(e);
+                    }
+                }
+            ]
         }
-    ]
+    ];
 
     return cardView;
 };

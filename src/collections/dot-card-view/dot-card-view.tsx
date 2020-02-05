@@ -1,5 +1,5 @@
 import { Component, h, Host, Prop } from '@stencil/core';
-import { DotContentletItem } from '../../models/dot-contentlet-item.model';
+import { DotCardContentletItem } from '../../models/dot-card-contentlet.model';
 
 @Component({
     tag: 'dot-card-view',
@@ -8,13 +8,13 @@ import { DotContentletItem } from '../../models/dot-contentlet-item.model';
 })
 export class DotCardView {
     @Prop()
-    items: DotContentletItem[] = [];
+    items: DotCardContentletItem[] = [];
 
     render() {
         return (
             <Host>
-                {this.items.map((item: DotContentletItem) => (
-                    <dot-card-contentlet contentlet={item}></dot-card-contentlet>
+                {this.items.map((item: DotCardContentletItem) => (
+                    <dot-card-contentlet item={item}></dot-card-contentlet>
                 ))}
             </Host>
         );

@@ -12,9 +12,25 @@ export default {
 export const Contentlet = () => {
     const props = [
         {
-            name: 'contentlet',
-            content: object('Contentlet', {
-                title: 'Hola Mundo'
+            name: 'item',
+            content: object('Item', {
+                data: {
+                    title: 'Hola Mundo'
+                },
+                actions: [
+                    {
+                        label: 'Action 1',
+                        action: (e) => {
+                            console.log(e);
+                        }
+                    },
+                    {
+                        label: 'Action 2',
+                        action: (e) => {
+                            console.log(e);
+                        }
+                    }
+                ]
             })
         }
     ];

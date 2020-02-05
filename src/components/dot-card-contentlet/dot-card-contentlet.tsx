@@ -1,7 +1,8 @@
 import { Component, h, Element, Prop, Event, EventEmitter } from '@stencil/core';
+import { DotCardContentletItem } from '../../models/dot-card-contentlet.model';
+
 import '@material/mwc-checkbox';
 import '@material/mwc-formfield';
-import { DotContentletItem } from '../../models/dot-contentlet-item.model';
 
 @Component({
     tag: 'dot-card-contentlet',
@@ -11,25 +12,11 @@ import { DotContentletItem } from '../../models/dot-contentlet-item.model';
 export class DotCardContentlet {
     @Element() el: HTMLElement;
 
-    @Prop() contentlet: DotContentletItem;
+    @Prop() item: DotCardContentletItem;
 
     @Event() selected: EventEmitter;
 
     private checkbox: HTMLInputElement;
-    private options = [
-        {
-            label: 'Publish',
-            action: (e) => {
-                console.log(e);
-            }
-        },
-        {
-            label: 'Archived',
-            action: (e) => {
-                console.log(e);
-            }
-        }
-    ];
 
     componentDidLoad() {
         this.checkbox = this.el.shadowRoot
@@ -38,14 +25,16 @@ export class DotCardContentlet {
     }
 
     render() {
-        const title = this.contentlet?.title;
+        const title = this.item?.data?.title;
         return (
             <dot-card
                 onClick={() => {
                     this.handleClick();
                 }}
             >
-                <dot-context-menu options={this.options} />
+                {this.item.actions?.length ? (
+                    <dot-context-menu options={this.item.actions} />
+                ) : null}
                 <section>
                     <img src="https://placeimg.com/640/480/any" alt={title} />
                 </section>
@@ -57,7 +46,7 @@ export class DotCardContentlet {
                         }}
                         onChange={() => {
                             if (this.checkbox.checked) {
-                                this.selected.emit(this.contentlet);
+                                this.selected.emit(this.item);
                             } else {
                                 this.selected.emit(null);
                             }
