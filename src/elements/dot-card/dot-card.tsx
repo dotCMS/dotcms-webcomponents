@@ -9,8 +9,7 @@ export class DotCard {
 
     render() {
         return (
-
-            <h1>Hola</h1>
+            <slot />
         );
     }
 }

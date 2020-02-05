@@ -36,7 +36,12 @@ export class DotCardContentlet {
                     <dot-context-menu options={this.item.actions} />
                 ) : null}
                 <section>
-                    <img src="https://placeimg.com/640/480/any" alt={title} />
+                    <dot-contentlet-thumbnail
+                        contentlet={this.item?.data}
+                        width="220px"
+                        height="150px"
+                        alt={title}
+                    />
                 </section>
                 <header>
                     <mwc-checkbox
