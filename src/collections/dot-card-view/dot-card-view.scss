@@ -1,0 +1,10 @@
+:host {
+    --card-width: 220px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(var(--card-width), 1fr));
+    grid-gap: var(--basic-padding-2);
+}
+
+dot-card-contentlet {
+    min-width: var(--card-width);
+}

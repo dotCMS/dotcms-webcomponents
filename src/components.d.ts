@@ -15,6 +15,9 @@ import {
   DotKeyValueField,
 } from './models';
 import {
+  DotContentletItem,
+} from './models/dot-contentlet-item';
+import {
   DotCMSContentTypeLayoutColumn,
   DotCMSContentTypeLayoutRow,
 } from 'dotcms-models';
@@ -180,7 +183,10 @@ export namespace Components {
   }
   interface DotCard {}
   interface DotCardContentlet {
-    'contentlet': any;
+    'contentlet': DotContentletItem;
+  }
+  interface DotCardView {
+    'items': DotContentletItem[];
   }
   interface DotCheckbox {
     /**
@@ -958,6 +964,12 @@ declare global {
     new (): HTMLDotCardContentletElement;
   };
 
+  interface HTMLDotCardViewElement extends Components.DotCardView, HTMLStencilElement {}
+  var HTMLDotCardViewElement: {
+    prototype: HTMLDotCardViewElement;
+    new (): HTMLDotCardViewElement;
+  };
+
   interface HTMLDotCheckboxElement extends Components.DotCheckbox, HTMLStencilElement {}
   var HTMLDotCheckboxElement: {
     prototype: HTMLDotCheckboxElement;
@@ -1103,6 +1115,7 @@ declare global {
     'dot-binary-upload-button': HTMLDotBinaryUploadButtonElement;
     'dot-card': HTMLDotCardElement;
     'dot-card-contentlet': HTMLDotCardContentletElement;
+    'dot-card-view': HTMLDotCardViewElement;
     'dot-checkbox': HTMLDotCheckboxElement;
     'dot-chip': HTMLDotChipElement;
     'dot-contentlet-thumbnail': HTMLDotContentletThumbnailElement;
@@ -1294,8 +1307,11 @@ declare namespace LocalJSX {
   }
   interface DotCard {}
   interface DotCardContentlet {
-    'contentlet'?: any;
+    'contentlet'?: DotContentletItem;
     'onSelected'?: (event: CustomEvent<any>) => void;
+  }
+  interface DotCardView {
+    'items'?: DotContentletItem[];
   }
   interface DotCheckbox {
     /**
@@ -2018,6 +2034,7 @@ declare namespace LocalJSX {
     'dot-binary-upload-button': DotBinaryUploadButton;
     'dot-card': DotCard;
     'dot-card-contentlet': DotCardContentlet;
+    'dot-card-view': DotCardView;
     'dot-checkbox': DotCheckbox;
     'dot-chip': DotChip;
     'dot-contentlet-thumbnail': DotContentletThumbnail;
@@ -2057,6 +2074,7 @@ declare module "@stencil/core" {
       'dot-binary-upload-button': LocalJSX.DotBinaryUploadButton & JSXBase.HTMLAttributes<HTMLDotBinaryUploadButtonElement>;
       'dot-card': LocalJSX.DotCard & JSXBase.HTMLAttributes<HTMLDotCardElement>;
       'dot-card-contentlet': LocalJSX.DotCardContentlet & JSXBase.HTMLAttributes<HTMLDotCardContentletElement>;
+      'dot-card-view': LocalJSX.DotCardView & JSXBase.HTMLAttributes<HTMLDotCardViewElement>;
       'dot-checkbox': LocalJSX.DotCheckbox & JSXBase.HTMLAttributes<HTMLDotCheckboxElement>;
       'dot-chip': LocalJSX.DotChip & JSXBase.HTMLAttributes<HTMLDotChipElement>;
       'dot-contentlet-thumbnail': LocalJSX.DotContentletThumbnail & JSXBase.HTMLAttributes<HTMLDotContentletThumbnailElement>;
