@@ -10,6 +10,7 @@
 | Property | Attribute | Description | Type     | Default |
 | -------- | --------- | ----------- | -------- | ------- |
 | `icon`   | `icon`    |             | `string` | `''`    |
+| `size`   | `size`    |             | `string` | `''`    |
 
 
 ## Dependencies
@@ -21,8 +22,8 @@
 ### Graph
 ```mermaid
 graph TD;
-  dot-contentlet-thumbnail --> dot-file-icon
-  style dot-file-icon fill:#f9f,stroke:#333,stroke-width:4px
+  dot-contentlet-thumbnail --> dot-contentlet-icon
+  style dot-contentlet-icon fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
 ----------------------------------------------

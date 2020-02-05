@@ -7,9 +7,9 @@
 
 ## Properties
 
-| Property     | Attribute    | Description | Type  | Default     |
-| ------------ | ------------ | ----------- | ----- | ----------- |
-| `contentlet` | `contentlet` |             | `any` | `undefined` |
+| Property | Attribute | Description | Type                    | Default     |
+| -------- | --------- | ----------- | ----------------------- | ----------- |
+| `item`   | --        |             | `DotCardContentletItem` | `undefined` |
 
 
 ## Events
@@ -21,14 +21,21 @@
 
 ## Dependencies
 
+### Used by
+
+ - [dot-card-view](../../collections/dot-card-view)
+
 ### Depends on
 
 - [dot-card](../../elements/dot-card)
+- [dot-context-menu](../dot-context-menu)
 
 ### Graph
 ```mermaid
 graph TD;
   dot-card-contentlet --> dot-card
+  dot-card-contentlet --> dot-context-menu
+  dot-card-view --> dot-card-contentlet
   style dot-card-contentlet fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

@@ -37,8 +37,7 @@ export class DotContentletThumbnail {
     }
 
     private getImageURL(): string {
-        return (
-            '/dA/' + this.contentlet.inode + '/titleImage/' + this.width + 'w/' + this.height + 'h'
-        );
+        return `/contentAsset/image/${this.contentlet.inode}/fileAsset/crop_h/${this
+            .height}/crop_w/${this.width}/fp/.50,.50/`;
     }
 }
