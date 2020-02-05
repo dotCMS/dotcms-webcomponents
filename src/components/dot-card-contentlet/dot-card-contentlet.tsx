@@ -1,7 +1,7 @@
 import { Component, h, Element, Prop, Event, EventEmitter } from '@stencil/core';
 import '@material/mwc-checkbox';
 import '@material/mwc-formfield';
-import { DotContentletItem } from '../../models/dot-contentlet-item.modell';
+import { DotContentletItem } from '../../models/dot-contentlet-item.model';
 
 @Component({
     tag: 'dot-card-contentlet',
