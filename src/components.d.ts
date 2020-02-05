@@ -16,13 +16,13 @@ import {
 } from './models';
 import {
   DotContentletItem,
-} from './models/dot-contentlet-item.modell';
-import {
-  DotContentlet,
-} from './models/dot-Contentlet';
+} from './models/dot-contentlet-item.model';
 import {
   DotContextMenuOption,
 } from './models/dot-context-menu.model';
+import {
+  MenuAction,
+} from './components/dot-context-menu/dot-context-menu';
 import {
   DotCMSContentTypeLayoutColumn,
   DotCMSContentTypeLayoutRow,
@@ -249,7 +249,7 @@ export namespace Components {
   }
   interface DotContentletThumbnail {
     'alt': string;
-    'contentlet': DotContentlet;
+    'contentlet': DotContentletItem;
     'height': string;
     'width': string;
   }
@@ -1387,7 +1387,7 @@ declare namespace LocalJSX {
   }
   interface DotContentletThumbnail {
     'alt'?: string;
-    'contentlet'?: DotContentlet;
+    'contentlet'?: DotContentletItem;
     'height'?: string;
     'width'?: string;
   }

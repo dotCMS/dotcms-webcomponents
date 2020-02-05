@@ -6,7 +6,7 @@ import '@material/mwc-menu';
 import '@material/mwc-list/mwc-list-item';
 import '@material/mwc-icon';
 
-interface MenuAction {
+export interface MenuAction {
     index: number;
 }
 
