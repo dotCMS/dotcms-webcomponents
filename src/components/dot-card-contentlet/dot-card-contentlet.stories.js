@@ -3,18 +3,34 @@ import { withActions } from '@storybook/addon-actions';
 
 import readme from './readme.md';
 export default {
-    title: 'Components/Card',
+    title: 'Components',
     decorators: [withKnobs, withActions('selected')],
     parameters: {
         notes: readme
     }
 };
-export const Contentlet = () => {
+export const ContentletCard = () => {
     const props = [
         {
-            name: 'contentlet',
-            content: object('Contentlet', {
-                title: 'Hola Mundo'
+            name: 'item',
+            content: object('Item', {
+                data: {
+                    title: 'Hola Mundo'
+                },
+                actions: [
+                    {
+                        label: 'Action 1',
+                        action: (e) => {
+                            console.log(e);
+                        }
+                    },
+                    {
+                        label: 'Action 2',
+                        action: (e) => {
+                            console.log(e);
+                        }
+                    }
+                ]
             })
         }
     ];

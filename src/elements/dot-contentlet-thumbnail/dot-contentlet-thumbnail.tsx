@@ -1,5 +1,5 @@
 import { Component, h, Host, Prop } from '@stencil/core';
-import { DotContentlet } from '../../models/dot-Contentlet';
+import { DotContentletItem } from '../../models/dot-contentlet-item.model';
 
 @Component({
     tag: 'dot-contentlet-thumbnail',
@@ -18,7 +18,7 @@ export class DotContentletThumbnail {
     @Prop({ reflect: true })
     iconSize = '';
 
-    @Prop() contentlet: DotContentlet;
+    @Prop() contentlet: DotContentletItem;
 
     render() {
         return (
@@ -30,7 +30,7 @@ export class DotContentletThumbnail {
                         style={{ width: this.width, height: this.height }}
                     />
                 ) : (
-                    <dot-file-icon icon={this.contentlet.__icon__} size={this.iconSize} />
+                    <dot-contentlet-icon icon={this.contentlet.__icon__} size={this.iconSize} />
                 )}
             </Host>
         );

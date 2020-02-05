@@ -1,13 +1,13 @@
 import { Component, h, Element, Host, Prop } from '@stencil/core';
 import { Menu } from '@material/mwc-menu';
+import { DotContextMenuOption } from '../../models/dot-context-menu.model';
 
 import '@material/mwc-menu';
 import '@material/mwc-list/mwc-list-item';
 import '@material/mwc-icon';
 
-interface DotContextMenuOption {
-    label: string;
-    action: (e: MouseEvent) => void;
+export interface MenuAction {
+    index: number;
 }
 
 @Component({
@@ -18,7 +18,7 @@ interface DotContextMenuOption {
 export class DotContextMenu {
     @Element() el: HTMLElement;
 
-    @Prop() options: DotContextMenuOption[];
+    @Prop() options: DotContextMenuOption<MenuAction>[];
 
     menu: Menu;
     button: HTMLElement;
@@ -41,11 +41,11 @@ export class DotContextMenu {
                     <mwc-icon>more_vert</mwc-icon>
                 </button>
                 <mwc-menu
-                    onAction={(e: CustomEvent<{ index: number }>) => {
+                    onAction={(e: CustomEvent<MenuAction>) => {
                         this.options[e.detail.index].action(e);
                     }}
                 >
-                    {this.options.map(({ label }: DotContextMenuOption) => (
+                    {this.options.map(({ label }: DotContextMenuOption<MenuAction>) => (
                         <mwc-list-item>{label}</mwc-list-item>
                     ))}
                 </mwc-menu>

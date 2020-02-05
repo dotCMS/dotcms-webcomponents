@@ -1,4 +1,4 @@
-export interface DotContentlet {
+export interface DotContentletItem {
     typeVariable: string;
     modDate: string;
     __wfstep__: string;

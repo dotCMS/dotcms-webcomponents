@@ -1,4 +1,6 @@
 import { Component, h, Element, Prop, Event, EventEmitter } from '@stencil/core';
+import { DotCardContentletItem } from '../../models/dot-card-contentlet.model';
+
 import '@material/mwc-checkbox';
 import '@material/mwc-formfield';
 
@@ -10,25 +12,11 @@ import '@material/mwc-formfield';
 export class DotCardContentlet {
     @Element() el: HTMLElement;
 
-    @Prop() contentlet;
+    @Prop() item: DotCardContentletItem;
 
     @Event() selected: EventEmitter;
 
     private checkbox: HTMLInputElement;
-    private options = [
-        {
-            label: 'Publish',
-            action: (e) => {
-                console.log(e);
-            }
-        },
-        {
-            label: 'Archived',
-            action: (e) => {
-                console.log(e);
-            }
-        }
-    ];
 
     componentDidLoad() {
         this.checkbox = this.el.shadowRoot
@@ -37,39 +25,33 @@ export class DotCardContentlet {
     }
 
     render() {
-        const title = this.contentlet?.title;
+        const title = this.item?.data?.title;
         return (
             <dot-card
                 onClick={() => {
                     this.handleClick();
                 }}
             >
-                <dot-context-menu options={this.options} />
+                {this.item.actions?.length ? (
+                    <dot-context-menu options={this.item.actions} />
+                ) : null}
                 <section>
                     <img src="https://placeimg.com/640/480/any" alt={title} />
                 </section>
                 <header>
                     <mwc-checkbox
-                        value="true"
                         onClick={(e) => {
                             e.stopPropagation();
                         }}
                         onChange={() => {
                             if (this.checkbox.checked) {
-                                this.selected.emit(this.contentlet);
+                                this.selected.emit(this.item);
                             } else {
                                 this.selected.emit(null);
                             }
                         }}
                     ></mwc-checkbox>
-                    <label
-                        onClick={(e) => {
-                            e.stopPropagation();
-                            this.handleClick();
-                        }}
-                    >
-                        {title}
-                    </label>
+                    <label>{title}</label>
                 </header>
             </dot-card>
         );
