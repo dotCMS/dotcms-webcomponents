@@ -1,10 +1,20 @@
 :host {
-    --card-width: 220px;
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(var(--card-width), 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
     grid-gap: var(--basic-padding-2);
 }
 
 dot-card-contentlet {
-    min-width: var(--card-width);
+    display: flex;
+    max-width: 100%;
+    min-height: 220px;
+    min-width: 0;
+
+    &:before {
+        content: "";
+        display: inline-block;
+        flex: 0 0 0;
+        height: 0;
+        padding-bottom: calc(100%);
+    }
 }

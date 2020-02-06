@@ -35,14 +35,13 @@ export class DotCardContentlet {
                 {this.item?.actions?.length ? (
                     <dot-context-menu options={this.item.actions} />
                 ) : null}
-                <section>
-                    <dot-contentlet-thumbnail
-                        contentlet={this.item?.data}
-                        width="220px"
-                        height="150px"
-                        alt={title}
-                    />
-                </section>
+                <dot-contentlet-thumbnail
+                    contentlet={this.item?.data}
+                    width="250px"
+                    height="250px"
+                    alt={title}
+                    iconSize="64px"
+                />
                 <header>
                     <mwc-checkbox
                         onClick={(e) => {

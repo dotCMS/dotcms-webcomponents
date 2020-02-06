@@ -2,16 +2,30 @@
 
 :host {
     @include mwc-dotcms-theme;
-    --mdc-ripple-fg-scale: #ffffff;
+
+    *,
+    *:after,
+    *:before {
+        box-sizing: border-box;
+    }
 }
 
 dot-card {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 auto;
     position: relative;
     transition: box-shadow var(--basic-speed) ease;
 
     &:hover {
         box-shadow: var(--md-shadow-2);
     }
+}
+
+dot-contentlet-thumbnail {
+    flex: 1 1 auto;
+    position: relative;
+    width: 100%;
 }
 
 dot-context-menu {
