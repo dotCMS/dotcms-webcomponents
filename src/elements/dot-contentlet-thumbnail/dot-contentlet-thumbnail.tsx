@@ -24,22 +24,20 @@ export class DotContentletThumbnail {
     @State() hasImage: boolean;
 
     render() {
-        this.hasImage =  this.contentlet?.hasTitleImage === 'true';
+        this.hasImage =  this.contentlet?.hasTitleImage === 'true' || false;
         return (
             <Host>
                 {this.hasImage ? (
                     <img
                         src={this.getImageURL()}
                         alt={this.alt}
-                        style={{ width: this.width, height: this.height }}
                         aria-label={this.alt}
-                        onError={this.switchToIcon()}
+                        onError={() => {this.switchToIcon()}}
                     />
                 ) : (
                     <dot-contentlet-icon
                         icon={this.contentlet?.__icon__}
                         size={this.iconSize}
-                        style={{ width: this.width, height: this.height }}
                         aria-label={this.alt}
                     />
                 )}

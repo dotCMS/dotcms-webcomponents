@@ -8,11 +8,10 @@ export default {
     }
 };
 
-export const contentlet = {
+const contentletMock = {
     typeVariable: 'Image',
     modDate: '2/5/2020 11:50AM',
     __wfstep__: 'Published',
-    mimeType: 'image/jpeg',
     baseType: 'FILEASSET',
     inode: 'c68db8ec-b523-41b7-82bd-fcb7533d3cfa',
     __title__: 'pinos.jpg',
@@ -37,7 +36,10 @@ export const contentlet = {
     hasTitleImage: 'true',
     modUser: 'Admin User',
     ownerCanWrite: 'false',
-    ownerCanPublish: 'false'
+    ownerCanPublish: 'false',
+    title: '',
+    sysPublishDate: '',
+    mediaType: ''
 };
 
 export const contentletThumbnail = () => {
@@ -64,7 +66,7 @@ export const contentletThumbnail = () => {
 
     const fileIcon = document.createElement('dot-contentlet-thumbnail');
 
-    fileIcon.contentlet = contentlet;
+    fileIcon.contentlet = contentletMock;
 
     props.forEach(({ name, content }) => {
         fileIcon[name] = content;
