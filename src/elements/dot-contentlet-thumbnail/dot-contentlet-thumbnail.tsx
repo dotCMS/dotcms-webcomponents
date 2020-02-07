@@ -31,14 +31,16 @@ export class DotContentletThumbnail {
         return (
             <Host>
                 {this.renderImage ? (
-                    <img
-                        src={this.getImageURL()}
-                        alt={this.alt}
-                        aria-label={this.alt}
-                        onError={() => {
-                            this.switchToIcon();
-                        }}
-                    />
+                    <div class="thumbnail" style={{ 'background-image': `url(${this.getImageURL()})` }}>
+                        <img
+                            src={this.getImageURL()}
+                            alt={this.alt}
+                            aria-label={this.alt}
+                            onError={() => {
+                                this.switchToIcon();
+                            }}
+                        />
+                    </div>
                 ) : (
                     <dot-contentlet-icon
                         icon={this.contentlet?.__icon__}
@@ -51,7 +53,7 @@ export class DotContentletThumbnail {
     }
 
     private getImageURL(): string {
-        return `/dA/${this.contentlet.identifier}/${this.width}`;
+        return `/dA/${this.contentlet.identifier}/${this.width}w`;
     }
 
     private switchToIcon(): any {

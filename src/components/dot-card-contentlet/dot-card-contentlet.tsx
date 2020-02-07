@@ -33,7 +33,10 @@ export class DotCardContentlet {
                 }}
             >
                 {this.item?.actions?.length ? (
-                    <dot-context-menu options={this.item.actions} />
+                    <dot-context-menu
+                        onClick={(e) => e.stopPropagation()}
+                        options={this.item.actions}
+                    />
                 ) : null}
                 <dot-contentlet-thumbnail
                     contentlet={this.item?.data}
