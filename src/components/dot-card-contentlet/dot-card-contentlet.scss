@@ -18,6 +18,7 @@ dot-card {
     height: 100%;
     position: relative;
     transition: box-shadow var(--basic-speed) ease;
+    width: 100%;
 
     &:hover {
         box-shadow: var(--md-shadow-2);
@@ -43,4 +44,10 @@ header {
     align-items: center;
     display: flex;
     padding: var(--basic-padding);
+}
+
+label {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
