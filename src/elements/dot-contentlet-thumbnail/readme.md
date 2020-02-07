@@ -18,6 +18,10 @@
 
 ## Dependencies
 
+### Used by
+
+ - [dot-card-contentlet](../../components/dot-card-contentlet)
+
 ### Depends on
 
 - [dot-contentlet-icon](../dot-contentlet-icon)
@@ -26,6 +30,7 @@
 ```mermaid
 graph TD;
   dot-contentlet-thumbnail --> dot-contentlet-icon
+  dot-card-contentlet --> dot-contentlet-thumbnail
   style dot-contentlet-thumbnail fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

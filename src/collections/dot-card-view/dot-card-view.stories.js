@@ -29,9 +29,9 @@ export const CardView = () => {
         },
         {
             data: {
-                title: 'The Gas Price Rollercoaster',
+                title: 'This is a very long text that we can use ellipsis',
                 hasTitleImage: 'true',
-                inode: 'c68db8ec-b523-41b7-82bd-fcb7533d3cfa'
+                identifier: 'aaee9776-8fb7-4501-8048-844912a20405'
             }
         },
         {
@@ -76,7 +76,7 @@ export const CardView = () => {
             data: {
                 title: 'The Gas Price Rollercoaster',
                 hasTitleImage: 'true',
-                inode: 'c68db8ec-b523-41b7-82bd-fcb7533d3cfa'
+                identifier: 'aaee9776-8fb7-4501-8048-844912a20405'
             }
         },
         {
@@ -121,7 +121,7 @@ export const CardView = () => {
             data: {
                 title: 'The Gas Price Rollercoaster',
                 hasTitleImage: 'true',
-                inode: 'c68db8ec-b523-41b7-82bd-fcb7533d3cfa'
+                identifier: 'aaee9776-8fb7-4501-8048-844912a20405'
             }
         },
         {
@@ -166,7 +166,7 @@ export const CardView = () => {
             data: {
                 title: 'The Gas Price Rollercoaster',
                 hasTitleImage: 'true',
-                inode: 'c68db8ec-b523-41b7-82bd-fcb7533d3cfa'
+                inode: 'aaee9776-8fb7-4501-8048-844912a20405'
             }
         },
         {

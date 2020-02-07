@@ -2,6 +2,7 @@
 
 :host {
     @include mwc-dotcms-theme;
+    display: block;
 
     *,
     *:after,
@@ -14,6 +15,7 @@ dot-card {
     display: flex;
     flex-direction: column;
     flex: 1 1 auto;
+    height: 100%;
     position: relative;
     transition: box-shadow var(--basic-speed) ease;
 
@@ -23,6 +25,8 @@ dot-card {
 }
 
 dot-contentlet-thumbnail {
+    align-items: center;
+    display: flex;
     flex: 1 1 auto;
     position: relative;
     width: 100%;
@@ -32,18 +36,11 @@ dot-context-menu {
     position: absolute;
     right: var(--basic-padding);
     top: var(--basic-padding);
+    z-index: 1;
 }
 
 header {
     align-items: center;
     display: flex;
     padding: var(--basic-padding);
-}
-
-img {
-    border-top-left-radius: var(--border-radius);
-    border-top-right-radius: var(--border-radius);
-    display: block;
-    max-width: 100%;
-    min-width: 100%;
 }

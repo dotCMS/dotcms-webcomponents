@@ -7,9 +7,9 @@
 
 ## Properties
 
-| Property  | Attribute | Description | Type                                 | Default     |
-| --------- | --------- | ----------- | ------------------------------------ | ----------- |
-| `options` | --        |             | `DotContextMenuOption<MenuAction>[]` | `undefined` |
+| Property  | Attribute | Description | Type                                 | Default |
+| --------- | --------- | ----------- | ------------------------------------ | ------- |
+| `options` | --        |             | `DotContextMenuOption<MenuAction>[]` | `[]`    |
 
 
 ## Dependencies

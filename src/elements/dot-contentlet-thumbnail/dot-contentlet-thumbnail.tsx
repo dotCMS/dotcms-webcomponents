@@ -1,4 +1,4 @@
-import {Component, h, Host, Prop, State} from '@stencil/core';
+import { Component, h, Host, Prop, State } from '@stencil/core';
 import { DotContentletItem } from '../../models/dot-contentlet-item.model';
 
 @Component({
@@ -21,18 +21,23 @@ export class DotContentletThumbnail {
     @Prop()
     contentlet: DotContentletItem;
 
-    @State() hasImage: boolean;
+    @State() renderImage: boolean;
+
+    componentWillLoad() {
+        this.renderImage = this.contentlet?.hasTitleImage === 'true';
+    }
 
     render() {
-        this.hasImage =  this.contentlet?.hasTitleImage === 'true' || false;
         return (
             <Host>
-                {this.hasImage ? (
+                {this.renderImage ? (
                     <img
                         src={this.getImageURL()}
                         alt={this.alt}
                         aria-label={this.alt}
-                        onError={() => {this.switchToIcon()}}
+                        onError={() => {
+                            this.switchToIcon();
+                        }}
                     />
                 ) : (
                     <dot-contentlet-icon
@@ -46,13 +51,10 @@ export class DotContentletThumbnail {
     }
 
     private getImageURL(): string {
-        return `/contentAsset/image/${this.contentlet
-            .inode}/fileAsset/filter/Thumbnail/thumbnail_w/${this.width}/thumbnail_h/${this
-            .height}/`;
+        return `/dA/${this.contentlet.identifier}/${this.width}`;
     }
 
     private switchToIcon(): any {
-        this.hasImage = false;
-
+        this.renderImage = false;
     }
 }

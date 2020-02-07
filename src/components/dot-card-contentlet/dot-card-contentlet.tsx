@@ -37,8 +37,8 @@ export class DotCardContentlet {
                 ) : null}
                 <dot-contentlet-thumbnail
                     contentlet={this.item?.data}
-                    width="250px"
-                    height="250px"
+                    width="250"
+                    height="250"
                     alt={title}
                     iconSize="64px"
                 />

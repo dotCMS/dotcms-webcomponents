@@ -5,11 +5,6 @@
 }
 
 dot-card-contentlet {
-    display: flex;
-    max-width: 100%;
-    min-height: 220px;
-    min-width: 0;
-
     &:before {
         content: "";
         display: inline-block;
