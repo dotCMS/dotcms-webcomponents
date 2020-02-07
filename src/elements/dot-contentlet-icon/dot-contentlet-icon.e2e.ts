@@ -14,13 +14,7 @@ describe('dot-contentlet-icon', () => {
         describe('empty', () => {
             it('should have material design web component', async () => {
                 const materialIcon = await page.find('dot-contentlet-icon >>> mwc-icon');
-                expect(materialIcon).not.toBeNull();
-                // expect(materialIcon.getAttribute('style')).toBe({ '--mdc-icon-size': '' });
                 expect(materialIcon.innerText).toBe(legacyIconMap['ukn']);
-
-                // console.log('materialIcon.outerHTML', materialIcon.outerHTML);
-                console.log('materialIcon.getProperty', await materialIcon.getProperty('style'));
-                //expect(materialIcon).toEqualAttribute('style', null);
             });
         });
 
@@ -28,16 +22,13 @@ describe('dot-contentlet-icon', () => {
             beforeEach(async () => {
                 const element = await page.find('dot-contentlet-icon');
                 element.setProperty('icon', 'asfIcon');
-                element.setProperty('size', '30px');
+                element.setProperty('size', '33px');
                 await page.waitForChanges();
             });
 
             it('should set icon type and size', async () => {
                 const materialIcon = await page.find('dot-contentlet-icon >>> mwc-icon');
-                console.log('materialIcon.getProperty', await materialIcon.getProperty('style'));
-                console.log('materialIcon.outerHTML', materialIcon.outerHTML);
-                console.log('materialIcon.getAttribute', materialIcon.getAttribute('style'));
-                // expect(materialIcon.getAttribute('style')).toBe({ '--mdc-icon-size': '30px' });
+                expect((await materialIcon.getComputedStyle())['fontSize']).toBe('33px');
                 expect(materialIcon.innerText).toBe(legacyIconMap['asf']);
             });
         });
