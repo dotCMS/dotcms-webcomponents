@@ -15,6 +15,7 @@ import {
   DotKeyValueField,
 } from './models';
 import {
+  DotCardContentletEvent,
   DotCardContentletItem,
 } from './models/dot-card-contentlet.model';
 import {
@@ -195,10 +196,13 @@ export namespace Components {
   }
   interface DotCard {}
   interface DotCardContentlet {
+    'checked': boolean;
     'item': DotCardContentletItem;
   }
   interface DotCardView {
+    'getValue': () => Promise<DotContentletItem[]>;
     'items': DotCardContentletItem[];
+    'value': string;
   }
   interface DotCheckbox {
     /**
@@ -1347,11 +1351,14 @@ declare namespace LocalJSX {
   }
   interface DotCard {}
   interface DotCardContentlet {
+    'checked'?: boolean;
     'item'?: DotCardContentletItem;
-    'onSelected'?: (event: CustomEvent<any>) => void;
+    'onValueChange'?: (event: CustomEvent<DotCardContentletEvent>) => void;
   }
   interface DotCardView {
     'items'?: DotCardContentletItem[];
+    'onSelected'?: (event: CustomEvent<any>) => void;
+    'value'?: string;
   }
   interface DotCheckbox {
     /**

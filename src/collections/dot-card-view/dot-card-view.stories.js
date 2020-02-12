@@ -1,6 +1,10 @@
 import readme from './readme.md';
+import { withKnobs, text } from '@storybook/addon-knobs';
+import { withActions } from '@storybook/addon-actions';
+
 export default {
     title: 'Collections',
+    decorators: [withKnobs, withActions('selected')],
     parameters: {
         notes: readme
     }
@@ -1331,11 +1335,21 @@ const actionsMock = [
             console.log(e);
         }
     }
-]
+];
 
 export const CardView = () => {
+    const props = [
+        {
+            name: 'value',
+            content: text('Value', 'deedaf10-c417-40ac-9d20-e1a307ab61c5')
+        }
+    ];
+
     const cardView = document.createElement('dot-card-view');
-    cardView.items = mock.map(i => {
+    props.forEach(({ name, content }) => {
+        cardView[name] = content;
+    });
+    cardView.items = mock.map((i) => {
         return {
             data: {
                 ...i,
