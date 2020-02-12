@@ -7,16 +7,17 @@
 
 ## Properties
 
-| Property | Attribute | Description | Type                    | Default     |
-| -------- | --------- | ----------- | ----------------------- | ----------- |
-| `item`   | --        |             | `DotCardContentletItem` | `undefined` |
+| Property  | Attribute | Description | Type                    | Default     |
+| --------- | --------- | ----------- | ----------------------- | ----------- |
+| `checked` | `checked` |             | `boolean`               | `undefined` |
+| `item`    | --        |             | `DotCardContentletItem` | `undefined` |
 
 
 ## Events
 
-| Event      | Description | Type               |
-| ---------- | ----------- | ------------------ |
-| `selected` |             | `CustomEvent<any>` |
+| Event         | Description | Type                                  |
+| ------------- | ----------- | ------------------------------------- |
+| `valueChange` |             | `CustomEvent<DotCardContentletEvent>` |
 
 
 ## Dependencies

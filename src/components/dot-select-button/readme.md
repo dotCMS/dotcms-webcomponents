@@ -7,10 +7,10 @@
 
 ## Properties
 
-| Property  | Attribute | Description | Type                | Default |
-| --------- | --------- | ----------- | ------------------- | ------- |
-| `options` | --        |             | `DotSwitchOption[]` | `[]`    |
-| `value`   | `value`   |             | `string`            | `''`    |
+| Property  | Attribute | Description | Type                      | Default |
+| --------- | --------- | ----------- | ------------------------- | ------- |
+| `options` | --        |             | `DotSelectButtonOption[]` | `[]`    |
+| `value`   | `value`   |             | `string`                  | `''`    |
 
 
 ## Events

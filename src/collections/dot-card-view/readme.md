@@ -7,9 +7,30 @@
 
 ## Properties
 
-| Property | Attribute | Description | Type                      | Default |
-| -------- | --------- | ----------- | ------------------------- | ------- |
-| `items`  | --        |             | `DotCardContentletItem[]` | `[]`    |
+| Property | Attribute | Description | Type                      | Default     |
+| -------- | --------- | ----------- | ------------------------- | ----------- |
+| `items`  | --        |             | `DotCardContentletItem[]` | `[]`        |
+| `value`  | `value`   |             | `string`                  | `undefined` |
+
+
+## Events
+
+| Event      | Description | Type               |
+| ---------- | ----------- | ------------------ |
+| `selected` |             | `CustomEvent<any>` |
+
+
+## Methods
+
+### `getValue() => Promise<DotContentletItem[]>`
+
+
+
+#### Returns
+
+Type: `Promise<DotContentletItem[]>`
+
+
 
 
 ## Dependencies
