@@ -1,5 +1,4 @@
 import { E2EPage, newE2EPage } from '@stencil/core/testing';
-import { legacyIconMap } from '../../utils/legacy-icons-map';
 
 describe('dot-contentlet-icon', () => {
     let page: E2EPage;
@@ -14,7 +13,7 @@ describe('dot-contentlet-icon', () => {
         describe('empty', () => {
             it('should have material design web component', async () => {
                 const materialIcon = await page.find('dot-contentlet-icon >>> mwc-icon');
-                expect(materialIcon.innerText).toBe(legacyIconMap['ukn']);
+                expect(materialIcon.innerText).toBe('insert_drive_file');
             });
         });
 
@@ -29,7 +28,7 @@ describe('dot-contentlet-icon', () => {
             it('should set icon type and size', async () => {
                 const materialIcon = await page.find('dot-contentlet-icon >>> mwc-icon');
                 expect((await materialIcon.getComputedStyle())['fontSize']).toBe('33px');
-                expect(materialIcon.innerText).toBe(legacyIconMap['asf']);
+                expect(materialIcon.innerText).toBe('videocam');
             });
         });
     });

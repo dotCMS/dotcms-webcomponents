@@ -30,6 +30,9 @@ import {
   DotCMSContentTypeLayoutColumn,
   DotCMSContentTypeLayoutRow,
 } from 'dotcms-models';
+import {
+  DotSwitchOption,
+} from './models/dot-switch-option';
 
 export namespace Components {
   interface DotAutocomplete {
@@ -559,7 +562,7 @@ export namespace Components {
     /**
     * Reset properties of the field, clear value and emit events.
     */
-    'reset': () => void;
+    'reset': () => Promise<void>;
     /**
     * Value of the field
     */
@@ -693,10 +696,14 @@ export namespace Components {
     * Reset properties of the field, clear value and emit events.
     * @memberof DotSelectComponent
     */
-    'reset': () => void;
+    'reset': () => Promise<void>;
     /**
     * Value set from the dropdown option
     */
+    'value': string;
+  }
+  interface DotSwitch {
+    'options': DotSwitchOption[];
     'value': string;
   }
   interface DotTags {
@@ -1097,6 +1104,12 @@ declare global {
     new (): HTMLDotSelectElement;
   };
 
+  interface HTMLDotSwitchElement extends Components.DotSwitch, HTMLStencilElement {}
+  var HTMLDotSwitchElement: {
+    prototype: HTMLDotSwitchElement;
+    new (): HTMLDotSwitchElement;
+  };
+
   interface HTMLDotTagsElement extends Components.DotTags, HTMLStencilElement {}
   var HTMLDotTagsElement: {
     prototype: HTMLDotTagsElement;
@@ -1159,6 +1172,7 @@ declare global {
     'dot-multi-select': HTMLDotMultiSelectElement;
     'dot-radio': HTMLDotRadioElement;
     'dot-select': HTMLDotSelectElement;
+    'dot-switch': HTMLDotSwitchElement;
     'dot-tags': HTMLDotTagsElement;
     'dot-textarea': HTMLDotTextareaElement;
     'dot-textfield': HTMLDotTextfieldElement;
@@ -1821,6 +1835,11 @@ declare namespace LocalJSX {
     */
     'value'?: string;
   }
+  interface DotSwitch {
+    'onSelected'?: (event: CustomEvent<any>) => void;
+    'options'?: DotSwitchOption[];
+    'value'?: string;
+  }
   interface DotTags {
     /**
     * Function or array of string to get the data to use for the autocomplete search
@@ -2089,6 +2108,7 @@ declare namespace LocalJSX {
     'dot-multi-select': DotMultiSelect;
     'dot-radio': DotRadio;
     'dot-select': DotSelect;
+    'dot-switch': DotSwitch;
     'dot-tags': DotTags;
     'dot-textarea': DotTextarea;
     'dot-textfield': DotTextfield;
@@ -2130,6 +2150,7 @@ declare module "@stencil/core" {
       'dot-multi-select': LocalJSX.DotMultiSelect & JSXBase.HTMLAttributes<HTMLDotMultiSelectElement>;
       'dot-radio': LocalJSX.DotRadio & JSXBase.HTMLAttributes<HTMLDotRadioElement>;
       'dot-select': LocalJSX.DotSelect & JSXBase.HTMLAttributes<HTMLDotSelectElement>;
+      'dot-switch': LocalJSX.DotSwitch & JSXBase.HTMLAttributes<HTMLDotSwitchElement>;
       'dot-tags': LocalJSX.DotTags & JSXBase.HTMLAttributes<HTMLDotTagsElement>;
       'dot-textarea': LocalJSX.DotTextarea & JSXBase.HTMLAttributes<HTMLDotTextareaElement>;
       'dot-textfield': LocalJSX.DotTextfield & JSXBase.HTMLAttributes<HTMLDotTextfieldElement>;
