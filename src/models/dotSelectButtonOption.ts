@@ -1,4 +1,4 @@
-export interface DotSwitchOption {
+export interface DotSelectButtonOption {
     label: string;
     icon: string;
     disabled?: boolean

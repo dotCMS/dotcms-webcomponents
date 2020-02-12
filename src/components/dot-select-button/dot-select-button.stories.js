@@ -3,7 +3,7 @@ import {text} from "@storybook/addon-knobs";
 
 
 export default {
-    title: 'Elements',
+    title: 'Components',
     parameters: {
         notes: readme
     }
@@ -28,7 +28,7 @@ const optionsMock  = [
 ]
 
 
-export const dotSwitch = () => {
+export const dotSelectButton = () => {
 
     const props = [
         {
@@ -38,14 +38,14 @@ export const dotSwitch = () => {
     ];
 
 
-    const dotSwitch = document.createElement('dot-switch');
+    const dotSelectButton = document.createElement('dot-select-button');
 
-    dotSwitch.options = optionsMock;
+    dotSelectButton.options = optionsMock;
 
     props.forEach(({ name, content }) => {
-        dotSwitch[name] = content;
+        dotSelectButton[name] = content;
     });
 
-    return dotSwitch;
+    return dotSelectButton;
 
 }
