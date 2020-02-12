@@ -5,6 +5,8 @@
 }
 
 dot-card-contentlet {
+    height: 100%;
+
     &:before {
         content: "";
         display: inline-block;
