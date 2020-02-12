@@ -5,3 +5,8 @@ export interface DotCardContentletItem {
     data: DotContentletItem;
     actions: DotContextMenuOption<{ index: number }>[];
 }
+
+export interface DotCardContentletEvent {
+    data: DotContentletItem;
+    checked: boolean;
+}

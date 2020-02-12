@@ -1,5 +1,8 @@
 import { Component, h, Element, Prop, Event, EventEmitter } from '@stencil/core';
-import { DotCardContentletItem } from '../../models/dot-card-contentlet.model';
+import {
+    DotCardContentletItem,
+    DotCardContentletEvent
+} from '../../models/dot-card-contentlet.model';
 
 import '@material/mwc-checkbox';
 import '@material/mwc-formfield';
@@ -14,7 +17,13 @@ export class DotCardContentlet {
 
     @Prop() item: DotCardContentletItem;
 
-    @Event() selected: EventEmitter;
+    @Prop({
+        reflect: true,
+        mutable: true
+    })
+    checked: boolean;
+
+    @Event() valueChange: EventEmitter<DotCardContentletEvent>;
 
     private checkbox: HTMLInputElement;
 
@@ -47,15 +56,16 @@ export class DotCardContentlet {
                 />
                 <header>
                     <mwc-checkbox
+                        checked={this.checked}
                         onClick={(e) => {
                             e.stopPropagation();
                         }}
                         onChange={() => {
-                            if (this.checkbox.checked) {
-                                this.selected.emit(this.item.data);
-                            } else {
-                                this.selected.emit(null);
-                            }
+                            this.checked = this.checkbox.checked;
+                            this.valueChange.emit({
+                                data: this.item.data,
+                                checked: this.checkbox.checked
+                            });
                         }}
                     ></mwc-checkbox>
                     <label>{title}</label>

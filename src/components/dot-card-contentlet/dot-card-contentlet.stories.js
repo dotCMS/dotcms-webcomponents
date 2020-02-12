@@ -4,7 +4,7 @@ import { withActions } from '@storybook/addon-actions';
 import readme from './readme.md';
 export default {
     title: 'Components',
-    decorators: [withKnobs, withActions('selected')],
+    decorators: [withKnobs, withActions('valueChange')],
     parameters: {
         notes: readme
     }
