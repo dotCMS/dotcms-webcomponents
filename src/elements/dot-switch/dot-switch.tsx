@@ -26,8 +26,8 @@ export class DotSwitch {
                             class={{ active: option.label === this.value }}
                             icon={option.icon}
                             label={option.label}
-                            disabled={option.disable}
-                            onClick={() => (option.disable ? null : this.setSelected(option))}
+                            disabled={option.disabled}
+                            onClick={() => (option.disabled ? null : this.setSelected(option))}
                         />
                     );
                 })}

@@ -18,7 +18,7 @@ const optionsMock  = [
     {
         label: 'Backup',
         icon: 'backup',
-        disable: true
+        disabled: true
     },
     {
         label: 'Help',

@@ -1,0 +1,4 @@
+mwc-icon-button.active::before {
+    background-color: var(--mdc-theme-on-primary, currentColor);
+    opacity: var(--mdc-icon-button-ripple-opacity, 0.12);
+}
