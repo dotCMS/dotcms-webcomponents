@@ -1,7 +1,7 @@
 import { E2EElement, E2EPage, newE2EPage } from '@stencil/core/testing';
-import { DotSwitchOption } from '../../models/dot-switch-option';
+import { DotSelectButtonOption } from '../../models/dotSelectButtonOption';
 
-const optionsMock: DotSwitchOption[] = [
+const optionsMock: DotSelectButtonOption[] = [
     {
         label: 'Code',
         icon: 'code'
