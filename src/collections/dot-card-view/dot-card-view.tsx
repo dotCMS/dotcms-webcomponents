@@ -35,10 +35,12 @@ export class DotCardView {
     value: string;
 
     @Event() selected: EventEmitter;
+    @Event() onCardClick: EventEmitter;
 
     private selection: DotContentletItem[] = [];
 
-    @Method() async getValue(): Promise<DotContentletItem[]> {
+    @Method()
+    async getValue(): Promise<DotContentletItem[]> {
         return this.selection;
     }
 
@@ -59,6 +61,9 @@ export class DotCardView {
             <Host>
                 {this.items.map((item: DotCardContentletItem) => (
                     <dot-card-contentlet
+                        onClick={()=> {
+                            this.onCardClick.emit(item.data);
+                        }}
                         key={item.data.inode}
                         checked={value.includes(item.data.inode)}
                         onValueChange={({
@@ -78,7 +83,7 @@ export class DotCardView {
                             this.selected.emit(this.selection);
                         }}
                         item={item}
-                    ></dot-card-contentlet>
+                    />
                 ))}
             </Host>
         );

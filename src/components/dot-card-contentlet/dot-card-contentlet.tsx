@@ -36,11 +36,7 @@ export class DotCardContentlet {
     render() {
         const title = this.item?.data?.title;
         return (
-            <dot-card
-                onClick={() => {
-                    this.handleClick();
-                }}
-            >
+            <dot-card>
                 {this.item?.actions?.length ? (
                     <dot-context-menu
                         onClick={(e) => e.stopPropagation()}
@@ -67,14 +63,10 @@ export class DotCardContentlet {
                                 checked: this.checkbox.checked
                             });
                         }}
-                    ></mwc-checkbox>
+                    />
                     <label>{title}</label>
                 </header>
             </dot-card>
         );
-    }
-
-    private handleClick() {
-        this.checkbox.click();
     }
 }

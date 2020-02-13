@@ -15,9 +15,10 @@
 
 ## Events
 
-| Event      | Description | Type               |
-| ---------- | ----------- | ------------------ |
-| `selected` |             | `CustomEvent<any>` |
+| Event            | Description | Type               |
+| ---------------- | ----------- | ------------------ |
+| `onDotCardClick` |             | `CustomEvent<any>` |
+| `selected`       |             | `CustomEvent<any>` |
 
 
 ## Methods

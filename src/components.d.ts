@@ -1357,6 +1357,7 @@ declare namespace LocalJSX {
   }
   interface DotCardView {
     'items'?: DotCardContentletItem[];
+    'onOnDotCardClick'?: (event: CustomEvent<any>) => void;
     'onSelected'?: (event: CustomEvent<any>) => void;
     'value'?: string;
   }
