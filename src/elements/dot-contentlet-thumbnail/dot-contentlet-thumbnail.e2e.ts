@@ -32,7 +32,7 @@ describe('dot-contentlet-thumbnail', () => {
                 element = await page.find('dot-contentlet-thumbnail');
                 element.setProperty('contentlet', contentletMock);
                 element.setProperty('height', '100px');
-                element.setProperty('width', '100px');
+                element.setProperty('width', '100');
                 element.setProperty('alt', 'Alt test');
                 element.setProperty('iconSize', '30px');
                 await page.waitForChanges();
@@ -42,7 +42,7 @@ describe('dot-contentlet-thumbnail', () => {
             xit('should show image', async () => {
                 const image = await page.find('dot-contentlet-thumbnail');
                 expect(image.getAttribute('src')).toEqual(
-                    '/dA/c68db8ec-b523-41b7-82bd-fcb7533d3cfa/100px'
+                    '/dA/c68db8ec-b523-41b7-82bd-fcb7533d3cfa/100w/20q'
                 );
                 expect(image.getAttribute('alt')).toEqual('Alt test');
                 expect(image.getAttribute('aria-label')).toEqual('Alt test');

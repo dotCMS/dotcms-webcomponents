@@ -53,7 +53,8 @@ export class DotContentletThumbnail {
     }
 
     private getImageURL(): string {
-        return `/dA/${this.contentlet.identifier}/${this.width}w`;
+        return `/dA/${this.contentlet.inode}/${this.width}w/20q`;
+
     }
 
     private switchToIcon(): any {
