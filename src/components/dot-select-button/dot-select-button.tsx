@@ -2,7 +2,6 @@ import { Component, Prop, h, Host, Event, EventEmitter } from '@stencil/core';
 import { DotSelectButtonOption } from '../../models/dotSelectButtonOption';
 import '@material/mwc-icon-button';
 
-
 @Component({
     tag: 'dot-select-button',
     styleUrl: 'dot-select-button.scss',
@@ -23,7 +22,11 @@ export class DotSelectButton {
                 {this.options.map((option: DotSelectButtonOption) => {
                     return (
                         <mwc-icon-button
-                            class={{ active: option.label === this.value }}
+                            class={{
+                                active:
+                                    option.label.toLocaleLowerCase() ===
+                                    this.value.toLocaleLowerCase()
+                            }}
                             icon={option.icon}
                             label={option.label}
                             disabled={option.disabled}
@@ -35,7 +38,7 @@ export class DotSelectButton {
         );
     }
 
-    private setSelected(option) {
+    private setSelected(option: DotSelectButtonOption) {
         this.value = option.label;
         this.selected.emit(option);
     }
