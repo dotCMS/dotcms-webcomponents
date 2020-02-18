@@ -2,15 +2,7 @@ import readme from './readme.md';
 import { withKnobs, text } from '@storybook/addon-knobs';
 import { withActions } from '@storybook/addon-actions';
 
-export default {
-    title: 'Collections',
-    decorators: [withKnobs, withActions('selected')],
-    parameters: {
-        notes: readme
-    }
-};
-
-const mock = [
+const contentletsMock = [
     {
         typeVariable: 'Destination',
         modDate: '1/22/2020 1:20PM',
@@ -24,7 +16,7 @@ const mock = [
         contentStructureType: '5',
         working: 'true',
         locked: 'false',
-        live: 'true',
+        live: 'false',
         owner: 'dotcms.org.1',
         identifier: 'bec7b960-a8bf-4f14-a22b-0d94caf217f0',
         wfActionMapList:
@@ -67,7 +59,7 @@ const mock = [
         statusIcons:
             "<span class='greyDotIcon' style='opacity:.4'></span><span class='liveIcon'></span>",
         hasLiveVersion: 'false',
-        deleted: 'false',
+        deleted: 'true',
         structureInode: '33888b6f-7a8e-4069-b1b6-5c1aa9d0a48d',
         __type__: "<div class='typeCCol'><span class='uknIcon vtlIcon'></span>&nbsp;File</div>",
         ownerCanRead: 'false',
@@ -123,7 +115,7 @@ const mock = [
         contentStructureType: '1',
         working: 'true',
         locked: 'false',
-        live: 'true',
+        live: 'false',
         owner: '86fe5be1-4624-4595-bf2d-af8d559414b1',
         identifier: '566d77ef-e52d-4404-802c-f1821c0b0a2d',
         wfActionMapList:
@@ -1322,6 +1314,14 @@ const mock = [
     }
 ];
 
+export default {
+    title: 'Collections',
+    decorators: [withKnobs, withActions('selected')],
+    parameters: {
+        notes: readme
+    }
+};
+
 const actionsMock = [
     {
         label: 'Action 1',
@@ -1349,7 +1349,7 @@ export const CardView = () => {
     props.forEach(({ name, content }) => {
         cardView[name] = content;
     });
-    cardView.items = mock.map((i) => {
+    cardView.items = contentletsMock.map((i) => {
         return {
             data: {
                 ...i,

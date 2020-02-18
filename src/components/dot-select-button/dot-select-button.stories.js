@@ -28,7 +28,7 @@ const optionsMock  = [
 ]
 
 
-export const dotSelectButton = () => {
+export const SelectButton = () => {
 
     const props = [
         {

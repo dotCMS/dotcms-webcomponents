@@ -1,0 +1,48 @@
+:host {
+    display: flex;
+}
+
+div {
+    width: var(--size);
+    height: var(--size);
+    border-radius: 50%;
+    border: solid 2px;
+    margin: 0 1rem;
+}
+
+.published {
+    background-color: green;
+}
+
+.archived,
+.drafted {
+    position: relative;
+
+    &:before {
+        width: var(--size);
+        transform: translateY(-50%);
+        top: 50%;
+        position: absolute;
+        height: 2px;
+        content: "";
+        background-color: currentColor;
+        z-index: 1;
+    }
+}
+
+.drafted {
+    transform: rotate(90deg);
+
+    &:after {
+        background-color: green;
+        border-bottom-left-radius: var(--size);
+        border-top-left-radius: var(--size);
+        bottom: 25%;
+        content: "";
+        height: 100%;
+        left: 25%;
+        position: absolute;
+        transform: rotate(90deg);
+        width: 50%;
+    }
+}
