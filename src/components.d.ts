@@ -62,6 +62,11 @@ export namespace Components {
     */
     'threshold': number;
   }
+  interface DotBadge {
+    'bgColor': string;
+    'color': string;
+    'size': string;
+  }
   interface DotBinaryFile {
     /**
     * (optional) Text that be shown when the URL is not valid
@@ -969,6 +974,12 @@ declare global {
     new (): HTMLDotAutocompleteElement;
   };
 
+  interface HTMLDotBadgeElement extends Components.DotBadge, HTMLStencilElement {}
+  var HTMLDotBadgeElement: {
+    prototype: HTMLDotBadgeElement;
+    new (): HTMLDotBadgeElement;
+  };
+
   interface HTMLDotBinaryFileElement extends Components.DotBinaryFile, HTMLStencilElement {}
   var HTMLDotBinaryFileElement: {
     prototype: HTMLDotBinaryFileElement;
@@ -1180,6 +1191,7 @@ declare global {
   };
   interface HTMLElementTagNameMap {
     'dot-autocomplete': HTMLDotAutocompleteElement;
+    'dot-badge': HTMLDotBadgeElement;
     'dot-binary-file': HTMLDotBinaryFileElement;
     'dot-binary-file-preview': HTMLDotBinaryFilePreviewElement;
     'dot-binary-text-field': HTMLDotBinaryTextFieldElement;
@@ -1247,6 +1259,11 @@ declare namespace LocalJSX {
     * (optional)  Min characters to start search in the autocomplete input
     */
     'threshold'?: number;
+  }
+  interface DotBadge {
+    'bgColor'?: string;
+    'color'?: string;
+    'size'?: string;
   }
   interface DotBinaryFile {
     /**
@@ -2134,6 +2151,7 @@ declare namespace LocalJSX {
 
   interface IntrinsicElements {
     'dot-autocomplete': DotAutocomplete;
+    'dot-badge': DotBadge;
     'dot-binary-file': DotBinaryFile;
     'dot-binary-file-preview': DotBinaryFilePreview;
     'dot-binary-text-field': DotBinaryTextField;
@@ -2179,6 +2197,7 @@ declare module "@stencil/core" {
   export namespace JSX {
     interface IntrinsicElements {
       'dot-autocomplete': LocalJSX.DotAutocomplete & JSXBase.HTMLAttributes<HTMLDotAutocompleteElement>;
+      'dot-badge': LocalJSX.DotBadge & JSXBase.HTMLAttributes<HTMLDotBadgeElement>;
       'dot-binary-file': LocalJSX.DotBinaryFile & JSXBase.HTMLAttributes<HTMLDotBinaryFileElement>;
       'dot-binary-file-preview': LocalJSX.DotBinaryFilePreview & JSXBase.HTMLAttributes<HTMLDotBinaryFilePreviewElement>;
       'dot-binary-text-field': LocalJSX.DotBinaryTextField & JSXBase.HTMLAttributes<HTMLDotBinaryTextFieldElement>;
