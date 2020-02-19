@@ -8,16 +8,18 @@
 }
 
 button {
-    background-color: rgba(255, 255, 255, 0.5);
+    align-items: center;
+    background: none;
     border-radius: 50%;
     border: 0;
+    color: var(--color-gray);
     cursor: pointer;
+    display: inline-flex;
     height: 32px;
     padding: 0;
-    transition: background-color, var(--basic-speed) ease;
     width: 32px;
+}
 
-    &:hover {
-        background-color: rgba(255, 255, 255, 0.6);
-    }
+mwc-list-item {
+    font-size: var(--menu-item-font-size);
 }

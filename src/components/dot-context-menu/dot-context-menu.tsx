@@ -19,6 +19,7 @@ export class DotContextMenu {
     @Element() el: HTMLElement;
 
     @Prop() options: DotContextMenuOption<MenuAction>[] = [];
+    @Prop() fontSize = '16px';
 
     menu: Menu;
     button: HTMLElement;
@@ -31,7 +32,7 @@ export class DotContextMenu {
 
     render() {
         return (
-            <Host>
+            <Host style={{ '--menu-item-font-size': this.fontSize }}>
                 <button
                     onClick={(e: MouseEvent) => {
                         e.stopPropagation();

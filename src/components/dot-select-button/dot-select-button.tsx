@@ -14,7 +14,7 @@ export class DotSelectButton {
     @Prop({ reflect: true })
     options: DotSelectButtonOption[] = [];
 
-    @Event() selected: EventEmitter;
+    @Event() selected: EventEmitter<string>;
 
     render() {
         return (
@@ -31,9 +31,9 @@ export class DotSelectButton {
                             label={option.label}
                             disabled={option.disabled}
                             onClick={() => {
-                                if (active || option.disabled) {
+                                // if (option.disabled || active) {
                                     this.setSelected(option);
-                                }
+                                // }
                             }}
                         />
                     );
@@ -44,6 +44,6 @@ export class DotSelectButton {
 
     private setSelected(option: DotSelectButtonOption) {
         this.value = option.label;
-        this.selected.emit(option);
+        this.selected.emit(option.label.toLocaleLowerCase());
     }
 }

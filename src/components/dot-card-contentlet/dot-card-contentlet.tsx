@@ -23,7 +23,7 @@ export class DotCardContentlet {
     })
     checked: boolean;
 
-    @Event() valueChange: EventEmitter<DotCardContentletEvent>;
+    @Event() checkboxChange: EventEmitter<DotCardContentletEvent>;
 
     private checkbox: HTMLInputElement;
 
@@ -34,37 +34,52 @@ export class DotCardContentlet {
     }
 
     render() {
-        const title = this.item?.data?.title;
+        const contentlet = this.item.data;
+        const title = contentlet?.title;
         return (
             <dot-card>
-                {this.item?.actions?.length ? (
-                    <dot-context-menu
-                        onClick={(e) => e.stopPropagation()}
-                        options={this.item.actions}
-                    />
-                ) : null}
                 <dot-contentlet-thumbnail
-                    contentlet={this.item?.data}
+                    contentlet={contentlet}
                     width="250"
                     height="250"
                     alt={title}
                     iconSize="64px"
                 />
                 <header>
-                    <mwc-checkbox
-                        checked={this.checked}
-                        onClick={(e) => {
-                            e.stopPropagation();
-                        }}
-                        onChange={() => {
-                            this.checked = this.checkbox.checked;
-                            this.valueChange.emit({
-                                data: this.item.data,
-                                checked: this.checkbox.checked
-                            });
-                        }}
-                    />
-                    <label>{title}</label>
+                    <div class="main">
+                        <mwc-checkbox
+                            checked={this.checked}
+                            onClick={(e) => {
+                                e.stopPropagation();
+                            }}
+                            onChange={() => {
+                                this.checked = this.checkbox.checked;
+                                this.checkboxChange.emit({
+                                    data: contentlet,
+                                    checked: this.checkbox.checked
+                                });
+                            }}
+                        />
+                        <label>{title}</label>
+                    </div>
+                    <div class="extra">
+                        <div class="state">
+                            <dot-badge>
+                                {contentlet.languageId === '1' ? 'US_en' : 'ES_en'}
+                            </dot-badge>
+                            <dot-contentlet-lock-icon
+                                contentlet={contentlet}
+                                style={{ color: contentlet.locked === 'true' ? '#EC4B41' : '' }}
+                            />
+                            <dot-contentlet-state-icon contentlet={contentlet} size="16px" />
+                        </div>
+                        {this.item?.actions?.length ? (
+                            <dot-context-menu
+                                onClick={(e) => e.stopPropagation()}
+                                options={this.item.actions}
+                            />
+                        ) : null}
+                    </div>
                 </header>
             </dot-card>
         );

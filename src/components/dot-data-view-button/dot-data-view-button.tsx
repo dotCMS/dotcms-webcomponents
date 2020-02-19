@@ -12,7 +12,7 @@ export class DotDataViewButton {
             <dot-select-button
                 value={this.value}
                 options={[
-                    { label: 'Grid', icon: 'grid_on' },
+                    { label: 'Card', icon: 'grid_on' },
                     { label: 'List', icon: 'format_list_bulleted' }
                 ]}
             />

@@ -15,7 +15,7 @@ const contentletsMock = [
         permissions: 'P654b0931-1027-41f7-ad4d-173115ed8ec1.1P ',
         contentStructureType: '5',
         working: 'true',
-        locked: 'false',
+        locked: 'true',
         live: 'false',
         owner: 'dotcms.org.1',
         identifier: 'bec7b960-a8bf-4f14-a22b-0d94caf217f0',
@@ -80,7 +80,7 @@ const contentletsMock = [
         permissions:
             'P654b0931-1027-41f7-ad4d-173115ed8ec1.2P P654b0931-1027-41f7-ad4d-173115ed8ec1.1P ',
         contentStructureType: '1',
-        working: 'true',
+        working: 'false',
         locked: 'false',
         live: 'true',
         owner: '86fe5be1-4624-4595-bf2d-af8d559414b1',

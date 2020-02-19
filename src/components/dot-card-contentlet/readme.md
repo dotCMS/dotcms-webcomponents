@@ -15,9 +15,9 @@
 
 ## Events
 
-| Event         | Description | Type                                  |
-| ------------- | ----------- | ------------------------------------- |
-| `valueChange` |             | `CustomEvent<DotCardContentletEvent>` |
+| Event            | Description | Type                                  |
+| ---------------- | ----------- | ------------------------------------- |
+| `checkboxChange` |             | `CustomEvent<DotCardContentletEvent>` |
 
 
 ## Dependencies
@@ -29,15 +29,21 @@
 ### Depends on
 
 - [dot-card](../../elements/dot-card)
-- [dot-context-menu](../dot-context-menu)
 - [dot-contentlet-thumbnail](../../elements/dot-contentlet-thumbnail)
+- [dot-badge](../../elements/dot-badge)
+- [dot-contentlet-lock-icon](../../elements/dot-contentlet-lock-icon)
+- [dot-contentlet-state-icon](../../elements/dot-contentlet-state-icon)
+- [dot-context-menu](../dot-context-menu)
 
 ### Graph
 ```mermaid
 graph TD;
   dot-card-contentlet --> dot-card
-  dot-card-contentlet --> dot-context-menu
   dot-card-contentlet --> dot-contentlet-thumbnail
+  dot-card-contentlet --> dot-badge
+  dot-card-contentlet --> dot-contentlet-lock-icon
+  dot-card-contentlet --> dot-contentlet-state-icon
+  dot-card-contentlet --> dot-context-menu
   dot-contentlet-thumbnail --> dot-contentlet-icon
   dot-card-view --> dot-card-contentlet
   style dot-card-contentlet fill:#f9f,stroke:#333,stroke-width:4px

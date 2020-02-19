@@ -61,12 +61,12 @@ export class DotCardView {
             <Host>
                 {this.items.map((item: DotCardContentletItem) => (
                     <dot-card-contentlet
-                        onClick={()=> {
+                        onClick={() => {
                             this.onCardClick.emit(item.data);
                         }}
                         key={item.data.inode}
                         checked={value.includes(item.data.inode)}
-                        onValueChange={({
+                        onCheckboxChange={({
                             detail: { checked, data }
                         }: CustomEvent<DotCardContentletEvent>) => {
                             if (checked) {

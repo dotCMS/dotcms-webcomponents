@@ -33,21 +33,38 @@ dot-contentlet-thumbnail {
     width: 100%;
 }
 
-dot-context-menu {
-    position: absolute;
-    right: var(--basic-padding);
-    top: var(--basic-padding);
-    z-index: 1;
-}
-
 header {
-    align-items: center;
     display: flex;
     padding: var(--basic-padding);
+    flex-direction: column;
 }
 
 label {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+}
+
+.main,
+.extra,
+.state {
+    display: flex;
+    align-items: center;
+}
+
+.extra {
+    display: flex;
+    justify-content: space-between;
+    margin-top: -0.5rem;
+    padding-left: 40px; // The space between the hit area of the checkbox and the checkbox itself
+}
+
+.state {
+    & > * {
+        margin-right: var(--basic-padding);
+
+        &:last-child {
+            margin-right: 0;
+        }
+    }
 }

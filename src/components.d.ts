@@ -282,6 +282,7 @@ export namespace Components {
     'width': string;
   }
   interface DotContextMenu {
+    'fontSize': string;
     'options': DotContextMenuOption<MenuAction>[];
   }
   interface DotDataViewButton {
@@ -1402,7 +1403,7 @@ declare namespace LocalJSX {
   interface DotCardContentlet {
     'checked'?: boolean;
     'item'?: DotCardContentletItem;
-    'onValueChange'?: (event: CustomEvent<DotCardContentletEvent>) => void;
+    'onCheckboxChange'?: (event: CustomEvent<DotCardContentletEvent>) => void;
   }
   interface DotCardView {
     'items'?: DotCardContentletItem[];
@@ -1481,6 +1482,7 @@ declare namespace LocalJSX {
     'width'?: string;
   }
   interface DotContextMenu {
+    'fontSize'?: string;
     'options'?: DotContextMenuOption<MenuAction>[];
   }
   interface DotDataViewButton {
@@ -1904,7 +1906,7 @@ declare namespace LocalJSX {
     'value'?: string;
   }
   interface DotSelectButton {
-    'onSelected'?: (event: CustomEvent<any>) => void;
+    'onSelected'?: (event: CustomEvent<string>) => void;
     'options'?: DotSelectButtonOption[];
     'value'?: string;
   }
