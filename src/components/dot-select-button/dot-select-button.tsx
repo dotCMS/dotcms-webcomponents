@@ -20,17 +20,21 @@ export class DotSelectButton {
         return (
             <Host>
                 {this.options.map((option: DotSelectButtonOption) => {
+                    const active =
+                        option.label.toLocaleLowerCase() === this.value.toLocaleLowerCase();
                     return (
                         <mwc-icon-button
                             class={{
-                                active:
-                                    option.label.toLocaleLowerCase() ===
-                                    this.value.toLocaleLowerCase()
+                                active
                             }}
                             icon={option.icon}
                             label={option.label}
                             disabled={option.disabled}
-                            onClick={() => (option.disabled ? null : this.setSelected(option))}
+                            onClick={() => {
+                                if (active || option.disabled) {
+                                    this.setSelected(option);
+                                }
+                            }}
                         />
                     );
                 })}
