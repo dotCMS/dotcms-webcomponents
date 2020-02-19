@@ -261,6 +261,10 @@ export namespace Components {
     'icon': string;
     'size': string;
   }
+  interface DotContentletLockIcon {
+    'contentlet': DotContentletItem;
+    'size': string;
+  }
   interface DotContentletStateIcon {
     'contentlet': DotContentletItem;
     'size': string;
@@ -1025,6 +1029,12 @@ declare global {
     new (): HTMLDotContentletIconElement;
   };
 
+  interface HTMLDotContentletLockIconElement extends Components.DotContentletLockIcon, HTMLStencilElement {}
+  var HTMLDotContentletLockIconElement: {
+    prototype: HTMLDotContentletLockIconElement;
+    new (): HTMLDotContentletLockIconElement;
+  };
+
   interface HTMLDotContentletStateIconElement extends Components.DotContentletStateIcon, HTMLStencilElement {}
   var HTMLDotContentletStateIconElement: {
     prototype: HTMLDotContentletStateIconElement;
@@ -1180,6 +1190,7 @@ declare global {
     'dot-checkbox': HTMLDotCheckboxElement;
     'dot-chip': HTMLDotChipElement;
     'dot-contentlet-icon': HTMLDotContentletIconElement;
+    'dot-contentlet-lock-icon': HTMLDotContentletLockIconElement;
     'dot-contentlet-state-icon': HTMLDotContentletStateIconElement;
     'dot-contentlet-thumbnail': HTMLDotContentletThumbnailElement;
     'dot-context-menu': HTMLDotContextMenuElement;
@@ -1435,6 +1446,10 @@ declare namespace LocalJSX {
   }
   interface DotContentletIcon {
     'icon'?: string;
+    'size'?: string;
+  }
+  interface DotContentletLockIcon {
+    'contentlet'?: DotContentletItem;
     'size'?: string;
   }
   interface DotContentletStateIcon {
@@ -2129,6 +2144,7 @@ declare namespace LocalJSX {
     'dot-checkbox': DotCheckbox;
     'dot-chip': DotChip;
     'dot-contentlet-icon': DotContentletIcon;
+    'dot-contentlet-lock-icon': DotContentletLockIcon;
     'dot-contentlet-state-icon': DotContentletStateIcon;
     'dot-contentlet-thumbnail': DotContentletThumbnail;
     'dot-context-menu': DotContextMenu;
@@ -2173,6 +2189,7 @@ declare module "@stencil/core" {
       'dot-checkbox': LocalJSX.DotCheckbox & JSXBase.HTMLAttributes<HTMLDotCheckboxElement>;
       'dot-chip': LocalJSX.DotChip & JSXBase.HTMLAttributes<HTMLDotChipElement>;
       'dot-contentlet-icon': LocalJSX.DotContentletIcon & JSXBase.HTMLAttributes<HTMLDotContentletIconElement>;
+      'dot-contentlet-lock-icon': LocalJSX.DotContentletLockIcon & JSXBase.HTMLAttributes<HTMLDotContentletLockIconElement>;
       'dot-contentlet-state-icon': LocalJSX.DotContentletStateIcon & JSXBase.HTMLAttributes<HTMLDotContentletStateIconElement>;
       'dot-contentlet-thumbnail': LocalJSX.DotContentletThumbnail & JSXBase.HTMLAttributes<HTMLDotContentletThumbnailElement>;
       'dot-context-menu': LocalJSX.DotContextMenu & JSXBase.HTMLAttributes<HTMLDotContextMenuElement>;
