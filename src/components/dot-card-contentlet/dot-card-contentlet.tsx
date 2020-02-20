@@ -65,7 +65,7 @@ export class DotCardContentlet {
                     <div class="extra">
                         <div class="state">
                             <dot-badge>
-                                {contentlet.languageId === '1' ? 'US_en' : 'ES_en'}
+                                {contentlet.language}
                             </dot-badge>
                             <dot-contentlet-lock-icon
                                 contentlet={contentlet}

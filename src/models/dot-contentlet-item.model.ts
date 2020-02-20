@@ -1,4 +1,5 @@
 export interface DotContentletItem {
+    language: string;
     typeVariable: string;
     modDate: string;
     __wfstep__: string;
