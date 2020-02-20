@@ -23,23 +23,21 @@ export class DotContentletStateIcon {
         );
     }
 
-    private getType({ live, working, deleted }: DotContentletItem): string {
-        const published = live === 'true';
-        const draft = working === 'true';
-        const archived = deleted === 'true';
-
-        if (archived) {
-            return 'archived';
+    private getType({ live, working, deleted, hasLiveVersion }: DotContentletItem): string {
+        if (deleted === 'true') {
+            return 'archived'; // crossed
         }
 
-        if (published) {
-            if (draft) {
-                return 'drafted';
+        if (live === 'true') {
+            if (hasLiveVersion === 'true' && working === 'true') {
+                return 'published' // full
             }
-
-            return 'published';
+        } else {
+            if (hasLiveVersion === 'true') {
+                return 'drafted' // half
+            }
         }
 
-        return 'draft';
+        return 'draft' // empty
     }
 }

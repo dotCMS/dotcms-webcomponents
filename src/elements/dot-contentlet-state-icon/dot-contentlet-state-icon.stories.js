@@ -35,6 +35,7 @@ export const Archived = () => {
         {
             name: 'contentlet',
             content: object('Contentlet', {
+                hasLiveVersion: 'true',
                 live: 'false',
                 working: 'true',
                 deleted: 'true'
@@ -56,7 +57,8 @@ export const Drafted = () => {
         {
             name: 'contentlet',
             content: object('Contentlet', {
-                live: 'true',
+                hasLiveVersion: 'true',
+                live: 'false',
                 working: 'true',
                 deleted: 'false'
             })
@@ -78,7 +80,8 @@ export const Published = () => {
             name: 'contentlet',
             content: object('Contentlet', {
                 live: 'true',
-                working: 'false',
+                hasLiveVersion: 'true',
+                working: 'true',
                 deleted: 'false'
             })
         }
