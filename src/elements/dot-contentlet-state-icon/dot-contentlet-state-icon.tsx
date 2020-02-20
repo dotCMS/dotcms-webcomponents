@@ -9,16 +9,25 @@ import { DotContentletItem } from '../../models/dot-contentlet-item.model';
 export class DotContentletStateIcon {
     @Prop() contentlet: DotContentletItem;
     @Prop() size = '16px';
+    @Prop() labels = {
+        archived: 'Archived',
+        published: 'Published',
+        revision: 'Revision',
+        draft: 'Draft'
+    };
 
     render() {
-        const className = this.getType(this.contentlet);
+        const state = this.getType(this.contentlet);
+        const name = this.labels[state];
         return (
             <Host
+                aria-label={name}
                 style={{
                     '--size': this.size
                 }}
             >
-                <div class={className}></div>
+                <div class={state}></div>
+                <span>{name}</span>
             </Host>
         );
     }
@@ -30,14 +39,14 @@ export class DotContentletStateIcon {
 
         if (live === 'true') {
             if (hasLiveVersion === 'true' && working === 'true') {
-                return 'published' // full
+                return 'published'; // full
             }
         } else {
             if (hasLiveVersion === 'true') {
-                return 'drafted' // half
+                return 'revision'; // half
             }
         }
 
-        return 'draft' // empty
+        return 'draft'; // empty
     }
 }

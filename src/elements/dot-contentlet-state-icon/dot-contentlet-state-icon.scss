@@ -1,6 +1,7 @@
 :host {
-    display: flex;
     --sucess-color: #27b970;
+    position: relative;
+    display: inline-block;
 }
 
 div {
@@ -9,15 +10,33 @@ div {
     box-sizing: border-box;
     height: var(--size);
     width: var(--size);
+
+    &:hover + span {
+        opacity: 1;
+    }
+}
+
+span {
+    background-color: #444;
+    color: #fff;
+    border-radius: 2px;
+    padding: 2px 5px;
+    left: 50%;
+    opacity: 0;
+    pointer-events: none;
+    position: absolute;
+    top: calc(var(--size) + 2px);
+    transform: translateX(-50%);
+    transition: opacity var(--basic-speed);
 }
 
 .published,
-.drafted:after {
+.revision:after {
     background-color: var(--sucess-color);
 }
 
 .archived,
-.drafted {
+.revision {
     position: relative;
 
     &:before {
@@ -33,7 +52,7 @@ div {
     }
 }
 
-.drafted {
+.revision {
     transform: rotate(90deg);
 
     &:after {

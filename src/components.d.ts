@@ -272,6 +272,7 @@ export namespace Components {
   }
   interface DotContentletStateIcon {
     'contentlet': DotContentletItem;
+    'labels': { archived: string; published: string; revision: string; draft: string; };
     'size': string;
   }
   interface DotContentletThumbnail {
@@ -1472,6 +1473,7 @@ declare namespace LocalJSX {
   }
   interface DotContentletStateIcon {
     'contentlet'?: DotContentletItem;
+    'labels'?: { archived: string; published: string; revision: string; draft: string; };
     'size'?: string;
   }
   interface DotContentletThumbnail {
