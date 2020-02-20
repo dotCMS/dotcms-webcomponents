@@ -5,10 +5,11 @@
 
 ## Properties
 
-| Property     | Attribute | Description | Type                | Default     |
-| ------------ | --------- | ----------- | ------------------- | ----------- |
-| `contentlet` | --        |             | `DotContentletItem` | `undefined` |
-| `size`       | `size`    |             | `string`            | `'16px'`    |
+| Property     | Attribute | Description | Type                                                                        | Default                                                                                                                      |
+| ------------ | --------- | ----------- | --------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
+| `contentlet` | --        |             | `DotContentletItem`                                                         | `undefined`                                                                                                                  |
+| `labels`     | --        |             | `{ archived: string; published: string; revision: string; draft: string; }` | `{         archived: 'Archived',         published: 'Published',         revision: 'Revision',         draft: 'Draft'     }` |
+| `size`       | `size`    |             | `string`                                                                    | `'16px'`                                                                                                                     |
 
 
 ## Dependencies
