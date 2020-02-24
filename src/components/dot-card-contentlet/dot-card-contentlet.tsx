@@ -64,14 +64,14 @@ export class DotCardContentlet {
                     </div>
                     <div class="extra">
                         <div class="state">
-                            <dot-badge>
-                                {contentlet.language}
-                            </dot-badge>
-                            <dot-contentlet-lock-icon
-                                contentlet={contentlet}
-                                style={{ color: contentlet.locked === 'true' ? '#EC4B41' : '' }}
-                            />
                             <dot-contentlet-state-icon contentlet={contentlet} size="16px" />
+                            <dot-badge>{contentlet.language}</dot-badge>
+                            {contentlet.locked === 'true' ? (
+                                <dot-contentlet-lock-icon
+                                    contentlet={contentlet}
+                                    style={{ color: '#EC4B41' }}
+                                />
+                            ) : null}
                         </div>
                         {this.item?.actions?.length ? (
                             <dot-context-menu

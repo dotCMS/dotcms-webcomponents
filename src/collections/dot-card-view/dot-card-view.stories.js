@@ -22,6 +22,7 @@ const contentletsMock = [
         wfActionMapList:
             '[{"name":"Copy","icon":"workflowIcon","hasPushPublishActionlet":false,"id":"963f6a04-5320-42e7-ab74-6d876d199946","requiresCheckout":false,"wfActionNameStr":"Copy","commentable":false,"assignable":false},{"name":"Unpublish","icon":"workflowIcon","hasPushPublishActionlet":false,"id":"38efc763-d78f-4e4b-b092-59cd8c579b93","requiresCheckout":false,"wfActionNameStr":"Unpublish","commentable":false,"assignable":false},{"name":"Publish","icon":"workflowIcon","hasPushPublishActionlet":false,"id":"b9d89c80-3d88-4311-8365-187323c96436","requiresCheckout":false,"wfActionNameStr":"Publish","commentable":false,"assignable":false}]',
         languageId: '1',
+        language: 'es-en',
         __icon__: 'pageIcon',
         statusIcons:
             "<span class='greyDotIcon' style='opacity:.4'></span><span class='liveIcon'></span>",
@@ -55,6 +56,7 @@ const contentletsMock = [
         wfActionMapList:
             '[{"name":"Copy","icon":"workflowIcon","hasPushPublishActionlet":false,"id":"963f6a04-5320-42e7-ab74-6d876d199946","requiresCheckout":false,"wfActionNameStr":"Copy","commentable":false,"assignable":false},{"name":"Unpublish","icon":"workflowIcon","hasPushPublishActionlet":false,"id":"38efc763-d78f-4e4b-b092-59cd8c579b93","requiresCheckout":false,"wfActionNameStr":"Unpublish","commentable":false,"assignable":false},{"name":"Publish","icon":"workflowIcon","hasPushPublishActionlet":false,"id":"b9d89c80-3d88-4311-8365-187323c96436","requiresCheckout":false,"wfActionNameStr":"Publish","commentable":false,"assignable":false}]',
         languageId: '1',
+        language: 'es-en',
         __icon__: 'vtlIcon',
         statusIcons:
             "<span class='greyDotIcon' style='opacity:.4'></span><span class='liveIcon'></span>",
@@ -88,6 +90,7 @@ const contentletsMock = [
         wfActionMapList:
             '[{"name":"Copy","icon":"workflowIcon","hasPushPublishActionlet":false,"id":"963f6a04-5320-42e7-ab74-6d876d199946","requiresCheckout":false,"wfActionNameStr":"Copy","commentable":false,"assignable":false},{"name":"Unpublish","icon":"workflowIcon","hasPushPublishActionlet":false,"id":"38efc763-d78f-4e4b-b092-59cd8c579b93","requiresCheckout":false,"wfActionNameStr":"Unpublish","commentable":false,"assignable":false},{"name":"Publish","icon":"workflowIcon","hasPushPublishActionlet":false,"id":"b9d89c80-3d88-4311-8365-187323c96436","requiresCheckout":false,"wfActionNameStr":"Publish","commentable":false,"assignable":false}]',
         languageId: '1',
+        language: 'es-en',
         __icon__: 'contentIcon',
         statusIcons:
             "<span class='greyDotIcon' style='opacity:.4'></span><span class='liveIcon'></span>",
@@ -121,6 +124,7 @@ const contentletsMock = [
         wfActionMapList:
             '[{"name":"Copy","icon":"workflowIcon","hasPushPublishActionlet":false,"id":"963f6a04-5320-42e7-ab74-6d876d199946","requiresCheckout":false,"wfActionNameStr":"Copy","commentable":false,"assignable":false},{"name":"Unpublish","icon":"workflowIcon","hasPushPublishActionlet":false,"id":"38efc763-d78f-4e4b-b092-59cd8c579b93","requiresCheckout":false,"wfActionNameStr":"Unpublish","commentable":false,"assignable":false},{"name":"Publish","icon":"workflowIcon","hasPushPublishActionlet":false,"id":"b9d89c80-3d88-4311-8365-187323c96436","requiresCheckout":false,"wfActionNameStr":"Publish","commentable":false,"assignable":false}]',
         languageId: '1',
+        language: 'es-en',
         __icon__: 'contentIcon',
         statusIcons:
             "<span class='greyDotIcon' style='opacity:.4'></span><span class='liveIcon'></span>",
@@ -154,6 +158,7 @@ const contentletsMock = [
         wfActionMapList:
             '[{"name":"Copy","icon":"workflowIcon","hasPushPublishActionlet":false,"id":"963f6a04-5320-42e7-ab74-6d876d199946","requiresCheckout":false,"wfActionNameStr":"Copy","commentable":false,"assignable":false},{"name":"Unpublish","icon":"workflowIcon","hasPushPublishActionlet":false,"id":"38efc763-d78f-4e4b-b092-59cd8c579b93","requiresCheckout":false,"wfActionNameStr":"Unpublish","commentable":false,"assignable":false},{"name":"Publish","icon":"workflowIcon","hasPushPublishActionlet":false,"id":"b9d89c80-3d88-4311-8365-187323c96436","requiresCheckout":false,"wfActionNameStr":"Publish","commentable":false,"assignable":false}]',
         languageId: '1',
+        language: 'es-en',
         __icon__: 'vtlIcon',
         statusIcons:
             "<span class='greyDotIcon' style='opacity:.4'></span><span class='liveIcon'></span>",
@@ -179,13 +184,14 @@ const contentletsMock = [
         permissions: 'P654b0931-1027-41f7-ad4d-173115ed8ec1.1P ',
         contentStructureType: '5',
         working: 'true',
-        locked: 'false',
+        locked: 'true',
         live: 'true',
         owner: 'dotcms.org.1',
         identifier: 'ef223c47-b99c-4e50-9dbd-39cc7b68e527',
         wfActionMapList:
             '[{"name":"Copy","icon":"workflowIcon","hasPushPublishActionlet":false,"id":"963f6a04-5320-42e7-ab74-6d876d199946","requiresCheckout":false,"wfActionNameStr":"Copy","commentable":false,"assignable":false},{"name":"Unpublish","icon":"workflowIcon","hasPushPublishActionlet":false,"id":"38efc763-d78f-4e4b-b092-59cd8c579b93","requiresCheckout":false,"wfActionNameStr":"Unpublish","commentable":false,"assignable":false},{"name":"Publish","icon":"workflowIcon","hasPushPublishActionlet":false,"id":"b9d89c80-3d88-4311-8365-187323c96436","requiresCheckout":false,"wfActionNameStr":"Publish","commentable":false,"assignable":false}]',
         languageId: '1',
+        language: 'es-en',
         __icon__: 'pageIcon',
         statusIcons:
             "<span class='greyDotIcon' style='opacity:.4'></span><span class='liveIcon'></span>",
@@ -219,6 +225,7 @@ const contentletsMock = [
         wfActionMapList:
             '[{"name":"Copy","icon":"workflowIcon","hasPushPublishActionlet":false,"id":"963f6a04-5320-42e7-ab74-6d876d199946","requiresCheckout":false,"wfActionNameStr":"Copy","commentable":false,"assignable":false},{"name":"Unpublish","icon":"workflowIcon","hasPushPublishActionlet":false,"id":"38efc763-d78f-4e4b-b092-59cd8c579b93","requiresCheckout":false,"wfActionNameStr":"Unpublish","commentable":false,"assignable":false},{"name":"Publish","icon":"workflowIcon","hasPushPublishActionlet":false,"id":"b9d89c80-3d88-4311-8365-187323c96436","requiresCheckout":false,"wfActionNameStr":"Publish","commentable":false,"assignable":false}]',
         languageId: '1',
+        language: 'es-en',
         __icon__: 'contentIcon',
         statusIcons:
             "<span class='greyDotIcon' style='opacity:.4'></span><span class='liveIcon'></span>",
@@ -251,6 +258,7 @@ const contentletsMock = [
         wfActionMapList:
             '[{"name":"Copy","icon":"workflowIcon","hasPushPublishActionlet":false,"id":"963f6a04-5320-42e7-ab74-6d876d199946","requiresCheckout":false,"wfActionNameStr":"Copy","commentable":false,"assignable":false},{"name":"Unpublish","icon":"workflowIcon","hasPushPublishActionlet":false,"id":"38efc763-d78f-4e4b-b092-59cd8c579b93","requiresCheckout":false,"wfActionNameStr":"Unpublish","commentable":false,"assignable":false},{"name":"Publish","icon":"workflowIcon","hasPushPublishActionlet":false,"id":"b9d89c80-3d88-4311-8365-187323c96436","requiresCheckout":false,"wfActionNameStr":"Publish","commentable":false,"assignable":false}]',
         languageId: '1',
+        language: 'es-en',
         __icon__: 'pageIcon',
         statusIcons:
             "<span class='greyDotIcon' style='opacity:.4'></span><span class='liveIcon'></span>",
@@ -276,13 +284,14 @@ const contentletsMock = [
         permissions: 'P654b0931-1027-41f7-ad4d-173115ed8ec1.1P ',
         contentStructureType: '5',
         working: 'true',
-        locked: 'false',
+        locked: 'true',
         live: 'true',
         owner: 'dotcms.org.1',
         identifier: '44a076ad-affa-49d4-97b3-6caa3824e7e8',
         wfActionMapList:
             '[{"name":"Copy","icon":"workflowIcon","hasPushPublishActionlet":false,"id":"963f6a04-5320-42e7-ab74-6d876d199946","requiresCheckout":false,"wfActionNameStr":"Copy","commentable":false,"assignable":false},{"name":"Unpublish","icon":"workflowIcon","hasPushPublishActionlet":false,"id":"38efc763-d78f-4e4b-b092-59cd8c579b93","requiresCheckout":false,"wfActionNameStr":"Unpublish","commentable":false,"assignable":false},{"name":"Publish","icon":"workflowIcon","hasPushPublishActionlet":false,"id":"b9d89c80-3d88-4311-8365-187323c96436","requiresCheckout":false,"wfActionNameStr":"Publish","commentable":false,"assignable":false}]',
         languageId: '1',
+        language: 'es-en',
         __icon__: 'pageIcon',
         statusIcons:
             "<span class='greyDotIcon' style='opacity:.4'></span><span class='liveIcon'></span>",
@@ -315,6 +324,7 @@ const contentletsMock = [
         wfActionMapList:
             '[{"name":"Copy","icon":"workflowIcon","hasPushPublishActionlet":false,"id":"963f6a04-5320-42e7-ab74-6d876d199946","requiresCheckout":false,"wfActionNameStr":"Copy","commentable":false,"assignable":false},{"name":"Unpublish","icon":"workflowIcon","hasPushPublishActionlet":false,"id":"38efc763-d78f-4e4b-b092-59cd8c579b93","requiresCheckout":false,"wfActionNameStr":"Unpublish","commentable":false,"assignable":false},{"name":"Publish","icon":"workflowIcon","hasPushPublishActionlet":false,"id":"b9d89c80-3d88-4311-8365-187323c96436","requiresCheckout":false,"wfActionNameStr":"Publish","commentable":false,"assignable":false}]',
         languageId: '1',
+        language: 'es-en',
         __icon__: 'pageIcon',
         statusIcons:
             "<span class='greyDotIcon' style='opacity:.4'></span><span class='liveIcon'></span>",
@@ -348,6 +358,7 @@ const contentletsMock = [
         wfActionMapList:
             '[{"name":"Copy","icon":"workflowIcon","hasPushPublishActionlet":false,"id":"963f6a04-5320-42e7-ab74-6d876d199946","requiresCheckout":false,"wfActionNameStr":"Copy","commentable":false,"assignable":false},{"name":"Unpublish","icon":"workflowIcon","hasPushPublishActionlet":false,"id":"38efc763-d78f-4e4b-b092-59cd8c579b93","requiresCheckout":false,"wfActionNameStr":"Unpublish","commentable":false,"assignable":false},{"name":"Publish","icon":"workflowIcon","hasPushPublishActionlet":false,"id":"b9d89c80-3d88-4311-8365-187323c96436","requiresCheckout":false,"wfActionNameStr":"Publish","commentable":false,"assignable":false}]',
         languageId: '1',
+        language: 'es-en',
         __icon__: 'gearIcon',
         statusIcons:
             "<span class='greyDotIcon' style='opacity:.4'></span><span class='liveIcon'></span>",
@@ -381,6 +392,7 @@ const contentletsMock = [
         wfActionMapList:
             '[{"name":"Copy","icon":"workflowIcon","hasPushPublishActionlet":false,"id":"963f6a04-5320-42e7-ab74-6d876d199946","requiresCheckout":false,"wfActionNameStr":"Copy","commentable":false,"assignable":false},{"name":"Unpublish","icon":"workflowIcon","hasPushPublishActionlet":false,"id":"38efc763-d78f-4e4b-b092-59cd8c579b93","requiresCheckout":false,"wfActionNameStr":"Unpublish","commentable":false,"assignable":false},{"name":"Publish","icon":"workflowIcon","hasPushPublishActionlet":false,"id":"b9d89c80-3d88-4311-8365-187323c96436","requiresCheckout":false,"wfActionNameStr":"Publish","commentable":false,"assignable":false}]',
         languageId: '1',
+        language: 'es-en',
         __icon__: 'scssIcon',
         statusIcons:
             "<span class='greyDotIcon' style='opacity:.4'></span><span class='liveIcon'></span>",
@@ -407,13 +419,14 @@ const contentletsMock = [
             'P654b0931-1027-41f7-ad4d-173115ed8ec1.2P P654b0931-1027-41f7-ad4d-173115ed8ec1.1P ',
         contentStructureType: '4',
         working: 'true',
-        locked: 'false',
+        locked: 'true',
         live: 'true',
         owner: '036fd43a-6d98-46e0-b22e-bae02cb86f0c',
         identifier: '9f2216a8-bd1b-4cca-a100-5b004bf0d5a3',
         wfActionMapList:
             '[{"name":"Copy","icon":"workflowIcon","hasPushPublishActionlet":false,"id":"963f6a04-5320-42e7-ab74-6d876d199946","requiresCheckout":false,"wfActionNameStr":"Copy","commentable":false,"assignable":false},{"name":"Unpublish","icon":"workflowIcon","hasPushPublishActionlet":false,"id":"38efc763-d78f-4e4b-b092-59cd8c579b93","requiresCheckout":false,"wfActionNameStr":"Unpublish","commentable":false,"assignable":false},{"name":"Publish","icon":"workflowIcon","hasPushPublishActionlet":false,"id":"b9d89c80-3d88-4311-8365-187323c96436","requiresCheckout":false,"wfActionNameStr":"Publish","commentable":false,"assignable":false}]',
         languageId: '1',
+        language: 'es-en',
         __icon__: 'scssIcon',
         statusIcons:
             "<span class='greyDotIcon' style='opacity:.4'></span><span class='liveIcon'></span>",
@@ -447,6 +460,7 @@ const contentletsMock = [
         wfActionMapList:
             '[{"name":"Copy","icon":"workflowIcon","hasPushPublishActionlet":false,"id":"963f6a04-5320-42e7-ab74-6d876d199946","requiresCheckout":false,"wfActionNameStr":"Copy","commentable":false,"assignable":false},{"name":"Unpublish","icon":"workflowIcon","hasPushPublishActionlet":false,"id":"38efc763-d78f-4e4b-b092-59cd8c579b93","requiresCheckout":false,"wfActionNameStr":"Unpublish","commentable":false,"assignable":false},{"name":"Publish","icon":"workflowIcon","hasPushPublishActionlet":false,"id":"b9d89c80-3d88-4311-8365-187323c96436","requiresCheckout":false,"wfActionNameStr":"Publish","commentable":false,"assignable":false}]',
         languageId: '1',
+        language: 'es-en',
         __icon__: 'contentIcon',
         statusIcons:
             "<span class='greyDotIcon' style='opacity:.4'></span><span class='liveIcon'></span>",
@@ -480,6 +494,7 @@ const contentletsMock = [
         wfActionMapList:
             '[{"name":"Copy","icon":"workflowIcon","hasPushPublishActionlet":false,"id":"963f6a04-5320-42e7-ab74-6d876d199946","requiresCheckout":false,"wfActionNameStr":"Copy","commentable":false,"assignable":false},{"name":"Unpublish","icon":"workflowIcon","hasPushPublishActionlet":false,"id":"38efc763-d78f-4e4b-b092-59cd8c579b93","requiresCheckout":false,"wfActionNameStr":"Unpublish","commentable":false,"assignable":false},{"name":"Publish","icon":"workflowIcon","hasPushPublishActionlet":false,"id":"b9d89c80-3d88-4311-8365-187323c96436","requiresCheckout":false,"wfActionNameStr":"Publish","commentable":false,"assignable":false}]',
         languageId: '1',
+        language: 'es-en',
         __icon__: 'contentIcon',
         statusIcons:
             "<span class='greyDotIcon' style='opacity:.4'></span><span class='liveIcon'></span>",
@@ -513,6 +528,7 @@ const contentletsMock = [
         wfActionMapList:
             '[{"name":"Copy","icon":"workflowIcon","hasPushPublishActionlet":false,"id":"963f6a04-5320-42e7-ab74-6d876d199946","requiresCheckout":false,"wfActionNameStr":"Copy","commentable":false,"assignable":false},{"name":"Unpublish","icon":"workflowIcon","hasPushPublishActionlet":false,"id":"38efc763-d78f-4e4b-b092-59cd8c579b93","requiresCheckout":false,"wfActionNameStr":"Unpublish","commentable":false,"assignable":false},{"name":"Publish","icon":"workflowIcon","hasPushPublishActionlet":false,"id":"b9d89c80-3d88-4311-8365-187323c96436","requiresCheckout":false,"wfActionNameStr":"Publish","commentable":false,"assignable":false}]',
         languageId: '1',
+        language: 'es-en',
         __icon__: 'contentIcon',
         statusIcons:
             "<span class='greyDotIcon' style='opacity:.4'></span><span class='liveIcon'></span>",
@@ -539,13 +555,14 @@ const contentletsMock = [
             'P654b0931-1027-41f7-ad4d-173115ed8ec1.2P P654b0931-1027-41f7-ad4d-173115ed8ec1.1P ',
         contentStructureType: '4',
         working: 'true',
-        locked: 'false',
+        locked: 'true',
         live: 'true',
         owner: 'dotcms.org.1',
         identifier: 'ff9d9f72-3650-4bca-9e0f-6ce18150d51e',
         wfActionMapList:
             '[{"name":"Copy","icon":"workflowIcon","hasPushPublishActionlet":false,"id":"963f6a04-5320-42e7-ab74-6d876d199946","requiresCheckout":false,"wfActionNameStr":"Copy","commentable":false,"assignable":false},{"name":"Unpublish","icon":"workflowIcon","hasPushPublishActionlet":false,"id":"38efc763-d78f-4e4b-b092-59cd8c579b93","requiresCheckout":false,"wfActionNameStr":"Unpublish","commentable":false,"assignable":false},{"name":"Publish","icon":"workflowIcon","hasPushPublishActionlet":false,"id":"b9d89c80-3d88-4311-8365-187323c96436","requiresCheckout":false,"wfActionNameStr":"Publish","commentable":false,"assignable":false}]',
         languageId: '1',
+        language: 'es-en',
         __icon__: 'vtlIcon',
         statusIcons:
             "<span class='greyDotIcon' style='opacity:.4'></span><span class='liveIcon'></span>",
@@ -579,6 +596,7 @@ const contentletsMock = [
         wfActionMapList:
             '[{"name":"Copy","icon":"workflowIcon","hasPushPublishActionlet":false,"id":"963f6a04-5320-42e7-ab74-6d876d199946","requiresCheckout":false,"wfActionNameStr":"Copy","commentable":false,"assignable":false},{"name":"Unpublish","icon":"workflowIcon","hasPushPublishActionlet":false,"id":"38efc763-d78f-4e4b-b092-59cd8c579b93","requiresCheckout":false,"wfActionNameStr":"Unpublish","commentable":false,"assignable":false},{"name":"Publish","icon":"workflowIcon","hasPushPublishActionlet":false,"id":"b9d89c80-3d88-4311-8365-187323c96436","requiresCheckout":false,"wfActionNameStr":"Publish","commentable":false,"assignable":false}]',
         languageId: '1',
+        language: 'es-en',
         __icon__: 'jpgIcon',
         statusIcons:
             "<span class='greyDotIcon' style='opacity:.4'></span><span class='liveIcon'></span>",
@@ -612,6 +630,7 @@ const contentletsMock = [
         wfActionMapList:
             '[{"name":"Copy","icon":"workflowIcon","hasPushPublishActionlet":false,"id":"963f6a04-5320-42e7-ab74-6d876d199946","requiresCheckout":false,"wfActionNameStr":"Copy","commentable":false,"assignable":false},{"name":"Unpublish","icon":"workflowIcon","hasPushPublishActionlet":false,"id":"38efc763-d78f-4e4b-b092-59cd8c579b93","requiresCheckout":false,"wfActionNameStr":"Unpublish","commentable":false,"assignable":false},{"name":"Publish","icon":"workflowIcon","hasPushPublishActionlet":false,"id":"b9d89c80-3d88-4311-8365-187323c96436","requiresCheckout":false,"wfActionNameStr":"Publish","commentable":false,"assignable":false}]',
         languageId: '1',
+        language: 'es-en',
         __icon__: 'contentIcon',
         statusIcons:
             "<span class='greyDotIcon' style='opacity:.4'></span><span class='liveIcon'></span>",
@@ -644,6 +663,7 @@ const contentletsMock = [
         wfActionMapList:
             '[{"name":"Copy","icon":"workflowIcon","hasPushPublishActionlet":false,"id":"963f6a04-5320-42e7-ab74-6d876d199946","requiresCheckout":false,"wfActionNameStr":"Copy","commentable":false,"assignable":false},{"name":"Unpublish","icon":"workflowIcon","hasPushPublishActionlet":false,"id":"38efc763-d78f-4e4b-b092-59cd8c579b93","requiresCheckout":false,"wfActionNameStr":"Unpublish","commentable":false,"assignable":false},{"name":"Publish","icon":"workflowIcon","hasPushPublishActionlet":false,"id":"b9d89c80-3d88-4311-8365-187323c96436","requiresCheckout":false,"wfActionNameStr":"Publish","commentable":false,"assignable":false}]',
         languageId: '1',
+        language: 'es-en',
         __icon__: 'pageIcon',
         statusIcons:
             "<span class='greyDotIcon' style='opacity:.4'></span><span class='liveIcon'></span>",
@@ -670,13 +690,14 @@ const contentletsMock = [
             'P654b0931-1027-41f7-ad4d-173115ed8ec1.2P P654b0931-1027-41f7-ad4d-173115ed8ec1.1P ',
         contentStructureType: '4',
         working: 'true',
-        locked: 'false',
+        locked: 'true',
         live: 'true',
         owner: 'dotcms.org.1',
         identifier: '39aa8219-d4fa-4d7f-838c-f4277ba4ece6',
         wfActionMapList:
             '[{"name":"Copy","icon":"workflowIcon","hasPushPublishActionlet":false,"id":"963f6a04-5320-42e7-ab74-6d876d199946","requiresCheckout":false,"wfActionNameStr":"Copy","commentable":false,"assignable":false},{"name":"Unpublish","icon":"workflowIcon","hasPushPublishActionlet":false,"id":"38efc763-d78f-4e4b-b092-59cd8c579b93","requiresCheckout":false,"wfActionNameStr":"Unpublish","commentable":false,"assignable":false},{"name":"Publish","icon":"workflowIcon","hasPushPublishActionlet":false,"id":"b9d89c80-3d88-4311-8365-187323c96436","requiresCheckout":false,"wfActionNameStr":"Publish","commentable":false,"assignable":false}]',
         languageId: '1',
+        language: 'es-en',
         __icon__: 'vtlIcon',
         statusIcons:
             "<span class='greyDotIcon' style='opacity:.4'></span><span class='liveIcon'></span>",
@@ -710,6 +731,7 @@ const contentletsMock = [
         wfActionMapList:
             '[{"name":"Copy","icon":"workflowIcon","hasPushPublishActionlet":false,"id":"963f6a04-5320-42e7-ab74-6d876d199946","requiresCheckout":false,"wfActionNameStr":"Copy","commentable":false,"assignable":false},{"name":"Unpublish","icon":"workflowIcon","hasPushPublishActionlet":false,"id":"38efc763-d78f-4e4b-b092-59cd8c579b93","requiresCheckout":false,"wfActionNameStr":"Unpublish","commentable":false,"assignable":false},{"name":"Publish","icon":"workflowIcon","hasPushPublishActionlet":false,"id":"b9d89c80-3d88-4311-8365-187323c96436","requiresCheckout":false,"wfActionNameStr":"Publish","commentable":false,"assignable":false}]',
         languageId: '1',
+        language: 'es-en',
         __icon__: 'contentIcon',
         statusIcons:
             "<span class='greyDotIcon' style='opacity:.4'></span><span class='liveIcon'></span>",
@@ -743,6 +765,7 @@ const contentletsMock = [
         wfActionMapList:
             '[{"name":"Copy","icon":"workflowIcon","hasPushPublishActionlet":false,"id":"963f6a04-5320-42e7-ab74-6d876d199946","requiresCheckout":false,"wfActionNameStr":"Copy","commentable":false,"assignable":false},{"name":"Unpublish","icon":"workflowIcon","hasPushPublishActionlet":false,"id":"38efc763-d78f-4e4b-b092-59cd8c579b93","requiresCheckout":false,"wfActionNameStr":"Unpublish","commentable":false,"assignable":false},{"name":"Publish","icon":"workflowIcon","hasPushPublishActionlet":false,"id":"b9d89c80-3d88-4311-8365-187323c96436","requiresCheckout":false,"wfActionNameStr":"Publish","commentable":false,"assignable":false}]',
         languageId: '1',
+        language: 'es-en',
         __icon__: 'icoIcon',
         statusIcons:
             "<span class='greyDotIcon' style='opacity:.4'></span><span class='liveIcon'></span>",
@@ -776,6 +799,7 @@ const contentletsMock = [
         wfActionMapList:
             '[{"name":"Copy","icon":"workflowIcon","hasPushPublishActionlet":false,"id":"963f6a04-5320-42e7-ab74-6d876d199946","requiresCheckout":false,"wfActionNameStr":"Copy","commentable":false,"assignable":false},{"name":"Unpublish","icon":"workflowIcon","hasPushPublishActionlet":false,"id":"38efc763-d78f-4e4b-b092-59cd8c579b93","requiresCheckout":false,"wfActionNameStr":"Unpublish","commentable":false,"assignable":false},{"name":"Publish","icon":"workflowIcon","hasPushPublishActionlet":false,"id":"b9d89c80-3d88-4311-8365-187323c96436","requiresCheckout":false,"wfActionNameStr":"Publish","commentable":false,"assignable":false}]',
         languageId: '1',
+        language: 'es-en',
         __icon__: 'pngIcon',
         statusIcons:
             "<span class='greyDotIcon' style='opacity:.4'></span><span class='liveIcon'></span>",
@@ -809,6 +833,7 @@ const contentletsMock = [
         wfActionMapList:
             '[{"name":"Copy","icon":"workflowIcon","hasPushPublishActionlet":false,"id":"963f6a04-5320-42e7-ab74-6d876d199946","requiresCheckout":false,"wfActionNameStr":"Copy","commentable":false,"assignable":false},{"name":"Unpublish","icon":"workflowIcon","hasPushPublishActionlet":false,"id":"38efc763-d78f-4e4b-b092-59cd8c579b93","requiresCheckout":false,"wfActionNameStr":"Unpublish","commentable":false,"assignable":false},{"name":"Publish","icon":"workflowIcon","hasPushPublishActionlet":false,"id":"b9d89c80-3d88-4311-8365-187323c96436","requiresCheckout":false,"wfActionNameStr":"Publish","commentable":false,"assignable":false}]',
         languageId: '1',
+        language: 'es-en',
         __icon__: 'scssIcon',
         statusIcons:
             "<span class='greyDotIcon' style='opacity:.4'></span><span class='liveIcon'></span>",
@@ -842,6 +867,7 @@ const contentletsMock = [
         wfActionMapList:
             '[{"name":"Copy","icon":"workflowIcon","hasPushPublishActionlet":false,"id":"963f6a04-5320-42e7-ab74-6d876d199946","requiresCheckout":false,"wfActionNameStr":"Copy","commentable":false,"assignable":false},{"name":"Unpublish","icon":"workflowIcon","hasPushPublishActionlet":false,"id":"38efc763-d78f-4e4b-b092-59cd8c579b93","requiresCheckout":false,"wfActionNameStr":"Unpublish","commentable":false,"assignable":false},{"name":"Publish","icon":"workflowIcon","hasPushPublishActionlet":false,"id":"b9d89c80-3d88-4311-8365-187323c96436","requiresCheckout":false,"wfActionNameStr":"Publish","commentable":false,"assignable":false}]',
         languageId: '1',
+        language: 'es-en',
         __icon__: 'pngIcon',
         statusIcons:
             "<span class='greyDotIcon' style='opacity:.4'></span><span class='liveIcon'></span>",
@@ -875,6 +901,7 @@ const contentletsMock = [
         wfActionMapList:
             '[{"name":"Copy","icon":"workflowIcon","hasPushPublishActionlet":false,"id":"963f6a04-5320-42e7-ab74-6d876d199946","requiresCheckout":false,"wfActionNameStr":"Copy","commentable":false,"assignable":false},{"name":"Unpublish","icon":"workflowIcon","hasPushPublishActionlet":false,"id":"38efc763-d78f-4e4b-b092-59cd8c579b93","requiresCheckout":false,"wfActionNameStr":"Unpublish","commentable":false,"assignable":false},{"name":"Publish","icon":"workflowIcon","hasPushPublishActionlet":false,"id":"b9d89c80-3d88-4311-8365-187323c96436","requiresCheckout":false,"wfActionNameStr":"Publish","commentable":false,"assignable":false}]',
         languageId: '1',
+        language: 'es-en',
         __icon__: 'vtlIcon',
         statusIcons:
             "<span class='greyDotIcon' style='opacity:.4'></span><span class='liveIcon'></span>",
@@ -908,6 +935,7 @@ const contentletsMock = [
         wfActionMapList:
             '[{"name":"Copy","icon":"workflowIcon","hasPushPublishActionlet":false,"id":"963f6a04-5320-42e7-ab74-6d876d199946","requiresCheckout":false,"wfActionNameStr":"Copy","commentable":false,"assignable":false},{"name":"Unpublish","icon":"workflowIcon","hasPushPublishActionlet":false,"id":"38efc763-d78f-4e4b-b092-59cd8c579b93","requiresCheckout":false,"wfActionNameStr":"Unpublish","commentable":false,"assignable":false},{"name":"Publish","icon":"workflowIcon","hasPushPublishActionlet":false,"id":"b9d89c80-3d88-4311-8365-187323c96436","requiresCheckout":false,"wfActionNameStr":"Publish","commentable":false,"assignable":false}]',
         languageId: '1',
+        language: 'es-en',
         __icon__: 'vtlIcon',
         statusIcons:
             "<span class='greyDotIcon' style='opacity:.4'></span><span class='liveIcon'></span>",
@@ -941,6 +969,7 @@ const contentletsMock = [
         wfActionMapList:
             '[{"name":"Copy","icon":"workflowIcon","hasPushPublishActionlet":false,"id":"963f6a04-5320-42e7-ab74-6d876d199946","requiresCheckout":false,"wfActionNameStr":"Copy","commentable":false,"assignable":false},{"name":"Unpublish","icon":"workflowIcon","hasPushPublishActionlet":false,"id":"38efc763-d78f-4e4b-b092-59cd8c579b93","requiresCheckout":false,"wfActionNameStr":"Unpublish","commentable":false,"assignable":false},{"name":"Publish","icon":"workflowIcon","hasPushPublishActionlet":false,"id":"b9d89c80-3d88-4311-8365-187323c96436","requiresCheckout":false,"wfActionNameStr":"Publish","commentable":false,"assignable":false}]',
         languageId: '1',
+        language: 'es-en',
         __icon__: 'jpgIcon',
         statusIcons:
             "<span class='greyDotIcon' style='opacity:.4'></span><span class='liveIcon'></span>",
@@ -973,6 +1002,7 @@ const contentletsMock = [
         wfActionMapList:
             '[{"name":"Copy","icon":"workflowIcon","hasPushPublishActionlet":false,"id":"963f6a04-5320-42e7-ab74-6d876d199946","requiresCheckout":false,"wfActionNameStr":"Copy","commentable":false,"assignable":false},{"name":"Unpublish","icon":"workflowIcon","hasPushPublishActionlet":false,"id":"38efc763-d78f-4e4b-b092-59cd8c579b93","requiresCheckout":false,"wfActionNameStr":"Unpublish","commentable":false,"assignable":false},{"name":"Publish","icon":"workflowIcon","hasPushPublishActionlet":false,"id":"b9d89c80-3d88-4311-8365-187323c96436","requiresCheckout":false,"wfActionNameStr":"Publish","commentable":false,"assignable":false}]',
         languageId: '1',
+        language: 'es-en',
         __icon__: 'pageIcon',
         statusIcons:
             "<span class='greyDotIcon' style='opacity:.4'></span><span class='liveIcon'></span>",
@@ -1006,6 +1036,7 @@ const contentletsMock = [
         wfActionMapList:
             '[{"name":"Copy","icon":"workflowIcon","hasPushPublishActionlet":false,"id":"963f6a04-5320-42e7-ab74-6d876d199946","requiresCheckout":false,"wfActionNameStr":"Copy","commentable":false,"assignable":false},{"name":"Unpublish","icon":"workflowIcon","hasPushPublishActionlet":false,"id":"38efc763-d78f-4e4b-b092-59cd8c579b93","requiresCheckout":false,"wfActionNameStr":"Unpublish","commentable":false,"assignable":false},{"name":"Publish","icon":"workflowIcon","hasPushPublishActionlet":false,"id":"b9d89c80-3d88-4311-8365-187323c96436","requiresCheckout":false,"wfActionNameStr":"Publish","commentable":false,"assignable":false}]',
         languageId: '1',
+        language: 'es-en',
         __icon__: 'jpgIcon',
         statusIcons:
             "<span class='greyDotIcon' style='opacity:.4'></span><span class='liveIcon'></span>",
@@ -1038,6 +1069,7 @@ const contentletsMock = [
         wfActionMapList:
             '[{"name":"Copy","icon":"workflowIcon","hasPushPublishActionlet":false,"id":"963f6a04-5320-42e7-ab74-6d876d199946","requiresCheckout":false,"wfActionNameStr":"Copy","commentable":false,"assignable":false},{"name":"Unpublish","icon":"workflowIcon","hasPushPublishActionlet":false,"id":"38efc763-d78f-4e4b-b092-59cd8c579b93","requiresCheckout":false,"wfActionNameStr":"Unpublish","commentable":false,"assignable":false},{"name":"Publish","icon":"workflowIcon","hasPushPublishActionlet":false,"id":"b9d89c80-3d88-4311-8365-187323c96436","requiresCheckout":false,"wfActionNameStr":"Publish","commentable":false,"assignable":false}]',
         languageId: '1',
+        language: 'es-en',
         __icon__: 'pageIcon',
         statusIcons:
             "<span class='greyDotIcon' style='opacity:.4'></span><span class='liveIcon'></span>",
@@ -1070,6 +1102,7 @@ const contentletsMock = [
         wfActionMapList:
             '[{"name":"Copy","icon":"workflowIcon","hasPushPublishActionlet":false,"id":"963f6a04-5320-42e7-ab74-6d876d199946","requiresCheckout":false,"wfActionNameStr":"Copy","commentable":false,"assignable":false},{"name":"Unpublish","icon":"workflowIcon","hasPushPublishActionlet":false,"id":"38efc763-d78f-4e4b-b092-59cd8c579b93","requiresCheckout":false,"wfActionNameStr":"Unpublish","commentable":false,"assignable":false},{"name":"Publish","icon":"workflowIcon","hasPushPublishActionlet":false,"id":"b9d89c80-3d88-4311-8365-187323c96436","requiresCheckout":false,"wfActionNameStr":"Publish","commentable":false,"assignable":false}]',
         languageId: '1',
+        language: 'es-en',
         __icon__: 'pageIcon',
         statusIcons:
             "<span class='greyDotIcon' style='opacity:.4'></span><span class='liveIcon'></span>",
@@ -1102,6 +1135,7 @@ const contentletsMock = [
         wfActionMapList:
             '[{"name":"Copy","icon":"workflowIcon","hasPushPublishActionlet":false,"id":"963f6a04-5320-42e7-ab74-6d876d199946","requiresCheckout":false,"wfActionNameStr":"Copy","commentable":false,"assignable":false},{"name":"Unpublish","icon":"workflowIcon","hasPushPublishActionlet":false,"id":"38efc763-d78f-4e4b-b092-59cd8c579b93","requiresCheckout":false,"wfActionNameStr":"Unpublish","commentable":false,"assignable":false},{"name":"Publish","icon":"workflowIcon","hasPushPublishActionlet":false,"id":"b9d89c80-3d88-4311-8365-187323c96436","requiresCheckout":false,"wfActionNameStr":"Publish","commentable":false,"assignable":false}]',
         languageId: '1',
+        language: 'es-en',
         __icon__: 'pageIcon',
         statusIcons:
             "<span class='greyDotIcon' style='opacity:.4'></span><span class='liveIcon'></span>",
@@ -1134,6 +1168,7 @@ const contentletsMock = [
         wfActionMapList:
             '[{"name":"Copy","icon":"workflowIcon","hasPushPublishActionlet":false,"id":"963f6a04-5320-42e7-ab74-6d876d199946","requiresCheckout":false,"wfActionNameStr":"Copy","commentable":false,"assignable":false},{"name":"Unpublish","icon":"workflowIcon","hasPushPublishActionlet":false,"id":"38efc763-d78f-4e4b-b092-59cd8c579b93","requiresCheckout":false,"wfActionNameStr":"Unpublish","commentable":false,"assignable":false},{"name":"Publish","icon":"workflowIcon","hasPushPublishActionlet":false,"id":"b9d89c80-3d88-4311-8365-187323c96436","requiresCheckout":false,"wfActionNameStr":"Publish","commentable":false,"assignable":false}]',
         languageId: '1',
+        language: 'es-en',
         __icon__: 'pageIcon',
         statusIcons:
             "<span class='greyDotIcon' style='opacity:.4'></span><span class='liveIcon'></span>",
@@ -1167,6 +1202,7 @@ const contentletsMock = [
         wfActionMapList:
             '[{"name":"Copy","icon":"workflowIcon","hasPushPublishActionlet":false,"id":"963f6a04-5320-42e7-ab74-6d876d199946","requiresCheckout":false,"wfActionNameStr":"Copy","commentable":false,"assignable":false},{"name":"Unpublish","icon":"workflowIcon","hasPushPublishActionlet":false,"id":"38efc763-d78f-4e4b-b092-59cd8c579b93","requiresCheckout":false,"wfActionNameStr":"Unpublish","commentable":false,"assignable":false},{"name":"Publish","icon":"workflowIcon","hasPushPublishActionlet":false,"id":"b9d89c80-3d88-4311-8365-187323c96436","requiresCheckout":false,"wfActionNameStr":"Publish","commentable":false,"assignable":false}]',
         languageId: '1',
+        language: 'es-en',
         __icon__: 'scssIcon',
         statusIcons:
             "<span class='greyDotIcon' style='opacity:.4'></span><span class='liveIcon'></span>",
@@ -1200,6 +1236,7 @@ const contentletsMock = [
         wfActionMapList:
             '[{"name":"Copy","icon":"workflowIcon","hasPushPublishActionlet":false,"id":"963f6a04-5320-42e7-ab74-6d876d199946","requiresCheckout":false,"wfActionNameStr":"Copy","commentable":false,"assignable":false},{"name":"Unpublish","icon":"workflowIcon","hasPushPublishActionlet":false,"id":"38efc763-d78f-4e4b-b092-59cd8c579b93","requiresCheckout":false,"wfActionNameStr":"Unpublish","commentable":false,"assignable":false},{"name":"Publish","icon":"workflowIcon","hasPushPublishActionlet":false,"id":"b9d89c80-3d88-4311-8365-187323c96436","requiresCheckout":false,"wfActionNameStr":"Publish","commentable":false,"assignable":false}]',
         languageId: '1',
+        language: 'es-en',
         __icon__: 'scssIcon',
         statusIcons:
             "<span class='greyDotIcon' style='opacity:.4'></span><span class='liveIcon'></span>",
@@ -1233,6 +1270,7 @@ const contentletsMock = [
         wfActionMapList:
             '[{"name":"Copy","icon":"workflowIcon","hasPushPublishActionlet":false,"id":"963f6a04-5320-42e7-ab74-6d876d199946","requiresCheckout":false,"wfActionNameStr":"Copy","commentable":false,"assignable":false},{"name":"Unpublish","icon":"workflowIcon","hasPushPublishActionlet":false,"id":"38efc763-d78f-4e4b-b092-59cd8c579b93","requiresCheckout":false,"wfActionNameStr":"Unpublish","commentable":false,"assignable":false},{"name":"Publish","icon":"workflowIcon","hasPushPublishActionlet":false,"id":"b9d89c80-3d88-4311-8365-187323c96436","requiresCheckout":false,"wfActionNameStr":"Publish","commentable":false,"assignable":false}]',
         languageId: '1',
+        language: 'es-en',
         __icon__: 'pngIcon',
         statusIcons:
             "<span class='greyDotIcon' style='opacity:.4'></span><span class='liveIcon'></span>",
@@ -1266,6 +1304,7 @@ const contentletsMock = [
         wfActionMapList:
             '[{"name":"Copy","icon":"workflowIcon","hasPushPublishActionlet":false,"id":"963f6a04-5320-42e7-ab74-6d876d199946","requiresCheckout":false,"wfActionNameStr":"Copy","commentable":false,"assignable":false},{"name":"Unpublish","icon":"workflowIcon","hasPushPublishActionlet":false,"id":"38efc763-d78f-4e4b-b092-59cd8c579b93","requiresCheckout":false,"wfActionNameStr":"Unpublish","commentable":false,"assignable":false},{"name":"Publish","icon":"workflowIcon","hasPushPublishActionlet":false,"id":"b9d89c80-3d88-4311-8365-187323c96436","requiresCheckout":false,"wfActionNameStr":"Publish","commentable":false,"assignable":false}]',
         languageId: '1',
+        language: 'es-en',
         __icon__: 'scssIcon',
         statusIcons:
             "<span class='greyDotIcon' style='opacity:.4'></span><span class='liveIcon'></span>",
@@ -1299,6 +1338,7 @@ const contentletsMock = [
         wfActionMapList:
             '[{"name":"Copy","icon":"workflowIcon","hasPushPublishActionlet":false,"id":"963f6a04-5320-42e7-ab74-6d876d199946","requiresCheckout":false,"wfActionNameStr":"Copy","commentable":false,"assignable":false},{"name":"Unpublish","icon":"workflowIcon","hasPushPublishActionlet":false,"id":"38efc763-d78f-4e4b-b092-59cd8c579b93","requiresCheckout":false,"wfActionNameStr":"Unpublish","commentable":false,"assignable":false},{"name":"Publish","icon":"workflowIcon","hasPushPublishActionlet":false,"id":"b9d89c80-3d88-4311-8365-187323c96436","requiresCheckout":false,"wfActionNameStr":"Publish","commentable":false,"assignable":false}]',
         languageId: '1',
+        language: 'es-en',
         __icon__: 'scssIcon',
         statusIcons:
             "<span class='greyDotIcon' style='opacity:.4'></span><span class='liveIcon'></span>",
