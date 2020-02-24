@@ -18,6 +18,7 @@ dot-card {
     position: relative;
     transition: box-shadow var(--basic-speed) ease;
     width: 100%;
+    cursor: pointer;
 
     &:hover {
         box-shadow: var(--md-shadow-2);

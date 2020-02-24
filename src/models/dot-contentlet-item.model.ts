@@ -30,4 +30,5 @@ export interface DotContentletItem {
     modUser: string;
     ownerCanWrite: string;
     ownerCanPublish: string;
+    mimeType: string;
 }
