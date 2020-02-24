@@ -9,6 +9,7 @@ export class DotBadge {
     @Prop() bgColor: string = null;
     @Prop() color: string = null;
     @Prop() size: string = null;
+    @Prop() bordered = false;
 
     render() {
         return (
@@ -19,7 +20,9 @@ export class DotBadge {
                     '--font-size': this.size
                 }}
             >
-                <slot />
+                <div class={this.bordered ? 'bordered' : null}>
+                    <slot />
+                </div>
             </Host>
         );
     }

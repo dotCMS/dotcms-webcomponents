@@ -64,6 +64,7 @@ export namespace Components {
   }
   interface DotBadge {
     'bgColor': string;
+    'bordered': boolean;
     'color': string;
     'size': string;
   }
@@ -1264,6 +1265,7 @@ declare namespace LocalJSX {
   }
   interface DotBadge {
     'bgColor'?: string;
+    'bordered'?: boolean;
     'color'?: string;
     'size'?: string;
   }
