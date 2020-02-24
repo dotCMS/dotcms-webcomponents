@@ -65,7 +65,7 @@ export class DotCardContentlet {
                     <div class="extra">
                         <div class="state">
                             <dot-contentlet-state-icon contentlet={contentlet} size="16px" />
-                            <dot-badge>{contentlet.language}</dot-badge>
+                            <dot-badge bordered="true">{contentlet.language}</dot-badge>
                             {contentlet.locked === 'true' ? (
                                 <dot-contentlet-lock-icon
                                     contentlet={contentlet}
