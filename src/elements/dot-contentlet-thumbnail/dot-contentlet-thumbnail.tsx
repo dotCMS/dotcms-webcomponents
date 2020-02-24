@@ -24,7 +24,7 @@ export class DotContentletThumbnail {
     @State() renderImage: boolean;
 
     componentWillLoad() {
-        this.renderImage = this.contentlet?.hasTitleImage === 'true';
+        this.renderImage = this.contentlet?.hasTitleImage === 'true' || this.contentlet?.mimeType === 'application/pdf';
     }
 
     render() {

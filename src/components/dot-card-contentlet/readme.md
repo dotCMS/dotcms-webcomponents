@@ -30,9 +30,9 @@
 
 - [dot-card](../../elements/dot-card)
 - [dot-contentlet-thumbnail](../../elements/dot-contentlet-thumbnail)
+- [dot-contentlet-state-icon](../../elements/dot-contentlet-state-icon)
 - [dot-badge](../../elements/dot-badge)
 - [dot-contentlet-lock-icon](../../elements/dot-contentlet-lock-icon)
-- [dot-contentlet-state-icon](../../elements/dot-contentlet-state-icon)
 - [dot-context-menu](../dot-context-menu)
 
 ### Graph
@@ -40,9 +40,9 @@
 graph TD;
   dot-card-contentlet --> dot-card
   dot-card-contentlet --> dot-contentlet-thumbnail
+  dot-card-contentlet --> dot-contentlet-state-icon
   dot-card-contentlet --> dot-badge
   dot-card-contentlet --> dot-contentlet-lock-icon
-  dot-card-contentlet --> dot-contentlet-state-icon
   dot-card-contentlet --> dot-context-menu
   dot-contentlet-thumbnail --> dot-contentlet-icon
   dot-card-view --> dot-card-contentlet
