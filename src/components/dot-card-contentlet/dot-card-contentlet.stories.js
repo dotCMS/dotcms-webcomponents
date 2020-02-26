@@ -15,7 +15,9 @@ export const ContentletCard = () => {
             name: 'item',
             content: object('Item', {
                 data: {
-                    title: 'Hola Mundo'
+                    title: 'Hola Mundo',
+                    language: 'es-es',
+                    locked: 'true'
                 },
                 actions: [
                     {

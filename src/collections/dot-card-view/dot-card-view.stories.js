@@ -447,7 +447,7 @@ const contentletsMock = [
         mimeType: '',
         baseType: 'CONTENT',
         inode: '8521360a-2af7-4882-bc7e-567b2cb396be',
-        __title__: 'Do you need a visa for Costa Rica?',
+        __title__: 'Do you need a visa for Costa Rica or some others papers beside your passport?',
         Identifier: '015ced40-9bb8-4bb6-a54d-5dc23a4dc2d7',
         permissions:
             'P654b0931-1027-41f7-ad4d-173115ed8ec1.2P P654b0931-1027-41f7-ad4d-173115ed8ec1.1P ',

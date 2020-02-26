@@ -10,24 +10,6 @@ div {
     box-sizing: border-box;
     height: var(--size);
     width: var(--size);
-
-    &:hover + span {
-        opacity: 1;
-    }
-}
-
-span {
-    background-color: #444;
-    color: #fff;
-    border-radius: 2px;
-    padding: 2px 5px;
-    left: 50%;
-    opacity: 0;
-    pointer-events: none;
-    position: absolute;
-    top: calc(var(--size) + 2px);
-    transform: translateX(-50%);
-    transition: opacity var(--basic-speed);
 }
 
 .published,

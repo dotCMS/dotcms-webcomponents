@@ -922,6 +922,12 @@ export namespace Components {
     */
     'value': string;
   }
+  interface DotTooltip {
+    'content': string;
+    'delay': number;
+    'for': string;
+    'position': string;
+  }
   interface KeyValueForm {
     /**
     * (optional) Label for the add item button
@@ -1181,6 +1187,12 @@ declare global {
     new (): HTMLDotTimeElement;
   };
 
+  interface HTMLDotTooltipElement extends Components.DotTooltip, HTMLStencilElement {}
+  var HTMLDotTooltipElement: {
+    prototype: HTMLDotTooltipElement;
+    new (): HTMLDotTooltipElement;
+  };
+
   interface HTMLKeyValueFormElement extends Components.KeyValueForm, HTMLStencilElement {}
   var HTMLKeyValueFormElement: {
     prototype: HTMLKeyValueFormElement;
@@ -1228,6 +1240,7 @@ declare global {
     'dot-textarea': HTMLDotTextareaElement;
     'dot-textfield': HTMLDotTextfieldElement;
     'dot-time': HTMLDotTimeElement;
+    'dot-tooltip': HTMLDotTooltipElement;
     'key-value-form': HTMLKeyValueFormElement;
     'key-value-table': HTMLKeyValueTableElement;
   }
@@ -2098,6 +2111,12 @@ declare namespace LocalJSX {
     */
     'value'?: string;
   }
+  interface DotTooltip {
+    'content'?: string;
+    'delay'?: number;
+    'for'?: string;
+    'position'?: string;
+  }
   interface KeyValueForm {
     /**
     * (optional) Label for the add item button
@@ -2191,6 +2210,7 @@ declare namespace LocalJSX {
     'dot-textarea': DotTextarea;
     'dot-textfield': DotTextfield;
     'dot-time': DotTime;
+    'dot-tooltip': DotTooltip;
     'key-value-form': KeyValueForm;
     'key-value-table': KeyValueTable;
   }
@@ -2237,6 +2257,7 @@ declare module "@stencil/core" {
       'dot-textarea': LocalJSX.DotTextarea & JSXBase.HTMLAttributes<HTMLDotTextareaElement>;
       'dot-textfield': LocalJSX.DotTextfield & JSXBase.HTMLAttributes<HTMLDotTextfieldElement>;
       'dot-time': LocalJSX.DotTime & JSXBase.HTMLAttributes<HTMLDotTimeElement>;
+      'dot-tooltip': LocalJSX.DotTooltip & JSXBase.HTMLAttributes<HTMLDotTooltipElement>;
       'key-value-form': LocalJSX.KeyValueForm & JSXBase.HTMLAttributes<HTMLKeyValueFormElement>;
       'key-value-table': LocalJSX.KeyValueTable & JSXBase.HTMLAttributes<HTMLKeyValueTableElement>;
     }

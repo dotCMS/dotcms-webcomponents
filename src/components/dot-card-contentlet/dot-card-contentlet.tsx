@@ -60,12 +60,18 @@ export class DotCardContentlet {
                                 });
                             }}
                         />
-                        <label>{title}</label>
+                        <label id="label">{title}</label>
+                        <dot-tooltip
+                            position="left top"
+                            delay={400}
+                            content={title}
+                            for="label"
+                        />
                     </div>
                     <div class="extra">
                         <div class="state">
                             <dot-contentlet-state-icon contentlet={contentlet} size="16px" />
-                            <dot-badge bordered={true} >{contentlet.language}</dot-badge>
+                            <dot-badge bordered={true}>{contentlet.language}</dot-badge>
                             {contentlet.locked === 'true' ? (
                                 <dot-contentlet-lock-icon
                                     contentlet={contentlet}

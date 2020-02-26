@@ -2,7 +2,7 @@ import { withKnobs, object } from '@storybook/addon-knobs';
 import readme from './readme.md';
 
 export default {
-    title: 'Elements/Contentlet State Icon',
+    title: 'Components/Contentlet State Icon',
     decorators: [withKnobs],
     parameters: {
         notes: readme
