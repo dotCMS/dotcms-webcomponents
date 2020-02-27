@@ -7,11 +7,12 @@
 
 ## Properties
 
-| Property  | Attribute | Description | Type     | Default     |
-| --------- | --------- | ----------- | -------- | ----------- |
-| `content` | `content` |             | `string` | `undefined` |
-| `delay`   | `delay`   |             | `number` | `undefined` |
-| `for`     | `for`     |             | `string` | `undefined` |
+| Property   | Attribute  | Description | Type     | Default           |
+| ---------- | ---------- | ----------- | -------- | ----------------- |
+| `content`  | `content`  |             | `string` | `undefined`       |
+| `delay`    | `delay`    |             | `number` | `undefined`       |
+| `for`      | `for`      |             | `string` | `undefined`       |
+| `position` | `position` |             | `string` | `'center bottom'` |
 
 
 ## Dependencies
