@@ -43,7 +43,7 @@ export class DotCardContentlet {
                     width="250"
                     height="250"
                     alt={title}
-                    iconSize="64px"
+                    iconSize="72px"
                 />
                 <header>
                     <div class="main">

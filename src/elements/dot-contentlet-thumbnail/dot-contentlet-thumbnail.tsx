@@ -24,14 +24,17 @@ export class DotContentletThumbnail {
     @State() renderImage: boolean;
 
     componentWillLoad() {
-        this.renderImage = this.contentlet?.hasTitleImage === 'true' || this.contentlet?.mimeType === 'application/pdf';
+        this.renderImage =
+            this.contentlet?.hasTitleImage === 'true' ||
+            this.contentlet?.mimeType === 'application/pdf';
     }
 
     render() {
+        const image = `url(${this.getImageURL()})`;
         return (
             <Host>
                 {this.renderImage ? (
-                    <div class="thumbnail" style={{ 'background-image': `url(${this.getImageURL()})` }}>
+                    <div class="thumbnail" style={{ 'background-image': image }}>
                         <img
                             src={this.getImageURL()}
                             alt={this.alt}
@@ -53,10 +56,9 @@ export class DotContentletThumbnail {
     }
 
     private getImageURL(): string {
-        return this.contentlet.mimeType === 'application/pdf' ?
-            `/contentAsset/image/${this.contentlet.inode}/fileAsset/pdf_page/1/resize_w/250/quality_q/45`
+        return this.contentlet.mimeType === 'application/pdf'
+            ? `/contentAsset/image/${this.contentlet.inode}/fileAsset/pdf_page/1/resize_w/250/quality_q/45`
             : `/dA/${this.contentlet.inode}/500w/20q`;
-
     }
 
     private switchToIcon(): any {
