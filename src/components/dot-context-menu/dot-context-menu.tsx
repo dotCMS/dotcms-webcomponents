@@ -36,13 +36,14 @@ export class DotContextMenu {
                 <button
                     onClick={(e: MouseEvent) => {
                         e.stopPropagation();
-                        this.menu.open = true;
+                        this.menu.show();
                     }}
                 >
                     <mwc-icon>more_vert</mwc-icon>
                 </button>
                 <mwc-menu
                     onAction={(e: CustomEvent<MenuAction>) => {
+                        this.menu.close();
                         this.options[e.detail.index].action(e);
                     }}
                 >
