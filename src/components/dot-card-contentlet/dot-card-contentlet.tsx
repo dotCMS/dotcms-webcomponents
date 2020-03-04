@@ -26,18 +26,33 @@ export class DotCardContentlet {
     @Event() checkboxChange: EventEmitter<DotCardContentletEvent>;
 
     private checkbox: HTMLInputElement;
+    private menu: HTMLDotContextMenuElement;
+    private elPosition = {
+        top: 0,
+        left: 0
+    };
 
     componentDidLoad() {
         this.checkbox = this.el.shadowRoot
             .querySelector('mwc-checkbox')
             .shadowRoot.querySelector('input');
+
+        this.menu = this.el.shadowRoot.querySelector('dot-context-menu');
+
+        const { left, top } = this.el.getBoundingClientRect();
+        this.elPosition = { left, top };
     }
 
     render() {
         const contentlet = this.item.data;
         const title = contentlet?.title;
         return (
-            <dot-card>
+            <dot-card
+                onContextMenu={async (e: MouseEvent) => {
+                    e.preventDefault();
+                    await this.menu.show(e.x - this.elPosition.left, e.y - this.elPosition.top);
+                }}
+            >
                 <dot-contentlet-thumbnail
                     contentlet={contentlet}
                     width="250"
@@ -51,6 +66,7 @@ export class DotCardContentlet {
                             checked={this.checked}
                             onClick={(e) => {
                                 e.stopPropagation();
+                                this.menu.hide();
                             }}
                             onChange={() => {
                                 this.checked = this.checkbox.checked;
@@ -61,12 +77,7 @@ export class DotCardContentlet {
                             }}
                         />
                         <label id="label">{title}</label>
-                        <dot-tooltip
-                            position="left top"
-                            delay={400}
-                            content={title}
-                            for="label"
-                        />
+                        <dot-tooltip position="left top" delay={400} content={title} for="label" />
                     </div>
                     <div class="extra">
                         <div class="state">
@@ -81,7 +92,9 @@ export class DotCardContentlet {
                         </div>
                         {this.item?.actions?.length ? (
                             <dot-context-menu
-                                onClick={(e) => e.stopPropagation()}
+                                onClick={(e: MouseEvent) => {
+                                    e.stopImmediatePropagation();
+                                }}
                                 options={this.item.actions}
                             />
                         ) : null}

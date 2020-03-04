@@ -1,5 +1,4 @@
-import { Component, h, Element, Host, Prop } from '@stencil/core';
-import { Menu } from '@material/mwc-menu';
+import { Component, h, Element, Host, Prop, Method, State } from '@stencil/core';
 import { DotContextMenuOption } from '../../models/dot-context-menu.model';
 
 import '@material/mwc-menu';
@@ -21,29 +20,55 @@ export class DotContextMenu {
     @Prop() options: DotContextMenuOption<MenuAction>[] = [];
     @Prop() fontSize = '16px';
 
-    menu: Menu;
-    button: HTMLElement;
+    @State() state = {
+        x: 0,
+        y: 0,
+        position: 'relative',
+        show: false
+    };
 
-    componentDidLoad() {
-        const button = this.el.shadowRoot.querySelector('button');
-        this.menu = this.el.shadowRoot.querySelector('mwc-menu');
-        this.menu.anchor = button;
+    @Method()
+    async hide(): Promise<void> {
+        this.state = {
+            ...this.state,
+            show: false
+        };
+    }
+
+    @Method()
+    async show(x: number, y: number, position = 'inherit'): Promise<void> {
+        await this.hide();
+
+        requestAnimationFrame(() => {
+            this.state = {
+                x,
+                y,
+                position,
+                show: true
+            };
+        });
     }
 
     render() {
         return (
-            <Host style={{ '--menu-item-font-size': this.fontSize }}>
+            <Host style={{ '--menu-item-font-size': this.fontSize, position: this.state.position }}>
                 <button
-                    onClick={(e: MouseEvent) => {
-                        e.stopPropagation();
-                        this.menu.show();
+                    type="button"
+                    onClick={async () => {
+                        await this.show(0, 0, 'relative');
                     }}
                 >
                     <mwc-icon>more_vert</mwc-icon>
                 </button>
                 <mwc-menu
+                    open={this.state.show}
+                    x={this.state.x}
+                    y={this.state.y}
                     onAction={(e: CustomEvent<MenuAction>) => {
-                        this.menu.close();
+                        this.state = {
+                            ...this.state,
+                            show: false
+                        };
                         this.options[e.detail.index].action(e);
                     }}
                 >

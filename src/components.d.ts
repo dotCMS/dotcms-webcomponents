@@ -285,7 +285,9 @@ export namespace Components {
   }
   interface DotContextMenu {
     'fontSize': string;
+    'hide': () => Promise<void>;
     'options': DotContextMenuOption<MenuAction>[];
+    'show': (x: number, y: number, position?: string) => Promise<void>;
   }
   interface DotDataViewButton {
     'value': string;
@@ -1423,7 +1425,7 @@ declare namespace LocalJSX {
   }
   interface DotCardView {
     'items'?: DotCardContentletItem[];
-    'onOnCardClick'?: (event: CustomEvent<any>) => void;
+    'onCardClick'?: (event: CustomEvent<any>) => void;
     'onSelected'?: (event: CustomEvent<any>) => void;
     'value'?: string;
   }

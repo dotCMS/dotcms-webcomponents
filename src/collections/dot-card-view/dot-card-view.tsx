@@ -35,7 +35,7 @@ export class DotCardView {
     value: string;
 
     @Event() selected: EventEmitter;
-    @Event() onCardClick: EventEmitter;
+    @Event() cardClick: EventEmitter;
 
     private selection: DotContentletItem[] = [];
 
@@ -62,7 +62,7 @@ export class DotCardView {
                 {this.items.map((item: DotCardContentletItem) => (
                     <dot-card-contentlet
                         onClick={() => {
-                            this.onCardClick.emit(item.data);
+                            this.cardClick.emit(item.data);
                         }}
                         key={item.data.inode}
                         checked={value.includes(item.data.inode)}
