@@ -15,10 +15,10 @@
 
 ## Events
 
-| Event         | Description | Type               |
-| ------------- | ----------- | ------------------ |
-| `onCardClick` |             | `CustomEvent<any>` |
-| `selected`    |             | `CustomEvent<any>` |
+| Event       | Description | Type               |
+| ----------- | ----------- | ------------------ |
+| `cardClick` |             | `CustomEvent<any>` |
+| `selected`  |             | `CustomEvent<any>` |
 
 
 ## Methods

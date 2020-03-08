@@ -8,5 +8,5 @@ export interface DotCardContentletItem {
 
 export interface DotCardContentletEvent {
     data: DotContentletItem;
-    checked: boolean;
+    originalTarget: HTMLDotCardContentletElement;
 }

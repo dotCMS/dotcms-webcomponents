@@ -13,6 +13,29 @@
 | `options`  | --          |             | `DotContextMenuOption<MenuAction>[]` | `[]`     |
 
 
+## Methods
+
+### `hide() => Promise<void>`
+
+
+
+#### Returns
+
+Type: `Promise<void>`
+
+
+
+### `show(x: number, y: number, position?: string) => Promise<void>`
+
+
+
+#### Returns
+
+Type: `Promise<void>`
+
+
+
+
 ## Dependencies
 
 ### Used by

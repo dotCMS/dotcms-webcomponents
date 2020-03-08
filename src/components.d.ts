@@ -206,6 +206,7 @@ export namespace Components {
     'item': DotCardContentletItem;
   }
   interface DotCardView {
+    'clearValue': () => Promise<void>;
     'getValue': () => Promise<DotContentletItem[]>;
     'items': DotCardContentletItem[];
     'value': string;

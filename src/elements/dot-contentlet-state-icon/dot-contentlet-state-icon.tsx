@@ -26,8 +26,10 @@ export class DotContentletStateIcon {
                     '--size': this.size
                 }}
             >
-                <div class={state} id="icon"></div>
-                <dot-tooltip content={name} for="icon" />
+                <span>
+                    <div class={state} id="icon"></div>
+                    <dot-tooltip content={name} for="icon" />
+                </span>
             </Host>
         );
     }

@@ -1,4 +1,4 @@
-import { Component, h, Element, Prop, Event, EventEmitter } from '@stencil/core';
+import { Component, h, Element, Prop, Event, EventEmitter, Watch } from '@stencil/core';
 import {
     DotCardContentletItem,
     DotCardContentletEvent
@@ -13,7 +13,7 @@ import '@material/mwc-formfield';
     shadow: true
 })
 export class DotCardContentlet {
-    @Element() el: HTMLElement;
+    @Element() el: HTMLDotCardContentletElement;
 
     @Prop() item: DotCardContentletItem;
 
@@ -25,7 +25,14 @@ export class DotCardContentlet {
 
     @Event() checkboxChange: EventEmitter<DotCardContentletEvent>;
 
-    private checkbox: HTMLInputElement;
+    @Watch('checked')
+    emitChecked(): void {
+        this.checkboxChange.emit({
+            originalTarget: this.el,
+            data: this.item.data
+        });
+    }
+
     private menu: HTMLDotContextMenuElement;
     private elPosition = {
         top: 0,
@@ -33,10 +40,6 @@ export class DotCardContentlet {
     };
 
     componentDidLoad() {
-        this.checkbox = this.el.shadowRoot
-            .querySelector('mwc-checkbox')
-            .shadowRoot.querySelector('input');
-
         this.menu = this.el.shadowRoot.querySelector('dot-context-menu');
 
         const { left, top } = this.el.getBoundingClientRect();
@@ -65,14 +68,13 @@ export class DotCardContentlet {
                         <mwc-checkbox
                             checked={this.checked}
                             onClick={(e) => {
-                                e.stopPropagation();
+                                this.checked = e.explicitOriginalTarget.checked;
                                 this.menu.hide();
                             }}
                             onChange={() => {
-                                this.checked = this.checkbox.checked;
                                 this.checkboxChange.emit({
-                                    data: contentlet,
-                                    checked: this.checkbox.checked
+                                    originalTarget: this.el,
+                                    data: contentlet
                                 });
                             }}
                         />
