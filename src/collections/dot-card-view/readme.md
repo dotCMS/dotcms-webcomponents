@@ -23,6 +23,16 @@
 
 ## Methods
 
+### `clearValue() => Promise<void>`
+
+
+
+#### Returns
+
+Type: `Promise<void>`
+
+
+
 ### `getValue() => Promise<DotContentletItem[]>`
 
 
