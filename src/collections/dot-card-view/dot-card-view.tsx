@@ -52,6 +52,16 @@ export class DotCardView {
 
     private lastChecked;
 
+    @Watch('items')
+    watchItems(newValue: DotCardContentletItem[]) {
+        this.selection = getSelecttion(newValue, this.value);
+    }
+
+    @Watch('value')
+    watchValue(newValue: string) {
+        this.selection = getSelecttion(this.items, newValue);
+    }
+
     @Method()
     async getValue(): Promise<DotContentletItem[]> {
         return this.selection;
@@ -67,14 +77,8 @@ export class DotCardView {
         });
     }
 
-    @Watch('items')
-    watchItems(newValue: DotCardContentletItem[]) {
-        this.selection = getSelecttion(newValue, this.value);
-    }
-
-    @Watch('value')
-    watchValue(newValue: string) {
-        this.selection = getSelecttion(this.items, newValue);
+    componentDidLoad() {
+        this.selection = getSelecttion(this.items, this.value);
     }
 
     render() {
@@ -84,48 +88,50 @@ export class DotCardView {
             <Host>
                 {this.items.map((item: DotCardContentletItem) => (
                     <dot-card-contentlet
-                        onClick={(e: MouseEvent) => {
-                            const cards = this.getCards();
-                            const target = e.target as HTMLDotCardContentletElement;
+                        onClick={() => {
+                            this.cardClick.emit(item.data);
+                        }}
+                        key={item.data.inode}
+                        checked={value.includes(item.data.inode)}
+                        onCheckboxChange={({
+                            detail: { originalTarget, shiftKey }
+                        }: CustomEvent<DotCardContentletEvent>) => {
                             let inBetween = false;
 
-                            if (e.shiftKey && target.checked) {
+                            if (shiftKey && originalTarget.checked) {
+                                const cards = this.getCards();
                                 cards.forEach((card) => {
-                                    if (card === target || card === this.lastChecked) {
+                                    if (card === originalTarget || card === this.lastChecked) {
                                         inBetween = !inBetween;
                                     }
-
                                     if (inBetween) {
                                         card.checked = true;
                                     }
                                 });
                             }
 
-                            this.lastChecked = target;
-                        }}
-                        key={item.data.inode}
-                        checked={value.includes(item.data.inode)}
-                        onCheckboxChange={({
-                            detail: { originalTarget, data }
-                        }: CustomEvent<DotCardContentletEvent>) => {
-                            if (originalTarget.checked) {
-                                this.selection.push(data);
-                            } else {
-                                this.selection = this.selection.filter(
-                                    (item: DotContentletItem) => item.identifier !== data.identifier
-                                );
-                            }
+                            this.lastChecked = originalTarget;
 
-                            this.value = this.selection
-                                .map(({ inode }: DotContentletItem) => inode)
-                                .join(',');
-                            this.selected.emit(this.selection);
+                            this.setValue(originalTarget, item.data);
                         }}
                         item={item}
                     />
                 ))}
             </Host>
         );
+    }
+
+    private setValue(originalTarget: HTMLDotCardContentletElement, data: DotContentletItem): void {
+        if (originalTarget.checked) {
+            this.selection.push(data);
+        } else {
+            this.selection = this.selection.filter(
+                ({ identifier }: DotContentletItem) => identifier !== data.identifier
+            );
+        }
+
+        this.value = this.selection.map(({ inode }: DotContentletItem) => inode).join(',');
+        this.selected.emit(this.selection);
     }
 
     private getCards(): NodeListOf<HTMLDotCardContentletElement> {

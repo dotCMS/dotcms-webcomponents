@@ -29,7 +29,7 @@ export class DotCardContentlet {
     emitChecked(): void {
         this.checkboxChange.emit({
             originalTarget: this.el,
-            data: this.item.data
+            shiftKey: this.isShiftKey
         });
     }
 
@@ -38,6 +38,8 @@ export class DotCardContentlet {
         top: 0,
         left: 0
     };
+
+    private isShiftKey = false;
 
     componentDidLoad() {
         this.menu = this.el.shadowRoot.querySelector('dot-context-menu');
@@ -67,15 +69,13 @@ export class DotCardContentlet {
                     <div class="main">
                         <mwc-checkbox
                             checked={this.checked}
-                            onClick={(e) => {
-                                this.checked = e.explicitOriginalTarget.checked;
-                                this.menu.hide();
+                            onClick={(e: MouseEvent) => {
+                                e.stopImmediatePropagation();
+                                this.isShiftKey = e.shiftKey;
                             }}
-                            onChange={() => {
-                                this.checkboxChange.emit({
-                                    originalTarget: this.el,
-                                    data: contentlet
-                                });
+                            onChange={(e) => {
+                                this.checked = e.target.checked;
+                                this.menu.hide();
                             }}
                         />
                         <label id="label">{title}</label>

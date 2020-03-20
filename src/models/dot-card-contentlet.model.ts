@@ -7,6 +7,6 @@ export interface DotCardContentletItem {
 }
 
 export interface DotCardContentletEvent {
-    data: DotContentletItem;
     originalTarget: HTMLDotCardContentletElement;
+    shiftKey: boolean;
 }
