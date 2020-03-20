@@ -20,6 +20,29 @@
 | `checkboxChange` |             | `CustomEvent<DotCardContentletEvent>` |
 
 
+## Methods
+
+### `hideMenu() => Promise<void>`
+
+
+
+#### Returns
+
+Type: `Promise<void>`
+
+
+
+### `showMenu(x: number, y: number) => Promise<void>`
+
+
+
+#### Returns
+
+Type: `Promise<void>`
+
+
+
+
 ## Dependencies
 
 ### Used by

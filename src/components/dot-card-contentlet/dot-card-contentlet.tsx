@@ -1,4 +1,4 @@
-import { Component, h, Element, Prop, Event, EventEmitter, Watch } from '@stencil/core';
+import { Component, h, Element, Prop, Event, EventEmitter, Watch, Method } from '@stencil/core';
 import {
     DotCardContentletItem,
     DotCardContentletEvent
@@ -6,6 +6,7 @@ import {
 
 import '@material/mwc-checkbox';
 import '@material/mwc-formfield';
+import { Checkbox } from '@material/mwc-checkbox';
 
 @Component({
     tag: 'dot-card-contentlet',
@@ -34,30 +35,29 @@ export class DotCardContentlet {
     }
 
     private menu: HTMLDotContextMenuElement;
-    private elPosition = {
-        top: 0,
-        left: 0
-    };
 
     private isShiftKey = false;
 
+    @Method()
+    async showMenu(x: number, y: number) {
+        const { left, top } = this.el.getBoundingClientRect();
+        this.menu.show(x - left, y - top);
+    }
+
+    @Method()
+    async hideMenu() {
+        this.menu.hide();
+    }
+
     componentDidLoad() {
         this.menu = this.el.shadowRoot.querySelector('dot-context-menu');
-
-        const { left, top } = this.el.getBoundingClientRect();
-        this.elPosition = { left, top };
     }
 
     render() {
         const contentlet = this.item.data;
         const title = contentlet?.title;
         return (
-            <dot-card
-                onContextMenu={async (e: MouseEvent) => {
-                    e.preventDefault();
-                    await this.menu.show(e.x - this.elPosition.left, e.y - this.elPosition.top);
-                }}
-            >
+            <dot-card>
                 <dot-contentlet-thumbnail
                     contentlet={contentlet}
                     width="250"
@@ -73,8 +73,9 @@ export class DotCardContentlet {
                                 e.stopImmediatePropagation();
                                 this.isShiftKey = e.shiftKey;
                             }}
-                            onChange={(e) => {
-                                this.checked = e.target.checked;
+                            onChange={(e: MouseEvent) => {
+                                const target = e.target as Checkbox;
+                                this.checked = target.checked;
                                 this.menu.hide();
                             }}
                         />
@@ -93,12 +94,7 @@ export class DotCardContentlet {
                             ) : null}
                         </div>
                         {this.item?.actions?.length ? (
-                            <dot-context-menu
-                                onClick={(e: MouseEvent) => {
-                                    e.stopImmediatePropagation();
-                                }}
-                                options={this.item.actions}
-                            />
+                            <dot-context-menu options={this.item.actions} />
                         ) : null}
                     </div>
                 </header>

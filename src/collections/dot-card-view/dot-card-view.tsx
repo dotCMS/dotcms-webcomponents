@@ -50,6 +50,8 @@ export class DotCardView {
 
     private selection: DotContentletItem[] = [];
 
+    private cards: NodeListOf<HTMLDotCardContentletElement>;
+
     private lastChecked;
 
     @Watch('items')
@@ -79,6 +81,13 @@ export class DotCardView {
 
     componentDidLoad() {
         this.selection = getSelecttion(this.items, this.value);
+        this.cards = this.getCards();
+    }
+
+    private clearMenu() {
+        this.cards.forEach((card: HTMLDotCardContentletElement) => {
+            card.hideMenu();
+        });
     }
 
     render() {
@@ -88,7 +97,14 @@ export class DotCardView {
             <Host>
                 {this.items.map((item: DotCardContentletItem) => (
                     <dot-card-contentlet
+                        onContextMenu={async (e: MouseEvent) => {
+                            e.preventDefault();
+                            const target = e.target as HTMLDotCardContentletElement;
+                            this.clearMenu();
+                            target.showMenu(e.x, e.y);
+                        }}
                         onClick={() => {
+                            this.clearMenu();
                             this.cardClick.emit(item.data);
                         }}
                         key={item.data.inode}
@@ -99,8 +115,7 @@ export class DotCardView {
                             let inBetween = false;
 
                             if (shiftKey && originalTarget.checked) {
-                                const cards = this.getCards();
-                                cards.forEach((card) => {
+                                this.cards.forEach((card: HTMLDotCardContentletElement) => {
                                     if (card === originalTarget || card === this.lastChecked) {
                                         inBetween = !inBetween;
                                     }

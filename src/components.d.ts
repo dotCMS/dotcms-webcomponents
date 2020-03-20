@@ -203,7 +203,9 @@ export namespace Components {
   interface DotCard {}
   interface DotCardContentlet {
     'checked': boolean;
+    'hideMenu': () => Promise<void>;
     'item': DotCardContentletItem;
+    'showMenu': (x: number, y: number) => Promise<void>;
   }
   interface DotCardView {
     'clearValue': () => Promise<void>;
