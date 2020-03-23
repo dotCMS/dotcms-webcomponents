@@ -103,6 +103,9 @@ export class DotCardView {
                             this.clearMenu();
                             target.showMenu(e.x, e.y);
                         }}
+                        onContextMenuClick={() => {
+                            this.clearMenu();
+                        }}
                         onClick={() => {
                             this.clearMenu();
                             this.cardClick.emit(item.data);

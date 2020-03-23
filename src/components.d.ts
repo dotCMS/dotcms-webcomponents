@@ -1425,6 +1425,7 @@ declare namespace LocalJSX {
     'checked'?: boolean;
     'item'?: DotCardContentletItem;
     'onCheckboxChange'?: (event: CustomEvent<DotCardContentletEvent>) => void;
+    'onContextMenuClick'?: (event: CustomEvent<MouseEvent>) => void;
   }
   interface DotCardView {
     'items'?: DotCardContentletItem[];

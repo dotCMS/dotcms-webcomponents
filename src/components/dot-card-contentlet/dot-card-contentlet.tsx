@@ -25,6 +25,7 @@ export class DotCardContentlet {
     checked: boolean;
 
     @Event() checkboxChange: EventEmitter<DotCardContentletEvent>;
+    @Event() contextMenuClick: EventEmitter<MouseEvent>;
 
     @Watch('checked')
     emitChecked(): void {
@@ -94,7 +95,13 @@ export class DotCardContentlet {
                             ) : null}
                         </div>
                         {this.item?.actions?.length ? (
-                            <dot-context-menu options={this.item.actions} />
+                            <dot-context-menu
+                                onClick={(e: MouseEvent) => {
+                                    e.stopImmediatePropagation();
+                                    this.contextMenuClick.emit(e);
+                                }}
+                                options={this.item.actions}
+                            />
                         ) : null}
                     </div>
                 </header>
