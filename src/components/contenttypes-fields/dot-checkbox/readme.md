@@ -21,24 +21,37 @@
 
 ## Events
 
-| Event          | Description | Type                               |
-| -------------- | ----------- | ---------------------------------- |
-| `statusChange` |             | `CustomEvent<DotFieldStatusEvent>` |
-| `valueChange`  |             | `CustomEvent<DotFieldValueEvent>`  |
+| Event             | Description | Type                               |
+| ----------------- | ----------- | ---------------------------------- |
+| `dotStatusChange` |             | `CustomEvent<DotFieldStatusEvent>` |
+| `dotValueChange`  |             | `CustomEvent<DotFieldValueEvent>`  |
 
 
 ## Methods
 
-### `reset() => void`
+### `reset() => Promise<void>`
 
 Reset properties of the field, clear value and emit events.
 
 #### Returns
 
-Type: `void`
+Type: `Promise<void>`
 
 
 
+
+## Dependencies
+
+### Depends on
+
+- [dot-label](../dot-label)
+
+### Graph
+```mermaid
+graph TD;
+  dot-checkbox --> dot-label
+  style dot-checkbox fill:#f9f,stroke:#333,stroke-width:4px
+```
 
 ----------------------------------------------
 

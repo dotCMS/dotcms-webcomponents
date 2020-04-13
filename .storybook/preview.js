@@ -1,6 +1,5 @@
 import { addDecorator } from '@storybook/html';
 
-
 const styles = 'padding: 2em'
 const storyAsString = (story) => `<div style="${styles}">${story}</div>`;
 const storyAsNode = (story) => {
