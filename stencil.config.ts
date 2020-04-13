@@ -16,7 +16,9 @@ export const config: Config = {
             serviceWorker: null // disable service workers
         }
     ],
-    plugins: [sass()],
+    plugins: [sass({
+        includePaths: ['node_modules', 'src/global']
+    })],
     devServer: {
         openBrowser: false
     }

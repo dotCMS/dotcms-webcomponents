@@ -15,9 +15,25 @@ import {
   DotKeyValueField,
 } from './models';
 import {
+  DotCardContentletEvent,
+  DotCardContentletItem,
+} from './models/dot-card-contentlet.model';
+import {
+  DotContentletItem,
+} from './models/dot-contentlet-item.model';
+import {
+  DotContextMenuOption,
+} from './models/dot-context-menu.model';
+import {
+  MenuAction,
+} from './components/dot-context-menu/dot-context-menu';
+import {
   DotCMSContentTypeLayoutColumn,
   DotCMSContentTypeLayoutRow,
 } from 'dotcms-models';
+import {
+  DotSelectButtonOption,
+} from './models/dotSelectButtonOption';
 
 export namespace Components {
   interface DotAutocomplete {
@@ -45,6 +61,12 @@ export namespace Components {
     * (optional)  Min characters to start search in the autocomplete input
     */
     'threshold': number;
+  }
+  interface DotBadge {
+    'bgColor': string;
+    'bordered': boolean;
+    'color': string;
+    'size': string;
   }
   interface DotBinaryFile {
     /**
@@ -178,6 +200,21 @@ export namespace Components {
     */
     'required': boolean;
   }
+  interface DotCard {}
+  interface DotCardContentlet {
+    'checked': boolean;
+    'hideMenu': () => Promise<void>;
+    'iconSize': string;
+    'item': DotCardContentletItem;
+    'showMenu': (x: number, y: number) => Promise<void>;
+    'thumbnailSize': string;
+  }
+  interface DotCardView {
+    'clearValue': () => Promise<void>;
+    'getValue': () => Promise<DotContentletItem[]>;
+    'items': DotCardContentletItem[];
+    'value': string;
+  }
   interface DotCheckbox {
     /**
     * (optional) Disables field's interaction
@@ -231,7 +268,35 @@ export namespace Components {
     */
     'label': string;
   }
-  interface DotContentletThumbnail {}
+  interface DotContentletIcon {
+    'icon': string;
+    'size': string;
+  }
+  interface DotContentletLockIcon {
+    'contentlet': DotContentletItem;
+    'size': string;
+  }
+  interface DotContentletStateIcon {
+    'contentlet': DotContentletItem;
+    'labels': { archived: string; published: string; revision: string; draft: string; };
+    'size': string;
+  }
+  interface DotContentletThumbnail {
+    'alt': string;
+    'contentlet': DotContentletItem;
+    'height': string;
+    'iconSize': string;
+    'width': string;
+  }
+  interface DotContextMenu {
+    'fontSize': string;
+    'hide': () => Promise<void>;
+    'options': DotContextMenuOption<MenuAction>[];
+    'show': (x: number, y: number, position?: string) => Promise<void>;
+  }
+  interface DotDataViewButton {
+    'value': string;
+  }
   interface DotDate {
     /**
     * (optional) Disables field's interaction
@@ -677,6 +742,10 @@ export namespace Components {
     */
     'value': string;
   }
+  interface DotSelectButton {
+    'options': DotSelectButtonOption[];
+    'value': string;
+  }
   interface DotTags {
     /**
     * Function or array of string to get the data to use for the autocomplete search
@@ -870,6 +939,12 @@ export namespace Components {
     */
     'value': string;
   }
+  interface DotTooltip {
+    'content': string;
+    'delay': number;
+    'for': string;
+    'position': string;
+  }
   interface KeyValueForm {
     /**
     * (optional) Label for the add item button
@@ -925,6 +1000,12 @@ declare global {
     new (): HTMLDotAutocompleteElement;
   };
 
+  interface HTMLDotBadgeElement extends Components.DotBadge, HTMLStencilElement {}
+  var HTMLDotBadgeElement: {
+    prototype: HTMLDotBadgeElement;
+    new (): HTMLDotBadgeElement;
+  };
+
   interface HTMLDotBinaryFileElement extends Components.DotBinaryFile, HTMLStencilElement {}
   var HTMLDotBinaryFileElement: {
     prototype: HTMLDotBinaryFileElement;
@@ -949,6 +1030,24 @@ declare global {
     new (): HTMLDotBinaryUploadButtonElement;
   };
 
+  interface HTMLDotCardElement extends Components.DotCard, HTMLStencilElement {}
+  var HTMLDotCardElement: {
+    prototype: HTMLDotCardElement;
+    new (): HTMLDotCardElement;
+  };
+
+  interface HTMLDotCardContentletElement extends Components.DotCardContentlet, HTMLStencilElement {}
+  var HTMLDotCardContentletElement: {
+    prototype: HTMLDotCardContentletElement;
+    new (): HTMLDotCardContentletElement;
+  };
+
+  interface HTMLDotCardViewElement extends Components.DotCardView, HTMLStencilElement {}
+  var HTMLDotCardViewElement: {
+    prototype: HTMLDotCardViewElement;
+    new (): HTMLDotCardViewElement;
+  };
+
   interface HTMLDotCheckboxElement extends Components.DotCheckbox, HTMLStencilElement {}
   var HTMLDotCheckboxElement: {
     prototype: HTMLDotCheckboxElement;
@@ -961,10 +1060,40 @@ declare global {
     new (): HTMLDotChipElement;
   };
 
+  interface HTMLDotContentletIconElement extends Components.DotContentletIcon, HTMLStencilElement {}
+  var HTMLDotContentletIconElement: {
+    prototype: HTMLDotContentletIconElement;
+    new (): HTMLDotContentletIconElement;
+  };
+
+  interface HTMLDotContentletLockIconElement extends Components.DotContentletLockIcon, HTMLStencilElement {}
+  var HTMLDotContentletLockIconElement: {
+    prototype: HTMLDotContentletLockIconElement;
+    new (): HTMLDotContentletLockIconElement;
+  };
+
+  interface HTMLDotContentletStateIconElement extends Components.DotContentletStateIcon, HTMLStencilElement {}
+  var HTMLDotContentletStateIconElement: {
+    prototype: HTMLDotContentletStateIconElement;
+    new (): HTMLDotContentletStateIconElement;
+  };
+
   interface HTMLDotContentletThumbnailElement extends Components.DotContentletThumbnail, HTMLStencilElement {}
   var HTMLDotContentletThumbnailElement: {
     prototype: HTMLDotContentletThumbnailElement;
     new (): HTMLDotContentletThumbnailElement;
+  };
+
+  interface HTMLDotContextMenuElement extends Components.DotContextMenu, HTMLStencilElement {}
+  var HTMLDotContextMenuElement: {
+    prototype: HTMLDotContextMenuElement;
+    new (): HTMLDotContextMenuElement;
+  };
+
+  interface HTMLDotDataViewButtonElement extends Components.DotDataViewButton, HTMLStencilElement {}
+  var HTMLDotDataViewButtonElement: {
+    prototype: HTMLDotDataViewButtonElement;
+    new (): HTMLDotDataViewButtonElement;
   };
 
   interface HTMLDotDateElement extends Components.DotDate, HTMLStencilElement {}
@@ -1051,6 +1180,12 @@ declare global {
     new (): HTMLDotSelectElement;
   };
 
+  interface HTMLDotSelectButtonElement extends Components.DotSelectButton, HTMLStencilElement {}
+  var HTMLDotSelectButtonElement: {
+    prototype: HTMLDotSelectButtonElement;
+    new (): HTMLDotSelectButtonElement;
+  };
+
   interface HTMLDotTagsElement extends Components.DotTags, HTMLStencilElement {}
   var HTMLDotTagsElement: {
     prototype: HTMLDotTagsElement;
@@ -1075,6 +1210,12 @@ declare global {
     new (): HTMLDotTimeElement;
   };
 
+  interface HTMLDotTooltipElement extends Components.DotTooltip, HTMLStencilElement {}
+  var HTMLDotTooltipElement: {
+    prototype: HTMLDotTooltipElement;
+    new (): HTMLDotTooltipElement;
+  };
+
   interface HTMLKeyValueFormElement extends Components.KeyValueForm, HTMLStencilElement {}
   var HTMLKeyValueFormElement: {
     prototype: HTMLKeyValueFormElement;
@@ -1088,13 +1229,22 @@ declare global {
   };
   interface HTMLElementTagNameMap {
     'dot-autocomplete': HTMLDotAutocompleteElement;
+    'dot-badge': HTMLDotBadgeElement;
     'dot-binary-file': HTMLDotBinaryFileElement;
     'dot-binary-file-preview': HTMLDotBinaryFilePreviewElement;
     'dot-binary-text-field': HTMLDotBinaryTextFieldElement;
     'dot-binary-upload-button': HTMLDotBinaryUploadButtonElement;
+    'dot-card': HTMLDotCardElement;
+    'dot-card-contentlet': HTMLDotCardContentletElement;
+    'dot-card-view': HTMLDotCardViewElement;
     'dot-checkbox': HTMLDotCheckboxElement;
     'dot-chip': HTMLDotChipElement;
+    'dot-contentlet-icon': HTMLDotContentletIconElement;
+    'dot-contentlet-lock-icon': HTMLDotContentletLockIconElement;
+    'dot-contentlet-state-icon': HTMLDotContentletStateIconElement;
     'dot-contentlet-thumbnail': HTMLDotContentletThumbnailElement;
+    'dot-context-menu': HTMLDotContextMenuElement;
+    'dot-data-view-button': HTMLDotDataViewButtonElement;
     'dot-date': HTMLDotDateElement;
     'dot-date-range': HTMLDotDateRangeElement;
     'dot-date-time': HTMLDotDateTimeElement;
@@ -1109,10 +1259,12 @@ declare global {
     'dot-multi-select': HTMLDotMultiSelectElement;
     'dot-radio': HTMLDotRadioElement;
     'dot-select': HTMLDotSelectElement;
+    'dot-select-button': HTMLDotSelectButtonElement;
     'dot-tags': HTMLDotTagsElement;
     'dot-textarea': HTMLDotTextareaElement;
     'dot-textfield': HTMLDotTextfieldElement;
     'dot-time': HTMLDotTimeElement;
+    'dot-tooltip': HTMLDotTooltipElement;
     'key-value-form': HTMLKeyValueFormElement;
     'key-value-table': HTMLKeyValueTableElement;
   }
@@ -1147,6 +1299,12 @@ declare namespace LocalJSX {
     * (optional)  Min characters to start search in the autocomplete input
     */
     'threshold'?: number;
+  }
+  interface DotBadge {
+    'bgColor'?: string;
+    'bordered'?: boolean;
+    'color'?: string;
+    'size'?: string;
   }
   interface DotBinaryFile {
     /**
@@ -1281,6 +1439,21 @@ declare namespace LocalJSX {
     */
     'required'?: boolean;
   }
+  interface DotCard {}
+  interface DotCardContentlet {
+    'checked'?: boolean;
+    'iconSize'?: string;
+    'item'?: DotCardContentletItem;
+    'onCheckboxChange'?: (event: CustomEvent<DotCardContentletEvent>) => void;
+    'onContextMenuClick'?: (event: CustomEvent<MouseEvent>) => void;
+    'thumbnailSize'?: string;
+  }
+  interface DotCardView {
+    'items'?: DotCardContentletItem[];
+    'onCardClick'?: (event: CustomEvent<any>) => void;
+    'onSelected'?: (event: CustomEvent<any>) => void;
+    'value'?: string;
+  }
   interface DotCheckbox {
     /**
     * (optional) Disables field's interaction
@@ -1332,7 +1505,33 @@ declare namespace LocalJSX {
     'label'?: string;
     'onRemove'?: (event: CustomEvent<String>) => void;
   }
-  interface DotContentletThumbnail {}
+  interface DotContentletIcon {
+    'icon'?: string;
+    'size'?: string;
+  }
+  interface DotContentletLockIcon {
+    'contentlet'?: DotContentletItem;
+    'size'?: string;
+  }
+  interface DotContentletStateIcon {
+    'contentlet'?: DotContentletItem;
+    'labels'?: { archived: string; published: string; revision: string; draft: string; };
+    'size'?: string;
+  }
+  interface DotContentletThumbnail {
+    'alt'?: string;
+    'contentlet'?: DotContentletItem;
+    'height'?: string;
+    'iconSize'?: string;
+    'width'?: string;
+  }
+  interface DotContextMenu {
+    'fontSize'?: string;
+    'options'?: DotContextMenuOption<MenuAction>[];
+  }
+  interface DotDataViewButton {
+    'value'?: string;
+  }
   interface DotDate {
     /**
     * (optional) Disables field's interaction
@@ -1760,6 +1959,11 @@ declare namespace LocalJSX {
     */
     'value'?: string;
   }
+  interface DotSelectButton {
+    'onSelected'?: (event: CustomEvent<string>) => void;
+    'options'?: DotSelectButtonOption[];
+    'value'?: string;
+  }
   interface DotTags {
     /**
     * Function or array of string to get the data to use for the autocomplete search
@@ -1944,6 +2148,12 @@ declare namespace LocalJSX {
     */
     'value'?: string;
   }
+  interface DotTooltip {
+    'content'?: string;
+    'delay'?: number;
+    'for'?: string;
+    'position'?: string;
+  }
   interface KeyValueForm {
     /**
     * (optional) Label for the add item button
@@ -2003,13 +2213,22 @@ declare namespace LocalJSX {
 
   interface IntrinsicElements {
     'dot-autocomplete': DotAutocomplete;
+    'dot-badge': DotBadge;
     'dot-binary-file': DotBinaryFile;
     'dot-binary-file-preview': DotBinaryFilePreview;
     'dot-binary-text-field': DotBinaryTextField;
     'dot-binary-upload-button': DotBinaryUploadButton;
+    'dot-card': DotCard;
+    'dot-card-contentlet': DotCardContentlet;
+    'dot-card-view': DotCardView;
     'dot-checkbox': DotCheckbox;
     'dot-chip': DotChip;
+    'dot-contentlet-icon': DotContentletIcon;
+    'dot-contentlet-lock-icon': DotContentletLockIcon;
+    'dot-contentlet-state-icon': DotContentletStateIcon;
     'dot-contentlet-thumbnail': DotContentletThumbnail;
+    'dot-context-menu': DotContextMenu;
+    'dot-data-view-button': DotDataViewButton;
     'dot-date': DotDate;
     'dot-date-range': DotDateRange;
     'dot-date-time': DotDateTime;
@@ -2024,10 +2243,12 @@ declare namespace LocalJSX {
     'dot-multi-select': DotMultiSelect;
     'dot-radio': DotRadio;
     'dot-select': DotSelect;
+    'dot-select-button': DotSelectButton;
     'dot-tags': DotTags;
     'dot-textarea': DotTextarea;
     'dot-textfield': DotTextfield;
     'dot-time': DotTime;
+    'dot-tooltip': DotTooltip;
     'key-value-form': KeyValueForm;
     'key-value-table': KeyValueTable;
   }
@@ -2040,13 +2261,22 @@ declare module "@stencil/core" {
   export namespace JSX {
     interface IntrinsicElements {
       'dot-autocomplete': LocalJSX.DotAutocomplete & JSXBase.HTMLAttributes<HTMLDotAutocompleteElement>;
+      'dot-badge': LocalJSX.DotBadge & JSXBase.HTMLAttributes<HTMLDotBadgeElement>;
       'dot-binary-file': LocalJSX.DotBinaryFile & JSXBase.HTMLAttributes<HTMLDotBinaryFileElement>;
       'dot-binary-file-preview': LocalJSX.DotBinaryFilePreview & JSXBase.HTMLAttributes<HTMLDotBinaryFilePreviewElement>;
       'dot-binary-text-field': LocalJSX.DotBinaryTextField & JSXBase.HTMLAttributes<HTMLDotBinaryTextFieldElement>;
       'dot-binary-upload-button': LocalJSX.DotBinaryUploadButton & JSXBase.HTMLAttributes<HTMLDotBinaryUploadButtonElement>;
+      'dot-card': LocalJSX.DotCard & JSXBase.HTMLAttributes<HTMLDotCardElement>;
+      'dot-card-contentlet': LocalJSX.DotCardContentlet & JSXBase.HTMLAttributes<HTMLDotCardContentletElement>;
+      'dot-card-view': LocalJSX.DotCardView & JSXBase.HTMLAttributes<HTMLDotCardViewElement>;
       'dot-checkbox': LocalJSX.DotCheckbox & JSXBase.HTMLAttributes<HTMLDotCheckboxElement>;
       'dot-chip': LocalJSX.DotChip & JSXBase.HTMLAttributes<HTMLDotChipElement>;
+      'dot-contentlet-icon': LocalJSX.DotContentletIcon & JSXBase.HTMLAttributes<HTMLDotContentletIconElement>;
+      'dot-contentlet-lock-icon': LocalJSX.DotContentletLockIcon & JSXBase.HTMLAttributes<HTMLDotContentletLockIconElement>;
+      'dot-contentlet-state-icon': LocalJSX.DotContentletStateIcon & JSXBase.HTMLAttributes<HTMLDotContentletStateIconElement>;
       'dot-contentlet-thumbnail': LocalJSX.DotContentletThumbnail & JSXBase.HTMLAttributes<HTMLDotContentletThumbnailElement>;
+      'dot-context-menu': LocalJSX.DotContextMenu & JSXBase.HTMLAttributes<HTMLDotContextMenuElement>;
+      'dot-data-view-button': LocalJSX.DotDataViewButton & JSXBase.HTMLAttributes<HTMLDotDataViewButtonElement>;
       'dot-date': LocalJSX.DotDate & JSXBase.HTMLAttributes<HTMLDotDateElement>;
       'dot-date-range': LocalJSX.DotDateRange & JSXBase.HTMLAttributes<HTMLDotDateRangeElement>;
       'dot-date-time': LocalJSX.DotDateTime & JSXBase.HTMLAttributes<HTMLDotDateTimeElement>;
@@ -2061,10 +2291,12 @@ declare module "@stencil/core" {
       'dot-multi-select': LocalJSX.DotMultiSelect & JSXBase.HTMLAttributes<HTMLDotMultiSelectElement>;
       'dot-radio': LocalJSX.DotRadio & JSXBase.HTMLAttributes<HTMLDotRadioElement>;
       'dot-select': LocalJSX.DotSelect & JSXBase.HTMLAttributes<HTMLDotSelectElement>;
+      'dot-select-button': LocalJSX.DotSelectButton & JSXBase.HTMLAttributes<HTMLDotSelectButtonElement>;
       'dot-tags': LocalJSX.DotTags & JSXBase.HTMLAttributes<HTMLDotTagsElement>;
       'dot-textarea': LocalJSX.DotTextarea & JSXBase.HTMLAttributes<HTMLDotTextareaElement>;
       'dot-textfield': LocalJSX.DotTextfield & JSXBase.HTMLAttributes<HTMLDotTextfieldElement>;
       'dot-time': LocalJSX.DotTime & JSXBase.HTMLAttributes<HTMLDotTimeElement>;
+      'dot-tooltip': LocalJSX.DotTooltip & JSXBase.HTMLAttributes<HTMLDotTooltipElement>;
       'key-value-form': LocalJSX.KeyValueForm & JSXBase.HTMLAttributes<HTMLKeyValueFormElement>;
       'key-value-table': LocalJSX.KeyValueTable & JSXBase.HTMLAttributes<HTMLKeyValueTableElement>;
     }
