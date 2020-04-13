@@ -31,9 +31,7 @@ export class DotSelectButton {
                             label={option.label}
                             disabled={option.disabled}
                             onClick={() => {
-                                // if (option.disabled || active) {
-                                    this.setSelected(option);
-                                // }
+                                this.setSelected(option);
                             }}
                         />
                     );

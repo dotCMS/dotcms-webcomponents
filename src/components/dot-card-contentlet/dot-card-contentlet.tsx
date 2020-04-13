@@ -18,6 +18,9 @@ export class DotCardContentlet {
 
     @Prop() item: DotCardContentletItem;
 
+    @Prop() thumbnailSize = '250';
+    @Prop() iconSize = '72px';
+
     @Prop({
         reflect: true,
         mutable: true
@@ -61,10 +64,10 @@ export class DotCardContentlet {
             <dot-card>
                 <dot-contentlet-thumbnail
                     contentlet={contentlet}
-                    width="250"
-                    height="250"
+                    width={this.thumbnailSize}
+                    height={this.thumbnailSize}
                     alt={title}
-                    iconSize="72px"
+                    iconSize={this.iconSize}
                 />
                 <header>
                     <div class="main">
@@ -90,7 +93,6 @@ export class DotCardContentlet {
                             {contentlet.locked === 'true' ? (
                                 <dot-contentlet-lock-icon
                                     contentlet={contentlet}
-                                    style={{ color: '#EC4B41' }}
                                 />
                             ) : null}
                         </div>

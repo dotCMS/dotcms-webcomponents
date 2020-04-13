@@ -204,8 +204,10 @@ export namespace Components {
   interface DotCardContentlet {
     'checked': boolean;
     'hideMenu': () => Promise<void>;
+    'iconSize': string;
     'item': DotCardContentletItem;
     'showMenu': (x: number, y: number) => Promise<void>;
+    'thumbnailSize': string;
   }
   interface DotCardView {
     'clearValue': () => Promise<void>;
@@ -1423,9 +1425,11 @@ declare namespace LocalJSX {
   interface DotCard {}
   interface DotCardContentlet {
     'checked'?: boolean;
+    'iconSize'?: string;
     'item'?: DotCardContentletItem;
     'onCheckboxChange'?: (event: CustomEvent<DotCardContentletEvent>) => void;
     'onContextMenuClick'?: (event: CustomEvent<MouseEvent>) => void;
+    'thumbnailSize'?: string;
   }
   interface DotCardView {
     'items'?: DotCardContentletItem[];
