@@ -21,6 +21,19 @@
 | `remove` |             | `CustomEvent<String>` |
 
 
+## Dependencies
+
+### Used by
+
+ - [dot-tags](../..)
+
+### Graph
+```mermaid
+graph TD;
+  dot-tags --> dot-chip
+  style dot-chip fill:#f9f,stroke:#333,stroke-width:4px
+```
+
 ----------------------------------------------
 
 *Built with [StencilJS](https://stenciljs.com/)*

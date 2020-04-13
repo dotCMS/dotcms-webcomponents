@@ -16,6 +16,22 @@
 | `variable`     | `variable`       | Content type variable name                                               | `string`                       | `''`        |
 
 
+## Dependencies
+
+### Depends on
+
+- [dot-form-row](components/dot-form-row)
+- [dot-error-message](../dot-error-message)
+
+### Graph
+```mermaid
+graph TD;
+  dot-form --> dot-form-row
+  dot-form --> dot-error-message
+  dot-form-row --> dot-form-column
+  style dot-form fill:#f9f,stroke:#333,stroke-width:4px
+```
+
 ----------------------------------------------
 
 *Built with [StencilJS](https://stenciljs.com/)*

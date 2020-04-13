@@ -23,6 +23,19 @@
 | `fileChange` |             | `CustomEvent<DotBinaryFileEvent>` |
 
 
+## Dependencies
+
+### Used by
+
+ - [dot-binary-file](../..)
+
+### Graph
+```mermaid
+graph TD;
+  dot-binary-file --> dot-binary-upload-button
+  style dot-binary-upload-button fill:#f9f,stroke:#333,stroke-width:4px
+```
+
 ----------------------------------------------
 
 *Built with [StencilJS](https://stenciljs.com/)*

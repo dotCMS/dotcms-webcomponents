@@ -28,34 +28,55 @@
 
 ## Events
 
-| Event          | Description | Type                               |
-| -------------- | ----------- | ---------------------------------- |
-| `statusChange` |             | `CustomEvent<DotFieldStatusEvent>` |
-| `valueChange`  |             | `CustomEvent<DotFieldValueEvent>`  |
+| Event             | Description | Type                               |
+| ----------------- | ----------- | ---------------------------------- |
+| `dotStatusChange` |             | `CustomEvent<DotFieldStatusEvent>` |
+| `dotValueChange`  |             | `CustomEvent<DotFieldValueEvent>`  |
 
 
 ## Methods
 
-### `clearValue() => void`
+### `clearValue() => Promise<void>`
 
 Clear value of selected file, when the endpoint fails.
 
 #### Returns
 
-Type: `void`
+Type: `Promise<void>`
 
 
 
-### `reset() => void`
+### `reset() => Promise<void>`
 
 Reset properties of the field, clear value and emit events.
 
 #### Returns
 
-Type: `void`
+Type: `Promise<void>`
 
 
 
+
+## Dependencies
+
+### Depends on
+
+- [dot-label](../dot-label)
+- [dot-binary-file-preview](components/dot-binary-file-preview)
+- [dot-binary-text-field](components/dot-binary-text-field)
+- [dot-binary-upload-button](components/dot-binary-upload-button)
+- [dot-error-message](../dot-error-message)
+
+### Graph
+```mermaid
+graph TD;
+  dot-binary-file --> dot-label
+  dot-binary-file --> dot-binary-file-preview
+  dot-binary-file --> dot-binary-text-field
+  dot-binary-file --> dot-binary-upload-button
+  dot-binary-file --> dot-error-message
+  style dot-binary-file fill:#f9f,stroke:#333,stroke-width:4px
+```
 
 ----------------------------------------------
 

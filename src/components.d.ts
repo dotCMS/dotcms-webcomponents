@@ -394,6 +394,16 @@ export namespace Components {
     */
     'value': string;
   }
+  interface DotDropZone {
+    /**
+    * URL to endpoint to register multipart files
+    */
+    'assetsURL': string;
+    /**
+    * URL of the endpoint to upload temporary files
+    */
+    'uploadURL': string;
+  }
   interface DotErrorMessage {}
   interface DotForm {
     /**
@@ -975,6 +985,12 @@ declare global {
     new (): HTMLDotDateTimeElement;
   };
 
+  interface HTMLDotDropZoneElement extends Components.DotDropZone, HTMLStencilElement {}
+  var HTMLDotDropZoneElement: {
+    prototype: HTMLDotDropZoneElement;
+    new (): HTMLDotDropZoneElement;
+  };
+
   interface HTMLDotErrorMessageElement extends Components.DotErrorMessage, HTMLStencilElement {}
   var HTMLDotErrorMessageElement: {
     prototype: HTMLDotErrorMessageElement;
@@ -1082,6 +1098,7 @@ declare global {
     'dot-date': HTMLDotDateElement;
     'dot-date-range': HTMLDotDateRangeElement;
     'dot-date-time': HTMLDotDateTimeElement;
+    'dot-drop-zone': HTMLDotDropZoneElement;
     'dot-error-message': HTMLDotErrorMessageElement;
     'dot-form': HTMLDotFormElement;
     'dot-form-column': HTMLDotFormColumnElement;
@@ -1471,6 +1488,16 @@ declare namespace LocalJSX {
     * Value format yyyy-mm-dd hh:mm:ss e.g., 2005-12-01 15:22:00
     */
     'value'?: string;
+  }
+  interface DotDropZone {
+    /**
+    * URL to endpoint to register multipart files
+    */
+    'assetsURL'?: string;
+    /**
+    * URL of the endpoint to upload temporary files
+    */
+    'uploadURL'?: string;
   }
   interface DotErrorMessage {}
   interface DotForm {
@@ -1986,6 +2013,7 @@ declare namespace LocalJSX {
     'dot-date': DotDate;
     'dot-date-range': DotDateRange;
     'dot-date-time': DotDateTime;
+    'dot-drop-zone': DotDropZone;
     'dot-error-message': DotErrorMessage;
     'dot-form': DotForm;
     'dot-form-column': DotFormColumn;
@@ -2022,6 +2050,7 @@ declare module "@stencil/core" {
       'dot-date': LocalJSX.DotDate & JSXBase.HTMLAttributes<HTMLDotDateElement>;
       'dot-date-range': LocalJSX.DotDateRange & JSXBase.HTMLAttributes<HTMLDotDateRangeElement>;
       'dot-date-time': LocalJSX.DotDateTime & JSXBase.HTMLAttributes<HTMLDotDateTimeElement>;
+      'dot-drop-zone': LocalJSX.DotDropZone & JSXBase.HTMLAttributes<HTMLDotDropZoneElement>;
       'dot-error-message': LocalJSX.DotErrorMessage & JSXBase.HTMLAttributes<HTMLDotErrorMessageElement>;
       'dot-form': LocalJSX.DotForm & JSXBase.HTMLAttributes<HTMLDotFormElement>;
       'dot-form-column': LocalJSX.DotFormColumn & JSXBase.HTMLAttributes<HTMLDotFormColumnElement>;

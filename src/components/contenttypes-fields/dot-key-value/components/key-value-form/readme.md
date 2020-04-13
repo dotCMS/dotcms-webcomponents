@@ -25,6 +25,19 @@
 | `lostFocus` | Emit when any of the input is blur   | `CustomEvent<FocusEvent>`       |
 
 
+## Dependencies
+
+### Used by
+
+ - [dot-key-value](../..)
+
+### Graph
+```mermaid
+graph TD;
+  dot-key-value --> key-value-form
+  style key-value-form fill:#f9f,stroke:#333,stroke-width:4px
+```
+
 ----------------------------------------------
 
 *Built with [StencilJS](https://stenciljs.com/)*
