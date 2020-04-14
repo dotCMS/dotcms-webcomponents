@@ -1,6 +1,16 @@
 dot-drop-zone {
     display: flex;
-    background: red;
-    width: 400px;
-    height: 400px;
+    background: burlywood;
+    width: 600px;
+    height: 600px;
+
+    mwc-icon {
+        display: none;
+    }
+
+    &.drag-enter {
+        mwc-icon {
+            display: block;
+        }
+    }
 }

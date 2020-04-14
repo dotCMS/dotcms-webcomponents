@@ -16,7 +16,7 @@ export class DotUploadService {
         if (typeof file === 'string') {
             return this.uploadFileByURL(file);
         } else {
-            return this.uploadBinaryFile(file, maxSize);
+            return this.uploadBinaryFile(file, maxSize) as Promise<DotCMSTempFile>;
         }
     }
 
@@ -44,11 +44,17 @@ export class DotUploadService {
         });
     }
 
-    private uploadBinaryFile(file: File, maxSize?: string): Promise<DotCMSTempFile> {
-        let path = `/api/v1/temp`;
+    uploadBinaryFile(data: any, maxSize?: string): Promise<DotCMSTempFile | DotCMSTempFile[] > {
+        let path = `http://localhost:8080/api/v1/temp`;
         path += maxSize ? `?maxFileLength=${maxSize}` : '';
         const formData = new FormData();
-        formData.append('file', file);
+        if (Array.isArray(data)) {
+            data.forEach((file: File) => {
+                formData.append("files", file);
+            });
+        } else {
+            formData.append('file', data);
+        }
         return fetch(path, {
             method: 'POST',
             headers: {
@@ -57,7 +63,8 @@ export class DotUploadService {
             body: formData
         }).then(async (response: Response) => {
             if (response.status === 200) {
-                return (await response.json()).tempFiles[0];
+                const data = (await response.json()).tempFiles
+                return data.length > 1 ? data : data[0];
             } else {
                 const error: DotHttpErrorResponse = {
                     message: (await response.json()).message,
