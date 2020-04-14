@@ -665,6 +665,16 @@ export namespace Components {
     */
     'value': string;
   }
+  interface DotProgressBar {
+    /**
+    * indicates the progress to be show, a value 1 to 100
+    */
+    'progress': string;
+    /**
+    * text to be show bellow the progress bar
+    */
+    'text': string;
+  }
   interface DotRadio {
     /**
     * (optional) Disables field's interaction
@@ -1168,6 +1178,12 @@ declare global {
     new (): HTMLDotMultiSelectElement;
   };
 
+  interface HTMLDotProgressBarElement extends Components.DotProgressBar, HTMLStencilElement {}
+  var HTMLDotProgressBarElement: {
+    prototype: HTMLDotProgressBarElement;
+    new (): HTMLDotProgressBarElement;
+  };
+
   interface HTMLDotRadioElement extends Components.DotRadio, HTMLStencilElement {}
   var HTMLDotRadioElement: {
     prototype: HTMLDotRadioElement;
@@ -1257,6 +1273,7 @@ declare global {
     'dot-key-value': HTMLDotKeyValueElement;
     'dot-label': HTMLDotLabelElement;
     'dot-multi-select': HTMLDotMultiSelectElement;
+    'dot-progress-bar': HTMLDotProgressBarElement;
     'dot-radio': HTMLDotRadioElement;
     'dot-select': HTMLDotSelectElement;
     'dot-select-button': HTMLDotSelectButtonElement;
@@ -1887,6 +1904,16 @@ declare namespace LocalJSX {
     */
     'value'?: string;
   }
+  interface DotProgressBar {
+    /**
+    * indicates the progress to be show, a value 1 to 100
+    */
+    'progress'?: string;
+    /**
+    * text to be show bellow the progress bar
+    */
+    'text'?: string;
+  }
   interface DotRadio {
     /**
     * (optional) Disables field's interaction
@@ -2241,6 +2268,7 @@ declare namespace LocalJSX {
     'dot-key-value': DotKeyValue;
     'dot-label': DotLabel;
     'dot-multi-select': DotMultiSelect;
+    'dot-progress-bar': DotProgressBar;
     'dot-radio': DotRadio;
     'dot-select': DotSelect;
     'dot-select-button': DotSelectButton;
@@ -2289,6 +2317,7 @@ declare module "@stencil/core" {
       'dot-key-value': LocalJSX.DotKeyValue & JSXBase.HTMLAttributes<HTMLDotKeyValueElement>;
       'dot-label': LocalJSX.DotLabel & JSXBase.HTMLAttributes<HTMLDotLabelElement>;
       'dot-multi-select': LocalJSX.DotMultiSelect & JSXBase.HTMLAttributes<HTMLDotMultiSelectElement>;
+      'dot-progress-bar': LocalJSX.DotProgressBar & JSXBase.HTMLAttributes<HTMLDotProgressBarElement>;
       'dot-radio': LocalJSX.DotRadio & JSXBase.HTMLAttributes<HTMLDotRadioElement>;
       'dot-select': LocalJSX.DotSelect & JSXBase.HTMLAttributes<HTMLDotSelectElement>;
       'dot-select-button': LocalJSX.DotSelectButton & JSXBase.HTMLAttributes<HTMLDotSelectButtonElement>;

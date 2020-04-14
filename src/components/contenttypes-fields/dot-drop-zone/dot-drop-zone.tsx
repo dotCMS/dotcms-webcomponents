@@ -27,6 +27,8 @@ export class DotDropZone {
         'drag-leave': false
     };
 
+    @State()
+
     render() {
         return (
             <Host
@@ -37,6 +39,7 @@ export class DotDropZone {
                 ondragover={(event: DragEvent) => this.dragOverHandler(event)}
             >
                 <mwc-icon style={{ '--mdc-icon-size': '50px', color: '#444' }}>get_app</mwc-icon>
+                <dot-progress-bar progress="20" text="Uploading Files..." />
             </Host>
         );
     }
@@ -55,7 +58,6 @@ export class DotDropZone {
         const files = [];
         event.preventDefault();
         const uploadService = new DotUploadService();
-        console.log('dropHandler: ', event);
         this.classes = { ...this.classes, ...{ drop: true, 'drag-enter': false } };
         if (event.dataTransfer.items) {
             for (let i = 0; i < event.dataTransfer.items.length; i++) {
@@ -85,6 +87,7 @@ export class DotDropZone {
 
     private createDotAsset(files: DotCMSTempFile[]) {
         console.log('files: ', files);
+        const promises = [];
         let path = `http://localhost:8080/api/v1/workflow/actions/default/fire/NEW`;
         files.forEach((file: DotCMSTempFile) => {
             const data = {
@@ -93,16 +96,32 @@ export class DotDropZone {
                     asset: file.id
                 }
             };
-            fetch(path, {
-                method: 'PUT',
-                headers: {
-                    Origin: window.location.hostname,
-                    'Content-Type': 'application/json;charset=UTF-8'
-                },
-                body: JSON.stringify(data)
-            }).then(async (response: Response) => {
-                console.log(response);
+
+            promises.push(
+                fetch(path, {
+                    method: 'PUT',
+                    headers: {
+                        Origin: window.location.hostname,
+                        'Content-Type': 'application/json;charset=UTF-8'
+                    },
+                    body: JSON.stringify(data)
+                })
+            );
+
+            Promise.all(promises).then((response: any) => {
+                console.log('AAAAAAA: ', response);
             });
+
+            // fetch(path, {
+            //     method: 'PUT',
+            //     headers: {
+            //         Origin: window.location.hostname,
+            //         'Content-Type': 'application/json;charset=UTF-8'
+            //     },
+            //     body: JSON.stringify(data)
+            // }).then(async (response: Response) => {
+            //     console.log(response);
+            // });
         });
     }
 }

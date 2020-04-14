@@ -1,11 +1,20 @@
 dot-drop-zone {
     display: flex;
+    position: relative;
     background: burlywood;
     width: 600px;
     height: 600px;
 
     mwc-icon {
         display: none;
+    }
+
+    dot-progress-bar {
+        width: 180px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
     }
 
     &.drag-enter {
