@@ -4,11 +4,11 @@ dot-progress-bar {
     div {
         color: var(--color-sec);
         border: 1px solid var(--color-sec);
-        border-radius: 5px;
+        border-radius: var(--border-radius);
         height: 32px;
         width: 100%;
         position: relative;
-        margin-bottom: var(--basic-padding);
+        margin-bottom: 4px;
 
         &:before {
             content: "";

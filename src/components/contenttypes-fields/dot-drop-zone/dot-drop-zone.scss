@@ -1,12 +1,27 @@
 dot-drop-zone {
     display: flex;
     position: relative;
-    background: burlywood;
     width: 600px;
     height: 600px;
+    border: 3px solid red;
+
+    .dot-drop-zone__icon {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+        display: none;
+
+        span {
+            display: inline-flex;
+            color: var(--color-sec);
+        }
+    }
 
     mwc-icon {
-        display: none;
+        color: var(--color-sec);
+        --mdc-icon-size: 200px;
     }
 
     dot-progress-bar {
@@ -15,10 +30,21 @@ dot-drop-zone {
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
+        display: none;
     }
 
     &.drag-enter {
-        mwc-icon {
+        border: 3px dashed var(--color-sec);
+
+        .dot-drop-zone__icon {
+            display: block;
+        }
+    }
+
+    &.drop {
+        border: 3px dashed var(--color-gray);
+
+        dot-progress-bar {
             display: block;
         }
     }

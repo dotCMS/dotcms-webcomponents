@@ -20,6 +20,10 @@ export class DotDropZone {
     /** URL to endpoint to register multipart files */
     @Prop() assetsURL = '/api/v1/workflow/actions/fire';
 
+    /** Legend to be shown when dropping files */
+    @Prop() dropFilesText = 'Drop Files to Upload';
+
+
     @State()
     classes = {
         drop: false,
@@ -38,7 +42,11 @@ export class DotDropZone {
                 ondragleave={(event: DragEvent) => this.dragOutHandler(event)}
                 ondragover={(event: DragEvent) => this.dragOverHandler(event)}
             >
-                <mwc-icon style={{ '--mdc-icon-size': '50px', color: '#444' }}>get_app</mwc-icon>
+                <div class="dot-drop-zone__icon">
+                    <mwc-icon>get_app</mwc-icon>
+                    <span>{this.dropFilesText}</span>
+                </div>
+
                 <dot-progress-bar progress="20" text="Uploading Files..." />
             </Host>
         );
@@ -109,6 +117,7 @@ export class DotDropZone {
             );
 
             Promise.all(promises).then((response: any) => {
+                this.classes = { 'drag-enter': false, drop: false };
                 console.log('AAAAAAA: ', response);
             });
 

@@ -465,6 +465,10 @@ export namespace Components {
     */
     'assetsURL': string;
     /**
+    * Legend to be shown when dropping files
+    */
+    'dropFilesText': string;
+    /**
     * URL of the endpoint to upload temporary files
     */
     'uploadURL': string;
@@ -1710,6 +1714,10 @@ declare namespace LocalJSX {
     * URL to endpoint to register multipart files
     */
     'assetsURL'?: string;
+    /**
+    * Legend to be shown when dropping files
+    */
+    'dropFilesText'?: string;
     /**
     * URL of the endpoint to upload temporary files
     */
