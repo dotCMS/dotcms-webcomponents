@@ -1,21 +1,44 @@
 dot-drop-zone {
     display: flex;
+    flex-direction: column;
     position: relative;
-    width: 600px;
-    height: 600px;
-    border: 3px solid red;
+    height: 100%;
+
+    .dot-drop-zone__overlay {
+        display: none;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        opacity: 0.8;
+        z-index: 1001;
+        background: #ffffff;
+    }
+
+    .dot-drop-zone__indicators {
+        border: 3px solid transparent;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        z-index: 1002;
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
 
     .dot-drop-zone__icon {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        text-align: center;
         display: none;
 
         span {
-            display: inline-flex;
+            display: block;
             color: var(--color-sec);
+            margin-top: -20px;
+            font-size: 20px;
+            text-align: center;
         }
     }
 
@@ -34,17 +57,25 @@ dot-drop-zone {
     }
 
     &.drag-enter {
-        border: 3px dashed var(--color-sec);
+        .dot-drop-zone__indicators {
+            border: 3px dashed var(--color-sec);
+            display: flex;
+        }
 
-        .dot-drop-zone__icon {
+        .dot-drop-zone__icon,
+        .dot-drop-zone__overlay {
             display: block;
         }
     }
 
     &.drop {
-        border: 3px dashed var(--color-gray);
+        .dot-drop-zone__indicators {
+            border: 3px dashed var(--color-gray);
+            display: flex;
+        }
 
-        dot-progress-bar {
+        dot-progress-bar,
+        .dot-drop-zone__overlay {
             display: block;
         }
     }

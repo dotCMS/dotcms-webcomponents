@@ -7,17 +7,20 @@
 
 ## Properties
 
-| Property  | Attribute | Description | Type                    | Default     |
-| --------- | --------- | ----------- | ----------------------- | ----------- |
-| `checked` | `checked` |             | `boolean`               | `undefined` |
-| `item`    | --        |             | `DotCardContentletItem` | `undefined` |
+| Property        | Attribute        | Description | Type                    | Default     |
+| --------------- | ---------------- | ----------- | ----------------------- | ----------- |
+| `checked`       | `checked`        |             | `boolean`               | `undefined` |
+| `iconSize`      | `icon-size`      |             | `string`                | `'72px'`    |
+| `item`          | --               |             | `DotCardContentletItem` | `undefined` |
+| `thumbnailSize` | `thumbnail-size` |             | `string`                | `'250'`     |
 
 
 ## Events
 
-| Event            | Description | Type                                  |
-| ---------------- | ----------- | ------------------------------------- |
-| `checkboxChange` |             | `CustomEvent<DotCardContentletEvent>` |
+| Event              | Description | Type                                  |
+| ------------------ | ----------- | ------------------------------------- |
+| `checkboxChange`   |             | `CustomEvent<DotCardContentletEvent>` |
+| `contextMenuClick` |             | `CustomEvent<MouseEvent>`             |
 
 
 ## Methods

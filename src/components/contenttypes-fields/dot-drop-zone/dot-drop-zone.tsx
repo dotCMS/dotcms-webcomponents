@@ -27,11 +27,10 @@ export class DotDropZone {
     @State()
     classes = {
         drop: false,
-        'drag-enter': false,
-        'drag-leave': false
+        'drag-enter': false
     };
 
-    @State()
+    private dropEventTarget = null;
 
     render() {
         return (
@@ -42,24 +41,35 @@ export class DotDropZone {
                 ondragleave={(event: DragEvent) => this.dragOutHandler(event)}
                 ondragover={(event: DragEvent) => this.dragOverHandler(event)}
             >
-                <div class="dot-drop-zone__icon">
-                    <mwc-icon>get_app</mwc-icon>
-                    <span>{this.dropFilesText}</span>
+                <div class="dot-drop-zone__overlay">
+
+                </div>
+                <div class="dot-drop-zone__indicators" >
+                    <div class="dot-drop-zone__icon">
+                        <mwc-icon>get_app</mwc-icon>
+                        <span>{this.dropFilesText}</span>
+                    </div>
+                    <dot-progress-bar progress="20" text="Uploading Files..."/>
                 </div>
 
-                <dot-progress-bar progress="20" text="Uploading Files..." />
+                <slot />
             </Host>
         );
     }
 
     private dragEnterHandler(event: DragEvent) {
         event.preventDefault();
+        this.dropEventTarget = event.target;
         this.classes = { ...this.classes, ...{ 'drag-enter': true } };
     }
 
     private dragOutHandler(event: DragEvent) {
         event.preventDefault();
-        this.classes = { ...this.classes, ...{ 'drag-enter': false, drop: false } };
+        console.log('dragOutHandler');
+        // avoid problems with child elements
+        if (event.target === this.dropEventTarget){
+            this.classes = { ...this.classes, ...{ 'drag-enter': false, drop: false } };
+        }
     }
 
     private dropHandler(event: DragEvent) {
@@ -90,13 +100,15 @@ export class DotDropZone {
     }
 
     private dragOverHandler(event: DragEvent) {
+        console.log('dragOverHandler');
         event.preventDefault();
     }
 
     private createDotAsset(files: DotCMSTempFile[]) {
         console.log('files: ', files);
         const promises = [];
-        let path = `http://localhost:8080/api/v1/workflow/actions/default/fire/NEW`;
+        //let path = `http://localhost:8080/api/v1/workflow/actions/default/fire/NEW`;
+        let path = `/api/v1/workflow/actions/default/fire/NEW`;
         files.forEach((file: DotCMSTempFile) => {
             const data = {
                 contentlet: {

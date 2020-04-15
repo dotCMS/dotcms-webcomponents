@@ -16,12 +16,18 @@ export const DopZone = () => {
             content: text('Value', '')
         }
     ];
-
+    const body = document.createElement('div');
     const dropZone = document.createElement('dot-drop-zone');
 
     props.forEach(({ name, content }) => {
         dropZone[name] = content;
     });
 
-    return dropZone;
+    body.appendChild(dropZone);
+
+    body.style.width = '600px';
+    body.style.height = '600px';
+    body.style.border = '3px solid green';
+
+    return body;
 };

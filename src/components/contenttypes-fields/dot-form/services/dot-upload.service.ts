@@ -45,7 +45,8 @@ export class DotUploadService {
     }
 
     uploadBinaryFile(data: any, maxSize?: string): Promise<DotCMSTempFile | DotCMSTempFile[] > {
-        let path = `http://localhost:8080/api/v1/temp`;
+        // let path = `http://localhost:8080/api/v1/temp`;
+        let path = `/api/v1/temp`;
         path += maxSize ? `?maxFileLength=${maxSize}` : '';
         const formData = new FormData();
         if (Array.isArray(data)) {
