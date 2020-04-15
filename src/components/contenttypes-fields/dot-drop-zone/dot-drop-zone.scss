@@ -48,12 +48,12 @@ dot-drop-zone {
     }
 
     dot-progress-bar {
-        width: 180px;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
+        width: 200px;
         display: none;
+
+        span {
+            font-size: 16px;
+        }
     }
 
     &.drag-enter {

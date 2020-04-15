@@ -44,6 +44,7 @@
     },
     "license": "MIT",
     "dependencies": {
+        "@material/dialog": "^5.1.0",
         "@material/mwc-checkbox": "^0.13.0",
         "@material/mwc-formfield": "^0.13.0",
         "@material/mwc-icon": "^0.13.0",

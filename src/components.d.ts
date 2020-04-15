@@ -461,17 +461,26 @@ export namespace Components {
   }
   interface DotDropZone {
     /**
-    * URL to endpoint to register multipart files
+    * Legend to be shown when creating dotAssets
     */
-    'assetsURL': string;
+    'createAssetsText': string;
+    /**
+    * URL to endpoint to create dotAssets
+    */
+    'dotAssetsURL': string;
     /**
     * Legend to be shown when dropping files
     */
     'dropFilesText': string;
+    'maxFileSize': string;
+    /**
+    * Legend to be shown when uploading files
+    */
+    'uploadFileText': string;
     /**
     * URL of the endpoint to upload temporary files
     */
-    'uploadURL': string;
+    'uploadTempURL': string;
   }
   interface DotErrorMessage {}
   interface DotForm {
@@ -1711,17 +1720,27 @@ declare namespace LocalJSX {
   }
   interface DotDropZone {
     /**
-    * URL to endpoint to register multipart files
+    * Legend to be shown when creating dotAssets
     */
-    'assetsURL'?: string;
+    'createAssetsText'?: string;
+    /**
+    * URL to endpoint to create dotAssets
+    */
+    'dotAssetsURL'?: string;
     /**
     * Legend to be shown when dropping files
     */
     'dropFilesText'?: string;
+    'maxFileSize'?: string;
+    'onDotDropZoneUploadComplete'?: (event: CustomEvent<any>) => void;
+    /**
+    * Legend to be shown when uploading files
+    */
+    'uploadFileText'?: string;
     /**
     * URL of the endpoint to upload temporary files
     */
-    'uploadURL'?: string;
+    'uploadTempURL'?: string;
   }
   interface DotErrorMessage {}
   interface DotForm {
