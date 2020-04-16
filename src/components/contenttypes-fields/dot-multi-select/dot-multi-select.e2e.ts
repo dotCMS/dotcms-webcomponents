@@ -415,7 +415,7 @@ describe('dot-multi-select', () => {
         });
 
         describe('Reset', () => {
-            it('should emit StatusChange & ValueChange Events', async () => {
+            it('should emit dotStatusChange & dotValueChange Events', async () => {
                 await element.callMethod('reset');
                 expect(spyStatusChangeEvent).toHaveReceivedEventDetail({
                     name: 'testName',
