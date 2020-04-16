@@ -477,10 +477,6 @@ export namespace Components {
     * Legend to be shown when uploading files
     */
     'uploadFileText': string;
-    /**
-    * URL of the endpoint to upload temporary files
-    */
-    'uploadTempURL': string;
   }
   interface DotErrorMessage {}
   interface DotForm {
@@ -1737,10 +1733,6 @@ declare namespace LocalJSX {
     * Legend to be shown when uploading files
     */
     'uploadFileText'?: string;
-    /**
-    * URL of the endpoint to upload temporary files
-    */
-    'uploadTempURL'?: string;
   }
   interface DotErrorMessage {}
   interface DotForm {

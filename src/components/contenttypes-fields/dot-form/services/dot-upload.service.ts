@@ -1,6 +1,12 @@
 import { DotCMSTempFile } from 'dotcms-models';
 import { DotHttpErrorResponse } from '../../../../models/dot-http-error-response.model';
 
+export const fallbackErrorMessages = {
+    500: '500 Internal Server Error',
+    400: '400 Bad Request',
+    401: '401 Unauthorized Error'
+};
+
 export class DotUploadService {
     constructor() {}
 
@@ -46,10 +52,9 @@ export class DotUploadService {
     uploadBinaryFile(
         data: any,
         progressCallBack?,
-        context,
         maxSize?: string
     ): Promise<DotCMSTempFile | DotCMSTempFile[]> {
-        let path = `/api/v1/temp`;
+        let path = `http://localhost:8080/api/v1/temp`;
         path += maxSize ? `?maxFileLength=${maxSize}` : '';
         const formData = new FormData();
         if (Array.isArray(data)) {
@@ -67,63 +72,37 @@ export class DotUploadService {
                 headers: {},
                 body: formData
             },
-            progressCallBack,
-            context
+            progressCallBack
         ).then(async (request: XMLHttpRequest) => {
-            debugger;
             if (request.status === 200) {
                 const data = JSON.parse(request.response).tempFiles;
                 return data.length > 1 ? data : data[0];
             } else {
                 const error: DotHttpErrorResponse = {
-                    message: JSON.parse(request.response).message,
+                    message: JSON.parse(request.response).message || fallbackErrorMessages[status],
                     status: request.status
                 };
                 throw error;
             }
         });
-
-        // return fetch(path, {
-        //     method: 'POST',
-        //     headers: {
-        //         Origin: window.location.hostname
-        //     },
-        //     body: formData
-        // }).then(async (response: Response) => {
-        //     debugger;
-        //     if (response.status === 200) {
-        //         const data = (await response.json()).tempFiles;
-        //         return data.length > 1 ? data : data[0];
-        //     } else {
-        //         const error: DotHttpErrorResponse = {
-        //             message: (await response.json()).message,
-        //             status: response.status
-        //         };
-        //         throw error;
-        //     }
-        // });
     }
 
-    private dotRequest(url, opts, progressCallBack): Promise<any> {
+    private dotRequest(url, opts, progressCallBack): Promise<XMLHttpRequest> {
         return new Promise((res, rej) => {
             const xhr = new XMLHttpRequest();
             xhr.open(opts.method || 'get', url);
-            for (let [key, value] of Object.entries(opts.headers||{})) {
+            for (let [key, value] of Object.entries(opts.headers || {})) {
                 xhr.setRequestHeader(key, opts.headers[key]);
                 console.log(value);
             }
-
-            // for (let k = 0; (opts.headers||[]).length < k; k++)
             xhr.onload = () => res(xhr);
             xhr.onerror = rej;
-            if (xhr.upload && progressCallBack){
+            if (xhr.upload && progressCallBack) {
                 xhr.upload.onprogress = (e: ProgressEvent) => {
-                    const percentComplete = (e.loaded / e.total) * 100;
-                    console.log("Uploaded: " + percentComplete + "%");
-                    progressCallBack( percentComplete);
+                    const percentComplete = e.loaded / e.total * 100;
+                    progressCallBack(percentComplete);
                 };
             }
-                // xhr.upload.onprogress = onProgress; // event.loaded / event.total * 100 ; //event.lengthComputable
             xhr.send(opts.body);
         });
     }

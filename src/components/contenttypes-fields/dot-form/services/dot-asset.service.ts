@@ -1,4 +1,6 @@
 import { DotCMSTempFile } from 'dotcms-models';
+import {DotHttpErrorResponse} from '../../../../models/dot-http-error-response.model';
+import {fallbackErrorMessages} from './dot-upload.service';
 
 export class DotAssetService {
     constructor() {}
@@ -23,10 +25,27 @@ export class DotAssetService {
                         'Content-Type': 'application/json;charset=UTF-8'
                     },
                     body: JSON.stringify(data)
-                })
+                }).catch(e => e)
             );
         });
 
-        return Promise.all(promises);
+        return Promise.all(promises).then(async (responses: Response[]) => {
+            const errors: DotHttpErrorResponse[] = [];
+            responses.forEach((response: Response | DotHttpErrorResponse) => {
+                if (response.status !== 200) {
+                    errors.push({
+                        message:
+                            (response as DotHttpErrorResponse).message ||
+                            fallbackErrorMessages[response.status],
+                            status: response.status
+                    });
+                }
+            });
+            if (errors.length){
+                throw errors;
+            }else {
+                return responses;
+            }
+        });
     }
 }

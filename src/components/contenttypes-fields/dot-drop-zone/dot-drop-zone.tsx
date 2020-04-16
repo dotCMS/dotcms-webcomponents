@@ -6,6 +6,7 @@
  */
 import { Component, EventEmitter, h, Host, Prop, State, Event } from '@stencil/core';
 import '@material/mwc-icon';
+import '@material/dialog';
 import { DotUploadService } from '../dot-form/services/dot-upload.service';
 import { DotCMSTempFile } from 'dotcms-models';
 import { DotAssetService } from '../dot-form/services/dot-asset.service';
@@ -16,11 +17,8 @@ import { DotHttpErrorResponse } from '../../../models/dot-http-error-response.mo
     styleUrl: 'dot-drop-zone.scss'
 })
 export class DotDropZone {
-    /** URL of the endpoint to upload temporary files */
-    @Prop() uploadTempURL = '/api/v1/temp/';
-
     /** URL to endpoint to create dotAssets*/
-    @Prop() dotAssetsURL = '/api/v1/workflow/actions/default/fire/NEW';
+    @Prop() dotAssetsURL = 'http://localhost:8080/api/v1/workflow/actions/default/fire/NEW';
 
     @Prop() maxFileSize = '';
 
@@ -119,21 +117,14 @@ export class DotDropZone {
         }
 
         uploadService
-            .uploadBinaryFile(files, this.updateProgress.bind(this), this, this.maxFileSize)
+            .uploadBinaryFile(files, this.updateProgress.bind(this), this.maxFileSize)
             .then((data: DotCMSTempFile | DotCMSTempFile[]) => {
-                debugger;
-                if (Array.isArray(data)) {
-                    this.createDotAsset(data);
-                } else {
-                    this.createDotAsset([data]);
-                }
+                this.createDotAsset(Array.isArray(data) ? data : [data]);
             })
             .catch(({ message, status }: DotHttpErrorResponse) => {
                 console.log(`${status} - ${message}`);
                 //TODO: Send error notification
-                // this.uploadFileInProgress = false;
-                // this.errorMessage = getErrorMessage(message) || fallbackErrorMessages[status];
-                //  return null;
+                return null;
             })
             .finally(() => {
                 this.uploadProgressIndicator = 1;
@@ -145,14 +136,15 @@ export class DotDropZone {
 
         assetService
             .create(files, this.dotAssetsURL)
-            .then((response: any) => {
+            .then((responses: Response[]) => {
+                console.log('create success Response: ', responses);
                 this.classes = { 'drag-enter': false, drop: false };
-                console.log('Response: ', response);
                 this.dotDropZoneUploadComplete.emit(true);
             })
-            .catch(({ message, status }: DotHttpErrorResponse) => {
-                console.log(`${status} - ${message}`);
+            .catch((errors: DotHttpErrorResponse[]) => {
+                debugger;
                 //TODO: Send error notification
+                console.log(`Errors:  - ${errors}`);
                 return null;
             })
             .finally(() => {

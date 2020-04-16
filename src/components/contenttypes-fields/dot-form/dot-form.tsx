@@ -9,16 +9,11 @@ import {
     DotCMSTempFile,
     DotCMSContentlet
 } from 'dotcms-models';
-import { DotUploadService } from './services/dot-upload.service';
+import {DotUploadService, fallbackErrorMessages} from './services/dot-upload.service';
 import { DotHttpErrorResponse } from '../../../models/dot-http-error-response.model';
 import { DotBinaryFileComponent } from '../dot-binary-file/dot-binary-file';
 
 const SUBMIT_FORM_API_URL = '/api/v1/workflow/actions/default/fire/NEW';
-const fallbackErrorMessages = {
-    500: '500 Internal Server Error',
-    400: '400 Bad Request',
-    401: '401 Unauthorized Error'
-};
 
 @Component({
     tag: 'dot-form',
