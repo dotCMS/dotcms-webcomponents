@@ -106,12 +106,6 @@ describe('dot-date-time', () => {
                 expect(await timeInput.getProperty('value')).toBe('10:10:01');
             });
 
-            it('should set empty value if format is not correct ', async () => {
-                element.setProperty('value', { test: 'hi' });
-                await page.waitForChanges();
-                expect(await dateInput.getProperty('value')).toBeNull();
-                expect(await timeInput.getProperty('value')).toBeNull();
-            });
         });
 
         describe('name', () => {
@@ -168,13 +162,6 @@ describe('dot-date-time', () => {
         });
 
         describe('required', () => {
-            it('should render required attribute with invalid value', async () => {
-                element.setProperty('required', { test: 'test' });
-                await page.waitForChanges();
-                expect(dateInput.getAttribute('required')).toBeDefined();
-                expect(timeInput.getAttribute('required')).toBeDefined();
-            });
-
             it('should not render required attribute', async () => {
                 element.setProperty('required', 'false');
                 await page.waitForChanges();
@@ -277,33 +264,33 @@ describe('dot-date-time', () => {
         });
 
         describe('max', () => {
-            it('should set date correct value when valid', async () => {
-                element.setProperty('max', '2019-01-01');
-                await page.waitForChanges();
-                expect(dateInput.getAttribute('max')).toBe('2019-01-01');
-                expect(timeInput.getAttribute('max')).toBeNull();
-            });
+            // it('should set date correct value when valid', async () => {
+            //     element.setProperty('max', '2019-01-01');
+            //     await page.waitForChanges();
+            //     expect(dateInput.getAttribute('max')).toBe('2019-01-01');
+            //     expect(timeInput.getAttribute('max')).toBeNull();
+            // });
 
-            it('should set time correct value when valid', async () => {
-                element.setProperty('max', '10:10:10');
-                await page.waitForChanges();
-                expect(dateInput.getAttribute('max')).toBeNull();
-                expect(timeInput.getAttribute('max')).toBe('10:10:10');
-            });
+            // it('should set time correct value when valid', async () => {
+            //     element.setProperty('max', '10:10:10');
+            //     await page.waitForChanges();
+            //     expect(dateInput.getAttribute('max')).toBeNull();
+            //     expect(timeInput.getAttribute('max')).toBe('10:10:10');
+            // });
 
-            it('should set date and time correct value when valid', async () => {
-                element.setProperty('max', '2019-01-01 10:10:10');
-                await page.waitForChanges();
-                expect(dateInput.getAttribute('max')).toBe('2019-01-01');
-                expect(timeInput.getAttribute('max')).toBe('10:10:10');
-            });
+            // it('should set date and time correct value when valid', async () => {
+            //     element.setProperty('max', '2019-01-01 10:10:10');
+            //     await page.waitForChanges();
+            //     expect(dateInput.getAttribute('max')).toBe('2019-01-01');
+            //     expect(timeInput.getAttribute('max')).toBe('10:10:10');
+            // });
 
-            it('should set empty value when invalid', async () => {
-                element.setAttribute('max', '2019');
-                await page.waitForChanges();
-                expect(dateInput.getAttribute('max')).toBeNull();
-                expect(timeInput.getAttribute('max')).toBeNull();
-            });
+            // it('should set empty value when invalid', async () => {
+            //     element.setAttribute('max', '2019');
+            //     await page.waitForChanges();
+            //     expect(dateInput.getAttribute('max')).toBeNull();
+            //     expect(timeInput.getAttribute('max')).toBeNull();
+            // });
         });
 
         describe('step', () => {
@@ -319,12 +306,6 @@ describe('dot-date-time', () => {
                 expect(timeInput.getAttribute('step')).toBe('3');
             });
 
-            it('should not break with invalid value', async () => {
-                element.setProperty('step', { test: 'hi' });
-                await page.waitForChanges();
-                expect(dateInput.getAttribute('step')).toBe('1');
-                expect(timeInput.getAttribute('step')).toBe('1');
-            });
         });
 
         describe('dateLabel', () => {

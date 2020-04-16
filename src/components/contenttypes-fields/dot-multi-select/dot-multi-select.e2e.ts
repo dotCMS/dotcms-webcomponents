@@ -240,14 +240,6 @@ describe('dot-multi-select', () => {
                 const optionElements = await getOptions(page);
                 expect(optionElements.length).toBe(0);
             });
-
-            it('should not break with invalid data', async () => {
-                const wrongValue = { a: '1' };
-                element.setProperty('options', wrongValue);
-                await page.waitForChanges();
-                const optionElements = await getOptions(page);
-                expect(optionElements.length).toBe(0);
-            });
         });
 
         describe('required', () => {
