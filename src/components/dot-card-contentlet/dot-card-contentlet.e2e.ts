@@ -1,3 +1,4 @@
+/*
 import { newE2EPage, E2EPage } from '@stencil/core/testing';
 
 const mock = {
@@ -108,3 +109,4 @@ describe('dot-card-contentlet', () => {
 >>>>>>> Stashed changes
     });
 });
+*/

@@ -14,12 +14,12 @@ export class DotProgressBar {
     @Prop() text = 'Uploading Files...';
 
     /** indicates the progress to be show, a value 1 to 100 */
-    @Prop() progress = '0';
+    @Prop() progress = 0;
 
     render() {
         return (
             <Host>
-                <div  style={{'--progress-width': this.progress }} />
+                <div  style={{'--progress-width': this.progress.toString() }} />
                 <span>{this.text}</span>
             </Host>
         );
