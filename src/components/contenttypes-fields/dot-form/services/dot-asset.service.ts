@@ -10,7 +10,7 @@ export class DotAssetService {
         files: DotCMSTempFile[],
         updateCallback: (files, processed) => number,
         url?: string
-    ): Promise<any> {
+    ): Promise<Response[] | DotHttpErrorFileResponse[]> {
         const endPoint = url ? url : '/api/v1/workflow/actions/default/fire/NEW';
         const promises = [];
         let filesCreated = 1;
@@ -33,7 +33,6 @@ export class DotAssetService {
                     body: JSON.stringify(data)
                 })
                     .then((response: Response) => {
-                        console.log(`${files.length} --- ${filesCreated}`);
                         updateCallback(files.length, filesCreated++);
                         return response;
                     })
@@ -41,15 +40,15 @@ export class DotAssetService {
             );
         });
 
-        return Promise.all(promises).then(async (responses: Response[]) => {
+        return Promise.all(promises).then(async (response: Response[]) => {
             const errors: DotHttpErrorFileResponse[] = [];
-            responses.forEach((response: Response | DotHttpErrorFileResponse, $index: number) => {
-                if (response.status !== 200) {
+            response.forEach((res: Response | DotHttpErrorFileResponse, $index: number) => {
+                if (res.status !== 200) {
                     errors.push({
                         message:
-                            (response as DotHttpErrorResponse).message ||
-                            fallbackErrorMessages[response.status],
-                        status: response.status,
+                            (res as DotHttpErrorResponse).message ||
+                            fallbackErrorMessages[res.status],
+                        status: res.status,
                         fileName: files[$index].fileName
                     });
                 }
@@ -57,7 +56,7 @@ export class DotAssetService {
             if (errors.length) {
                 throw errors;
             } else {
-                return responses;
+                return response;
             }
         });
     }

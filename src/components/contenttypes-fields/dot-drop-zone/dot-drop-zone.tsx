@@ -4,9 +4,10 @@
  * @export
  * @class DotDropZone
  */
-import { Component, EventEmitter, h, Host, Prop, State, Event, Listen } from '@stencil/core';
+import { Component, EventEmitter, h, Host, Prop, State, Event } from '@stencil/core';
 import '@material/mwc-icon';
 import '@material/mwc-dialog';
+import '@material/mwc-list';
 import { DotUploadService } from '../dot-form/services/dot-upload.service';
 import { DotCMSTempFile } from 'dotcms-models';
 import { DotAssetService } from '../dot-form/services/dot-asset.service';
@@ -29,10 +30,19 @@ export class DotDropZone {
     /** Legend to be shown when uploading files */
     @Prop() uploadFileText = 'Uploading Files...';
 
+    /** Labels to be shown in error dialog */
+    @Prop()
+    dialogLabels = {
+        closeButton: 'Close',
+        uploadErrorHeader: 'Uploading File Results',
+        dotAssetErrorHeader: 'Creating DotAssets Results'
+    };
+
     /** Legend to be shown when creating dotAssets */
     @Prop() createAssetsText = 'Creating DotAssets';
 
-    @Event() dotDropZoneUploadComplete: EventEmitter;
+    /** Emit an array of response with the DotAssets just created */
+    @Event() dotDropZoneUploadComplete: EventEmitter<Response[]>;
 
     @State()
     classes = {
@@ -40,11 +50,13 @@ export class DotDropZone {
         'drag-enter': false
     };
 
-    @State() progressIndicator = 1;
+    @State() progressIndicator = 0;
     @State() progressBarText = '';
+
     private dropEventTarget = null;
     private showDialog = false;
     private errorMessage = '';
+    private dialogHeader = '';
 
     componentDidLoad(): void {
         const dialog = document.querySelector('mwc-dialog');
@@ -70,10 +82,10 @@ export class DotDropZone {
                         progress={this.progressIndicator}
                         text={this.progressBarText}
                     />
-                    <mwc-dialog open={this.showDialog}>
+                    <mwc-dialog heading={this.dialogHeader} open={this.showDialog}>
                         <div innerHTML={this.errorMessage} />
                         <mwc-button slot="primaryAction" dialogAction="close">
-                            Close
+                            {this.dialogLabels.closeButton}
                         </mwc-button>
                     </mwc-dialog>
                 </div>
@@ -115,12 +127,12 @@ export class DotDropZone {
 
     private uploadTemFiles(event: DragEvent) {
         const uploadService = new DotUploadService();
-        const files = [];
+        const files: File[] = [];
         this.progressBarText = this.uploadFileText;
         if (event.dataTransfer.items) {
             for (let i = 0; i < event.dataTransfer.items.length; i++) {
                 if (event.dataTransfer.items[i].kind === 'file') {
-                    const file = event.dataTransfer.items[i].getAsFile();
+                    const file: File = event.dataTransfer.items[i].getAsFile();
                     files.push(file);
                 }
             }
@@ -136,11 +148,12 @@ export class DotDropZone {
                 this.createDotAsset(Array.isArray(data) ? data : [data]);
             })
             .catch(({ message }: DotHttpErrorResponse) => {
+                this.dialogHeader = this.dialogLabels ? this.dialogLabels.uploadErrorHeader : '';
                 this.errorMessage = message;
                 this.showDialog = true;
             })
             .finally(() => {
-                this.progressIndicator = 1;
+                this.progressIndicator = 0;
             });
     }
 
@@ -149,22 +162,21 @@ export class DotDropZone {
         this.progressBarText = `${this.createAssetsText} ${files.length}/0`;
         assetService
             .create(files, this.updateProgressBar.bind(this), this.dotAssetsURL)
-            .then((responses: Response[]) => {
-                console.log('create success Response: ', responses);
+            .then((response: Response[]) => {
                 this.hideOverlay();
-                this.dotDropZoneUploadComplete.emit(true);
+                this.dotDropZoneUploadComplete.emit(response);
             })
             .catch((errors: DotHttpErrorFileResponse[]) => {
-                //TODO: Send error notification
-                this.errorMessage = '<ul>';
+                this.dialogHeader = `${errors.length} out of ${files.length} files fail on DotAsset creation`;
+                this.errorMessage = '<mwc-list>';
                 errors.forEach((error: DotHttpErrorFileResponse) => {
-                    this.errorMessage += `<li>${error.fileName}: ${error.message}</li>`;
+                    this.errorMessage += `<mwc-list-item disabled="true" >${error.fileName}: ${error.message}</mwc-list-item>`;
                 });
-                this.errorMessage += '</ul>'
+                this.errorMessage += '</mwc-list>';
                 this.showDialog = true;
             })
             .finally(() => {
-                this.progressIndicator = 1;
+                this.progressIndicator = 0;
             });
     }
 

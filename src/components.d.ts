@@ -451,6 +451,14 @@ export namespace Components {
          */
         "createAssetsText": string;
         /**
+          * Labels to be shown in error dialog
+         */
+        "dialogLabels": {
+            closeButton: string;
+            uploadErrorHeader: string;
+            dotAssetErrorHeader: string;
+        };
+        /**
           * URL to endpoint to create dotAssets
          */
         "dotAssetsURL": string;
@@ -1713,6 +1721,14 @@ declare namespace LocalJSX {
          */
         "createAssetsText"?: string;
         /**
+          * Labels to be shown in error dialog
+         */
+        "dialogLabels"?: {
+            closeButton: string;
+            uploadErrorHeader: string;
+            dotAssetErrorHeader: string;
+        };
+        /**
           * URL to endpoint to create dotAssets
          */
         "dotAssetsURL"?: string;
@@ -1721,7 +1737,10 @@ declare namespace LocalJSX {
          */
         "dropFilesText"?: string;
         "maxFileSize"?: string;
-        "onDotDropZoneUploadComplete"?: (event: CustomEvent<any>) => void;
+        /**
+          * Emit an array of response with the DotAssets just created
+         */
+        "onDotDropZoneUploadComplete"?: (event: CustomEvent<Response[]>) => void;
         /**
           * Legend to be shown when uploading files
          */

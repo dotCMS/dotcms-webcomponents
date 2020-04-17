@@ -1,5 +1,6 @@
 import { DotCMSTempFile } from 'dotcms-models';
 import { DotHttpErrorResponse } from '../../../../models/dot-http-error-response.model';
+import { DotHttpRequestOptions } from '../../../../models/dot-http-request-options.model';
 
 export const fallbackErrorMessages = {
     500: '500 Internal Server Error',
@@ -11,9 +12,10 @@ export class DotUploadService {
     constructor() {}
 
     /**
-     * Will call the corresponding endpoint yo upload a temporary file.
+     * Will call the corresponding endpoint to upload a temporary file.
      * Return the information of tha file in the server
      * @param file
+     * @param maxSize
      *
      * @memberof DotUploadService
      */
@@ -49,8 +51,18 @@ export class DotUploadService {
         });
     }
 
+    /**
+     * Will call the temp resource endpoint to upload a temporary file.
+     * With a callback to track the progress of the upload
+     * Return the information of tha file(s) in the server
+     * @param data
+     * @param progressCallBack
+     * @param maxSize
+     *
+     * @memberof DotUploadService
+     */
     uploadBinaryFile(
-        data: any,
+        data: File | File[],
         progressCallBack?,
         maxSize?: string
     ): Promise<DotCMSTempFile | DotCMSTempFile[]> {
@@ -87,13 +99,16 @@ export class DotUploadService {
         });
     }
 
-    private dotRequest(url, opts, progressCallBack): Promise<XMLHttpRequest> {
+    private dotRequest(
+        url: string,
+        opts: DotHttpRequestOptions,
+        progressCallBack: (progress: number) => {}
+    ): Promise<XMLHttpRequest> {
         return new Promise((res, rej) => {
             const xhr = new XMLHttpRequest();
             xhr.open(opts.method || 'get', url);
-            for (let [key, value] of Object.entries(opts.headers || {})) {
-                xhr.setRequestHeader(key, opts.headers[key]);
-                console.log(value);
+            for (let name in opts.headers || {}) {
+                xhr.setRequestHeader(name, opts.headers[name]);
             }
             xhr.onload = () => res(xhr);
             xhr.onerror = rej;
