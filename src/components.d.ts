@@ -13,6 +13,41 @@ import { MenuAction, } from "./components/dot-context-menu/dot-context-menu";
 import { DotCMSContentTypeLayoutColumn, DotCMSContentTypeLayoutRow, } from "dotcms-models";
 import { DotSelectButtonOption, } from "./models/dotSelectButtonOption";
 export namespace Components {
+    interface DotAssetDropZone {
+        /**
+          * Legend to be shown when creating dotAssets
+         */
+        "createAssetsText": string;
+        /**
+          * Labels to be shown in error dialog
+         */
+        "dialogLabels": {
+            closeButton: string;
+            uploadErrorHeader: string;
+            dotAssetErrorHeader: string;
+        };
+        /**
+          * URL to endpoint to create dotAssets
+         */
+        "dotAssetsURL": string;
+        /**
+          * Legend to be shown when dropping files
+         */
+        "dropFilesText": string;
+        "maxFileSize": string;
+        /**
+          * Error to be shown when try to upload a bigger size file than allowed
+         */
+        "multiMaxSizeErrorLabel": string;
+        /**
+          * Error to be shown when try to upload a bigger size file than allowed
+         */
+        "singeMaxSizeErrorLabel": string;
+        /**
+          * Legend to be shown when uploading files
+         */
+        "uploadFileText": string;
+    }
     interface DotAutocomplete {
         /**
           * Function or array of string to get the data to use for the autocomplete search
@@ -444,33 +479,6 @@ export namespace Components {
           * Value format yyyy-mm-dd hh:mm:ss e.g., 2005-12-01 15:22:00
          */
         "value": string;
-    }
-    interface DotDropZone {
-        /**
-          * Legend to be shown when creating dotAssets
-         */
-        "createAssetsText": string;
-        /**
-          * Labels to be shown in error dialog
-         */
-        "dialogLabels": {
-            closeButton: string;
-            uploadErrorHeader: string;
-            dotAssetErrorHeader: string;
-        };
-        /**
-          * URL to endpoint to create dotAssets
-         */
-        "dotAssetsURL": string;
-        /**
-          * Legend to be shown when dropping files
-         */
-        "dropFilesText": string;
-        "maxFileSize": string;
-        /**
-          * Legend to be shown when uploading files
-         */
-        "uploadFileText": string;
     }
     interface DotErrorMessage {
     }
@@ -1005,6 +1013,12 @@ export namespace Components {
     }
 }
 declare global {
+    interface HTMLDotAssetDropZoneElement extends Components.DotAssetDropZone, HTMLStencilElement {
+    }
+    var HTMLDotAssetDropZoneElement: {
+        prototype: HTMLDotAssetDropZoneElement;
+        new (): HTMLDotAssetDropZoneElement;
+    };
     interface HTMLDotAutocompleteElement extends Components.DotAutocomplete, HTMLStencilElement {
     }
     var HTMLDotAutocompleteElement: {
@@ -1125,12 +1139,6 @@ declare global {
         prototype: HTMLDotDateTimeElement;
         new (): HTMLDotDateTimeElement;
     };
-    interface HTMLDotDropZoneElement extends Components.DotDropZone, HTMLStencilElement {
-    }
-    var HTMLDotDropZoneElement: {
-        prototype: HTMLDotDropZoneElement;
-        new (): HTMLDotDropZoneElement;
-    };
     interface HTMLDotErrorMessageElement extends Components.DotErrorMessage, HTMLStencilElement {
     }
     var HTMLDotErrorMessageElement: {
@@ -1246,6 +1254,7 @@ declare global {
         new (): HTMLKeyValueTableElement;
     };
     interface HTMLElementTagNameMap {
+        "dot-asset-drop-zone": HTMLDotAssetDropZoneElement;
         "dot-autocomplete": HTMLDotAutocompleteElement;
         "dot-badge": HTMLDotBadgeElement;
         "dot-binary-file": HTMLDotBinaryFileElement;
@@ -1266,7 +1275,6 @@ declare global {
         "dot-date": HTMLDotDateElement;
         "dot-date-range": HTMLDotDateRangeElement;
         "dot-date-time": HTMLDotDateTimeElement;
-        "dot-drop-zone": HTMLDotDropZoneElement;
         "dot-error-message": HTMLDotErrorMessageElement;
         "dot-form": HTMLDotFormElement;
         "dot-form-column": HTMLDotFormColumnElement;
@@ -1289,6 +1297,45 @@ declare global {
     }
 }
 declare namespace LocalJSX {
+    interface DotAssetDropZone {
+        /**
+          * Legend to be shown when creating dotAssets
+         */
+        "createAssetsText"?: string;
+        /**
+          * Labels to be shown in error dialog
+         */
+        "dialogLabels"?: {
+            closeButton: string;
+            uploadErrorHeader: string;
+            dotAssetErrorHeader: string;
+        };
+        /**
+          * URL to endpoint to create dotAssets
+         */
+        "dotAssetsURL"?: string;
+        /**
+          * Legend to be shown when dropping files
+         */
+        "dropFilesText"?: string;
+        "maxFileSize"?: string;
+        /**
+          * Error to be shown when try to upload a bigger size file than allowed
+         */
+        "multiMaxSizeErrorLabel"?: string;
+        /**
+          * Emit an array of response with the DotAssets just created
+         */
+        "onUploadComplete"?: (event: CustomEvent<Response[]>) => void;
+        /**
+          * Error to be shown when try to upload a bigger size file than allowed
+         */
+        "singeMaxSizeErrorLabel"?: string;
+        /**
+          * Legend to be shown when uploading files
+         */
+        "uploadFileText"?: string;
+    }
     interface DotAutocomplete {
         /**
           * Function or array of string to get the data to use for the autocomplete search
@@ -1714,37 +1761,6 @@ declare namespace LocalJSX {
           * Value format yyyy-mm-dd hh:mm:ss e.g., 2005-12-01 15:22:00
          */
         "value"?: string;
-    }
-    interface DotDropZone {
-        /**
-          * Legend to be shown when creating dotAssets
-         */
-        "createAssetsText"?: string;
-        /**
-          * Labels to be shown in error dialog
-         */
-        "dialogLabels"?: {
-            closeButton: string;
-            uploadErrorHeader: string;
-            dotAssetErrorHeader: string;
-        };
-        /**
-          * URL to endpoint to create dotAssets
-         */
-        "dotAssetsURL"?: string;
-        /**
-          * Legend to be shown when dropping files
-         */
-        "dropFilesText"?: string;
-        "maxFileSize"?: string;
-        /**
-          * Emit an array of response with the DotAssets just created
-         */
-        "onDotDropZoneUploadComplete"?: (event: CustomEvent<Response[]>) => void;
-        /**
-          * Legend to be shown when uploading files
-         */
-        "uploadFileText"?: string;
     }
     interface DotErrorMessage {
     }
@@ -2270,6 +2286,7 @@ declare namespace LocalJSX {
         "onDelete"?: (event: CustomEvent<number>) => void;
     }
     interface IntrinsicElements {
+        "dot-asset-drop-zone": DotAssetDropZone;
         "dot-autocomplete": DotAutocomplete;
         "dot-badge": DotBadge;
         "dot-binary-file": DotBinaryFile;
@@ -2290,7 +2307,6 @@ declare namespace LocalJSX {
         "dot-date": DotDate;
         "dot-date-range": DotDateRange;
         "dot-date-time": DotDateTime;
-        "dot-drop-zone": DotDropZone;
         "dot-error-message": DotErrorMessage;
         "dot-form": DotForm;
         "dot-form-column": DotFormColumn;
@@ -2316,6 +2332,7 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
+            "dot-asset-drop-zone": LocalJSX.DotAssetDropZone & JSXBase.HTMLAttributes<HTMLDotAssetDropZoneElement>;
             "dot-autocomplete": LocalJSX.DotAutocomplete & JSXBase.HTMLAttributes<HTMLDotAutocompleteElement>;
             "dot-badge": LocalJSX.DotBadge & JSXBase.HTMLAttributes<HTMLDotBadgeElement>;
             "dot-binary-file": LocalJSX.DotBinaryFile & JSXBase.HTMLAttributes<HTMLDotBinaryFileElement>;
@@ -2336,7 +2353,6 @@ declare module "@stencil/core" {
             "dot-date": LocalJSX.DotDate & JSXBase.HTMLAttributes<HTMLDotDateElement>;
             "dot-date-range": LocalJSX.DotDateRange & JSXBase.HTMLAttributes<HTMLDotDateRangeElement>;
             "dot-date-time": LocalJSX.DotDateTime & JSXBase.HTMLAttributes<HTMLDotDateTimeElement>;
-            "dot-drop-zone": LocalJSX.DotDropZone & JSXBase.HTMLAttributes<HTMLDotDropZoneElement>;
             "dot-error-message": LocalJSX.DotErrorMessage & JSXBase.HTMLAttributes<HTMLDotErrorMessageElement>;
             "dot-form": LocalJSX.DotForm & JSXBase.HTMLAttributes<HTMLDotFormElement>;
             "dot-form-column": LocalJSX.DotFormColumn & JSXBase.HTMLAttributes<HTMLDotFormColumnElement>;

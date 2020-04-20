@@ -1,24 +1,31 @@
 /**
- * Represent a dotcms DotDropZone control.
+ * Represent a dotcms DotAssetDropZone control.
  *
  * @export
- * @class DotDropZone
+ * @class DotAssetDropZone
  */
 import { Component, EventEmitter, h, Host, Prop, State, Event } from '@stencil/core';
 import '@material/mwc-icon';
 import '@material/mwc-dialog';
-import '@material/mwc-list';
+import '@material/mwc-button';
 import { DotUploadService } from '../dot-form/services/dot-upload.service';
 import { DotCMSTempFile } from 'dotcms-models';
 import { DotAssetService } from '../dot-form/services/dot-asset.service';
 import { DotHttpErrorResponse } from '../../../models/dot-http-error-response.model';
 import { DotHttpErrorFileResponse } from '../../../models/dot-http-error-file-response.model';
 
+enum DotDropStatus {
+    DROP = 'drop',
+    DRAGENTER = 'drag-enter',
+    CLEAR = ''
+}
+
 @Component({
-    tag: 'dot-drop-zone',
-    styleUrl: 'dot-drop-zone.scss'
+    tag: 'dot-asset-drop-zone',
+    styleUrl: 'dot-asset-drop-zone.scss',
+    shadow: true
 })
-export class DotDropZone {
+export class DotAssetDropZone {
     /** URL to endpoint to create dotAssets*/
     @Prop() dotAssetsURL = '/api/v1/workflow/actions/default/fire/NEW';
 
@@ -41,40 +48,34 @@ export class DotDropZone {
     /** Legend to be shown when creating dotAssets */
     @Prop() createAssetsText = 'Creating DotAssets';
 
+    /** Error to be shown when try to upload a bigger size file than allowed*/
+    @Prop() multiMaxSizeErrorLabel = 'One or more of the files exceeds the maximum file size';
+
+    /** Error to be shown when try to upload a bigger size file than allowed*/
+    @Prop() singeMaxSizeErrorLabel = 'The file exceeds the maximum file size';
+
     /** Emit an array of response with the DotAssets just created */
-    @Event() dotDropZoneUploadComplete: EventEmitter<Response[]>;
+    @Event() uploadComplete: EventEmitter<Response[]>;
 
-    @State()
-    classes = {
-        drop: false,
-        'drag-enter': false
-    };
-
+    @State() dropState: DotDropStatus = DotDropStatus.CLEAR;
     @State() progressIndicator = 0;
     @State() progressBarText = '';
 
     private dropEventTarget = null;
-    private showDialog = false;
     private errorMessage = '';
     private dialogHeader = '';
-
-    componentDidLoad(): void {
-        const dialog = document.querySelector('mwc-dialog');
-        dialog.addEventListener('closing', () => this.hideOverlay());
-    }
 
     render() {
         return (
             <Host
-                class={{ ...this.classes }}
                 ondrop={(event: DragEvent) => this.dropHandler(event)}
                 ondragenter={(event: DragEvent) => this.dragEnterHandler(event)}
                 ondragleave={(event: DragEvent) => this.dragOutHandler(event)}
                 ondragover={(event: DragEvent) => this.dragOverHandler(event)}
             >
-                <div class="dot-drop-zone__overlay" />
-                <div class="dot-drop-zone__indicators">
-                    <div class="dot-drop-zone__icon">
+                <div class={`${this.dropState} dot-asset-drop-zone__overlay`} />
+                <div class={`${this.dropState} dot-asset-drop-zone__indicators`}>
+                    <div class="dot-asset-drop-zone__icon">
                         <mwc-icon>get_app</mwc-icon>
                         <span>{this.dropFilesText}</span>
                     </div>
@@ -82,9 +83,13 @@ export class DotDropZone {
                         progress={this.progressIndicator}
                         text={this.progressBarText}
                     />
-                    <mwc-dialog heading={this.dialogHeader} open={this.showDialog}>
-                        <div innerHTML={this.errorMessage} />
-                        <mwc-button slot="primaryAction" dialogAction="close">
+                    <mwc-dialog
+                        heading={this.dialogHeader}
+                        open={!!this.errorMessage}
+                        onClosing={() => this.hideOverlay()}
+                    >
+                        {this.errorMessage}
+                        <mwc-button dense unelevated slot="primaryAction" dialogAction="close">
                             {this.dialogLabels.closeButton}
                         </mwc-button>
                     </mwc-dialog>
@@ -97,20 +102,20 @@ export class DotDropZone {
     private dragEnterHandler(event: DragEvent) {
         event.preventDefault();
         this.dropEventTarget = event.target;
-        this.classes = { ...this.classes, ...{ 'drag-enter': true } };
+        this.dropState = DotDropStatus.DRAGENTER;
     }
 
     private dragOutHandler(event: DragEvent) {
         event.preventDefault();
         // avoid problems with child elements
         if (event.target === this.dropEventTarget) {
-            this.classes = { ...this.classes, ...{ 'drag-enter': false, drop: false } };
+            this.dropState = DotDropStatus.CLEAR;
         }
     }
 
     private dropHandler(event: DragEvent) {
         event.preventDefault();
-        this.classes = { ...this.classes, ...{ drop: true, 'drag-enter': false } };
+        this.dropState = DotDropStatus.DROP;
         this.uploadTemFiles(event);
     }
 
@@ -118,28 +123,20 @@ export class DotDropZone {
         event.preventDefault();
     }
 
-    private updateProgressBar(value: number, processed?: number) {
-        this.progressIndicator = processed ? processed / value * 100 : value;
-        if (processed) {
-            this.progressBarText = `${this.createAssetsText} ${value}/${processed}`;
-        }
-    }
-
     private uploadTemFiles(event: DragEvent) {
         const uploadService = new DotUploadService();
         const files: File[] = [];
-        this.progressBarText = this.uploadFileText;
+        this.updateProgressBar(0, this.uploadFileText);
         if (event.dataTransfer.items) {
-            for (let i = 0; i < event.dataTransfer.items.length; i++) {
-                if (event.dataTransfer.items[i].kind === 'file') {
-                    const file: File = event.dataTransfer.items[i].getAsFile();
-                    files.push(file);
+            Array.from(event.dataTransfer.items).map((item: DataTransferItem) => {
+                if (item.kind === 'file') {
+                    files.push(item.getAsFile());
                 }
-            }
+            });
         } else {
-            for (let i = 0; i < event.dataTransfer.files.length; i++) {
-                files.push(event.dataTransfer.files.length[0]);
-            }
+            Array.from(event.dataTransfer.files).map((file: File) => {
+                files.push(file);
+            });
         }
 
         uploadService
@@ -149,39 +146,76 @@ export class DotDropZone {
             })
             .catch(({ message }: DotHttpErrorResponse) => {
                 this.dialogHeader = this.dialogLabels ? this.dialogLabels.uploadErrorHeader : '';
-                this.errorMessage = message;
-                this.showDialog = true;
+                this.errorMessage = this.isMaxsizeError(message)
+                    ? <span>{this.multiMaxSizeErrorLabel}</span>
+                    : <span>{message}</span>;
             })
             .finally(() => {
-                this.progressIndicator = 0;
+                this.updateProgressBar(0, '');
             });
     }
 
     private createDotAsset(files: DotCMSTempFile[]) {
         const assetService = new DotAssetService();
-        this.progressBarText = `${this.createAssetsText} ${files.length}/0`;
+        this.updateProgressBar(0, `${this.createAssetsText} ${files.length}/0`);
         assetService
-            .create(files, this.updateProgressBar.bind(this), this.dotAssetsURL)
+            .create({
+                files: files,
+                updateCallback: filesCreated => {
+                    this.updateDotAssetProgress(files.length, filesCreated);
+                },
+                url: this.dotAssetsURL
+            })
             .then((response: Response[]) => {
                 this.hideOverlay();
-                this.dotDropZoneUploadComplete.emit(response);
+                this.uploadComplete.emit(response);
             })
             .catch((errors: DotHttpErrorFileResponse[]) => {
                 this.dialogHeader = `${errors.length} out of ${files.length} files fail on DotAsset creation`;
-                this.errorMessage = '<mwc-list>';
-                errors.forEach((error: DotHttpErrorFileResponse) => {
-                    this.errorMessage += `<mwc-list-item disabled="true" >${error.fileName}: ${error.message}</mwc-list-item>`;
-                });
-                this.errorMessage += '</mwc-list>';
-                this.showDialog = true;
+                this.errorMessage = this.formatErrorMessage(errors);
             })
             .finally(() => {
-                this.progressIndicator = 0;
+                this.updateProgressBar(0, this.uploadFileText);
             });
     }
 
+    private updateProgressBar(progress: number, text?: string) {
+        this.progressIndicator = progress;
+        if (text) {
+            this.progressBarText = text;
+        }
+    }
+
+    private updateDotAssetProgress(files: number, filesCreated: number) {
+        this.updateProgressBar(
+            filesCreated / files * 100,
+            `${this.createAssetsText} ${files}/${filesCreated}`
+        );
+    }
+
     private hideOverlay() {
-        this.showDialog = false;
-        this.classes = { 'drag-enter': false, drop: false };
+        this.errorMessage = '';
+        this.dropState = DotDropStatus.CLEAR;
+    }
+
+    private isMaxsizeError(error: string): boolean {
+        return error.includes('The maximum file size for this field is');
+    }
+
+    private formatErrorMessage(errors: DotHttpErrorFileResponse[]) {
+        return (
+            <ul>
+                {errors.map((err: DotHttpErrorFileResponse) => {
+                    return (
+                        <li>
+                            {err.fileName}:{' '}
+                            {this.isMaxsizeError(err.message)
+                                ? this.singeMaxSizeErrorLabel
+                                : err.message}
+                        </li>
+                    );
+                })}
+            </ul>
+        );
     }
 }

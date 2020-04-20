@@ -2,20 +2,22 @@ import { DotCMSTempFile } from 'dotcms-models';
 import { DotHttpErrorResponse } from '../../../../models/dot-http-error-response.model';
 import { fallbackErrorMessages } from './dot-upload.service';
 import { DotHttpErrorFileResponse } from '../../../../models/dot-http-error-file-response.model';
+import { DotAssetCreateOptions } from '../../../../models/dot-asset-create-options.model';
 
 export class DotAssetService {
     constructor() {}
 
-    create(
-        files: DotCMSTempFile[],
-        updateCallback: (files, processed) => number,
-        url?: string
-    ): Promise<Response[] | DotHttpErrorFileResponse[]> {
-        const endPoint = url ? url : '/api/v1/workflow/actions/default/fire/NEW';
+    /**
+     * Create DotAssets based on options passed in DotAssetCreateOptions
+     * @param options
+     *
+     * @memberof DotAssetService
+     */
+    create(options: DotAssetCreateOptions): Promise<Response[] | DotHttpErrorFileResponse[]> {
         const promises = [];
         let filesCreated = 1;
 
-        files.forEach((file: DotCMSTempFile) => {
+        options.files.map((file: DotCMSTempFile) => {
             const data = {
                 contentlet: {
                     baseType: 'dotAsset',
@@ -24,7 +26,7 @@ export class DotAssetService {
             };
 
             promises.push(
-                fetch(endPoint, {
+                fetch(options.url, {
                     method: 'PUT',
                     headers: {
                         Origin: window.location.hostname,
@@ -33,7 +35,7 @@ export class DotAssetService {
                     body: JSON.stringify(data)
                 })
                     .then((response: Response) => {
-                        updateCallback(files.length, filesCreated++);
+                        options.updateCallback(filesCreated++);
                         return response;
                     })
                     .catch(e => e)
@@ -49,7 +51,7 @@ export class DotAssetService {
                             (res as DotHttpErrorResponse).message ||
                             fallbackErrorMessages[res.status],
                         status: res.status,
-                        fileName: files[$index].fileName
+                        fileName: options.files[$index].fileName
                     });
                 }
             });

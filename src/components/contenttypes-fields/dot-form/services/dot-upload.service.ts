@@ -69,13 +69,11 @@ export class DotUploadService {
         let path = `/api/v1/temp`;
         path += maxSize ? `?maxFileLength=${maxSize}` : '';
         const formData = new FormData();
-        if (Array.isArray(data)) {
-            data.forEach((file: File) => {
-                formData.append('files', file);
-            });
-        } else {
-            formData.append('file', data);
-        }
+
+        const files = Array.isArray(data) ? data : [data];
+        files.forEach((file: File) => {
+            formData.append('files', file);
+        });
 
         return this.dotRequest(
             path,

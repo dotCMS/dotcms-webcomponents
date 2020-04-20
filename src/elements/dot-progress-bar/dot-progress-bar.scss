@@ -20,6 +20,7 @@ dot-progress-bar {
             bottom: 0px;
             top: 0px;
             max-width: 100%;
+            transition: width 100ms;
         }
     }
 

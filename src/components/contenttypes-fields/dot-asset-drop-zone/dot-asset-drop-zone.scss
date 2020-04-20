@@ -1,0 +1,87 @@
+@import "variables";
+
+:host {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    position: relative;
+    height: 100%;
+}
+
+.dot-asset-drop-zone__overlay {
+    display: none;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    opacity: 0.8;
+    z-index: 1001;
+    background: #ffffff;
+
+    &.drag-enter,
+    &.drop {
+        display: block;
+    }
+}
+
+.dot-asset-drop-zone__indicators {
+    border: 3px solid transparent;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 1002;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    &.drag-enter {
+        border: 3px dashed var(--color-sec);
+        display: flex;
+
+        .dot-asset-drop-zone__icon {
+            display: block;
+        }
+    }
+    &.drop {
+        border: 3px dashed var(--color-gray);
+        display: flex;
+
+        dot-progress-bar {
+            display: block;
+        }
+    }
+
+    .dot-asset-drop-zone__icon {
+        display: none;
+
+        span {
+            display: block;
+            color: var(--color-sec);
+            margin-top: -20px;
+            font-size: 20px;
+            text-align: center;
+        }
+    }
+
+    dot-progress-bar {
+        width: 200px;
+        display: none;
+
+        span {
+            font-size: 16px;
+        }
+    }
+}
+
+mwc-icon {
+    color: var(--color-sec);
+    --mdc-icon-size: 200px;
+}
+
+mwc-button {
+    @include mwc-dotcms-theme;
+}

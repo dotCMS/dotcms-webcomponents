@@ -17,7 +17,7 @@ export const DopZone = () => {
         }
     ];
     const body = document.createElement('div');
-    const dropZone = document.createElement('dot-drop-zone');
+    const dropZone = document.createElement('dot-asset-drop-zone');
 
     props.forEach(({ name, content }) => {
         dropZone[name] = content;
