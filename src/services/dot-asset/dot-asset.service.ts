@@ -1,8 +1,8 @@
 import { DotCMSTempFile } from 'dotcms-models';
-import { DotHttpErrorResponse } from '../../../../models/dot-http-error-response.model';
-import { fallbackErrorMessages } from './dot-upload.service';
-import { DotHttpErrorFileResponse } from '../../../../models/dot-http-error-file-response.model';
-import { DotAssetCreateOptions } from '../../../../models/dot-asset-create-options.model';
+import { DotHttpErrorResponse } from '../../models/dot-http-error-response.model';
+import { fallbackErrorMessages } from '../../components/contenttypes-fields/dot-form/services/dot-upload.service';
+import { DotHttpErrorFileResponse } from '../../models/dot-http-error-file-response.model';
+import { DotAssetCreateOptions } from '../../models/dot-asset-create-options.model';
 
 export class DotAssetService {
     constructor() {}

@@ -10,7 +10,7 @@ import '@material/mwc-dialog';
 import '@material/mwc-button';
 import { DotUploadService } from '../dot-form/services/dot-upload.service';
 import { DotCMSTempFile } from 'dotcms-models';
-import { DotAssetService } from '../dot-form/services/dot-asset.service';
+import { DotAssetService } from '../../../services/dot-asset/dot-asset.service';
 import { DotHttpErrorResponse } from '../../../models/dot-http-error-response.model';
 import { DotHttpErrorFileResponse } from '../../../models/dot-http-error-file-response.model';
 
@@ -42,7 +42,7 @@ export class DotAssetDropZone {
     dialogLabels = {
         closeButton: 'Close',
         uploadErrorHeader: 'Uploading File Results',
-        dotAssetErrorHeader: 'Creating DotAssets Results'
+        dotAssetErrorHeader: '$0 out of $1 files fail on DotAsset creation'
     };
 
     /** Legend to be shown when creating dotAssets */
@@ -55,7 +55,7 @@ export class DotAssetDropZone {
     @Prop() singeMaxSizeErrorLabel = 'The file exceeds the maximum file size';
 
     /** Emit an array of response with the DotAssets just created */
-    @Event() uploadComplete: EventEmitter<Response[]>;
+    @Event() uploadComplete: EventEmitter<Response[] | DotHttpErrorFileResponse[]>;
 
     @State() dropState: DotDropStatus = DotDropStatus.CLEAR;
     @State() progressIndicator = 0;
@@ -146,9 +146,11 @@ export class DotAssetDropZone {
             })
             .catch(({ message }: DotHttpErrorResponse) => {
                 this.dialogHeader = this.dialogLabels ? this.dialogLabels.uploadErrorHeader : '';
-                this.errorMessage = this.isMaxsizeError(message)
-                    ? <span>{this.multiMaxSizeErrorLabel}</span>
-                    : <span>{message}</span>;
+                this.errorMessage = this.isMaxsizeError(message) ? (
+                    <span>{this.multiMaxSizeErrorLabel}</span>
+                ) : (
+                    <span>{message}</span>
+                );
             })
             .finally(() => {
                 this.updateProgressBar(0, '');
@@ -171,8 +173,11 @@ export class DotAssetDropZone {
                 this.uploadComplete.emit(response);
             })
             .catch((errors: DotHttpErrorFileResponse[]) => {
-                this.dialogHeader = `${errors.length} out of ${files.length} files fail on DotAsset creation`;
+                this.dialogHeader = this.dialogLabels.dotAssetErrorHeader
+                    .replace('$0', errors.length.toString())
+                    .replace('$1', files.length.toString());
                 this.errorMessage = this.formatErrorMessage(errors);
+                this.uploadComplete.emit(errors);
             })
             .finally(() => {
                 this.updateProgressBar(0, this.uploadFileText);
@@ -208,10 +213,7 @@ export class DotAssetDropZone {
                 {errors.map((err: DotHttpErrorFileResponse) => {
                     return (
                         <li>
-                            {err.fileName}:{' '}
-                            {this.isMaxsizeError(err.message)
-                                ? this.singeMaxSizeErrorLabel
-                                : err.message}
+                            {err.message}
                         </li>
                     );
                 })}
