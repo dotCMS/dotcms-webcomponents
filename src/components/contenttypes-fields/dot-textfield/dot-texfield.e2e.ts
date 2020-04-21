@@ -260,12 +260,6 @@ describe('dot-textfield', () => {
                 await page.waitForChanges();
                 expect(input.getAttribute('disabled')).toBeNull();
             });
-
-            it('should render disabled attribute with invalid value', async () => {
-                element.setProperty('disabled', { test: 'test' });
-                await page.waitForChanges();
-                expect(input.getAttribute('disabled')).toBeDefined();
-            });
         });
 
         describe('type', () => {

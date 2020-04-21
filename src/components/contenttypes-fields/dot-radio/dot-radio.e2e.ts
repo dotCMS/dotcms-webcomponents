@@ -147,16 +147,6 @@ describe('dot-radio', () => {
                 const labelElement = await dotTestUtil.getDotLabel(page);
                 expect(labelElement.getAttribute('name')).toBe('');
             });
-
-            it('should not break with invalid data', async () => {
-                element.setProperty('options', 'valueA|1');
-                const wrongValue = [1, 2, '3'];
-                element.setProperty('name', wrongValue);
-                await page.waitForChanges();
-                const option = await getOptions(page);
-                const nameValue = option[0].getAttribute('name');
-                expect(nameValue).toBe('dot-123');
-            });
         });
 
         describe('label', () => {
@@ -166,14 +156,6 @@ describe('dot-radio', () => {
                 await page.waitForChanges();
                 const labelElement = await dotTestUtil.getDotLabel(page);
                 expect(labelElement.getAttribute('label')).toBe(value);
-            });
-
-            it('should not break with invalid data', async () => {
-                const wrongValue = [1, 2, '3'];
-                element.setProperty('label', wrongValue);
-                await page.waitForChanges();
-                const labelElement = await dotTestUtil.getDotLabel(page);
-                expect(labelElement.getAttribute('label')).toEqual('');
             });
         });
 
@@ -197,13 +179,6 @@ describe('dot-radio', () => {
                 expect(radioContainer.getAttribute('aria-describedby')).toBeNull();
                 expect(radioContainer.getAttribute('tabIndex')).toBeNull();
             });
-
-            it('should not break and not render with invalid data', async () => {
-                const wrongValue = [1, 2, 3];
-                element.setProperty('hint', wrongValue);
-                const hintElement = await dotTestUtil.getHint(page);
-                expect(hintElement).toBeNull();
-            });
         });
 
         describe('options', () => {
@@ -222,14 +197,6 @@ describe('dot-radio', () => {
                 const optionElements = await getOptions(page);
                 expect(optionElements.length).toBe(0);
             });
-
-            it('should not break with invalid data', async () => {
-                const wrongValue = { a: '1' };
-                element.setProperty('options', wrongValue);
-                await page.waitForChanges();
-                const optionElements = await getOptions(page);
-                expect(optionElements.length).toBe(0);
-            });
         });
 
         describe('required', () => {
@@ -242,35 +209,6 @@ describe('dot-radio', () => {
             });
 
             it('should not render required error msg', async () => {
-                const errorElement = await dotTestUtil.getErrorMessage(page);
-                expect(errorElement).toBeNull();
-            });
-
-            it('should not break and not render with invalid data', async () => {
-                const wrongValue = [1, 2, 3];
-                element.setProperty('required', wrongValue);
-                await page.waitForChanges();
-                const errorElement = await dotTestUtil.getErrorMessage(page);
-                expect(errorElement).toBeNull();
-            });
-        });
-
-        describe('requiredMessage', () => {
-            it('should not break and not render with invalid data', async () => {
-                const wrongValue = [1, 2, '3'];
-                element.setProperty('requiredMessage', wrongValue);
-                await page.waitForChanges();
-                const errorElement = await dotTestUtil.getErrorMessage(page);
-                expect(errorElement).toBeNull();
-            });
-        });
-
-        describe('required & requiredMessage', () => {
-            it('should not break and not render with invalid data', async () => {
-                const wrongValue = [{ a: 1 }];
-                element.setProperty('required', wrongValue);
-                element.setProperty('requiredMessage', wrongValue);
-                await page.waitForChanges();
                 const errorElement = await dotTestUtil.getErrorMessage(page);
                 expect(errorElement).toBeNull();
             });
@@ -300,17 +238,6 @@ describe('dot-radio', () => {
                 await page.waitForChanges();
                 const optionElements = await getOptions(page);
                 expect(optionElements.length).toBe(0);
-            });
-
-            it('should not break with wrong data type', async () => {
-                const wrongValue = [{ a: 1 }];
-                element.setProperty('options', 'a|1,b|2,c|3');
-                element.setProperty('value', wrongValue);
-                await page.waitForChanges();
-                const optionElements = await getOptions(page);
-                expect(await optionElements[0].getProperty('checked')).toBe(false);
-                expect(await optionElements[1].getProperty('checked')).toBe(false);
-                expect(await optionElements[2].getProperty('checked')).toBe(false);
             });
         });
     });

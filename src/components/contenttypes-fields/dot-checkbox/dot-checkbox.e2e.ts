@@ -233,14 +233,6 @@ describe('dot-checkbox', () => {
                 const optionElements = await getOptions(page);
                 expect(optionElements.length).toBe(0);
             });
-
-            it('should not break with invalid data', async () => {
-                const wrongValue = { a: '1' };
-                element.setProperty('options', wrongValue);
-                await page.waitForChanges();
-                const optionElements = await getOptions(page);
-                expect(optionElements.length).toBe(0);
-            });
         });
 
         describe('required', () => {
@@ -359,6 +351,16 @@ describe('dot-checkbox', () => {
             });
 
             it('should emit when option selected', async () => {
+                page = await newE2EPage({
+                    html: `
+                    <dot-form>
+                        <dot-checkbox
+                            name="testName"
+                            options="|,valueA|1,valueB|2"
+                            required="true">
+                        </dot-checkbox>
+                    </dot-form>`
+                });
                 const optionElements = await getOptions(page);
                 await optionElements[1].click();
                 expect(spyStatusChangeEvent).toHaveReceivedEventDetail({
@@ -393,7 +395,7 @@ describe('dot-checkbox', () => {
         });
 
         describe('Reset', () => {
-            it('should emit StatusChange & ValueChange Events', async () => {
+            it('should emit dotStatusChange & dotValueChange Events', async () => {
                 await element.callMethod('reset');
                 expect(spyStatusChangeEvent).toHaveReceivedEventDetail({
                     name: 'testName',
