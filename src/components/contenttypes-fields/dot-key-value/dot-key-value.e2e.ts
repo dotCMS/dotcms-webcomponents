@@ -338,13 +338,6 @@ describe('dot-key-value', () => {
                 expect(await list.getProperty('items')).toEqual([]);
             });
 
-            it('should handle invalid type', async () => {
-                element.setProperty('value', { hello: 'world' });
-                await page.waitForChanges();
-                const list = await getList();
-                expect(await list.getProperty('items')).toEqual([]);
-            });
-
             it('should handle undefined', async () => {
                 const list = await getList();
                 expect(await list.getProperty('items')).toEqual([]);
