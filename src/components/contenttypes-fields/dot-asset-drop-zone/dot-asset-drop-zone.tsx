@@ -21,8 +21,7 @@ enum DotDropStatus {
 
 @Component({
     tag: 'dot-asset-drop-zone',
-    styleUrl: 'dot-asset-drop-zone.scss',
-    shadow: true
+    styleUrl: 'dot-asset-drop-zone.scss'
 })
 export class DotAssetDropZone {
     /** URL to endpoint to create dotAssets*/
@@ -72,7 +71,6 @@ export class DotAssetDropZone {
                 ondragleave={(event: DragEvent) => this.dragOutHandler(event)}
                 ondragover={(event: DragEvent) => this.dragOverHandler(event)}
             >
-                <div class={`${this.dropState} dot-asset-drop-zone__overlay`} />
                 <div class={`${this.dropState} dot-asset-drop-zone__indicators`}>
                     <div class="dot-asset-drop-zone__icon">
                         <mwc-icon>get_app</mwc-icon>

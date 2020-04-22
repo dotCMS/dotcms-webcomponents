@@ -1,29 +1,15 @@
 @import "variables";
 
-:host {
+dot-asset-drop-zone {
     display: block;
     position: relative;
     height: 100%;
 }
 
-.dot-asset-drop-zone__overlay {
-    display: none;
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    opacity: 0.8;
-    z-index: 1001;
-    background: #ffffff;
-
-    &.drag-enter,
-    &.drop {
-        display: block;
-    }
-}
-
 .dot-asset-drop-zone__indicators {
+    --mdc-dialog-scrim-color: transparent;
+
+    background-color: rgba(255, 255, 255, 0.8);
     border: 3px solid transparent;
     position: absolute;
     top: 0;
@@ -31,22 +17,26 @@
     left: 0;
     right: 0;
     z-index: 1002;
-    display: none;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    display: flex;
+    opacity: 0;
+    transition: opacity 250ms ease-in;
 
     &.drag-enter {
         border: 3px dashed var(--color-sec);
-        display: flex;
+        opacity: 1;
 
         .dot-asset-drop-zone__icon {
             display: block;
         }
     }
     &.drop {
+        background-color: none;
         border: 3px dashed var(--color-gray);
         display: flex;
+        opacity: 1;
 
         dot-progress-bar {
             display: block;
@@ -78,6 +68,7 @@
 .dot-asset-drop-zone__error-list {
     list-style-position: inside;
     padding: 0;
+    margin-left: 0;
 }
 
 mwc-icon {
