@@ -48,8 +48,8 @@ Type: `Promise<void>`
 ### Depends on
 
 - [dot-label](../dot-label)
-- [dot-autocomplete](components/dot-autocomplete)
-- [dot-chip](components/dot-chip)
+- [dot-autocomplete](./components/dot-autocomplete)
+- [dot-chip](./components/dot-chip)
 
 ### Graph
 ```mermaid

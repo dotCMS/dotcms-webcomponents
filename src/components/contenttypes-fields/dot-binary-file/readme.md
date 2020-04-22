@@ -62,9 +62,9 @@ Type: `Promise<void>`
 ### Depends on
 
 - [dot-label](../dot-label)
-- [dot-binary-file-preview](components/dot-binary-file-preview)
-- [dot-binary-text-field](components/dot-binary-text-field)
-- [dot-binary-upload-button](components/dot-binary-upload-button)
+- [dot-binary-file-preview](./components/dot-binary-file-preview)
+- [dot-binary-text-field](./components/dot-binary-text-field)
+- [dot-binary-upload-button](./components/dot-binary-upload-button)
 - [dot-error-message](../dot-error-message)
 
 ### Graph

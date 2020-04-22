@@ -50,8 +50,8 @@ Type: `Promise<void>`
 ### Depends on
 
 - [dot-label](../dot-label)
-- [key-value-form](components/key-value-form)
-- [key-value-table](components/key-value-table)
+- [key-value-form](./components/key-value-form)
+- [key-value-table](./components/key-value-table)
 
 ### Graph
 ```mermaid
