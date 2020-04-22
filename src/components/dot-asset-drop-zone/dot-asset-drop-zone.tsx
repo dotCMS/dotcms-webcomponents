@@ -188,10 +188,10 @@ export class DotAssetDropZone {
         }
     }
 
-    private updateDotAssetProgress(files: number, filesCreated: number) {
+    private updateDotAssetProgress(totalFiles: number, filesCreated: number) {
         this.updateProgressBar(
-            filesCreated / files * 100,
-            `${this.createAssetsText} ${filesCreated}/${files}`
+            filesCreated / totalFiles * 100,
+            `${this.createAssetsText} ${filesCreated}/${totalFiles}`
         );
     }
 
