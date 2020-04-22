@@ -42,11 +42,16 @@ export class DotUploadService {
             if (response.status === 200) {
                 return (await response.json()).tempFiles[0];
             } else {
-                const error: DotHttpErrorResponse = {
-                    message: (await response.json()).message,
+                let message = '';
+                try {
+                    message = (await response.json()).message || fallbackErrorMessages[status];
+                } catch (e) {
+                    message = fallbackErrorMessages[status];
+                }
+                throw {
+                    message: message,
                     status: response.status
-                };
-                throw error;
+                } as DotHttpErrorResponse;
             }
         });
     }
@@ -88,11 +93,16 @@ export class DotUploadService {
                 const data = JSON.parse(request.response).tempFiles;
                 return data.length > 1 ? data : data[0];
             } else {
-                const error: DotHttpErrorResponse = {
-                    message: JSON.parse(request.response).message || fallbackErrorMessages[status],
+                let message = '';
+                try {
+                    message = JSON.parse(request.response).message || fallbackErrorMessages[status];
+                } catch (e) {
+                    message = fallbackErrorMessages[status];
+                }
+                throw {
+                    message: message,
                     status: request.status
-                };
-                throw error;
+                } as DotHttpErrorResponse;
             }
         });
     }
