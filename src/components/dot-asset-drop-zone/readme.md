@@ -30,7 +30,7 @@
 
 ### Depends on
 
-- [dot-progress-bar](../../../elements/dot-progress-bar)
+- [dot-progress-bar](../../elements/dot-progress-bar)
 
 ### Graph
 ```mermaid

@@ -17,7 +17,7 @@
 
 ### Used by
 
- - [dot-asset-drop-zone](../../components/contenttypes-fields/dot-asset-drop-zone)
+ - [dot-asset-drop-zone](../../components/dot-asset-drop-zone)
 
 ### Graph
 ```mermaid

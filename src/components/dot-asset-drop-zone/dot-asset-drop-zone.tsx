@@ -8,10 +8,10 @@ import { Component, EventEmitter, h, Host, Prop, State, Event } from '@stencil/c
 import '@material/mwc-icon';
 import '@material/mwc-dialog';
 import '@material/mwc-button';
-import { DotUploadService } from '../dot-form/services/dot-upload.service';
+import { DotUploadService } from '../contenttypes-fields/dot-form/services/dot-upload.service';
 import { DotCMSTempFile } from 'dotcms-models';
-import { DotAssetService } from '../../../services/dot-asset/dot-asset.service';
-import { DotHttpErrorResponse } from '../../../models/dot-http-error-response.model';
+import { DotAssetService } from '../../services/dot-asset/dot-asset.service';
+import { DotHttpErrorResponse } from '../../models/dot-http-error-response.model';
 
 enum DotDropStatus {
     DROP = 'drop',
