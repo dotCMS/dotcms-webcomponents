@@ -5,7 +5,7 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { DotHttpErrorFileResponse, } from "./models/dot-http-error-file-response.model";
+import { DotHttpErrorResponse, } from "./models/dot-http-error-response.model";
 import { DotBinaryFileEvent, DotFieldStatusEvent, DotFieldValueEvent, DotInputCalendarStatusEvent, DotKeyValueField, } from "./models";
 import { DotCardContentletEvent, DotCardContentletItem, } from "./models/dot-card-contentlet.model";
 import { DotContentletItem, } from "./models/dot-contentlet-item.model";
@@ -1327,7 +1327,7 @@ declare namespace LocalJSX {
         /**
           * Emit an array of response with the DotAssets just created
          */
-        "onUploadComplete"?: (event: CustomEvent<Response[] | DotHttpErrorFileResponse[]>) => void;
+        "onUploadComplete"?: (event: CustomEvent<Response[] | DotHttpErrorResponse[]>) => void;
         /**
           * Error to be shown when try to upload a bigger size file than allowed
          */

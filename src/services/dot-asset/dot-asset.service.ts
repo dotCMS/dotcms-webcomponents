@@ -1,7 +1,6 @@
 import { DotCMSTempFile } from 'dotcms-models';
 import { DotHttpErrorResponse } from '../../models/dot-http-error-response.model';
 import { fallbackErrorMessages } from '../../components/contenttypes-fields/dot-form/services/dot-upload.service';
-import { DotHttpErrorFileResponse } from '../../models/dot-http-error-file-response.model';
 import { DotAssetCreateOptions } from '../../models/dot-asset-create-options.model';
 
 export class DotAssetService {
@@ -13,7 +12,7 @@ export class DotAssetService {
      *
      * @memberof DotAssetService
      */
-    create(options: DotAssetCreateOptions): Promise<Response[] | DotHttpErrorFileResponse[]> {
+    create(options: DotAssetCreateOptions): Promise<Response[] | DotHttpErrorResponse[]> {
         const promises = [];
         let filesCreated = 1;
 
@@ -43,18 +42,21 @@ export class DotAssetService {
         });
 
         return Promise.all(promises).then(async (response: Response[]) => {
-            const errors: DotHttpErrorFileResponse[] = [];
-            response.forEach((res: Response | DotHttpErrorFileResponse, $index: number) => {
+            const errors: DotHttpErrorResponse[] = [];
+            for (const res of response) {
                 if (res.status !== 200) {
+                    let message = '';
+                    try {
+                        message = (await res.json()).errors[0].message;
+                    } catch {
+                        message = fallbackErrorMessages[res.status];
+                    }
                     errors.push({
-                        message:
-                            (res as DotHttpErrorResponse).message ||
-                            fallbackErrorMessages[res.status],
-                        status: res.status,
-                        fileName: options.files[$index].fileName
+                        message: message,
+                        status: res.status
                     });
                 }
-            });
+            }
             if (errors.length) {
                 throw errors;
             } else {

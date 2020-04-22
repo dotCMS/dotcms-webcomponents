@@ -12,7 +12,6 @@ import { DotUploadService } from '../dot-form/services/dot-upload.service';
 import { DotCMSTempFile } from 'dotcms-models';
 import { DotAssetService } from '../../../services/dot-asset/dot-asset.service';
 import { DotHttpErrorResponse } from '../../../models/dot-http-error-response.model';
-import { DotHttpErrorFileResponse } from '../../../models/dot-http-error-file-response.model';
 
 enum DotDropStatus {
     DROP = 'drop',
@@ -42,7 +41,7 @@ export class DotAssetDropZone {
     dialogLabels = {
         closeButton: 'Close',
         uploadErrorHeader: 'Uploading File Results',
-        dotAssetErrorHeader: '$0 out of $1 files fail on DotAsset creation'
+        dotAssetErrorHeader: '$0 of $1 uploaded file(s) failed'
     };
 
     /** Legend to be shown when creating dotAssets */
@@ -55,7 +54,7 @@ export class DotAssetDropZone {
     @Prop() singeMaxSizeErrorLabel = 'The file exceeds the maximum file size';
 
     /** Emit an array of response with the DotAssets just created */
-    @Event() uploadComplete: EventEmitter<Response[] | DotHttpErrorFileResponse[]>;
+    @Event() uploadComplete: EventEmitter<Response[] | DotHttpErrorResponse[]>;
 
     @State() dropState: DotDropStatus = DotDropStatus.CLEAR;
     @State() progressIndicator = 0;
@@ -172,7 +171,7 @@ export class DotAssetDropZone {
                 this.hideOverlay();
                 this.uploadComplete.emit(response);
             })
-            .catch((errors: DotHttpErrorFileResponse[]) => {
+            .catch((errors: DotHttpErrorResponse[]) => {
                 this.dialogHeader = this.dialogLabels.dotAssetErrorHeader
                     .replace('$0', errors.length.toString())
                     .replace('$1', files.length.toString());
@@ -207,15 +206,11 @@ export class DotAssetDropZone {
         return error.includes('The maximum file size for this field is');
     }
 
-    private formatErrorMessage(errors: DotHttpErrorFileResponse[]) {
+    private formatErrorMessage(errors: DotHttpErrorResponse[]) {
         return (
-            <ul>
-                {errors.map((err: DotHttpErrorFileResponse) => {
-                    return (
-                        <li>
-                            {err.message}
-                        </li>
-                    );
+            <ul class="dot-asset-drop-zone__error-list">
+                {errors.map((err: DotHttpErrorResponse) => {
+                    return <li>{err.message}</li>;
                 })}
             </ul>
         );
