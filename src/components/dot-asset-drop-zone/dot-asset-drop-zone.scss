@@ -27,9 +27,7 @@ dot-asset-drop-zone {
             }
         }
         &.drop {
-            background-color: none;
-            border: 3px dashed var(--color-gray);
-            display: flex;
+            border: 3px dashed #7e7a86;
             opacity: 1;
 
             dot-progress-bar {
