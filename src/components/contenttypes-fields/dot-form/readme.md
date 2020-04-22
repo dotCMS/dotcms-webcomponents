@@ -20,7 +20,7 @@
 
 ### Depends on
 
-- [dot-form-row](components/dot-form-row)
+- [dot-form-row](./components/dot-form-row)
 - [dot-error-message](../dot-error-message)
 
 ### Graph
