@@ -20,7 +20,8 @@ export class DotAssetService {
             const data = {
                 contentlet: {
                     baseType: 'dotAsset',
-                    asset: file.id
+                    asset: file.id,
+                    hostFolder: options.folder
                 }
             };
 

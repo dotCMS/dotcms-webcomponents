@@ -24,10 +24,15 @@ enum DotDropStatus {
     styleUrl: 'dot-asset-drop-zone.scss'
 })
 export class DotAssetDropZone {
+
     /** URL to endpoint to create dotAssets*/
     @Prop() dotAssetsURL = '/api/v1/workflow/actions/default/fire/NEW';
 
+    /** Specify the max size of each file to be uploaded*/
     @Prop() maxFileSize = '';
+
+    /** Specify the the folder where the dotAssets will be placed*/
+    @Prop() folder = '';
 
     /** Legend to be shown when dropping files */
     @Prop() dropFilesText = 'Drop Files to Upload';
@@ -163,7 +168,8 @@ export class DotAssetDropZone {
                 updateCallback: filesCreated => {
                     this.updateDotAssetProgress(files.length, filesCreated);
                 },
-                url: this.dotAssetsURL
+                url: this.dotAssetsURL,
+                folder: this.folder
             })
             .then((response: Response[]) => {
                 this.hideOverlay();
