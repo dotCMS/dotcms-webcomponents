@@ -35,6 +35,13 @@ export namespace Components {
           * Legend to be shown when dropping files
          */
         "dropFilesText": string;
+        /**
+          * Specify the the folder where the dotAssets will be placed
+         */
+        "folder": string;
+        /**
+          * Specify the max size of each file to be uploaded
+         */
         "maxFileSize": string;
         /**
           * Error to be shown when try to upload a bigger size file than allowed
@@ -1319,6 +1326,13 @@ declare namespace LocalJSX {
           * Legend to be shown when dropping files
          */
         "dropFilesText"?: string;
+        /**
+          * Specify the the folder where the dotAssets will be placed
+         */
+        "folder"?: string;
+        /**
+          * Specify the max size of each file to be uploaded
+         */
         "maxFileSize"?: string;
         /**
           * Error to be shown when try to upload a bigger size file than allowed

@@ -15,12 +15,13 @@ export class DotAssetService {
     create(options: DotAssetCreateOptions): Promise<Response[] | DotHttpErrorResponse[]> {
         const promises = [];
         let filesCreated = 1;
-
         options.files.map((file: DotCMSTempFile) => {
             const data = {
                 contentlet: {
                     baseType: 'dotAsset',
-                    asset: file.id
+                    asset: file.id,
+                    hostFolder: options.folder,
+                    indexPolicy: 'WAIT_FOR'
                 }
             };
 
@@ -57,6 +58,7 @@ export class DotAssetService {
                     });
                 }
             }
+
             if (errors.length) {
                 throw errors;
             } else {
