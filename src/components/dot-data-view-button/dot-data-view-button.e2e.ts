@@ -7,5 +7,5 @@ describe('dot-data-view-button', () => {
     await page.setContent('<dot-data-view-button></dot-data-view-button>');
     const element = await page.find('dot-data-view-button');
     expect(element).toHaveClass('hydrated');
-  });{cursor}
+  });
 });

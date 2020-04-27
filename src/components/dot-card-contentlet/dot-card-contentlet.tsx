@@ -30,14 +30,6 @@ export class DotCardContentlet {
     @Event() checkboxChange: EventEmitter<DotCardContentletEvent>;
     @Event() contextMenuClick: EventEmitter<MouseEvent>;
 
-    @Watch('checked')
-    emitChecked(): void {
-        this.checkboxChange.emit({
-            originalTarget: this.el,
-            shiftKey: this.isShiftKey
-        });
-    }
-
     private menu: HTMLDotContextMenuElement;
 
     private isShiftKey = false;
@@ -81,6 +73,11 @@ export class DotCardContentlet {
                                 const target = e.target as Checkbox;
                                 this.checked = target.checked;
                                 this.menu.hide();
+
+                                this.checkboxChange.emit({
+                                    originalTarget: this.el,
+                                    shiftKey: this.isShiftKey
+                                });
                             }}
                         />
                         <label id="label">{title}</label>
@@ -91,9 +88,7 @@ export class DotCardContentlet {
                             <dot-contentlet-state-icon contentlet={contentlet} size="16px" />
                             <dot-badge bordered={true}>{contentlet.language}</dot-badge>
                             {contentlet.locked === 'true' ? (
-                                <dot-contentlet-lock-icon
-                                    contentlet={contentlet}
-                                />
+                                <dot-contentlet-lock-icon contentlet={contentlet} />
                             ) : null}
                         </div>
                         {this.item?.actions?.length ? (

@@ -7,5 +7,5 @@ describe('dot-card-view', () => {
     await page.setContent('<dot-card-view></dot-card-view>');
     const element = await page.find('dot-card-view');
     expect(element).toHaveClass('hydrated');
-  });{cursor}
+  });
 });
