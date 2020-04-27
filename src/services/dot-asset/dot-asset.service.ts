@@ -15,32 +15,34 @@ export class DotAssetService {
     create(options: DotAssetCreateOptions): Promise<Response[] | DotHttpErrorResponse[]> {
         const promises = [];
         let filesCreated = 1;
+        options.files
+            .sort((fileA, fileB) => fileA.length - fileB.length)
+            .map((file: DotCMSTempFile) => {
+                let data = {
+                    contentlet: {
+                        baseType: 'dotAsset',
+                        asset: file.id,
+                        hostFolder: options.folder,
+                        indexPolicy: 'WAIT_FOR'
+                    }
+                };
 
-        options.files.map((file: DotCMSTempFile) => {
-            const data = {
-                contentlet: {
-                    baseType: 'dotAsset',
-                    asset: file.id,
-                    hostFolder: options.folder
-                }
-            };
-
-            promises.push(
-                fetch(options.url, {
-                    method: 'PUT',
-                    headers: {
-                        Origin: window.location.hostname,
-                        'Content-Type': 'application/json;charset=UTF-8'
-                    },
-                    body: JSON.stringify(data)
-                })
-                    .then((response: Response) => {
-                        options.updateCallback(filesCreated++);
-                        return response;
+                promises.push(
+                    fetch(options.url, {
+                        method: 'PUT',
+                        headers: {
+                            Origin: window.location.hostname,
+                            'Content-Type': 'application/json;charset=UTF-8'
+                        },
+                        body: JSON.stringify(data)
                     })
-                    .catch(e => e)
-            );
-        });
+                        .then((response: Response) => {
+                            options.updateCallback(filesCreated++);
+                            return response;
+                        })
+                        .catch(e => e)
+                );
+            });
 
         return Promise.all(promises).then(async (response: Response[]) => {
             const errors: DotHttpErrorResponse[] = [];
@@ -58,6 +60,7 @@ export class DotAssetService {
                     });
                 }
             }
+
             if (errors.length) {
                 throw errors;
             } else {
