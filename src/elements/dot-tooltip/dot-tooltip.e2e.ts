@@ -7,5 +7,5 @@ describe('dot-tooltip', () => {
     await page.setContent('<dot-tooltip></dot-tooltip>');
     const element = await page.find('dot-tooltip');
     expect(element).toHaveClass('hydrated');
-  });{cursor}
+  });
 });

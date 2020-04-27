@@ -7,5 +7,5 @@ describe('dot-contentlet-state-icon', () => {
     await page.setContent('<dot-contentlet-state-icon></dot-contentlet-state-icon>');
     const element = await page.find('dot-contentlet-state-icon');
     expect(element).toHaveClass('hydrated');
-  });{cursor}
+  });
 });

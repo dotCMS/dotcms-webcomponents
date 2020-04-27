@@ -124,6 +124,7 @@ export class DotCardView {
                                     }
                                     if (inBetween) {
                                         card.checked = true;
+                                        this.setValue(originalTarget, card.item.data);
                                     }
                                 });
                             }

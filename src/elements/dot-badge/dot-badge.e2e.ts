@@ -7,5 +7,5 @@ describe('dot-badge', () => {
     await page.setContent('<dot-badge></dot-badge>');
     const element = await page.find('dot-badge');
     expect(element).toHaveClass('hydrated');
-  });{cursor}
+  });
 });

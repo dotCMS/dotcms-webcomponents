@@ -7,5 +7,5 @@ describe('dot-contentlet-lock-icon', () => {
     await page.setContent('<dot-contentlet-lock-icon></dot-contentlet-lock-icon>');
     const element = await page.find('dot-contentlet-lock-icon');
     expect(element).toHaveClass('hydrated');
-  });{cursor}
+  });
 });
