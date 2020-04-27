@@ -42,11 +42,7 @@ export class DotUploadService {
             if (response.status === 200) {
                 return (await response.json()).tempFiles[0];
             } else {
-                const error: DotHttpErrorResponse = {
-                    message: (await response.json()).message,
-                    status: response.status
-                };
-                throw error;
+                throw this.errorHandler(await response.json(), response.status);
             }
         });
     }
@@ -88,11 +84,7 @@ export class DotUploadService {
                 const data = JSON.parse(request.response).tempFiles;
                 return data.length > 1 ? data : data[0];
             } else {
-                const error: DotHttpErrorResponse = {
-                    message: JSON.parse(request.response).message || fallbackErrorMessages[status],
-                    status: request.status
-                };
-                throw error;
+                throw this.errorHandler(JSON.parse(request.response), request.status);
             }
         });
     }
@@ -118,5 +110,18 @@ export class DotUploadService {
             }
             xhr.send(opts.body);
         });
+    }
+
+    private errorHandler(response: any, status: number): DotHttpErrorResponse {
+        let message = '';
+        try {
+            message = response.message || fallbackErrorMessages[status];
+        } catch (e) {
+            message = fallbackErrorMessages[status];
+        }
+        return {
+            message: message,
+            status: status
+        };
     }
 }
