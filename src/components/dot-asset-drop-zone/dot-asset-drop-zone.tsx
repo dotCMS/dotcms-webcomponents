@@ -138,7 +138,7 @@ export class DotAssetDropZone {
                     if (item.webkitGetAsEntry().isFile) {
                         files.push(item.getAsFile());
                     } else {
-                        this.setDialogLabels(
+                        this.showDialog(
                             this.dialogLabels.errorHeader,
                             this.folderUploadErrorLabel
                         );
@@ -146,7 +146,7 @@ export class DotAssetDropZone {
                         break;
                     }
                 } catch {
-                    this.setDialogLabels(
+                    this.showDialog(
                         this.dialogLabels.errorHeader,
                         this.folderUploadErrorLabel
                     );
@@ -165,7 +165,7 @@ export class DotAssetDropZone {
                     this.createDotAsset(Array.isArray(data) ? data : [data]);
                 })
                 .catch(({ message }: DotHttpErrorResponse) => {
-                    this.setDialogLabels(
+                    this.showDialog(
                         this.dialogLabels ? this.dialogLabels.uploadErrorHeader : '',
                         this.isMaxsizeError(message) ? (
                             <span>{this.multiMaxSizeErrorLabel}</span>
@@ -197,7 +197,7 @@ export class DotAssetDropZone {
                 this.uploadComplete.emit(response);
             })
             .catch((errors: DotHttpErrorResponse[]) => {
-                this.setDialogLabels(
+                this.showDialog(
                     this.dialogLabels.dotAssetErrorHeader
                         .replace('$0', errors.length.toString())
                         .replace('$1', files.length.toString()),
@@ -225,7 +225,7 @@ export class DotAssetDropZone {
     }
 
     private hideOverlay() {
-        this.setDialogLabels('', '');
+        this.hideDialog();
         this.dropState = DotDropStatus.CLEAR;
     }
 
@@ -243,8 +243,13 @@ export class DotAssetDropZone {
         );
     }
 
-    private setDialogLabels(header: string, message: string): void {
+    private showDialog(header: string, message: string): void {
         this.dialogHeader = header;
         this.errorMessage = message;
+    }
+
+    private hideDialog(): void {
+        this.dialogHeader = '';
+        this.errorMessage = '';
     }
 }
