@@ -86,7 +86,9 @@ export class DotUploadService {
             } else {
                 throw this.errorHandler(JSON.parse(request.response), request.status);
             }
-        });
+        }).catch((reason: any) => {
+            this.errorHandler(reason, reason.status);
+        })
     }
 
     private dotRequest(

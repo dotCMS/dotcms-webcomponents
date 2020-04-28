@@ -24,7 +24,6 @@ enum DotDropStatus {
     styleUrl: 'dot-asset-drop-zone.scss'
 })
 export class DotAssetDropZone {
-
     /** URL to endpoint to create dotAssets*/
     @Prop() dotAssetsURL = '/api/v1/workflow/actions/default/fire/NEW';
 
@@ -45,7 +44,8 @@ export class DotAssetDropZone {
     dialogLabels = {
         closeButton: 'Close',
         uploadErrorHeader: 'Uploading File Results',
-        dotAssetErrorHeader: '$0 of $1 uploaded file(s) failed'
+        dotAssetErrorHeader: '$0 of $1 uploaded file(s) failed',
+        errorHeader: 'Error'
     };
 
     /** Legend to be shown when creating dotAssets */
@@ -56,6 +56,9 @@ export class DotAssetDropZone {
 
     /** Error to be shown when try to upload a bigger size file than allowed*/
     @Prop() singeMaxSizeErrorLabel = 'The file exceeds the maximum file size';
+
+    /** Error to be shown when try to upload a bigger size file than allowed*/
+    @Prop() folderUploadErrorLabel = 'You can’t drop folders. Try again.';
 
     /** Emit an array of response with the DotAssets just created */
     @Event() uploadComplete: EventEmitter<Response[] | DotHttpErrorResponse[]>;
@@ -127,36 +130,54 @@ export class DotAssetDropZone {
 
     private uploadTemFiles(event: DragEvent) {
         const uploadService = new DotUploadService();
-        const files: File[] = [];
+        let files: File[] = [];
         this.updateProgressBar(0, this.uploadFileText);
         if (event.dataTransfer.items) {
-            Array.from(event.dataTransfer.items).map((item: DataTransferItem) => {
-                if (item.kind === 'file') {
-                    files.push(item.getAsFile());
+            for (let item of Array.from(event.dataTransfer.items)) {
+                try {
+                    if (item.webkitGetAsEntry().isFile) {
+                        files.push(item.getAsFile());
+                    } else {
+                        this.setDialogLabels(
+                            this.dialogLabels.errorHeader,
+                            this.folderUploadErrorLabel
+                        );
+                        files = [];
+                        break;
+                    }
+                } catch {
+                    this.setDialogLabels(
+                        this.dialogLabels.errorHeader,
+                        this.folderUploadErrorLabel
+                    );
+                    files = [];
                 }
-            });
+            }
         } else {
             Array.from(event.dataTransfer.files).map((file: File) => {
                 files.push(file);
             });
         }
-
-        uploadService
-            .uploadBinaryFile(files, this.updateProgressBar.bind(this), this.maxFileSize)
-            .then((data: DotCMSTempFile | DotCMSTempFile[]) => {
-                this.createDotAsset(Array.isArray(data) ? data : [data]);
-            })
-            .catch(({ message }: DotHttpErrorResponse) => {
-                this.dialogHeader = this.dialogLabels ? this.dialogLabels.uploadErrorHeader : '';
-                this.errorMessage = this.isMaxsizeError(message) ? (
-                    <span>{this.multiMaxSizeErrorLabel}</span>
-                ) : (
-                    <span>{message}</span>
-                );
-            })
-            .finally(() => {
-                this.updateProgressBar(0, '');
-            });
+        if (files.length) {
+            uploadService
+                .uploadBinaryFile(files, this.updateProgressBar.bind(this), this.maxFileSize)
+                .then((data: DotCMSTempFile | DotCMSTempFile[]) => {
+                    this.createDotAsset(Array.isArray(data) ? data : [data]);
+                })
+                .catch(({ message }: DotHttpErrorResponse) => {
+                    this.setDialogLabels(
+                        this.dialogLabels ? this.dialogLabels.uploadErrorHeader : '',
+                        this.isMaxsizeError(message) ? (
+                            <span>{this.multiMaxSizeErrorLabel}</span>
+                        ) : (
+                            <span>{message}</span>
+                        )
+                    );
+                })
+                .finally(() => {
+                    this.updateProgressBar(0, '');
+                });
+        }
     }
 
     private createDotAsset(files: DotCMSTempFile[]) {
@@ -176,10 +197,12 @@ export class DotAssetDropZone {
                 this.uploadComplete.emit(response);
             })
             .catch((errors: DotHttpErrorResponse[]) => {
-                this.dialogHeader = this.dialogLabels.dotAssetErrorHeader
-                    .replace('$0', errors.length.toString())
-                    .replace('$1', files.length.toString());
-                this.errorMessage = this.formatErrorMessage(errors);
+                this.setDialogLabels(
+                    this.dialogLabels.dotAssetErrorHeader
+                        .replace('$0', errors.length.toString())
+                        .replace('$1', files.length.toString()),
+                    this.formatErrorMessage(errors)
+                );
                 this.uploadComplete.emit(errors);
             })
             .finally(() => {
@@ -202,7 +225,7 @@ export class DotAssetDropZone {
     }
 
     private hideOverlay() {
-        this.errorMessage = '';
+        this.setDialogLabels('', '');
         this.dropState = DotDropStatus.CLEAR;
     }
 
@@ -218,5 +241,10 @@ export class DotAssetDropZone {
                 })}
             </ul>
         );
+    }
+
+    private setDialogLabels(header: string, message: string): void {
+        this.dialogHeader = header;
+        this.errorMessage = message;
     }
 }

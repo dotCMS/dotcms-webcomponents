@@ -1,4 +1,4 @@
-import { Component, h, Element, Prop, Event, EventEmitter, Watch, Method } from '@stencil/core';
+import { Component, h, Element, Prop, Event, EventEmitter , Method } from '@stencil/core';
 import {
     DotCardContentletItem,
     DotCardContentletEvent

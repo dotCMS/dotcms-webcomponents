@@ -26,6 +26,7 @@ export namespace Components {
             closeButton: string;
             uploadErrorHeader: string;
             dotAssetErrorHeader: string;
+            errorHeader: string;
         };
         /**
           * URL to endpoint to create dotAssets
@@ -39,6 +40,10 @@ export namespace Components {
           * Specify the the folder where the dotAssets will be placed
          */
         "folder": string;
+        /**
+          * Error to be shown when try to upload a bigger size file than allowed
+         */
+        "folderUploadErrorLabel": string;
         /**
           * Specify the max size of each file to be uploaded
          */
@@ -1317,6 +1322,7 @@ declare namespace LocalJSX {
             closeButton: string;
             uploadErrorHeader: string;
             dotAssetErrorHeader: string;
+            errorHeader: string;
         };
         /**
           * URL to endpoint to create dotAssets
@@ -1330,6 +1336,10 @@ declare namespace LocalJSX {
           * Specify the the folder where the dotAssets will be placed
          */
         "folder"?: string;
+        /**
+          * Error to be shown when try to upload a bigger size file than allowed
+         */
+        "folderUploadErrorLabel"?: string;
         /**
           * Specify the max size of each file to be uploaded
          */
