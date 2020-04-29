@@ -79,14 +79,16 @@ export class DotUploadService {
                 body: formData
             },
             progressCallBack
-        ).then(async (request: XMLHttpRequest) => {
-            if (request.status === 200) {
-                const data = JSON.parse(request.response).tempFiles;
-                return data.length > 1 ? data : data[0];
-            } else {
-                throw this.errorHandler(JSON.parse(request.response), request.status);
-            }
-        });
+        )
+            .then(async (request: XMLHttpRequest) => {
+                if (request.status === 200) {
+                    const data = JSON.parse(request.response).tempFiles;
+                    return data.length > 1 ? data : data[0];
+                } else {
+                    throw this.errorHandler(JSON.parse(request.response), request.status);
+                }
+            })
+            .catch(() => this.errorHandler(null, 401));
     }
 
     private dotRequest(
@@ -117,11 +119,11 @@ export class DotUploadService {
         try {
             message = response.message || fallbackErrorMessages[status];
         } catch (e) {
-            message = fallbackErrorMessages[status];
+            message = fallbackErrorMessages[status|500];
         }
         return {
             message: message,
-            status: status
+            status: status|500
         };
     }
 }
