@@ -18,8 +18,8 @@ export class DotCardContentlet {
 
     @Prop() item: DotCardContentletItem;
 
-    @Prop() thumbnailSize = '250';
-    @Prop() iconSize = '72px';
+    @Prop() thumbnailSize = '260';
+    @Prop() iconSize = '96px';
 
     @Prop({
         reflect: true,
