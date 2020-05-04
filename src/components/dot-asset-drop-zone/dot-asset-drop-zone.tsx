@@ -182,7 +182,7 @@ export class DotAssetDropZone {
 
     private createDotAsset(files: DotCMSTempFile[]) {
         const assetService = new DotAssetService();
-        this.updateProgressBar(0, `${this.createAssetsText} ${files.length}/0`);
+        this.updateProgressBar(0, `${this.createAssetsText} 0/${files.length}`);
         assetService
             .create({
                 files: files,
