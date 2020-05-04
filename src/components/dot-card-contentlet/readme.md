@@ -10,9 +10,9 @@
 | Property        | Attribute        | Description | Type                    | Default     |
 | --------------- | ---------------- | ----------- | ----------------------- | ----------- |
 | `checked`       | `checked`        |             | `boolean`               | `undefined` |
-| `iconSize`      | `icon-size`      |             | `string`                | `'72px'`    |
+| `iconSize`      | `icon-size`      |             | `string`                | `'96px'`    |
 | `item`          | --               |             | `DotCardContentletItem` | `undefined` |
-| `thumbnailSize` | `thumbnail-size` |             | `string`                | `'250'`     |
+| `thumbnailSize` | `thumbnail-size` |             | `string`                | `'260'`     |
 
 
 ## Events
