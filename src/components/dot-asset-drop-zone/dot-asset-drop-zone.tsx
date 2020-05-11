@@ -9,7 +9,7 @@ import '@material/mwc-icon';
 import '@material/mwc-dialog';
 import '@material/mwc-button';
 import { DotUploadService } from '../contenttypes-fields/dot-form/services/dot-upload.service';
-import { DotCMSTempFile } from 'dotcms-models';
+import { DotCMSContentlet, DotCMSTempFile } from 'dotcms-models';
 import { DotAssetService } from '../../services/dot-asset/dot-asset.service';
 import { DotHttpErrorResponse } from '../../models/dot-http-error-response.model';
 
@@ -60,8 +60,8 @@ export class DotAssetDropZone {
     /** Error to be shown when try to upload a bigger size file than allowed*/
     @Prop() folderUploadErrorLabel = 'You can’t drop folders. Try again.';
 
-    /** Emit an array of response with the DotAssets just created */
-    @Event() uploadComplete: EventEmitter<Response[] | DotHttpErrorResponse[]>;
+    /** Emit an array of Contentlets just created or array of errors */
+    @Event() uploadComplete: EventEmitter<DotCMSContentlet[] | DotHttpErrorResponse[]>;
 
     @State() dropState: DotDropStatus = DotDropStatus.CLEAR;
     @State() progressIndicator = 0;
@@ -138,18 +138,12 @@ export class DotAssetDropZone {
                     if (item.webkitGetAsEntry().isFile) {
                         files.push(item.getAsFile());
                     } else {
-                        this.showDialog(
-                            this.dialogLabels.errorHeader,
-                            this.folderUploadErrorLabel
-                        );
+                        this.showDialog(this.dialogLabels.errorHeader, this.folderUploadErrorLabel);
                         files = [];
                         break;
                     }
                 } catch {
-                    this.showDialog(
-                        this.dialogLabels.errorHeader,
-                        this.folderUploadErrorLabel
-                    );
+                    this.showDialog(this.dialogLabels.errorHeader, this.folderUploadErrorLabel);
                     files = [];
                 }
             }
@@ -192,8 +186,9 @@ export class DotAssetDropZone {
                 url: this.dotAssetsURL,
                 folder: this.folder
             })
-            .then((response: Response[]) => {
+            .then((response: DotCMSContentlet[]) => {
                 this.hideOverlay();
+                debugger;
                 this.uploadComplete.emit(response);
             })
             .catch((errors: DotHttpErrorResponse[]) => {
