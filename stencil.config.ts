@@ -21,9 +21,5 @@ export const config: Config = {
     })],
     devServer: {
         openBrowser: false
-    },
-    testing: {
-        transformIgnorePatterns: ["node_modules/(?!(@material)/)"],
-        moduleNameMapper: []
     }
 };

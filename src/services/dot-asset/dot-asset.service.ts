@@ -1,4 +1,4 @@
-import { DotCMSTempFile } from 'dotcms-models';
+import { DotCMSContentlet, DotCMSTempFile } from 'dotcms-models';
 import { DotHttpErrorResponse } from '../../models/dot-http-error-response.model';
 import { fallbackErrorMessages } from '../../components/contenttypes-fields/dot-form/services/dot-upload.service';
 import { DotAssetCreateOptions } from '../../models/dot-asset-create-options.model';
@@ -12,7 +12,7 @@ export class DotAssetService {
      *
      * @memberof DotAssetService
      */
-    create(options: DotAssetCreateOptions): Promise<Response[] | DotHttpErrorResponse[]> {
+    create(options: DotAssetCreateOptions): Promise<DotCMSContentlet[] | DotHttpErrorResponse[]> {
         const promises = [];
         let filesCreated = 1;
         options.files.map((file: DotCMSTempFile) => {
@@ -44,7 +44,9 @@ export class DotAssetService {
 
         return Promise.all(promises).then(async (response: Response[]) => {
             const errors: DotHttpErrorResponse[] = [];
+            const data: DotCMSContentlet[] = [];
             for (const res of response) {
+                data.push((await res.json()).entity);
                 if (res.status !== 200) {
                     let message = '';
                     try {
@@ -62,7 +64,7 @@ export class DotAssetService {
             if (errors.length) {
                 throw errors;
             } else {
-                return response;
+                return data;
             }
         });
     }

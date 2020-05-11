@@ -37,6 +37,8 @@ describe('dot-asset-drop-zone', () => {
             expect(indicator).toBeNull();
         });
 
+        // These test are ignored because we are unable to mock
+        // the structure of "natural" drop events.
         xit('should show upload progress bar on drop', async () => {});
 
         xit('should show creation asset progress bar', async () => {});
