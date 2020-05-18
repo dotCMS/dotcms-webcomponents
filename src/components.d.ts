@@ -5,13 +5,13 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
+import { DotCMSContentlet, DotCMSContentTypeLayoutColumn, DotCMSContentTypeLayoutRow, } from "dotcms-models";
 import { DotHttpErrorResponse, } from "./models/dot-http-error-response.model";
 import { DotBinaryFileEvent, DotFieldStatusEvent, DotFieldValueEvent, DotInputCalendarStatusEvent, DotKeyValueField, } from "./models";
 import { DotCardContentletEvent, DotCardContentletItem, } from "./models/dot-card-contentlet.model";
 import { DotContentletItem, } from "./models/dot-contentlet-item.model";
 import { DotContextMenuOption, } from "./models/dot-context-menu.model";
 import { MenuAction, } from "./components/dot-context-menu/dot-context-menu";
-import { DotCMSContentTypeLayoutColumn, DotCMSContentTypeLayoutRow, } from "dotcms-models";
 import { DotSelectButtonOption, } from "./models/dotSelectButtonOption";
 export namespace Components {
     interface DotAssetDropZone {
@@ -1349,9 +1349,9 @@ declare namespace LocalJSX {
          */
         "multiMaxSizeErrorLabel"?: string;
         /**
-          * Emit an array of response with the DotAssets just created
+          * Emit an array of Contentlets just created or array of errors
          */
-        "onUploadComplete"?: (event: CustomEvent<Response[] | DotHttpErrorResponse[]>) => void;
+        "onUploadComplete"?: (event: CustomEvent<DotCMSContentlet[] | DotHttpErrorResponse[]>) => void;
         /**
           * Error to be shown when try to upload a bigger size file than allowed
          */

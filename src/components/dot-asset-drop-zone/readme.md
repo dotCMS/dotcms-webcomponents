@@ -23,9 +23,9 @@
 
 ## Events
 
-| Event            | Description                                               | Type                                                |
-| ---------------- | --------------------------------------------------------- | --------------------------------------------------- |
-| `uploadComplete` | Emit an array of response with the DotAssets just created | `CustomEvent<DotHttpErrorResponse[] \| Response[]>` |
+| Event            | Description                                                  | Type                                                        |
+| ---------------- | ------------------------------------------------------------ | ----------------------------------------------------------- |
+| `uploadComplete` | Emit an array of Contentlets just created or array of errors | `CustomEvent<DotCMSContentlet[] \| DotHttpErrorResponse[]>` |
 
 
 ## Dependencies
