@@ -39,14 +39,7 @@ describe('dot-contentlet-thumbnail', () => {
             });
 
             // TODO: find a way to avoid the onError with an invalid image.
-            xit('should show image', async () => {
-                const image = await page.find('dot-contentlet-thumbnail');
-                expect(image.getAttribute('src')).toEqual(
-                    '/dA/c68db8ec-b523-41b7-82bd-fcb7533d3cfa/100w/20q'
-                );
-                expect(image.getAttribute('alt')).toEqual('Alt test');
-                expect(image.getAttribute('aria-label')).toEqual('Alt test');
-            });
+            xit('should show image', async () => {});
 
             it('should show dot-contentlet-icon', async () => {
                 element.setProperty('contentlet', { ...contentletMock, hasTitleImage: 'false' });

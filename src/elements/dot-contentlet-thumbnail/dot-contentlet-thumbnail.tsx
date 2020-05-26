@@ -57,7 +57,7 @@ export class DotContentletThumbnail {
 
     private getImageURL(): string {
         return this.contentlet.mimeType === 'application/pdf'
-            ? `/contentAsset/image/${this.contentlet.inode}/fileAsset/pdf_page/1/resize_w/250/quality_q/45`
+            ? `/contentAsset/image/${this.contentlet.inode}/${this.contentlet.titleImage}/pdf_page/1/resize_w/250/quality_q/45`
             : `/dA/${this.contentlet.inode}/500w/20q`;
     }
 

@@ -627,7 +627,7 @@ export namespace Components {
         /**
           * Reset properties of the field, clear value and emit events.
          */
-        "reset": () => Promise<void>;
+        "reset": () => void;
         /**
           * Value of the field
          */
@@ -771,7 +771,7 @@ export namespace Components {
           * Reset properties of the field, clear value and emit events.
           * @memberof DotSelectComponent
          */
-        "reset": () => Promise<void>;
+        "reset": () => void;
         /**
           * Value set from the dropdown option
          */

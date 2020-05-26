@@ -29,13 +29,13 @@
 
 ## Methods
 
-### `reset() => Promise<void>`
+### `reset() => void`
 
 Reset properties of the field, clear value and emit events.
 
 #### Returns
 
-Type: `Promise<void>`
+Type: `void`
 
 
 

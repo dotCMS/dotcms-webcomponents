@@ -31,4 +31,5 @@ export interface DotContentletItem {
     ownerCanWrite: string;
     ownerCanPublish: string;
     mimeType: string;
+    titleImage: string;
 }
