@@ -16,7 +16,7 @@ import { DotHttpErrorResponse } from '../../models/dot-http-error-response.model
 enum DotDropStatus {
     DROP = 'drop',
     DRAGENTER = 'drag-enter',
-    CLEAR = ''
+    NONE = ''
 }
 
 @Component({
@@ -25,7 +25,7 @@ enum DotDropStatus {
 })
 export class DotAssetDropZone {
     /** URL to endpoint to create dotAssets*/
-    @Prop() dotAssetsURL = '/api/v1/workflow/actions/default/fire/NEW';
+    @Prop() dotAssetsURL = '/api/v1/workflow/actions/default/fire/PUBLISH';
 
     /** Specify the max size of each file to be uploaded*/
     @Prop() maxFileSize = '';
@@ -63,7 +63,7 @@ export class DotAssetDropZone {
     /** Emit an array of Contentlets just created or array of errors */
     @Event() uploadComplete: EventEmitter<DotCMSContentlet[] | DotHttpErrorResponse[]>;
 
-    @State() dropState: DotDropStatus = DotDropStatus.CLEAR;
+    @State() dropState: DotDropStatus = DotDropStatus.NONE;
     @State() progressIndicator = 0;
     @State() progressBarText = '';
 
@@ -114,7 +114,7 @@ export class DotAssetDropZone {
         event.preventDefault();
         // avoid problems with child elements
         if (event.target === this.dropEventTarget) {
-            this.dropState = DotDropStatus.CLEAR;
+            this.dropState = DotDropStatus.NONE;
         }
     }
 
@@ -180,7 +180,7 @@ export class DotAssetDropZone {
         assetService
             .create({
                 files: files,
-                updateCallback: filesCreated => {
+                updateCallback: (filesCreated: number) => {
                     this.updateDotAssetProgress(files.length, filesCreated);
                 },
                 url: this.dotAssetsURL,
@@ -214,14 +214,14 @@ export class DotAssetDropZone {
 
     private updateDotAssetProgress(totalFiles: number, filesCreated: number) {
         this.updateProgressBar(
-            filesCreated / totalFiles * 100,
+            (filesCreated / totalFiles) * 100,
             `${this.createAssetsText} ${filesCreated}/${totalFiles}`
         );
     }
 
     private hideOverlay() {
         this.hideDialog();
-        this.dropState = DotDropStatus.CLEAR;
+        this.dropState = DotDropStatus.NONE;
     }
 
     private isMaxsizeError(error: string): boolean {

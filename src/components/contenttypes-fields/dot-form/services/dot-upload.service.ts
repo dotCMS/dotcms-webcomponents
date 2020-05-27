@@ -8,6 +8,8 @@ export const fallbackErrorMessages = {
     401: '401 Unauthorized Error'
 };
 
+const TEMP_API_URL = '/api/v1/temp'
+
 export class DotUploadService {
     constructor() {}
 
@@ -28,7 +30,7 @@ export class DotUploadService {
     }
 
     private uploadFileByURL(url: string): Promise<DotCMSTempFile> {
-        const UPLOAD_FILE_FROM_URL = '/api/v1/temp/byUrl';
+        const UPLOAD_FILE_FROM_URL = `${TEMP_API_URL}/byUrl`;
         return fetch(UPLOAD_FILE_FROM_URL, {
             method: 'POST',
             headers: {
@@ -62,7 +64,7 @@ export class DotUploadService {
         progressCallBack?,
         maxSize?: string
     ): Promise<DotCMSTempFile | DotCMSTempFile[]> {
-        let path = `/api/v1/temp`;
+        let path = TEMP_API_URL;
         path += maxSize ? `?maxFileLength=${maxSize}` : '';
         const formData = new FormData();
 
