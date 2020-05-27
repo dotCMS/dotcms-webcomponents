@@ -38,7 +38,8 @@ describe('dot-asset-drop-zone', () => {
         });
 
         // These test are ignored because we are unable to mock
-        // the structure of "natural" drop events.
+        // the structure of "natural" drop events, since is not supported as today.
+        // https://github.com/puppeteer/puppeteer/issues/1376
         xit('should show upload progress bar on drop', async () => {});
 
         xit('should show creation asset progress bar', async () => {});

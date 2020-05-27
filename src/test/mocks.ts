@@ -147,5 +147,6 @@ export const contentletMock: DotContentletItem = {
     sysPublishDate: '',
     mediaType: '',
     language: '',
-    mimeType: ''
+    mimeType: '',
+    titleImage:'fileAsset'
 };
