@@ -1,5 +1,4 @@
-import { newE2EPage, E2EElement, E2EPage } from '@stencil/core/testing';
-import { EventSpy } from '@stencil/core/dist/declarations';
+import { newE2EPage, E2EElement, E2EPage, EventSpy } from '@stencil/core/testing';
 import { dotTestUtil } from '../../../test';
 
 const getOptions = (page: E2EPage) => page.findAll('input');
@@ -351,16 +350,6 @@ describe('dot-checkbox', () => {
             });
 
             it('should emit when option selected', async () => {
-                page = await newE2EPage({
-                    html: `
-                    <dot-form>
-                        <dot-checkbox
-                            name="testName"
-                            options="|,valueA|1,valueB|2"
-                            required="true">
-                        </dot-checkbox>
-                    </dot-form>`
-                });
                 const optionElements = await getOptions(page);
                 await optionElements[1].click();
                 expect(spyStatusChangeEvent).toHaveReceivedEventDetail({

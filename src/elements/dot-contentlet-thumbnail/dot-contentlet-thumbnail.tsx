@@ -30,7 +30,7 @@ export class DotContentletThumbnail {
     }
 
     render() {
-        const image = `url(${this.getImageURL()})`;
+        const image = this.contentlet ? `url(${this.getImageURL()})` : '';
         return (
             <Host>
                 {this.renderImage ? (
