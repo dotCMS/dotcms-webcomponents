@@ -4,10 +4,8 @@ import { DotContextMenuOption } from '../../models/dot-context-menu.model';
 import '@material/mwc-menu';
 import '@material/mwc-list/mwc-list-item';
 import '@material/mwc-icon';
+import { DotContextMenuAction } from '../../models/dot-context-menu-action.model';
 
-export interface MenuAction {
-    index: number;
-}
 
 @Component({
     tag: 'dot-context-menu',
@@ -17,7 +15,7 @@ export interface MenuAction {
 export class DotContextMenu {
     @Element() el: HTMLElement;
 
-    @Prop() options: DotContextMenuOption<MenuAction>[] = [];
+    @Prop() options: DotContextMenuOption<DotContextMenuAction>[] = [];
     @Prop() fontSize = '16px';
 
     @State() state = {
@@ -64,7 +62,7 @@ export class DotContextMenu {
                     open={this.state.show}
                     x={this.state.x}
                     y={this.state.y}
-                    onAction={(e: CustomEvent<MenuAction>) => {
+                    onAction={(e: CustomEvent<DotContextMenuAction>) => {
                         this.state = {
                             ...this.state,
                             show: false
@@ -72,7 +70,7 @@ export class DotContextMenu {
                         this.options[e.detail.index].action(e);
                     }}
                 >
-                    {this.options.map(({ label }: DotContextMenuOption<MenuAction>) => (
+                    {this.options.map(({ label }: DotContextMenuOption<DotContextMenuAction>) => (
                         <mwc-list-item>{label}</mwc-list-item>
                     ))}
                 </mwc-menu>
