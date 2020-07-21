@@ -1011,6 +1011,20 @@ export namespace Components {
          */
         "items": DotKeyValueField[];
     }
+    interface MyComponent {
+        /**
+          * The first name
+         */
+        "first": string;
+        /**
+          * The last name
+         */
+        "last": string;
+        /**
+          * The middle name
+         */
+        "middle": string;
+    }
 }
 declare global {
     interface HTMLDotAssetDropZoneElement extends Components.DotAssetDropZone, HTMLStencilElement {
@@ -1253,6 +1267,12 @@ declare global {
         prototype: HTMLKeyValueTableElement;
         new (): HTMLKeyValueTableElement;
     };
+    interface HTMLMyComponentElement extends Components.MyComponent, HTMLStencilElement {
+    }
+    var HTMLMyComponentElement: {
+        prototype: HTMLMyComponentElement;
+        new (): HTMLMyComponentElement;
+    };
     interface HTMLElementTagNameMap {
         "dot-asset-drop-zone": HTMLDotAssetDropZoneElement;
         "dot-autocomplete": HTMLDotAutocompleteElement;
@@ -1294,6 +1314,7 @@ declare global {
         "dot-tooltip": HTMLDotTooltipElement;
         "key-value-form": HTMLKeyValueFormElement;
         "key-value-table": HTMLKeyValueTableElement;
+        "my-component": HTMLMyComponentElement;
     }
 }
 declare namespace LocalJSX {
@@ -2284,6 +2305,20 @@ declare namespace LocalJSX {
          */
         "onDelete"?: (event: CustomEvent<number>) => void;
     }
+    interface MyComponent {
+        /**
+          * The first name
+         */
+        "first"?: string;
+        /**
+          * The last name
+         */
+        "last"?: string;
+        /**
+          * The middle name
+         */
+        "middle"?: string;
+    }
     interface IntrinsicElements {
         "dot-asset-drop-zone": DotAssetDropZone;
         "dot-autocomplete": DotAutocomplete;
@@ -2325,6 +2360,7 @@ declare namespace LocalJSX {
         "dot-tooltip": DotTooltip;
         "key-value-form": KeyValueForm;
         "key-value-table": KeyValueTable;
+        "my-component": MyComponent;
     }
 }
 export { LocalJSX as JSX };
@@ -2371,6 +2407,7 @@ declare module "@stencil/core" {
             "dot-tooltip": LocalJSX.DotTooltip & JSXBase.HTMLAttributes<HTMLDotTooltipElement>;
             "key-value-form": LocalJSX.KeyValueForm & JSXBase.HTMLAttributes<HTMLKeyValueFormElement>;
             "key-value-table": LocalJSX.KeyValueTable & JSXBase.HTMLAttributes<HTMLKeyValueTableElement>;
+            "my-component": LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
         }
     }
 }
