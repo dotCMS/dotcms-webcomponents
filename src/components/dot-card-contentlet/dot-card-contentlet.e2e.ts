@@ -1,3 +1,20 @@
+import { newE2EPage, E2EPage } from '@stencil/core/testing';
+
+describe('dot-card-contentlet', () => {
+    let page: E2EPage;
+
+    beforeEach(async () => {
+        page = await newE2EPage({
+            html: `<dot-card-contentlet></dot-card-contentlet>`
+        });
+    });
+
+    it('empty place holder', async () => {
+        const dotCard = await page.find('dot-card-contentlet');
+        expect(dotCard).not.toBeNull();
+    });
+});
+
 /*
 import { newE2EPage, E2EPage } from '@stencil/core/testing';
 

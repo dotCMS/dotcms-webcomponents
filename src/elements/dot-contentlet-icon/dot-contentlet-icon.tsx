@@ -127,7 +127,7 @@ export class DotContentletIcon {
 
     private ext: string;
 
-    componentWillLoad() {
+    componentWillRender() {
         this.ext = this.icon.replace('Icon', '');
     }
 

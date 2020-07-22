@@ -76,10 +76,10 @@ export class DotInputCalendarComponent {
                 onInput={(event: Event) => this.setValue(event)}
                 required={this.required || null}
                 type={this.type}
-                value={this.value}
                 min={this.min}
                 max={this.max}
                 step={this.step}
+                value={this.value}
             />
         );
     }
