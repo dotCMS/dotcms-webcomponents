@@ -11,7 +11,7 @@ import { DotBinaryFileEvent, DotFieldStatusEvent, DotFieldValueEvent, DotInputCa
 import { DotCardContentletEvent, DotCardContentletItem, } from "./models/dot-card-contentlet.model";
 import { DotContentletItem, } from "./models/dot-contentlet-item.model";
 import { DotContextMenuOption, } from "./models/dot-context-menu.model";
-import { MenuAction, } from "./components/dot-context-menu/dot-context-menu";
+import { DotContextMenuAction, } from "./models/dot-context-menu-action.model";
 import { DotSelectButtonOption, } from "./models/dotSelectButtonOption";
 export namespace Components {
     interface DotAssetDropZone {
@@ -322,7 +322,7 @@ export namespace Components {
     interface DotContextMenu {
         "fontSize": string;
         "hide": () => Promise<void>;
-        "options": DotContextMenuOption<MenuAction>[];
+        "options": DotContextMenuOption<DotContextMenuAction>[];
         "show": (x: number, y: number, position?: string) => Promise<void>;
     }
     interface DotDataViewButton {
@@ -627,7 +627,7 @@ export namespace Components {
         /**
           * Reset properties of the field, clear value and emit events.
          */
-        "reset": () => void;
+        "reset": () => Promise<void>;
         /**
           * Value of the field
          */
@@ -771,7 +771,7 @@ export namespace Components {
           * Reset properties of the field, clear value and emit events.
           * @memberof DotSelectComponent
          */
-        "reset": () => void;
+        "reset": () => Promise<void>;
         /**
           * Value set from the dropdown option
          */
@@ -1623,7 +1623,7 @@ declare namespace LocalJSX {
     }
     interface DotContextMenu {
         "fontSize"?: string;
-        "options"?: DotContextMenuOption<MenuAction>[];
+        "options"?: DotContextMenuOption<DotContextMenuAction>[];
     }
     interface DotDataViewButton {
         "value"?: string;
