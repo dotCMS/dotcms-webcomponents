@@ -7,10 +7,10 @@
 
 ## Properties
 
-| Property   | Attribute   | Description | Type                                 | Default  |
-| ---------- | ----------- | ----------- | ------------------------------------ | -------- |
-| `fontSize` | `font-size` |             | `string`                             | `'16px'` |
-| `options`  | --          |             | `DotContextMenuOption<MenuAction>[]` | `[]`     |
+| Property   | Attribute   | Description | Type                                           | Default  |
+| ---------- | ----------- | ----------- | ---------------------------------------------- | -------- |
+| `fontSize` | `font-size` |             | `string`                                       | `'16px'` |
+| `options`  | --          |             | `DotContextMenuOption<DotContextMenuAction>[]` | `[]`     |
 
 
 ## Methods

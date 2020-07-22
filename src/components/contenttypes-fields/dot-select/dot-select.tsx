@@ -109,7 +109,7 @@ export class DotSelectComponent {
      *
      */
     @Method()
-    reset(): void {
+    async reset(): Promise<void> {
         this.value = '';
         this.status = getOriginalStatus(this.isValid());
         this.emitInitialValue();
