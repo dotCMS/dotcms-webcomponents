@@ -117,8 +117,13 @@ export const getFieldVariableValue = (
  * @returns string
  */
 export const getErrorMessage = (message: string): string => {
-    const messageObj = JSON.parse(message);
-    return messageObj.errors.length && messageObj.errors[0].message
+    let messageObj;
+    try {
+        messageObj = JSON.parse(message);
+    } catch (error) {
+        messageObj = message;
+    }
+    return messageObj.errors && messageObj.errors.length && messageObj.errors[0].message
         ? messageObj.errors[0].message
         : message;
 };

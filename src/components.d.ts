@@ -5,14 +5,14 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { DotCMSContentlet, DotCMSContentTypeLayoutColumn, DotCMSContentTypeLayoutRow } from "dotcms-models";
-import { DotHttpErrorResponse } from "./models/dot-http-error-response.model";
-import { DotBinaryFileEvent, DotFieldStatusEvent, DotFieldValueEvent, DotInputCalendarStatusEvent, DotKeyValueField } from "./models";
-import { DotCardContentletEvent, DotCardContentletItem } from "./models/dot-card-contentlet.model";
-import { DotContentletItem } from "./models/dot-contentlet-item.model";
-import { DotContextMenuOption } from "./models/dot-context-menu.model";
-import { DotContextMenuAction } from "./models/dot-context-menu-action.model";
-import { DotSelectButtonOption } from "./models/dotSelectButtonOption";
+import { DotCMSContentlet, DotCMSContentTypeLayoutColumn, DotCMSContentTypeLayoutRow, } from "dotcms-models";
+import { DotHttpErrorResponse, } from "./models/dot-http-error-response.model";
+import { DotBinaryFileEvent, DotFieldStatusEvent, DotFieldValueEvent, DotInputCalendarStatusEvent, DotKeyValueField, } from "./models";
+import { DotCardContentletEvent, DotCardContentletItem, } from "./models/dot-card-contentlet.model";
+import { DotContentletItem, } from "./models/dot-contentlet-item.model";
+import { DotContextMenuOption, } from "./models/dot-context-menu.model";
+import { DotContextMenuAction, } from "./models/dot-context-menu-action.model";
+import { DotSelectButtonOption, } from "./models/dotSelectButtonOption";
 export namespace Components {
     interface DotAssetDropZone {
         /**
@@ -22,7 +22,12 @@ export namespace Components {
         /**
           * Labels to be shown in error dialog
          */
-        "dialogLabels": { closeButton: string; uploadErrorHeader: string; dotAssetErrorHeader: string; errorHeader: string; };
+        "dialogLabels": {
+            closeButton: string;
+            uploadErrorHeader: string;
+            dotAssetErrorHeader: string;
+            errorHeader: string;
+        };
         /**
           * URL to endpoint to create dotAssets
          */
@@ -299,7 +304,12 @@ export namespace Components {
     }
     interface DotContentletStateIcon {
         "contentlet": DotContentletItem;
-        "labels": { archived: string; published: string; revision: string; draft: string; };
+        "labels": {
+            archived: string;
+            published: string;
+            revision: string;
+            draft: string;
+        };
         "size": string;
     }
     interface DotContentletThumbnail {
@@ -404,7 +414,10 @@ export namespace Components {
         /**
           * (optional) Array of date presets formatted as [{ label: 'PRESET_LABEL', days: NUMBER }]
          */
-        "presets": { label: string; days: number; }[];
+        "presets": {
+            label: string;
+            days: number;
+        }[];
         /**
           * (optional) Determine if it is needed
          */
@@ -1305,7 +1318,12 @@ declare namespace LocalJSX {
         /**
           * Labels to be shown in error dialog
          */
-        "dialogLabels"?: { closeButton: string; uploadErrorHeader: string; dotAssetErrorHeader: string; errorHeader: string; };
+        "dialogLabels"?: {
+            closeButton: string;
+            uploadErrorHeader: string;
+            dotAssetErrorHeader: string;
+            errorHeader: string;
+        };
         /**
           * URL to endpoint to create dotAssets
          */
@@ -1588,7 +1606,12 @@ declare namespace LocalJSX {
     }
     interface DotContentletStateIcon {
         "contentlet"?: DotContentletItem;
-        "labels"?: { archived: string; published: string; revision: string; draft: string; };
+        "labels"?: {
+            archived: string;
+            published: string;
+            revision: string;
+            draft: string;
+        };
         "size"?: string;
     }
     interface DotContentletThumbnail {
@@ -1691,7 +1714,10 @@ declare namespace LocalJSX {
         /**
           * (optional) Array of date presets formatted as [{ label: 'PRESET_LABEL', days: NUMBER }]
          */
-        "presets"?: { label: string; days: number; }[];
+        "presets"?: {
+            label: string;
+            days: number;
+        }[];
         /**
           * (optional) Determine if it is needed
          */
