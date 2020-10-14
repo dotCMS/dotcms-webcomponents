@@ -251,12 +251,13 @@ export class DotFormComponent {
                 .catch(({ message, status }: DotHttpErrorResponse) => {
                     binary.clearValue();
                     this.uploadFileInProgress = false;
-                    this.errorMessage = getErrorMessage(message) || fallbackErrorMessages[status];
+                    binary.errorMessage = getErrorMessage(message) || fallbackErrorMessages[status];
                     return null;
                 });
         } else {
-            binary.reset();
-            binary.errorMessage = `File size larger than allowed ${maxSize} bytes`;
+            binary.reset().then(() => {
+                binary.errorMessage = `File size larger than allowed ${maxSize} bytes`;
+            });
             return Promise.resolve(null);
         }
     }

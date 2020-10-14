@@ -8,7 +8,7 @@ export const fallbackErrorMessages = {
     401: '401 Unauthorized Error'
 };
 
-const TEMP_API_URL = '/api/v1/temp'
+const TEMP_API_URL = '/api/v1/temp';
 
 export class DotUploadService {
     constructor() {}
@@ -87,10 +87,12 @@ export class DotUploadService {
                     const data = JSON.parse(request.response).tempFiles;
                     return data.length > 1 ? data : data[0];
                 } else {
-                    throw this.errorHandler(JSON.parse(request.response), request.status);
+                    throw request;
                 }
             })
-            .catch(() => this.errorHandler(null, 401));
+            .catch((request) => {
+                throw this.errorHandler(JSON.parse(request.response), request.status);
+            });
     }
 
     private dotRequest(
@@ -108,7 +110,7 @@ export class DotUploadService {
             xhr.onerror = rej;
             if (xhr.upload && progressCallBack) {
                 xhr.upload.onprogress = (e: ProgressEvent) => {
-                    const percentComplete = e.loaded / e.total * 100;
+                    const percentComplete = (e.loaded / e.total) * 100;
                     progressCallBack(percentComplete);
                 };
             }
@@ -121,11 +123,11 @@ export class DotUploadService {
         try {
             message = response.message || fallbackErrorMessages[status];
         } catch (e) {
-            message = fallbackErrorMessages[status|500];
+            message = fallbackErrorMessages[status | 500];
         }
         return {
             message: message,
-            status: status|500
+            status: status | 500
         };
     }
 }
