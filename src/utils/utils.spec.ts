@@ -188,6 +188,10 @@ describe('isFileAllowed', () => {
         expect(isFileAllowed('file.pdf', '*')).toBe(true);
     });
 
+    it('should return true when allowedExtensions are any type of img', () => {
+        expect(isFileAllowed('file.png', 'image/*')).toBe(true);
+    });
+
     it('should return true when allowedExtensions are empty', () => {
         expect(isFileAllowed('file.pdf', '')).toBe(true);
     });
