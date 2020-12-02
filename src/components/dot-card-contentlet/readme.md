@@ -57,7 +57,7 @@ Type: `Promise<void>`
 - [dot-card](../../elements/dot-card)
 - [dot-contentlet-thumbnail](../../elements/dot-contentlet-thumbnail)
 - [dot-tooltip](../../elements/dot-tooltip)
-- [dot-contentlet-state-icon](../../elements/dot-contentlet-state-icon)
+- [dot-contentlet-state-icon](../../elements/dot-state-icon)
 - [dot-badge](../../elements/dot-badge)
 - [dot-contentlet-lock-icon](../../elements/dot-contentlet-lock-icon)
 - [dot-context-menu](../dot-context-menu)

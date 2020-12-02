@@ -20,7 +20,7 @@
 ### Used by
 
  - [dot-card-contentlet](../../components/dot-card-contentlet)
- - [dot-contentlet-state-icon](../dot-contentlet-state-icon)
+ - [dot-contentlet-state-icon](../dot-state-icon)
 
 ### Graph
 ```mermaid

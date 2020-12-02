@@ -60,8 +60,8 @@ const contentletsMock = [
         __icon__: 'vtlIcon',
         statusIcons:
             "<span class='greyDotIcon' style='opacity:.4'></span><span class='liveIcon'></span>",
-        hasLiveVersion: 'false',
-        deleted: 'true',
+        hasLiveVersion: 'true',
+        deleted: 'false',
         structureInode: '33888b6f-7a8e-4069-b1b6-5c1aa9d0a48d',
         __type__: "<div class='typeCCol'><span class='uknIcon vtlIcon'></span>&nbsp;File</div>",
         ownerCanRead: 'false',
@@ -84,7 +84,7 @@ const contentletsMock = [
         contentStructureType: '1',
         working: 'false',
         locked: 'false',
-        live: 'true',
+        live: 'false',
         owner: '86fe5be1-4624-4595-bf2d-af8d559414b1',
         identifier: 'ec596a66-a991-4f9e-93e5-0968f8aa7e26',
         wfActionMapList:
@@ -94,7 +94,7 @@ const contentletsMock = [
         __icon__: 'contentIcon',
         statusIcons:
             "<span class='greyDotIcon' style='opacity:.4'></span><span class='liveIcon'></span>",
-        hasLiveVersion: 'false',
+        hasLiveVersion: 'true',
         deleted: 'false',
         structureInode: '3d4a8854-7696-40c2-b0f3-28c8ff1121f9',
         __type__: "<div class='typeCCol'><span class='contentIcon'></span>&nbsp;FAQ</div>",
@@ -116,7 +116,7 @@ const contentletsMock = [
         permissions:
             'P654b0931-1027-41f7-ad4d-173115ed8ec1.2P P654b0931-1027-41f7-ad4d-173115ed8ec1.1P ',
         contentStructureType: '1',
-        working: 'true',
+        working: 'false',
         locked: 'false',
         live: 'false',
         owner: '86fe5be1-4624-4595-bf2d-af8d559414b1',
@@ -129,7 +129,7 @@ const contentletsMock = [
         statusIcons:
             "<span class='greyDotIcon' style='opacity:.4'></span><span class='liveIcon'></span>",
         hasLiveVersion: 'false',
-        deleted: 'false',
+        deleted: 'true',
         structureInode: '3d4a8854-7696-40c2-b0f3-28c8ff1121f9',
         __type__: "<div class='typeCCol'><span class='contentIcon'></span>&nbsp;FAQ</div>",
         ownerCanRead: 'false',

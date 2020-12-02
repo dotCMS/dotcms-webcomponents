@@ -7,6 +7,8 @@ import {
 import '@material/mwc-checkbox';
 import '@material/mwc-formfield';
 import { Checkbox } from '@material/mwc-checkbox';
+import { DotContentState } from '../../models';
+import { DotContentletItem } from '../../models/dot-contentlet-item.model';
 
 @Component({
     tag: 'dot-card-contentlet',
@@ -85,10 +87,10 @@ export class DotCardContentlet {
                     </div>
                     <div class="extra">
                         <div class="state">
-                            <dot-contentlet-state-icon contentlet={contentlet} size="16px" />
+                            <dot-contentlet-state-icon state={this.getContentState(contentlet)} size="16px" />
                             <dot-badge bordered={true}>{contentlet.language}</dot-badge>
                             {contentlet.locked === 'true' ? (
-                                <dot-contentlet-lock-icon contentlet={contentlet} />
+                                <dot-contentlet-lock-icon locked={JSON.parse(contentlet.locked)} />
                             ) : null}
                         </div>
                         {this.item?.actions?.length ? (
@@ -104,5 +106,9 @@ export class DotCardContentlet {
                 </header>
             </dot-card>
         );
+    }
+
+    private getContentState ({ live, working, deleted, hasLiveVersion}: DotContentletItem): DotContentState {
+        return {live, working, deleted, hasLiveVersion}
     }
 }

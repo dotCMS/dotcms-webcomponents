@@ -1,15 +1,16 @@
 import { Component, h, Host, Prop } from '@stencil/core';
-import { DotContentletItem } from '../../models/dot-contentlet-item.model';
+import { DotContentState } from '../../models';
 
 @Component({
     tag: 'dot-contentlet-state-icon',
-    styleUrl: 'dot-contentlet-state-icon.scss',
+    styleUrl: 'dot-state-icon.scss',
     shadow: true
 })
-export class DotContentletStateIcon {
-    @Prop() contentlet: DotContentletItem;
+export class DotStateIcon {
+    @Prop() state: DotContentState;
     @Prop() size = '16px';
-    @Prop() labels = {
+    @Prop()
+    labels = {
         archived: 'Archived',
         published: 'Published',
         revision: 'Revision',
@@ -17,7 +18,7 @@ export class DotContentletStateIcon {
     };
 
     render() {
-        const state = this.getType(this.contentlet);
+        const state = this.getType(this.state);
         const name = this.labels[state];
         return (
             <Host
@@ -27,24 +28,27 @@ export class DotContentletStateIcon {
                 }}
             >
                 <span>
-                    <div class={state} id="icon"></div>
+                    <div class={state} id="icon" />
                     <dot-tooltip content={name} for="icon" />
                 </span>
             </Host>
         );
     }
 
-    private getType({ live, working, deleted, hasLiveVersion }: DotContentletItem): string {
-        if (deleted === 'true') {
+    private getType({ live, working, deleted, hasLiveVersion }: DotContentState): string {
+        if (deleted === 'true' || deleted == true) {
             return 'archived'; // crossed
         }
 
-        if (live === 'true') {
-            if (hasLiveVersion === 'true' && working === 'true') {
+        if (live === 'true' || live == true) {
+            if (
+                (hasLiveVersion === 'true' || hasLiveVersion == true) &&
+                (working === 'true' || working == true)
+            ) {
                 return 'published'; // full
             }
         } else {
-            if (hasLiveVersion === 'true') {
+            if (hasLiveVersion === 'true' || hasLiveVersion == true) {
                 return 'revision'; // half
             }
         }
