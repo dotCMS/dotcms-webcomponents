@@ -57,12 +57,10 @@ graph TD;
   dot-card-contentlet --> dot-card
   dot-card-contentlet --> dot-contentlet-thumbnail
   dot-card-contentlet --> dot-tooltip
-  dot-card-contentlet --> dot-contentlet-state-icon
   dot-card-contentlet --> dot-badge
   dot-card-contentlet --> dot-contentlet-lock-icon
   dot-card-contentlet --> dot-context-menu
   dot-contentlet-thumbnail --> dot-contentlet-icon
-  dot-contentlet-state-icon --> dot-tooltip
   style dot-card-view fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

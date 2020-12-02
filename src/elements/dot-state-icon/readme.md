@@ -5,18 +5,14 @@
 
 ## Properties
 
-| Property     | Attribute | Description | Type                                                                        | Default                                                                                                                      |
-| ------------ | --------- | ----------- | --------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
-| `contentlet` | --        |             | `DotContentletItem`                                                         | `undefined`                                                                                                                  |
-| `labels`     | --        |             | `{ archived: string; published: string; revision: string; draft: string; }` | `{         archived: 'Archived',         published: 'Published',         revision: 'Revision',         draft: 'Draft'     }` |
-| `size`       | `size`    |             | `string`                                                                    | `'16px'`                                                                                                                     |
+| Property | Attribute | Description | Type                                                                        | Default                                                                                                                      |
+| -------- | --------- | ----------- | --------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
+| `labels` | --        |             | `{ archived: string; published: string; revision: string; draft: string; }` | `{         archived: 'Archived',         published: 'Published',         revision: 'Revision',         draft: 'Draft'     }` |
+| `size`   | `size`    |             | `string`                                                                    | `'16px'`                                                                                                                     |
+| `state`  | --        |             | `DotContentState`                                                           | `undefined`                                                                                                                  |
 
 
 ## Dependencies
-
-### Used by
-
- - [dot-card-contentlet](../../components/dot-card-contentlet)
 
 ### Depends on
 
@@ -25,9 +21,8 @@
 ### Graph
 ```mermaid
 graph TD;
-  dot-contentlet-state-icon --> dot-tooltip
-  dot-card-contentlet --> dot-contentlet-state-icon
-  style dot-contentlet-state-icon fill:#f9f,stroke:#333,stroke-width:4px
+  dot-state-icon --> dot-tooltip
+  style dot-state-icon fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
 ----------------------------------------------

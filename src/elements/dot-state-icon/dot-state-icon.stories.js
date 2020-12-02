@@ -12,8 +12,8 @@ export default {
 export const Draft = () => {
     const props = [
         {
-            name: 'contentlet',
-            content: object('Contentlet', {
+            name: 'state',
+            content: object('state', {
                 live: 'false',
                 working: 'true',
                 deleted: 'false'
@@ -21,20 +21,20 @@ export const Draft = () => {
         }
     ];
 
-    const contentletStateIcon = document.createElement('dot-contentlet-state-icon');
+    const stateIcon = document.createElement('dot-state-icon');
 
     props.forEach(({ name, content }) => {
-        contentletStateIcon[name] = content;
+        stateIcon[name] = content;
     });
 
-    return contentletStateIcon;
+    return stateIcon;
 };
 
 export const Archived = () => {
     const props = [
         {
-            name: 'contentlet',
-            content: object('Contentlet', {
+            name: 'state',
+            content: object('state', {
                 hasLiveVersion: 'true',
                 live: 'false',
                 working: 'true',
@@ -43,20 +43,20 @@ export const Archived = () => {
         }
     ];
 
-    const contentletStateIcon = document.createElement('dot-contentlet-state-icon');
+    const stateIcon = document.createElement('dot-state-icon');
 
     props.forEach(({ name, content }) => {
-        contentletStateIcon[name] = content;
+        stateIcon[name] = content;
     });
 
-    return contentletStateIcon;
+    return stateIcon;
 };
 
 export const Drafted = () => {
     const props = [
         {
-            name: 'contentlet',
-            content: object('Contentlet', {
+            name: 'state',
+            content: object('state', {
                 hasLiveVersion: 'true',
                 live: 'false',
                 working: 'true',
@@ -65,20 +65,20 @@ export const Drafted = () => {
         }
     ];
 
-    const contentletStateIcon = document.createElement('dot-contentlet-state-icon');
+    const stateIcon = document.createElement('dot-state-icon');
 
     props.forEach(({ name, content }) => {
-        contentletStateIcon[name] = content;
+        stateIcon[name] = content;
     });
 
-    return contentletStateIcon;
+    return stateIcon;
 };
 
 export const Published = () => {
     const props = [
         {
-            name: 'contentlet',
-            content: object('Contentlet', {
+            name: 'state',
+            content: object('state', {
                 live: 'true',
                 hasLiveVersion: 'true',
                 working: 'true',
@@ -87,12 +87,12 @@ export const Published = () => {
         }
     ];
 
-    const contentletStateIcon = document.createElement('dot-contentlet-state-icon');
+    const stateIcon = document.createElement('dot-state-icon');
 
     props.forEach(({ name, content }) => {
-        contentletStateIcon[name] = content;
+        stateIcon[name] = content;
     });
 
-    return contentletStateIcon;
+    return stateIcon;
 };
 

@@ -297,11 +297,6 @@ export namespace Components {
         "locked": boolean;
         "size": string;
     }
-    interface DotContentletStateIcon {
-        "labels": { archived: string; published: string; revision: string; draft: string; };
-        "size": string;
-        "state": DotContentState;
-    }
     interface DotContentletThumbnail {
         "alt": string;
         "contentlet": DotContentletItem;
@@ -768,6 +763,11 @@ export namespace Components {
         "options": DotSelectButtonOption[];
         "value": string;
     }
+    interface DotStateIcon {
+        "labels": { archived: string; published: string; revision: string; draft: string; };
+        "size": string;
+        "state": DotContentState;
+    }
     interface DotTags {
         /**
           * Function or array of string to get the data to use for the autocomplete search
@@ -1097,12 +1097,6 @@ declare global {
         prototype: HTMLDotContentletLockIconElement;
         new (): HTMLDotContentletLockIconElement;
     };
-    interface HTMLDotContentletStateIconElement extends Components.DotContentletStateIcon, HTMLStencilElement {
-    }
-    var HTMLDotContentletStateIconElement: {
-        prototype: HTMLDotContentletStateIconElement;
-        new (): HTMLDotContentletStateIconElement;
-    };
     interface HTMLDotContentletThumbnailElement extends Components.DotContentletThumbnail, HTMLStencilElement {
     }
     var HTMLDotContentletThumbnailElement: {
@@ -1211,6 +1205,12 @@ declare global {
         prototype: HTMLDotSelectButtonElement;
         new (): HTMLDotSelectButtonElement;
     };
+    interface HTMLDotStateIconElement extends Components.DotStateIcon, HTMLStencilElement {
+    }
+    var HTMLDotStateIconElement: {
+        prototype: HTMLDotStateIconElement;
+        new (): HTMLDotStateIconElement;
+    };
     interface HTMLDotTagsElement extends Components.DotTags, HTMLStencilElement {
     }
     var HTMLDotTagsElement: {
@@ -1268,7 +1268,6 @@ declare global {
         "dot-chip": HTMLDotChipElement;
         "dot-contentlet-icon": HTMLDotContentletIconElement;
         "dot-contentlet-lock-icon": HTMLDotContentletLockIconElement;
-        "dot-contentlet-state-icon": HTMLDotContentletStateIconElement;
         "dot-contentlet-thumbnail": HTMLDotContentletThumbnailElement;
         "dot-context-menu": HTMLDotContextMenuElement;
         "dot-data-view-button": HTMLDotDataViewButtonElement;
@@ -1287,6 +1286,7 @@ declare global {
         "dot-radio": HTMLDotRadioElement;
         "dot-select": HTMLDotSelectElement;
         "dot-select-button": HTMLDotSelectButtonElement;
+        "dot-state-icon": HTMLDotStateIconElement;
         "dot-tags": HTMLDotTagsElement;
         "dot-textarea": HTMLDotTextareaElement;
         "dot-textfield": HTMLDotTextfieldElement;
@@ -1585,11 +1585,6 @@ declare namespace LocalJSX {
     interface DotContentletLockIcon {
         "locked"?: boolean;
         "size"?: string;
-    }
-    interface DotContentletStateIcon {
-        "labels"?: { archived: string; published: string; revision: string; draft: string; };
-        "size"?: string;
-        "state"?: DotContentState;
     }
     interface DotContentletThumbnail {
         "alt"?: string;
@@ -2038,6 +2033,11 @@ declare namespace LocalJSX {
         "options"?: DotSelectButtonOption[];
         "value"?: string;
     }
+    interface DotStateIcon {
+        "labels"?: { archived: string; published: string; revision: string; draft: string; };
+        "size"?: string;
+        "state"?: DotContentState;
+    }
     interface DotTags {
         /**
           * Function or array of string to get the data to use for the autocomplete search
@@ -2299,7 +2299,6 @@ declare namespace LocalJSX {
         "dot-chip": DotChip;
         "dot-contentlet-icon": DotContentletIcon;
         "dot-contentlet-lock-icon": DotContentletLockIcon;
-        "dot-contentlet-state-icon": DotContentletStateIcon;
         "dot-contentlet-thumbnail": DotContentletThumbnail;
         "dot-context-menu": DotContextMenu;
         "dot-data-view-button": DotDataViewButton;
@@ -2318,6 +2317,7 @@ declare namespace LocalJSX {
         "dot-radio": DotRadio;
         "dot-select": DotSelect;
         "dot-select-button": DotSelectButton;
+        "dot-state-icon": DotStateIcon;
         "dot-tags": DotTags;
         "dot-textarea": DotTextarea;
         "dot-textfield": DotTextfield;
@@ -2345,7 +2345,6 @@ declare module "@stencil/core" {
             "dot-chip": LocalJSX.DotChip & JSXBase.HTMLAttributes<HTMLDotChipElement>;
             "dot-contentlet-icon": LocalJSX.DotContentletIcon & JSXBase.HTMLAttributes<HTMLDotContentletIconElement>;
             "dot-contentlet-lock-icon": LocalJSX.DotContentletLockIcon & JSXBase.HTMLAttributes<HTMLDotContentletLockIconElement>;
-            "dot-contentlet-state-icon": LocalJSX.DotContentletStateIcon & JSXBase.HTMLAttributes<HTMLDotContentletStateIconElement>;
             "dot-contentlet-thumbnail": LocalJSX.DotContentletThumbnail & JSXBase.HTMLAttributes<HTMLDotContentletThumbnailElement>;
             "dot-context-menu": LocalJSX.DotContextMenu & JSXBase.HTMLAttributes<HTMLDotContextMenuElement>;
             "dot-data-view-button": LocalJSX.DotDataViewButton & JSXBase.HTMLAttributes<HTMLDotDataViewButtonElement>;
@@ -2364,6 +2363,7 @@ declare module "@stencil/core" {
             "dot-radio": LocalJSX.DotRadio & JSXBase.HTMLAttributes<HTMLDotRadioElement>;
             "dot-select": LocalJSX.DotSelect & JSXBase.HTMLAttributes<HTMLDotSelectElement>;
             "dot-select-button": LocalJSX.DotSelectButton & JSXBase.HTMLAttributes<HTMLDotSelectButtonElement>;
+            "dot-state-icon": LocalJSX.DotStateIcon & JSXBase.HTMLAttributes<HTMLDotStateIconElement>;
             "dot-tags": LocalJSX.DotTags & JSXBase.HTMLAttributes<HTMLDotTagsElement>;
             "dot-textarea": LocalJSX.DotTextarea & JSXBase.HTMLAttributes<HTMLDotTextareaElement>;
             "dot-textfield": LocalJSX.DotTextfield & JSXBase.HTMLAttributes<HTMLDotTextfieldElement>;

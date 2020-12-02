@@ -2,7 +2,7 @@ import { Component, h, Host, Prop } from '@stencil/core';
 import { DotContentState } from '../../models';
 
 @Component({
-    tag: 'dot-contentlet-state-icon',
+    tag: 'dot-state-icon',
     styleUrl: 'dot-state-icon.scss',
     shadow: true
 })

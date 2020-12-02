@@ -1,5 +1,5 @@
 /**
- * Represent onl the properties that define the status of any type of content
+ * Represent only the properties that define the status of any type of content
  */
 export interface DotContentState {
     live: string | boolean;
