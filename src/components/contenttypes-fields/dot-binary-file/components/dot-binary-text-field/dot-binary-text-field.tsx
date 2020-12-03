@@ -99,16 +99,14 @@ export class DotBinaryTextFieldComponent {
     }
 
     private handleFilePaste(items: DataTransferItemList) {
-        const clipBoardFileName = items[0];
         const clipBoardFile = items[1].getAsFile();
-        clipBoardFileName.getAsString((fileName: string) => {
-            if (isFileAllowed(fileName, this.accept)) {
-                this.value = fileName;
-                this.emitFile(clipBoardFile);
-            } else {
-                this.emitFile(null, DotBinaryMessageError.INVALID);
-            }
-        });
+
+        if (isFileAllowed(clipBoardFile.name, clipBoardFile.type, this.accept)) {
+            this.value = clipBoardFile;
+            this.emitFile(clipBoardFile);
+        } else {
+            this.emitFile(null, DotBinaryMessageError.INVALID);
+        }
     }
 
     private handleURLPaste(clipBoardFileName: DataTransferItem) {

@@ -71,7 +71,7 @@ export class DotBinaryUploadButtonComponent {
 
     private fileChangeHandler(event: Event): void {
         const file = this.fileInput.files[0];
-        if (isFileAllowed(file.name, this.accept)) {
+        if (isFileAllowed(file.name, file.type, this.accept)) {
             this.emitFile(file);
         } else {
             event.preventDefault();

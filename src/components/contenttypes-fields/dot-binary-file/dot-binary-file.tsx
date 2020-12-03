@@ -184,8 +184,17 @@ export class DotBinaryFileComponent {
     @Watch('accept')
     optionsWatch(): void {
         this.accept = checkProp<DotBinaryFileComponent, string>(this, 'accept');
-        this.allowedFileTypes = !!this.accept ? this.accept.split(',') : [];
-        this.allowedFileTypes = this.allowedFileTypes.map((fileType: string) => fileType.trim());
+
+        let arr;
+        if (this.accept) {
+            arr = this.accept.split(',');
+
+            if (arr.length === 0) {
+                arr = [this.accept]
+            }
+        }
+
+        this.allowedFileTypes = arr ? arr.map((fileType: string) => fileType.trim()) : [];
     }
 
     @Listen('fileChange')
@@ -362,7 +371,7 @@ export class DotBinaryFileComponent {
     }
 
     private handleDroppedFile(file: File): void {
-        if (isFileAllowed(file.name, this.allowedFileTypes.join(','))) {
+        if (isFileAllowed(file.name, file.type, this.allowedFileTypes.join(','))) {
             this.setValue(file);
             this.binaryTextField.value = file.name;
         } else {
