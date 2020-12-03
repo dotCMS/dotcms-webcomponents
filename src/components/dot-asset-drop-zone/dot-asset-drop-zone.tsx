@@ -57,8 +57,8 @@ export class DotAssetDropZone {
     /** Error to be shown when try to upload a bigger size file than allowed*/
     @Prop() singeMaxSizeErrorLabel = 'The file exceeds the maximum file size';
 
-    /** Error to be shown when try to upload a bigger size file than allowed*/
-    @Prop() folderUploadErrorLabel = 'You can’t drop folders. Try again.';
+    /** Error to be shown when an error happened on the uploading process*/
+    @Prop() uploadErrorLabel = 'Drop action not allowed.';
 
     /** Emit an array of Contentlets just created or array of errors */
     @Event() uploadComplete: EventEmitter<DotCMSContentlet[] | DotHttpErrorResponse[]>;
@@ -138,12 +138,12 @@ export class DotAssetDropZone {
                     if (item.webkitGetAsEntry().isFile) {
                         files.push(item.getAsFile());
                     } else {
-                        this.showDialog(this.dialogLabels.errorHeader, this.folderUploadErrorLabel);
+                        this.showDialog(this.dialogLabels.errorHeader, this.uploadErrorLabel);
                         files = [];
                         break;
                     }
                 } catch {
-                    this.showDialog(this.dialogLabels.errorHeader, this.folderUploadErrorLabel);
+                    this.showDialog(this.dialogLabels.errorHeader, this.uploadErrorLabel);
                     files = [];
                 }
             }
