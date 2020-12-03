@@ -99,6 +99,7 @@ export class DotAssetDropZone {
                         </mwc-button>
                     </mwc-dialog>
                 </div>
+
                 <slot />
             </Host>
         );
