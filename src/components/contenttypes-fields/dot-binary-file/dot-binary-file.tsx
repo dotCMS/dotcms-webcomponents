@@ -331,13 +331,18 @@ export class DotBinaryFileComponent {
     }
 
     private setValue(data: File | string = null): void {
-        this.file = data;
-        this.status = updateStatus(this.status, {
-            dotTouched: true,
-            dotPristine: false,
-            dotValid: this.isValid()
-        });
-        this.binaryTextField.value = data === null ? '' : this.binaryTextField.value;
+        try {
+            this.file = data;
+            this.status = updateStatus(this.status, {
+                dotTouched: true,
+                dotPristine: false,
+                dotValid: this.isValid()
+            });
+            this.binaryTextField.value = data === null ? '' : this.binaryTextField.value;
+        } catch (error) {
+            console.warn(error)
+        }
+
         this.emitValueChange();
         this.emitStatusChange();
     }
