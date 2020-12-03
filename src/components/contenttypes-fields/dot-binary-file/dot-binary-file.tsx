@@ -141,7 +141,7 @@ export class DotBinaryFileComponent {
     async clearValue(): Promise<void> {
         this.binaryTextField.value = '';
         this.errorType = this.required ? DotBinaryMessageError.REQUIRED : null;
-        this.setValue('');
+        this.setValue();
         this.clearPreviewData();
     }
 
@@ -153,6 +153,7 @@ export class DotBinaryFileComponent {
     }
 
     componentDidLoad(): void {
+        // this will be null if the component loads with a value
         this.binaryTextField = this.el.querySelector('dot-binary-text-field');
         const attrException = ['dottype'];
         const uploadButtonElement = this.el.querySelector('input[type="file"]');
@@ -229,8 +230,22 @@ export class DotBinaryFileComponent {
     @Listen('delete', { passive: false })
     handleDelete(evt: CustomEvent): void {
         evt.preventDefault();
-        this.setValue('');
         this.clearPreviewData();
+
+        /*
+            this.binaryTextField could be null if the component loads with a value.
+            So we have to wait for `clearPreviewData` happen to bring the <dot-binary-text-field>
+            to the DOM so we can get it.
+        */
+        setTimeout(() => {
+            if (!this.binaryTextField) {
+                this.binaryTextField = this.el.querySelector('dot-binary-text-field');
+            }
+
+            this.setValue();
+        }, 0)
+
+
     }
 
     render() {
@@ -253,24 +268,24 @@ export class DotBinaryFileComponent {
                             previewUrl={this.previewImageUrl}
                         />
                     ) : (
-                        <div class="dot-binary__container">
-                            <dot-binary-text-field
-                                placeholder={this.placeholder}
-                                required={this.required}
-                                disabled={this.disabled}
-                                accept={this.allowedFileTypes.join(',')}
-                                hint={this.hint}
-                                onLostFocus={this.lostFocusEventHandler.bind(this)}
-                            />
-                            <dot-binary-upload-button
-                                name={this.name}
-                                accept={this.allowedFileTypes.join(',')}
-                                disabled={this.disabled}
-                                required={this.required}
-                                buttonLabel={this.buttonLabel}
-                            />
-                        </div>
-                    )}
+                            <div class="dot-binary__container">
+                                <dot-binary-text-field
+                                    placeholder={this.placeholder}
+                                    required={this.required}
+                                    disabled={this.disabled}
+                                    accept={this.allowedFileTypes.join(',')}
+                                    hint={this.hint}
+                                    onLostFocus={this.lostFocusEventHandler.bind(this)}
+                                />
+                                <dot-binary-upload-button
+                                    name={this.name}
+                                    accept={this.allowedFileTypes.join(',')}
+                                    disabled={this.disabled}
+                                    required={this.required}
+                                    buttonLabel={this.buttonLabel}
+                                />
+                            </div>
+                        )}
                 </dot-label>
                 {getTagHint(this.hint)}
                 {getTagError(this.shouldShowErrorMessage(), this.getErrorMessage())}
@@ -315,7 +330,7 @@ export class DotBinaryFileComponent {
         this.URLValidationMessageWatch();
     }
 
-    private setValue(data: File | string): void {
+    private setValue(data: File | string = null): void {
         this.file = data;
         this.status = updateStatus(this.status, {
             dotTouched: true,
@@ -347,7 +362,7 @@ export class DotBinaryFileComponent {
             this.binaryTextField.value = file.name;
         } else {
             this.errorType = DotBinaryMessageError.INVALID;
-            this.setValue(null);
+            this.setValue();
         }
     }
 
