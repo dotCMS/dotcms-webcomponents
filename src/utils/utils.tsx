@@ -1,6 +1,13 @@
 import { DotOption, DotFieldStatus, DotFieldStatusClasses, DotKeyValueField } from '../models';
 import { h } from '@stencil/core';
 
+export function nextTick(fn) {
+    const id = window.requestAnimationFrame(function() {
+      fn && fn();
+      window.cancelAnimationFrame(id);
+    });
+  };
+
 /**
  * Returns CSS classes object based on field Status values
  *

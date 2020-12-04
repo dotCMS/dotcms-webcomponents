@@ -25,6 +25,7 @@ import {
     getTagError,
     getTagHint,
     isFileAllowed,
+    nextTick,
     updateStatus
 } from '../../../utils';
 
@@ -246,15 +247,13 @@ export class DotBinaryFileComponent {
             So we have to wait for `clearPreviewData` happen to bring the <dot-binary-text-field>
             to the DOM so we can get it.
         */
-        setTimeout(() => {
+        nextTick(() => {
             if (!this.binaryTextField) {
                 this.binaryTextField = this.el.querySelector('dot-binary-text-field');
+                console.log(this.binaryTextField);
             }
-
             this.setValue();
-        }, 0)
-
-
+        });
     }
 
     render() {
