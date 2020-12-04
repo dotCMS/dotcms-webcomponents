@@ -180,23 +180,28 @@ describe('isValidURL', () => {
 });
 
 describe('isFileAllowed', () => {
-    it('should return true when file extension is valid', () => {
-        expect(isFileAllowed('file.pdf', '.png, .pdf')).toBe(true);
+    it('should return true when file extension is in the allow types', () => {
+        expect(isFileAllowed('file.pdf', 'application/pdf', '.png, .pdf')).toBe(true);
     });
 
     it('should return true when allowedExtensions are any', () => {
-        expect(isFileAllowed('file.pdf', '*')).toBe(true);
+        expect(isFileAllowed('file.pdf', 'application/pdf', '*')).toBe(true);
     });
 
-    it('should return true when allowedExtensions are any type of img', () => {
-        expect(isFileAllowed('file.png', 'image/*')).toBe(true);
+    it('should return false when allowedExtensions when types are different', () => {
+        expect(isFileAllowed('file.pdf', 'application/pdf', 'image/*')).toBe(false);
     });
+
+    it('should return true when types are the same', () => {
+        expect(isFileAllowed('file.pdf', 'application/pdf', 'application/*')).toBe(true);
+    });
+
 
     it('should return true when allowedExtensions are empty', () => {
-        expect(isFileAllowed('file.pdf', '')).toBe(true);
+        expect(isFileAllowed('file.pdf', 'application/pdf', '')).toBe(true);
     });
 
     it('should return false when file extension is not valid', () => {
-        expect(isFileAllowed('file.pdf', '.png')).toBe(false);
+        expect(isFileAllowed('file.pdf', 'application/pdf', '.png')).toBe(false);
     });
 });
