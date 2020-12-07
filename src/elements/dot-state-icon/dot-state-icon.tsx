@@ -1,15 +1,17 @@
 import { Component, h, Host, Prop } from '@stencil/core';
-import { DotContentState } from '../../models';
+import { DotContentState } from 'dotcms-models';
 
 @Component({
     tag: 'dot-state-icon',
     styleUrl: 'dot-state-icon.scss',
-    shadow: true
+    shadow: false
 })
 export class DotStateIcon {
-    @Prop() state: DotContentState;
-    @Prop() size = '16px';
-    @Prop()
+    @Prop({ reflect: true })
+    state: DotContentState;
+    @Prop({ reflect: true })
+    size = '16px';
+    @Prop({ reflect: true })
     labels = {
         archived: 'Archived',
         published: 'Published',
@@ -36,19 +38,16 @@ export class DotStateIcon {
     }
 
     private getType({ live, working, deleted, hasLiveVersion }: DotContentState): string {
-        if (deleted === 'true' || deleted == true) {
+        if (deleted.toString() === 'true') {
             return 'archived'; // crossed
         }
 
-        if (live === 'true' || live == true) {
-            if (
-                (hasLiveVersion === 'true' || hasLiveVersion == true) &&
-                (working === 'true' || working == true)
-            ) {
+        if (live.toString() === 'true') {
+            if (hasLiveVersion.toString() === 'true' && working.toString() === 'true') {
                 return 'published'; // full
             }
         } else {
-            if (hasLiveVersion === 'true' || hasLiveVersion == true) {
+            if (hasLiveVersion.toString() === 'true') {
                 return 'revision'; // half
             }
         }

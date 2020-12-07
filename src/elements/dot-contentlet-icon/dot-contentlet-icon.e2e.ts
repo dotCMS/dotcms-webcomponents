@@ -26,7 +26,10 @@ describe('dot-contentlet-icon', () => {
             });
 
             it('should set icon type and size', async () => {
+                const element = await page.find('dot-contentlet-icon');
+                console.log('beto', element.outerHTML);
                 const materialIcon = await page.find('dot-contentlet-icon >>> mwc-icon');
+                console.log('materialIcon', materialIcon.outerHTML);
                 expect((await materialIcon.getComputedStyle())['fontSize']).toBe('33px');
                 expect(materialIcon.innerText).toBe('videocam');
             });
