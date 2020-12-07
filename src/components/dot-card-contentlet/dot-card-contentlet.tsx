@@ -7,8 +7,8 @@ import {
 import '@material/mwc-checkbox';
 import '@material/mwc-formfield';
 import { Checkbox } from '@material/mwc-checkbox';
-import { DotContentState } from '../../models';
 import { DotContentletItem } from '../../models/dot-contentlet-item.model';
+import { DotContentState } from 'dotcms-models';
 
 @Component({
     tag: 'dot-card-contentlet',

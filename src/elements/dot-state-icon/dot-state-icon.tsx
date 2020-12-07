@@ -4,11 +4,11 @@ import { DotContentState } from 'dotcms-models';
 @Component({
     tag: 'dot-state-icon',
     styleUrl: 'dot-state-icon.scss',
-    shadow: false
+    shadow: true
 })
 export class DotStateIcon {
     @Prop({ reflect: true })
-    state: DotContentState;
+    state: DotContentState = null;
     @Prop({ reflect: true })
     size = '16px';
     @Prop({ reflect: true })
@@ -20,7 +20,7 @@ export class DotStateIcon {
     };
 
     render() {
-        const state = this.getType(this.state);
+        const state = this.state ? this.getType(this.state) : '';
         const name = this.labels[state];
         return (
             <Host

@@ -16,7 +16,8 @@ export const Draft = () => {
             content: object('state', {
                 live: 'false',
                 working: 'true',
-                deleted: 'false'
+                deleted: 'false',
+                hasLiveVersion: 'false'
             })
         }
     ];
@@ -57,10 +58,10 @@ export const Drafted = () => {
         {
             name: 'state',
             content: object('state', {
-                hasLiveVersion: 'true',
-                live: 'false',
-                working: 'true',
-                deleted: 'false'
+                hasLiveVersion: true,
+                live: false,
+                working: true,
+                deleted: false
             })
         }
     ];

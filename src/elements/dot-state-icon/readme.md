@@ -9,7 +9,7 @@
 | -------- | --------- | ----------- | --------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
 | `labels` | --        |             | `{ archived: string; published: string; revision: string; draft: string; }` | `{         archived: 'Archived',         published: 'Published',         revision: 'Revision',         draft: 'Draft'     }` |
 | `size`   | `size`    |             | `string`                                                                    | `'16px'`                                                                                                                     |
-| `state`  | --        |             | `DotContentState`                                                           | `undefined`                                                                                                                  |
+| `state`  | --        |             | `DotContentState`                                                           | `null`                                                                                                                       |
 
 
 ## Dependencies
