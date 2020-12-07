@@ -67,10 +67,10 @@ describe('dot-state-icon', () => {
 
     it('should set Draft attributes', async () => {
         const draftState: DotContentState = {
-            live: 'false',
-            working: 'true',
-            deleted: 'false',
-            hasLiveVersion: 'false'
+            live: false,
+            working: true,
+            deleted: false,
+            hasLiveVersion: false
         };
 
         element.setProperty('state', draftState);

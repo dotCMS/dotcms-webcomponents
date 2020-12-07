@@ -38,20 +38,24 @@ export class DotStateIcon {
     }
 
     private getType({ live, working, deleted, hasLiveVersion }: DotContentState): string {
-        if (deleted.toString() === 'true') {
+        if (this.isTrue(deleted)) {
             return 'archived'; // crossed
         }
 
         if (live.toString() === 'true') {
-            if (hasLiveVersion.toString() === 'true' && working.toString() === 'true') {
+            if (this.isTrue(hasLiveVersion) && this.isTrue(working)) {
                 return 'published'; // full
             }
         } else {
-            if (hasLiveVersion.toString() === 'true') {
+            if (this.isTrue(hasLiveVersion)) {
                 return 'revision'; // half
             }
         }
 
         return 'draft'; // empty
+    }
+
+    private isTrue(value: string|boolean): boolean {
+        return value ? value.toString() === 'true' : false;
     }
 }

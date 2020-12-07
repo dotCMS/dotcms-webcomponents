@@ -17,7 +17,6 @@ export const Draft = () => {
                 live: 'false',
                 working: 'true',
                 deleted: 'false',
-                hasLiveVersion: 'false'
             })
         }
     ];
@@ -36,9 +35,6 @@ export const Archived = () => {
         {
             name: 'state',
             content: object('state', {
-                hasLiveVersion: 'true',
-                live: 'false',
-                working: 'true',
                 deleted: 'true'
             })
         }
