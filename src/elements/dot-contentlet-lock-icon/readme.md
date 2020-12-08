@@ -7,10 +7,10 @@
 
 ## Properties
 
-| Property     | Attribute | Description | Type                | Default     |
-| ------------ | --------- | ----------- | ------------------- | ----------- |
-| `contentlet` | --        |             | `DotContentletItem` | `undefined` |
-| `size`       | `size`    |             | `string`            | `'16px'`    |
+| Property | Attribute | Description | Type      | Default     |
+| -------- | --------- | ----------- | --------- | ----------- |
+| `locked` | `locked`  |             | `boolean` | `undefined` |
+| `size`   | `size`    |             | `string`  | `'16px'`    |
 
 
 ## Dependencies

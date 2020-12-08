@@ -1,6 +1,6 @@
 {
     "name": "dotcms-webcomponents",
-    "version": "0.0.16",
+    "version": "0.0.17",
     "description": "DotCMS UI Web Components",
     "repository": {
         "type": "git",
@@ -58,7 +58,7 @@
         "@material/mwc-list": "^0.17.2",
         "@material/mwc-menu": "^0.17.2",
         "@tarekraafat/autocomplete.js": "^7.2.0",
-        "dotcms-models": "0.0.8",
+        "dotcms-models": "latest",
         "flatpickr": "^4.5.7"
     }
 }
