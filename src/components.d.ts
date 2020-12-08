@@ -36,10 +36,6 @@ export namespace Components {
          */
         "folder": string;
         /**
-          * Error to be shown when try to upload a bigger size file than allowed
-         */
-        "folderUploadErrorLabel": string;
-        /**
           * Specify the max size of each file to be uploaded
          */
         "maxFileSize": string;
@@ -51,6 +47,10 @@ export namespace Components {
           * Error to be shown when try to upload a bigger size file than allowed
          */
         "singeMaxSizeErrorLabel": string;
+        /**
+          * Error to be shown when an error happened on the uploading process
+         */
+        "uploadErrorLabel": string;
         /**
           * Legend to be shown when uploading files
          */
@@ -1319,10 +1319,6 @@ declare namespace LocalJSX {
          */
         "folder"?: string;
         /**
-          * Error to be shown when try to upload a bigger size file than allowed
-         */
-        "folderUploadErrorLabel"?: string;
-        /**
           * Specify the max size of each file to be uploaded
          */
         "maxFileSize"?: string;
@@ -1338,6 +1334,10 @@ declare namespace LocalJSX {
           * Error to be shown when try to upload a bigger size file than allowed
          */
         "singeMaxSizeErrorLabel"?: string;
+        /**
+          * Error to be shown when an error happened on the uploading process
+         */
+        "uploadErrorLabel"?: string;
         /**
           * Legend to be shown when uploading files
          */
