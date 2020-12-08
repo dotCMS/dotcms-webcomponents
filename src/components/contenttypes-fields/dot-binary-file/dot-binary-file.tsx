@@ -25,6 +25,7 @@ import {
     getTagError,
     getTagHint,
     isFileAllowed,
+    nextTick,
     updateStatus
 } from '../../../utils';
 
@@ -141,7 +142,7 @@ export class DotBinaryFileComponent {
     async clearValue(): Promise<void> {
         this.binaryTextField.value = '';
         this.errorType = this.required ? DotBinaryMessageError.REQUIRED : null;
-        this.setValue('');
+        this.setValue();
         this.clearPreviewData();
     }
 
@@ -153,6 +154,7 @@ export class DotBinaryFileComponent {
     }
 
     componentDidLoad(): void {
+        // this will be null if the component loads with a value
         this.binaryTextField = this.el.querySelector('dot-binary-text-field');
         const attrException = ['dottype'];
         const uploadButtonElement = this.el.querySelector('input[type="file"]');
@@ -183,8 +185,17 @@ export class DotBinaryFileComponent {
     @Watch('accept')
     optionsWatch(): void {
         this.accept = checkProp<DotBinaryFileComponent, string>(this, 'accept');
-        this.allowedFileTypes = !!this.accept ? this.accept.split(',') : [];
-        this.allowedFileTypes = this.allowedFileTypes.map((fileType: string) => fileType.trim());
+
+        let arr;
+        if (this.accept) {
+            arr = this.accept.split(',');
+
+            if (arr.length === 0) {
+                arr = [this.accept]
+            }
+        }
+
+        this.allowedFileTypes = arr ? arr.map((fileType: string) => fileType.trim()) : [];
     }
 
     @Listen('fileChange')
@@ -229,8 +240,20 @@ export class DotBinaryFileComponent {
     @Listen('delete', { passive: false })
     handleDelete(evt: CustomEvent): void {
         evt.preventDefault();
-        this.setValue('');
         this.clearPreviewData();
+
+        /*
+            this.binaryTextField could be null if the component loads with a value.
+            So we have to wait for `clearPreviewData` happen to bring the <dot-binary-text-field>
+            to the DOM so we can get it.
+        */
+        nextTick(() => {
+            if (!this.binaryTextField) {
+                this.binaryTextField = this.el.querySelector('dot-binary-text-field');
+                console.log(this.binaryTextField);
+            }
+            this.setValue();
+        });
     }
 
     render() {
@@ -253,24 +276,24 @@ export class DotBinaryFileComponent {
                             previewUrl={this.previewImageUrl}
                         />
                     ) : (
-                        <div class="dot-binary__container">
-                            <dot-binary-text-field
-                                placeholder={this.placeholder}
-                                required={this.required}
-                                disabled={this.disabled}
-                                accept={this.allowedFileTypes.join(',')}
-                                hint={this.hint}
-                                onLostFocus={this.lostFocusEventHandler.bind(this)}
-                            />
-                            <dot-binary-upload-button
-                                name={this.name}
-                                accept={this.allowedFileTypes.join(',')}
-                                disabled={this.disabled}
-                                required={this.required}
-                                buttonLabel={this.buttonLabel}
-                            />
-                        </div>
-                    )}
+                            <div class="dot-binary__container">
+                                <dot-binary-text-field
+                                    placeholder={this.placeholder}
+                                    required={this.required}
+                                    disabled={this.disabled}
+                                    accept={this.allowedFileTypes.join(',')}
+                                    hint={this.hint}
+                                    onLostFocus={this.lostFocusEventHandler.bind(this)}
+                                />
+                                <dot-binary-upload-button
+                                    name={this.name}
+                                    accept={this.allowedFileTypes.join(',')}
+                                    disabled={this.disabled}
+                                    required={this.required}
+                                    buttonLabel={this.buttonLabel}
+                                />
+                            </div>
+                        )}
                 </dot-label>
                 {getTagHint(this.hint)}
                 {getTagError(this.shouldShowErrorMessage(), this.getErrorMessage())}
@@ -315,14 +338,19 @@ export class DotBinaryFileComponent {
         this.URLValidationMessageWatch();
     }
 
-    private setValue(data: File | string): void {
-        this.file = data;
-        this.status = updateStatus(this.status, {
-            dotTouched: true,
-            dotPristine: false,
-            dotValid: this.isValid()
-        });
-        this.binaryTextField.value = data === null ? '' : this.binaryTextField.value;
+    private setValue(data: File | string = null): void {
+        try {
+            this.file = data;
+            this.status = updateStatus(this.status, {
+                dotTouched: true,
+                dotPristine: false,
+                dotValid: this.isValid()
+            });
+            this.binaryTextField.value = data === null ? '' : this.binaryTextField.value;
+        } catch (error) {
+            console.warn(error)
+        }
+
         this.emitValueChange();
         this.emitStatusChange();
     }
@@ -342,12 +370,12 @@ export class DotBinaryFileComponent {
     }
 
     private handleDroppedFile(file: File): void {
-        if (isFileAllowed(file.name, this.allowedFileTypes.join(','))) {
+        if (isFileAllowed(file.name, file.type, this.allowedFileTypes.join(','))) {
             this.setValue(file);
             this.binaryTextField.value = file.name;
         } else {
             this.errorType = DotBinaryMessageError.INVALID;
-            this.setValue(null);
+            this.setValue();
         }
     }
 
