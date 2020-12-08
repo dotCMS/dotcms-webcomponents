@@ -30,7 +30,8 @@ describe('DotAssetService', () => {
             }
         ],
         updateCallback: mockFallbackFun,
-        url: '/test/url'
+        url: '/test/url',
+        folder: ''
     };
 
     const assetService = new DotAssetService();

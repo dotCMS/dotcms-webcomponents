@@ -1,15 +1,18 @@
 import { Component, h, Host, Prop } from '@stencil/core';
-import { DotContentletItem } from '../../models/dot-contentlet-item.model';
+import { DotContentState } from 'dotcms-models';
 
 @Component({
-    tag: 'dot-contentlet-state-icon',
-    styleUrl: 'dot-contentlet-state-icon.scss',
+    tag: 'dot-state-icon',
+    styleUrl: 'dot-state-icon.scss',
     shadow: true
 })
-export class DotContentletStateIcon {
-    @Prop() contentlet: DotContentletItem;
-    @Prop() size = '16px';
-    @Prop() labels = {
+export class DotStateIcon {
+    @Prop({ reflect: true })
+    state: DotContentState = null;
+    @Prop({ reflect: true })
+    size = '16px';
+    @Prop({ reflect: true })
+    labels = {
         archived: 'Archived',
         published: 'Published',
         revision: 'Revision',
@@ -17,7 +20,7 @@ export class DotContentletStateIcon {
     };
 
     render() {
-        const state = this.getType(this.contentlet);
+        const state = this.state ? this.getType(this.state) : '';
         const name = this.labels[state];
         return (
             <Host
@@ -27,28 +30,32 @@ export class DotContentletStateIcon {
                 }}
             >
                 <span>
-                    <div class={state} id="icon"></div>
+                    <div class={state} id="icon" />
                     <dot-tooltip content={name} for="icon" />
                 </span>
             </Host>
         );
     }
 
-    private getType({ live, working, deleted, hasLiveVersion }: DotContentletItem): string {
-        if (deleted === 'true') {
+    private getType({ live, working, deleted, hasLiveVersion }: DotContentState): string {
+        if (this.isTrue(deleted)) {
             return 'archived'; // crossed
         }
 
-        if (live === 'true') {
-            if (hasLiveVersion === 'true' && working === 'true') {
+        if (live.toString() === 'true') {
+            if (this.isTrue(hasLiveVersion) && this.isTrue(working)) {
                 return 'published'; // full
             }
         } else {
-            if (hasLiveVersion === 'true') {
+            if (this.isTrue(hasLiveVersion)) {
                 return 'revision'; // half
             }
         }
 
         return 'draft'; // empty
+    }
+
+    private isTrue(value: string|boolean): boolean {
+        return value ? value.toString() === 'true' : false;
     }
 }

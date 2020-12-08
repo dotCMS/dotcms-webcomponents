@@ -84,7 +84,6 @@ xdescribe('dot-autocomplete', () => {
                 await page.waitForChanges();
 
                 const ul = await element.find('ul');
-                console.log('--------AAAAAAA-----', (await page.find('dot-autocomplete')).outerHTML);
                 expect(ul.innerHTML).toEqualHtml(`
                     <li class="autoComplete_result" data-result="result-1" tabindex="1">
                         <span class="autoComplete_highlighted">
