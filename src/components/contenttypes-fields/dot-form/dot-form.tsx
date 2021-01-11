@@ -28,19 +28,19 @@ export class DotFormComponent {
     fieldsToShow: string;
 
     /** (optional) Text to be rendered on Reset button */
-    @Prop({ reflectToAttr: true })
+    @Prop({ reflect: true })
     resetLabel = 'Reset';
 
     /** (optional) Text to be rendered on Submit button */
-    @Prop({ reflectToAttr: true })
+    @Prop({ reflect: true })
     submitLabel = 'Submit';
 
     /** Layout metada to be rendered */
-    @Prop({ reflectToAttr: true })
+    @Prop({ reflect: true })
     layout: DotCMSContentTypeLayoutRow[] = [];
 
     /** Content type variable name */
-    @Prop({ reflectToAttr: true })
+    @Prop({ reflect: true })
     variable = '';
 
     @State()
