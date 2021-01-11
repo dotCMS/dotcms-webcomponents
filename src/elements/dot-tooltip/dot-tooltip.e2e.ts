@@ -1,6 +1,6 @@
 import { newE2EPage } from '@stencil/core/testing';
 
-fdescribe('dot-tooltip', () => {
+describe('dot-tooltip', () => {
   it('renders', async () => {
     const page = await newE2EPage();
 
