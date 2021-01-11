@@ -6,7 +6,7 @@ describe('dot-card-contentlet', () => {
     beforeEach(async () => {
         page = await newE2EPage({
             html: `<dot-card-contentlet></dot-card-contentlet>`
-        });
+        }).catch((err) => err);
     });
 
     it('empty place holder', async () => {

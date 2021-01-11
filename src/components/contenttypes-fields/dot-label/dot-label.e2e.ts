@@ -33,7 +33,7 @@ describe('dot-label', () => {
                 <dot-label>
                     <h1>into the slot</h1>
                 </dot-label>`
-            });
+            }).catch(err => err)
             element = await getHost();
         });
 

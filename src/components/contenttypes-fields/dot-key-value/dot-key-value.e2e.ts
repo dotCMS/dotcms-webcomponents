@@ -1,4 +1,4 @@
-import { EventSpy } from '@stencil/core/dist/declarations';
+import { EventSpy } from '@stencil/core/testing';
 import { E2EPage, E2EElement, newE2EPage } from '@stencil/core/testing';
 import { dotTestUtil } from '../../../test';
 

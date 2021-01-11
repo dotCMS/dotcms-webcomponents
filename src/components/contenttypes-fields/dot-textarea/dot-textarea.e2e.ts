@@ -1,5 +1,5 @@
 import { E2EElement, E2EPage, newE2EPage } from '@stencil/core/testing';
-import { EventSpy } from '@stencil/core/dist/declarations';
+import { EventSpy } from '@stencil/core/testing';
 import { dotTestUtil } from '../../../test';
 
 describe('dot-textarea', () => {
