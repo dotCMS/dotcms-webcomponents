@@ -1,0 +1,46 @@
+.dot-material-icon {
+    position: relative;
+}
+
+.dot-material-icon__input {
+    box-sizing: border-box;
+    padding: 0.14rem;
+    width: 100%;
+}
+
+.dot-material-icon__list {
+    border: 1px lightblue solid;
+    background-color: white;
+    list-style: none;
+    margin: 0;
+    max-height: 120px;
+    overflow: auto;
+    padding: 0;
+    width: 100%;
+}
+
+.dot-material-icon__option mwc-icon {
+    --mdc-icon-size: 14px;
+    margin-right: 8px;
+}
+
+.dot-material-icon__option:hover {
+    background-color: black;
+    cursor: pointer;
+    color: white;
+}
+
+.dot-material-icon__option-selected {
+    background-color: blue;
+    color: white;
+}
+
+.dot-material-icon__button {
+    position: absolute;
+    right: 0;
+    top: 0;
+
+    mwc-icon {
+        --mdc-icon-size: 14px;
+    }
+}
