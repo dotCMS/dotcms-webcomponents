@@ -468,7 +468,6 @@ export const MaterialIconClasses = [
     'signal_cellular_4_bar',
     'signal_cellular_alt',
     'signal_cellular_connected_no_internet_4_bar',
-    'signal_cellular_connected_no_internet_4',
     'signal_cellular_no_sim',
     'signal_cellular_null',
     'signal_cellular_off',

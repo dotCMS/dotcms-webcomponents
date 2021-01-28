@@ -22,11 +22,17 @@ describe('dot-material-icon', () => {
             );
             expect(icons.length).toBeGreaterThan(0);
         });
+
+        it('should have input color', async () => {
+            const inputColor = await page.find('dot-material-icon >>> #iconColor');
+            expect(inputColor.getAttribute('type')).toBe('color');
+        });
     });
 
     describe('@Events', () => {
         let options: E2EElement[];
         let input: E2EElement;
+        let inputColor: E2EElement;
         let event;
 
         beforeEach(async () => {
@@ -34,6 +40,7 @@ describe('dot-material-icon', () => {
             dotSelectButton.click();
             await page.waitForChanges();
             input = await page.find('dot-material-icon >>> .dot-material-icon__input');
+            inputColor = await page.find('dot-material-icon >>> #iconColor');
             options = await page.findAll('dot-material-icon >>> .dot-material-icon__option');
         });
 
@@ -47,7 +54,11 @@ describe('dot-material-icon', () => {
             await input.press('ArrowDown');
             await page.waitForChanges();
             await input.press('Enter');
-            expect(event).toHaveReceivedEventDetail({ name: '', value: 'accessibility_new' });
+            expect(event).toHaveReceivedEventDetail({
+                colorValue: '#000',
+                name: '',
+                value: 'accessibility_new'
+            });
             expect(await dotSelectButton.getProperty('value')).toEqual('accessibility_new');
         });
 
@@ -62,8 +73,20 @@ describe('dot-material-icon', () => {
         it('should emit selected option and set value when option clicked', async () => {
             await options[0].click();
             await page.waitForChanges();
-            expect(event).toHaveReceivedEventDetail({ name: '', value: 'accessibility_new' });
+            expect(event).toHaveReceivedEventDetail({
+                colorValue: '#000',
+                name: '',
+                value: 'accessibility_new'
+            });
             expect(await dotSelectButton.getProperty('value')).toEqual('accessibility_new');
+        });
+
+        // TODO: Find a way to trigger the change event on Input type="color"
+        xit('should emit input color when picked', async () => {
+            await inputColor.type('#777');
+            await page.waitForChanges();
+            expect(event).toHaveReceivedEventDetail({ "colorValue": "#777", name: '', value: 'accessibility_new' });
+            expect(await dotSelectButton.getProperty('colorValue')).toEqual('#777');
         });
     });
 });

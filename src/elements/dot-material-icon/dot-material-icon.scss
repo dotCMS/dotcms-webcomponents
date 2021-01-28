@@ -1,4 +1,10 @@
 .dot-material-icon {
+    display: flex;
+}
+
+.dot-material-icon__select-container {
+    flex-grow: 1;
+    margin-right: 16px;
     position: relative;
 }
 
@@ -16,6 +22,7 @@
     max-height: 120px;
     overflow: auto;
     padding: 0;
+    position: absolute;
     width: 100%;
 }
 
@@ -43,4 +50,9 @@
     mwc-icon {
         --mdc-icon-size: 14px;
     }
+}
+
+.dot-material-icon__color-label {
+    align-self: center;
+    margin-right: 8px;
 }

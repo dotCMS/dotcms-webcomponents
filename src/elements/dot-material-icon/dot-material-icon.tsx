@@ -26,11 +26,15 @@ export class DotMaterialIcon {
     @Prop({ mutable: true, reflectToAttr: true })
     value = '';
 
+    /** Color value set from the input */
+    @Prop({ mutable: true, reflectToAttr: true })
+    colorValue = '#000';
+
     /** Values that the auto-complete textbox should search for */
     @Prop({ reflectToAttr: true }) suggestionlist: string[] = MaterialIconClasses;
 
     @Event()
-    dotValueChange: EventEmitter<DotFieldValueEvent>;
+    dotValueChange: EventEmitter<{ name: string; value: string; colorValue: string }>;
 
     @Listen('click', { target: 'window' })
     handleWindowClick(e: Event) {
@@ -41,10 +45,7 @@ export class DotMaterialIcon {
     }
 
     componentWillLoad() {
-        this.dotValueChange.emit({
-            name: this.name,
-            value: this.value
-        });
+        this.emitValues();
     }
 
     findMatch = (searchTerm: string): string[] => {
@@ -57,6 +58,11 @@ export class DotMaterialIcon {
         this.value = (e.target as any).value;
         this.suggestionArr = this.findMatch(this.value);
         this.showSuggestions = true;
+    };
+
+    onChangeColor = (e: Event) => {
+        this.colorValue = (e.target as any).value;
+        this.emitValues();
     };
 
     onFocus = (resetSearch: boolean) => {
@@ -115,10 +121,7 @@ export class DotMaterialIcon {
         this.value = selection;
         this.selectedSuggestionIndex = undefined;
         this.showSuggestions = false;
-        this.dotValueChange.emit({
-            name: this.name,
-            value: this.value
-        });
+        this.emitValues();
     };
 
     getSuggestionElement = (suggestion: string): JSX.Element => {
@@ -127,37 +130,72 @@ export class DotMaterialIcon {
             suggestion === this.suggestionArr[this.selectedSuggestionIndex];
         return (
             <li
+                role="option"
                 class={
                     'dot-material-icon__option ' +
                     (isSelected ? 'dot-material-icon__option-selected' : '')
                 }
                 onClick={() => this.onSelect(suggestion)}
             >
-                <mwc-icon>{suggestion}</mwc-icon>
-                {suggestion}
+                <label id={suggestion + '_Id'}>
+                    <mwc-icon aria-labelledby={suggestion + '_Id'}>{suggestion}</mwc-icon>
+                    {suggestion}
+                </label>
             </li>
         );
+    };
+
+    emitValues = () => {
+        this.dotValueChange.emit({
+            colorValue: this.colorValue,
+            name: this.name,
+            value: this.value,
+        });
     };
 
     render() {
         return (
             <div class="dot-material-icon">
+                <div class="dot-material-icon__select-container">
+                    <input
+                        class="dot-material-icon__input"
+                        type="text"
+                        role="searchbox"
+                        placeholder={this.placeholder}
+                        value={this.value}
+                        onInput={(e) => this.onInput(e)}
+                        onClick={() => this.onFocus(false)}
+                        onKeyDown={(e) => this.onKeyDown(e)}
+                        onKeyPress={(e) => this.onKeyPress(e)}
+                    />
+                    <button
+                        class="dot-material-icon__button"
+                        role="button"
+                        onClick={() => this.onFocus(true)}
+                    >
+                        <mwc-icon>arrow_drop_down</mwc-icon>
+                    </button>
+                    <ul
+                        class="dot-material-icon__list"
+                        role="listbox"
+                        hidden={!this.showSuggestions}
+                    >
+                        {this.suggestionArr.map((suggestion) =>
+                            this.getSuggestionElement(suggestion)
+                        )}
+                    </ul>
+                </div>
+                <label htmlFor="iconColor" class="dot-material-icon__color-label">
+                    Color
+                </label>
                 <input
-                    class="dot-material-icon__input"
-                    type="text"
-                    placeholder={this.placeholder}
-                    value={this.value}
-                    onInput={(e) => this.onInput(e)}
-                    onClick={() => this.onFocus(false)}
-                    onKeyDown={(e) => this.onKeyDown(e)}
-                    onKeyPress={(e) => this.onKeyPress(e)}
+                    id="iconColor"
+                    type="color"
+                    name="icon-color"
+                    role="textbox"
+                    onInput={(e) => this.onChangeColor(e)}
+                    value={this.colorValue}
                 />
-                <button class="dot-material-icon__button" onClick={() => this.onFocus(true)}>
-                    <mwc-icon>arrow_drop_down</mwc-icon>
-                </button>
-                <ul class="dot-material-icon__list" role="listbox" hidden={!this.showSuggestions}>
-                    {this.suggestionArr.map((suggestion) => this.getSuggestionElement(suggestion))}
-                </ul>
             </div>
         );
     }

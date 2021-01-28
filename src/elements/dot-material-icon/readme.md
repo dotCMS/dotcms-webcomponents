@@ -9,6 +9,7 @@
 
 | Property         | Attribute     | Description                                             | Type       | Default               |
 | ---------------- | ------------- | ------------------------------------------------------- | ---------- | --------------------- |
+| `colorValue`     | `color-value` | Color value set from the input                          | `string`   | `'#000'`              |
 | `name`           | `name`        | Name that will be used as ID                            | `string`   | `''`                  |
 | `placeholder`    | `placeholder` | Value for input placeholder                             | `string`   | `''`                  |
 | `suggestionlist` | --            | Values that the auto-complete textbox should search for | `string[]` | `MaterialIconClasses` |
@@ -17,9 +18,9 @@
 
 ## Events
 
-| Event            | Description | Type                              |
-| ---------------- | ----------- | --------------------------------- |
-| `dotValueChange` |             | `CustomEvent<DotFieldValueEvent>` |
+| Event            | Description | Type                                                                |
+| ---------------- | ----------- | ------------------------------------------------------------------- |
+| `dotValueChange` |             | `CustomEvent<{ name: string; value: string; colorValue: string; }>` |
 
 
 ----------------------------------------------
