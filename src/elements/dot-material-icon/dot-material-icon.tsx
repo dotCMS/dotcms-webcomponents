@@ -1,5 +1,4 @@
 import { Component, Prop, State, Listen, Element, h, Event, EventEmitter } from '@stencil/core';
-import { DotFieldValueEvent } from '../../models';
 import { MaterialIconClasses } from './material-icon-classes';
 import '@material/mwc-icon';
 
