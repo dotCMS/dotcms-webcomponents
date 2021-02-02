@@ -9,7 +9,7 @@ export default {
     }
 };
 
-export const DopZone = () => {
+export const DropZone = () => {
     const props = [
         {
             name: 'Text',

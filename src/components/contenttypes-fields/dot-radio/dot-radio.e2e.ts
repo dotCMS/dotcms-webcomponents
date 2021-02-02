@@ -1,5 +1,5 @@
 import { newE2EPage, E2EElement, E2EPage } from '@stencil/core/testing';
-import { EventSpy } from '@stencil/core/dist/declarations';
+import { EventSpy } from '@stencil/core/testing';
 import { dotTestUtil } from '../../../test';
 
 const getOptions = (page: E2EPage) => page.findAll('input');
