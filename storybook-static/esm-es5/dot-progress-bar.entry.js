@@ -1,0 +1,17 @@
+import { r as registerInstance, h, H as Host } from './index-ea58b93f.js';
+var dotProgressBarCss = "dot-progress-bar{text-align:center}dot-progress-bar div{color:var(--color-sec);border:1px solid var(--color-sec);border-radius:var(--border-radius);height:32px;width:100%;position:relative;margin-bottom:4px}dot-progress-bar div:before{content:\"\";background-color:var(--color-sec);width:calc(var(--progress-width, 0) * 1%);display:-ms-flexbox;display:flex;position:absolute;left:0px;bottom:0px;top:0px;max-width:100%;-webkit-transition:width 100ms;transition:width 100ms}dot-progress-bar span{color:var(--color-sec)}";
+var DotProgressBar = /** @class */ (function () {
+    function DotProgressBar(hostRef) {
+        registerInstance(this, hostRef);
+        /** text to be show bellow the progress bar*/
+        this.text = 'Uploading Files...';
+        /** indicates the progress to be show, a value 1 to 100 */
+        this.progress = 0;
+    }
+    DotProgressBar.prototype.render = function () {
+        return (h(Host, null, h("div", { style: { '--progress-width': this.progress.toString() } }), h("span", null, this.text)));
+    };
+    return DotProgressBar;
+}());
+DotProgressBar.style = dotProgressBarCss;
+export { DotProgressBar as dot_progress_bar };
