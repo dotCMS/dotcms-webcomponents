@@ -28,7 +28,7 @@
         "storybook": "start-storybook -s dist -p 6006",
         "build-storybook": "build-storybook",
         "dev": "npm-run-all --parallel start storybook",
-        "deploy-storybook": "stencil build --docs; build-storybook; storybook-to-ghpages; gh-pages -a --dist ./dist/dotcms-webcomponents"
+        "deploy-storybook": "npm run build; build-storybook; gh-pages -f --dist ./storybook-static; gh-pages -a --dist ./dist/dotcms-webcomponents"
     },
     "devDependencies": {
         "@babel/core": "^7.9.0",
@@ -38,7 +38,6 @@
         "@storybook/addon-knobs": "^6.1.16",
         "@storybook/addon-notes": "^5.3.21",
         "@storybook/html": "^6.1.16",
-        "@storybook/storybook-deployer": "^2.8.7",
         "@types/jest": "24.9.1",
         "@types/puppeteer": "1.20.3",
         "babel-loader": "^8.1.0",
