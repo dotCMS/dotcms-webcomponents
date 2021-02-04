@@ -3,9 +3,9 @@ import { MaterialIconClasses } from './material-icon-classes';
 import '@material/mwc-icon';
 
 @Component({
-    tag: 'dot-material-icon',
+    tag: 'dot-material-icon-picker',
     shadow: true,
-    styleUrl: 'dot-material-icon.scss'
+    styleUrl: 'dot-material-icon-picker.scss'
 })
 export class DotMaterialIcon {
     @Element() element: HTMLElement;
@@ -28,6 +28,9 @@ export class DotMaterialIcon {
     /** Color value set from the input */
     @Prop({ mutable: true, reflectToAttr: true })
     colorValue = '#000';
+
+    @Prop({ mutable: true, reflectToAttr: true })
+    colorLabel = 'Color';
 
     /** Values that the auto-complete textbox should search for */
     @Prop({ reflectToAttr: true }) suggestionlist: string[] = MaterialIconClasses;
@@ -148,7 +151,7 @@ export class DotMaterialIcon {
         this.dotValueChange.emit({
             colorValue: this.colorValue,
             name: this.name,
-            value: this.value,
+            value: this.value
         });
     };
 
@@ -156,6 +159,12 @@ export class DotMaterialIcon {
         return (
             <div class="dot-material-icon">
                 <div class="dot-material-icon__select-container">
+                    <mwc-icon
+                        class="dot-material-icon__preview"
+                        style={{ color: this.colorValue || '#000' }}
+                    >
+                        {this.value}
+                    </mwc-icon>
                     <input
                         class="dot-material-icon__input"
                         type="text"
@@ -185,7 +194,7 @@ export class DotMaterialIcon {
                     </ul>
                 </div>
                 <label htmlFor="iconColor" class="dot-material-icon__color-label">
-                    Color
+                    { this.colorLabel }
                 </label>
                 <input
                     id="iconColor"

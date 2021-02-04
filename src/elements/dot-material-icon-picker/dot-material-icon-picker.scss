@@ -8,9 +8,17 @@
     position: relative;
 }
 
+.dot-material-icon__preview {
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    width: 24px;
+}
+
 .dot-material-icon__input {
     box-sizing: border-box;
-    padding: 0.14rem;
+    padding: 0.15rem 0.15rem 0.15rem 24px;
+    vertical-align: top;
     width: 100%;
 }
 
@@ -23,11 +31,12 @@
     overflow: auto;
     padding: 0;
     position: absolute;
+    top: 1.5rem;
     width: 100%;
 }
 
 .dot-material-icon__option mwc-icon {
-    --mdc-icon-size: 14px;
+    --mdc-icon-size: 1 rem;
     margin-right: 8px;
 }
 

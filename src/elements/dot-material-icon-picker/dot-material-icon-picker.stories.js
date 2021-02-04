@@ -7,11 +7,11 @@ export default {
     }
 };
 
-export const MaterialIcon = () => {
+export const MaterialIconPicker = () => {
     const props = [
         {
             name: 'name',
-            content: text('Name', 'dotMaterialIcon')
+            content: text('Name', 'dotMaterialIconPicker')
         },
         {
             name: 'inputValue',
@@ -19,11 +19,11 @@ export const MaterialIcon = () => {
         }
     ];
 
-    const dotMaterialIcon = document.createElement('dot-material-icon');
+    const dotMaterialIconPicker = document.createElement('dot-material-icon-picker');
 
     props.forEach(({ name, content }) => {
-        dotMaterialIcon[name] = content;
+        dotMaterialIconPicker[name] = content;
     });
 
-    return dotMaterialIcon;
+    return dotMaterialIconPicker;
 };

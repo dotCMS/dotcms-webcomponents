@@ -9,6 +9,7 @@
 
 | Property         | Attribute     | Description                                             | Type       | Default               |
 | ---------------- | ------------- | ------------------------------------------------------- | ---------- | --------------------- |
+| `colorLabel`     | `color-label` |                                                         | `string`   | `'Color'`             |
 | `colorValue`     | `color-value` | Color value set from the input                          | `string`   | `'#000'`              |
 | `name`           | `name`        | Name that will be used as ID                            | `string`   | `''`                  |
 | `placeholder`    | `placeholder` | Value for input placeholder                             | `string`   | `''`                  |
