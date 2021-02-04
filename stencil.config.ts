@@ -6,9 +6,7 @@ export const config: Config = {
     outputTargets: [
         {
             type: "dist",
-            esmLoaderPath: "../loader",
-            dir: "storybook-static",
-            empty: false
+            esmLoaderPath: "../loader"
         },
         {
             type: "docs-readme"

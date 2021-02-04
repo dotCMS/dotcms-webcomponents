@@ -1,1 +1,0 @@
-import{r as o,h as r}from"./p-ca5d1561.js";const s=class{constructor(r){o(this,r)}render(){return this.row.columns.map(o=>r("dot-form-column",{column:o,"fields-to-show":this.fieldsToShow}))}};s.style="dot-form-row{display:-ms-flexbox;display:flex}";export{s as dot_form_row}
