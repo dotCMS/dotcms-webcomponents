@@ -10,7 +10,7 @@
     position: relative;
 }
 
-.dot-material-icon_select-input {
+.dot-material-icon__select-input {
     display: flex;
     flex-grow: 1;
 
@@ -22,6 +22,7 @@
     border-right: 0;
     display: flex;
     font-size: 1em;
+    padding-right: 0.2em;
 }
 
 .dot-material-icon__input {
@@ -53,7 +54,7 @@
     align-items: center;
     display: flex;
     --mdc-icon-size: 1em;
-    margin-right: 8px;
+    margin-right: 0.2em;
 }
 
 .dot-material-icon__option:hover {
@@ -72,6 +73,6 @@
 }
 
 .dot-material-icon__color-label {
-    margin-right: 8px;
+    margin-right: 0.5em;
     padding-top: 0.3em;
 }

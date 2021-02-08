@@ -176,7 +176,7 @@ export class DotMaterialIcon {
                 'font-size': this.size
             }}>
                 <div class="dot-material-icon__select-container">
-                    <div class="dot-material-icon_select-input">
+                    <div class="dot-material-icon__select-input">
                         <mwc-icon
                             class="dot-material-icon__preview"
                             style={{ color: this.colorValue }}
