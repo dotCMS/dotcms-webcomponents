@@ -16,7 +16,11 @@ export const MaterialIconPicker = () => {
         {
             name: 'inputValue',
             content: text('InputValue', 'account_balance')
-        }
+        },
+        {
+            name: 'size',
+            content: text('Font Size', '16px')
+        },
     ];
 
     const dotMaterialIconPicker = document.createElement('dot-material-icon-picker');

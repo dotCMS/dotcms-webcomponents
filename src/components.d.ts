@@ -630,6 +630,9 @@ export namespace Components {
         "required": boolean;
     }
     interface DotMaterialIconPicker {
+        /**
+          * Label set for the input color
+         */
         "colorLabel": string;
         /**
           * Color value set from the input
@@ -643,6 +646,10 @@ export namespace Components {
           * Value for input placeholder
          */
         "placeholder": string;
+        /**
+          * Size value set for font-size
+         */
+        "size": string;
         /**
           * Values that the auto-complete textbox should search for
          */
@@ -1937,6 +1944,9 @@ declare namespace LocalJSX {
         "required"?: boolean;
     }
     interface DotMaterialIconPicker {
+        /**
+          * Label set for the input color
+         */
         "colorLabel"?: string;
         /**
           * Color value set from the input
@@ -1951,6 +1961,10 @@ declare namespace LocalJSX {
           * Value for input placeholder
          */
         "placeholder"?: string;
+        /**
+          * Size value set for font-size
+         */
+        "size"?: string;
         /**
           * Values that the auto-complete textbox should search for
          */
