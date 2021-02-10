@@ -38,6 +38,9 @@ export class DotMaterialIcon {
     /** Size value set for font-size */
     @Prop({ mutable: true, reflectToAttr: true }) size: string = null;
 
+    /** Show/Hide color picker */
+    @Prop({ mutable: true, reflectToAttr: true }) showColor: string = null;
+
     /** Color value set from the input */
     @Prop({ mutable: true, reflectToAttr: true })
     colorValue = '#000';
@@ -172,9 +175,10 @@ export class DotMaterialIcon {
     render() {
         return (
             <Host
-            style={{
-                'font-size': this.size
-            }}>
+                style={{
+                    'font-size': this.size
+                }}
+            >
                 <div class="dot-material-icon__select-container">
                     <div class="dot-material-icon__select-input">
                         <mwc-icon
@@ -212,7 +216,21 @@ export class DotMaterialIcon {
                         )}
                     </ul>
                 </div>
+                {this.getColorPicker(this.showColor)}
+            </Host>
+        );
+    }
 
+    private scrollIntoSelectedOption(index: number) {
+        const optionsList = this.element.shadowRoot.querySelectorAll('.dot-material-icon__option');
+        optionsList[index].scrollIntoView({
+            behavior: 'smooth'
+        });
+    }
+
+    private getColorPicker(show: string): JSX.Element {
+        return show === 'true' ? (
+            <div>
                 <label htmlFor="iconColor" class="dot-material-icon__color-label">
                     {this.colorLabel}
                 </label>
@@ -225,14 +243,7 @@ export class DotMaterialIcon {
                     onInput={(e) => this.onChangeColor(e)}
                     value={this.colorValue}
                 />
-            </Host>
-        );
-    }
-
-    private scrollIntoSelectedOption(index: number) {
-        const optionsList = this.element.shadowRoot.querySelectorAll('.dot-material-icon__option');
-        optionsList[index].scrollIntoView({
-            behavior: 'smooth'
-        });
+            </div>
+        ) : null;
     }
 }

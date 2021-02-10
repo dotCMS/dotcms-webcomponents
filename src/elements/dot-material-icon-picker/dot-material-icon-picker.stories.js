@@ -14,13 +14,17 @@ export const MaterialIconPicker = () => {
             content: text('Name', 'dotMaterialIconPicker')
         },
         {
-            name: 'inputValue',
-            content: text('InputValue', 'account_balance')
+            name: 'value',
+            content: text('value', 'account_balance')
         },
         {
             name: 'size',
             content: text('Font Size', '16px')
         },
+        {
+            name: 'showColor',
+            content: text('Show Color Picker', 'true')
+        }
     ];
 
     const dotMaterialIconPicker = document.createElement('dot-material-icon-picker');

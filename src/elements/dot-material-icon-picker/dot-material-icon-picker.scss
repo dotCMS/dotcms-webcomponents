@@ -6,7 +6,6 @@
     display: flex;
     flex-direction: column;
     flex-grow: 1;
-    margin-right: 16px;
     position: relative;
 }
 
@@ -73,6 +72,7 @@
 }
 
 .dot-material-icon__color-label {
+    margin-left: 16px;
     margin-right: 0.5em;
     padding-top: 0.3em;
 }
