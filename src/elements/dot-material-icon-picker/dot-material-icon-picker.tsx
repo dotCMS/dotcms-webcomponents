@@ -1,11 +1,21 @@
-import { Component, Prop, State, Listen, Element, h, Event, EventEmitter } from '@stencil/core';
+import {
+    Component,
+    Prop,
+    State,
+    Listen,
+    Element,
+    Host,
+    h,
+    Event,
+    EventEmitter
+} from '@stencil/core';
 import { MaterialIconClasses } from './material-icon-classes';
 import '@material/mwc-icon';
 
 @Component({
-    tag: 'dot-material-icon',
+    tag: 'dot-material-icon-picker',
     shadow: true,
-    styleUrl: 'dot-material-icon.scss'
+    styleUrl: 'dot-material-icon-picker.scss'
 })
 export class DotMaterialIcon {
     @Element() element: HTMLElement;
@@ -25,9 +35,19 @@ export class DotMaterialIcon {
     @Prop({ mutable: true, reflectToAttr: true })
     value = '';
 
+    /** Size value set for font-size */
+    @Prop({ mutable: true, reflectToAttr: true }) size: string = null;
+
+    /** Show/Hide color picker */
+    @Prop({ mutable: true, reflectToAttr: true }) showColor: string = null;
+
     /** Color value set from the input */
     @Prop({ mutable: true, reflectToAttr: true })
     colorValue = '#000';
+
+    /** Label set for the input color */
+    @Prop({ mutable: true, reflectToAttr: true })
+    colorLabel = 'Color';
 
     /** Values that the auto-complete textbox should search for */
     @Prop({ reflectToAttr: true }) suggestionlist: string[] = MaterialIconClasses;
@@ -148,32 +168,44 @@ export class DotMaterialIcon {
         this.dotValueChange.emit({
             colorValue: this.colorValue,
             name: this.name,
-            value: this.value,
+            value: this.value
         });
     };
 
     render() {
         return (
-            <div class="dot-material-icon">
+            <Host
+                style={{
+                    'font-size': this.size
+                }}
+            >
                 <div class="dot-material-icon__select-container">
-                    <input
-                        class="dot-material-icon__input"
-                        type="text"
-                        role="searchbox"
-                        placeholder={this.placeholder}
-                        value={this.value}
-                        onInput={(e) => this.onInput(e)}
-                        onClick={() => this.onFocus(false)}
-                        onKeyDown={(e) => this.onKeyDown(e)}
-                        onKeyPress={(e) => this.onKeyPress(e)}
-                    />
-                    <button
-                        class="dot-material-icon__button"
-                        role="button"
-                        onClick={() => this.onFocus(true)}
-                    >
-                        <mwc-icon>arrow_drop_down</mwc-icon>
-                    </button>
+                    <div class="dot-material-icon__select-input">
+                        <mwc-icon
+                            class="dot-material-icon__preview"
+                            style={{ color: this.colorValue }}
+                        >
+                            {this.value}
+                        </mwc-icon>
+                        <input
+                            class="dot-material-icon__input"
+                            type="text"
+                            role="searchbox"
+                            placeholder={this.placeholder}
+                            value={this.value}
+                            onInput={(e) => this.onInput(e)}
+                            onClick={() => this.onFocus(false)}
+                            onKeyDown={(e) => this.onKeyDown(e)}
+                            onKeyPress={(e) => this.onKeyPress(e)}
+                        />
+                        <button
+                            class="dot-material-icon__button"
+                            role="button"
+                            onClick={() => this.onFocus(true)}
+                        >
+                            <mwc-icon>arrow_drop_down</mwc-icon>
+                        </button>
+                    </div>
                     <ul
                         class="dot-material-icon__list"
                         role="listbox"
@@ -184,18 +216,8 @@ export class DotMaterialIcon {
                         )}
                     </ul>
                 </div>
-                <label htmlFor="iconColor" class="dot-material-icon__color-label">
-                    Color
-                </label>
-                <input
-                    id="iconColor"
-                    type="color"
-                    name="icon-color"
-                    role="textbox"
-                    onInput={(e) => this.onChangeColor(e)}
-                    value={this.colorValue}
-                />
-            </div>
+                {this.getColorPicker(this.showColor)}
+            </Host>
         );
     }
 
@@ -204,5 +226,24 @@ export class DotMaterialIcon {
         optionsList[index].scrollIntoView({
             behavior: 'smooth'
         });
+    }
+
+    private getColorPicker(show: string): JSX.Element {
+        return show === 'true' ? (
+            <div>
+                <label htmlFor="iconColor" class="dot-material-icon__color-label">
+                    {this.colorLabel}
+                </label>
+                <input
+                    id="iconColor"
+                    class="dot-material-icon__icon-color"
+                    type="color"
+                    name="icon-color"
+                    role="textbox"
+                    onInput={(e) => this.onChangeColor(e)}
+                    value={this.colorValue}
+                />
+            </div>
+        ) : null;
     }
 }

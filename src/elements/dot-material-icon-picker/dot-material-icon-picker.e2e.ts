@@ -1,14 +1,14 @@
 import { E2EElement, E2EPage, newE2EPage } from '@stencil/core/testing';
 
-describe('dot-material-icon', () => {
+describe('dot-material-icon-picker', () => {
     let page: E2EPage;
     let dotSelectButton: E2EElement;
 
     beforeEach(async () => {
         page = await newE2EPage({
-            html: `<dot-material-icon></dot-material-icon>`
+            html: `<dot-material-icon-picker></dot-material-icon-picker>`
         });
-        dotSelectButton = await page.find('dot-material-icon');
+        dotSelectButton = await page.find('dot-material-icon-picker');
         dotSelectButton.setProperty('value', 'accessibility');
         await page.waitForChanges();
     });
@@ -18,13 +18,13 @@ describe('dot-material-icon', () => {
             dotSelectButton.click();
             await page.waitForChanges();
             const icons: E2EElement[] = await page.findAll(
-                'dot-material-icon >>> .dot-material-icon__list mwc-icon'
+                'dot-material-icon-picker >>> .dot-material-icon__list mwc-icon'
             );
             expect(icons.length).toBeGreaterThan(0);
         });
 
         it('should have input color', async () => {
-            const inputColor = await page.find('dot-material-icon >>> #iconColor');
+            const inputColor = await page.find('dot-material-icon-picker >>> #iconColor');
             expect(inputColor.getAttribute('type')).toBe('color');
         });
     });
@@ -39,9 +39,9 @@ describe('dot-material-icon', () => {
             event = await page.spyOnEvent('dotValueChange');
             dotSelectButton.click();
             await page.waitForChanges();
-            input = await page.find('dot-material-icon >>> .dot-material-icon__input');
-            inputColor = await page.find('dot-material-icon >>> #iconColor');
-            options = await page.findAll('dot-material-icon >>> .dot-material-icon__option');
+            input = await page.find('dot-material-icon-picker >>> .dot-material-icon__input');
+            inputColor = await page.find('dot-material-icon-picker >>> #iconColor');
+            options = await page.findAll('dot-material-icon-picker >>> .dot-material-icon__option');
         });
 
         it('should go down on the options dropdown', async () => {

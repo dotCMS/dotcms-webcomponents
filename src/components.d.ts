@@ -629,7 +629,11 @@ export namespace Components {
          */
         "required": boolean;
     }
-    interface DotMaterialIcon {
+    interface DotMaterialIconPicker {
+        /**
+          * Label set for the input color
+         */
+        "colorLabel": string;
         /**
           * Color value set from the input
          */
@@ -642,6 +646,14 @@ export namespace Components {
           * Value for input placeholder
          */
         "placeholder": string;
+        /**
+          * Show/Hide color picker
+         */
+        "showColor": string;
+        /**
+          * Size value set for font-size
+         */
+        "size": string;
         /**
           * Values that the auto-complete textbox should search for
          */
@@ -1197,11 +1209,11 @@ declare global {
         prototype: HTMLDotLabelElement;
         new (): HTMLDotLabelElement;
     };
-    interface HTMLDotMaterialIconElement extends Components.DotMaterialIcon, HTMLStencilElement {
+    interface HTMLDotMaterialIconPickerElement extends Components.DotMaterialIconPicker, HTMLStencilElement {
     }
-    var HTMLDotMaterialIconElement: {
-        prototype: HTMLDotMaterialIconElement;
-        new (): HTMLDotMaterialIconElement;
+    var HTMLDotMaterialIconPickerElement: {
+        prototype: HTMLDotMaterialIconPickerElement;
+        new (): HTMLDotMaterialIconPickerElement;
     };
     interface HTMLDotMultiSelectElement extends Components.DotMultiSelect, HTMLStencilElement {
     }
@@ -1309,7 +1321,7 @@ declare global {
         "dot-input-calendar": HTMLDotInputCalendarElement;
         "dot-key-value": HTMLDotKeyValueElement;
         "dot-label": HTMLDotLabelElement;
-        "dot-material-icon": HTMLDotMaterialIconElement;
+        "dot-material-icon-picker": HTMLDotMaterialIconPickerElement;
         "dot-multi-select": HTMLDotMultiSelectElement;
         "dot-progress-bar": HTMLDotProgressBarElement;
         "dot-radio": HTMLDotRadioElement;
@@ -1935,7 +1947,11 @@ declare namespace LocalJSX {
          */
         "required"?: boolean;
     }
-    interface DotMaterialIcon {
+    interface DotMaterialIconPicker {
+        /**
+          * Label set for the input color
+         */
+        "colorLabel"?: string;
         /**
           * Color value set from the input
          */
@@ -1949,6 +1965,14 @@ declare namespace LocalJSX {
           * Value for input placeholder
          */
         "placeholder"?: string;
+        /**
+          * Show/Hide color picker
+         */
+        "showColor"?: string;
+        /**
+          * Size value set for font-size
+         */
+        "size"?: string;
         /**
           * Values that the auto-complete textbox should search for
          */
@@ -2364,7 +2388,7 @@ declare namespace LocalJSX {
         "dot-input-calendar": DotInputCalendar;
         "dot-key-value": DotKeyValue;
         "dot-label": DotLabel;
-        "dot-material-icon": DotMaterialIcon;
+        "dot-material-icon-picker": DotMaterialIconPicker;
         "dot-multi-select": DotMultiSelect;
         "dot-progress-bar": DotProgressBar;
         "dot-radio": DotRadio;
@@ -2411,7 +2435,7 @@ declare module "@stencil/core" {
             "dot-input-calendar": LocalJSX.DotInputCalendar & JSXBase.HTMLAttributes<HTMLDotInputCalendarElement>;
             "dot-key-value": LocalJSX.DotKeyValue & JSXBase.HTMLAttributes<HTMLDotKeyValueElement>;
             "dot-label": LocalJSX.DotLabel & JSXBase.HTMLAttributes<HTMLDotLabelElement>;
-            "dot-material-icon": LocalJSX.DotMaterialIcon & JSXBase.HTMLAttributes<HTMLDotMaterialIconElement>;
+            "dot-material-icon-picker": LocalJSX.DotMaterialIconPicker & JSXBase.HTMLAttributes<HTMLDotMaterialIconPickerElement>;
             "dot-multi-select": LocalJSX.DotMultiSelect & JSXBase.HTMLAttributes<HTMLDotMultiSelectElement>;
             "dot-progress-bar": LocalJSX.DotProgressBar & JSXBase.HTMLAttributes<HTMLDotProgressBarElement>;
             "dot-radio": LocalJSX.DotRadio & JSXBase.HTMLAttributes<HTMLDotRadioElement>;
