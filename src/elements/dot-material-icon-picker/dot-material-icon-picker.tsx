@@ -14,7 +14,6 @@ import '@material/mwc-icon';
 
 @Component({
     tag: 'dot-material-icon-picker',
-    shadow: true,
     styleUrl: 'dot-material-icon-picker.scss'
 })
 export class DotMaterialIcon {
@@ -91,9 +90,7 @@ export class DotMaterialIcon {
         this.suggestionArr = this.findMatch(match);
 
         if (resetSearch) {
-            const input: HTMLInputElement = this.element.shadowRoot.querySelector(
-                '.dot-material-icon__input'
-            );
+            const input: HTMLInputElement = this.element.querySelector('.dot-material-icon__input');
             input.focus();
         }
     };
@@ -201,7 +198,10 @@ export class DotMaterialIcon {
                         <button
                             class="dot-material-icon__button"
                             role="button"
-                            onClick={() => this.onFocus(true)}
+                            onClick={(e: MouseEvent) => {
+                                e.preventDefault();
+                                this.onFocus(true);
+                            }}
                         >
                             <mwc-icon>arrow_drop_down</mwc-icon>
                         </button>
@@ -222,7 +222,7 @@ export class DotMaterialIcon {
     }
 
     private scrollIntoSelectedOption(index: number) {
-        const optionsList = this.element.shadowRoot.querySelectorAll('.dot-material-icon__option');
+        const optionsList = this.element.querySelectorAll('.dot-material-icon__option');
         optionsList[index].scrollIntoView({
             behavior: 'smooth'
         });
