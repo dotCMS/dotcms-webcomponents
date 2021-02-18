@@ -206,15 +206,17 @@ export class DotMaterialIcon {
                             <mwc-icon>arrow_drop_down</mwc-icon>
                         </button>
                     </div>
-                    <ul
-                        class="dot-material-icon__list"
-                        role="listbox"
-                        hidden={!this.showSuggestions}
-                    >
-                        {this.suggestionArr.map((suggestion) =>
-                            this.getSuggestionElement(suggestion)
-                        )}
-                    </ul>
+                    <div class="dot-material-icon__select-options-container">
+                        <ul
+                            class="dot-material-icon__list"
+                            role="listbox"
+                            hidden={!this.showSuggestions}
+                        >
+                            {this.suggestionArr.map((suggestion) =>
+                                this.getSuggestionElement(suggestion)
+                            )}
+                        </ul>
+                    </div>
                 </div>
                 {this.getColorPicker(this.showColor)}
             </Host>

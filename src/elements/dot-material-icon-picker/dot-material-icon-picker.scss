@@ -9,10 +9,13 @@ dot-material-icon-picker {
     position: relative;
 }
 
+.dot-material-icon__select-options-container {
+    position: relative;
+}
+
 .dot-material-icon__select-input {
     display: flex;
     flex-grow: 1;
-    max-height: calc(1em + 8px);
 }
 
 .dot-material-icon__preview {
@@ -44,7 +47,7 @@ dot-material-icon-picker {
     overflow: auto;
     padding: 0;
     position: absolute;
-    top: calc(1em + 8px);
+    top: 0;
     width: 100%;
     z-index: 1;
 }
