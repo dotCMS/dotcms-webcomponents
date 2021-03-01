@@ -1,0 +1,1 @@
+import{r,h as o}from"./p-ca5d1561.js";const e=class{constructor(o){r(this,o)}render(){return o("slot",null)}};e.style="dot-error-message:not(:empty){border:solid 1px currentColor;color:indianred;display:block;padding:0.5rem 0.75rem}";export{e as dot_error_message}

@@ -1,0 +1,1 @@
+import{r as t,h as o}from"./p-ca5d1561.js";const r=class{constructor(o){t(this,o)}render(){return o("dot-select-button",{value:this.value,options:[{label:"List",icon:"format_list_bulleted"},{label:"Card",icon:"grid_on"}]})}};r.style="";export{r as dot_data_view_button}
